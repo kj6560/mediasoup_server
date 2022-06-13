@@ -20,8 +20,8 @@ const getLocalIp = () => {
 module.exports = {
   listenIp: '54.70.129.232',
   listenPort: 3000,
-  sslCrt: '../ssl/cert.pem',
-  sslKey: '../ssl/privkey.pem',
+  sslCrt: '../../../../../etc/letsencrypt/live/drrksuri.com/cert.pem',
+  sslKey: '../../../../../etc/letsencrypt/live/drrksuri.com/privkey.pem',
 
   mediasoup: {
     // Worker settings
