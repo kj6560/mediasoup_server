@@ -18,7 +18,7 @@ const getLocalIp = () => {
 }
 
 module.exports = {
-  listenIp: '18.237.213.178',
+  listenIp: '54.70.129.232',
   listenPort: 3000,
   sslCrt: '../ssl/cert.pem',
   sslKey: '../ssl/privkey.pem',
@@ -68,7 +68,7 @@ module.exports = {
       listenIps: [
         {
           ip: '0.0.0.0',
-          announcedIp: '18.237.213.178'// replace by public IP address
+          announcedIp: '54.70.129.232'// replace by public IP address
         }
       ],
       maxIncomingBitrate: 1500000,
