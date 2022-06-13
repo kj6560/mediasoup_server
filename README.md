@@ -13,12 +13,4 @@ if errors then run :
 # Deployment
 
 -   in `config.js` replace the `announcedIP` with your public ip address of the server and modify the port you want to serve it in.
--   add firewall rules of the port of the webpage (default 3016) and the rtc connections (default udp 10000-10100) for the machine.
-
-# Pull Requests
-
--   Please run `npx prettier --write .` before to make a PR.
-
-notes : Best to run the project on a linux system as the mediasoup installation could have issues by installing on windows. If you have a windows system consider installing WSL to be able to run it.
-
-[installing wsl on windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+-   add firewall rules of the port of the webpage (default 3000) and the rtc connections (default udp as well as tcp 40000-49999) for the machine.
