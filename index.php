@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Psychowellness Video Conferencing</title>
-        <!-- Styles -->
-        <link rel="stylesheet" href="css/app.css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="js/mediasoupclient.min.js"></script>
@@ -98,6 +96,6 @@
             </div>
         </div>
     </div>
-		<script src="{{ url('js/index.js')}}"></script>
+		<script src="'js/index.js"></script>
     </body>
 </html>
