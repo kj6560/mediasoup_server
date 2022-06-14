@@ -203,18 +203,19 @@ if ($conn && $user_id) {
 									<i class="fas fa-desktop"></i>
 								</button>
 							</div>
-							<div class="flex-grow-1 text-right">
-								<div id="videoMedia" class="hidden">
-									<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
-									<div id="localMedia" class="containers">
-									</div>
-									<br />
 
+						</div>
+						<div class="flex-grow-1 text-right">
+							<div id="videoMedia" class="hidden">
+								<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
+								<div id="localMedia" class="containers">
 								</div>
+								<br />
+
 							</div>
 						</div>
 					</div>
-					
+
 
 
 					<script src="js/index.js"></script>
