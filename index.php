@@ -48,7 +48,7 @@ if($conn && $user_id){
             </div>
         </div>
 
-        <div class="container" style="display: none;">
+        <div class="container">
             <div id="control" class="hidden">
                 <br />
                 <button id="exitButton" class="hidden" onclick="rc.exit()">
