@@ -148,7 +148,7 @@ if ($conn && $user_id) {
 						</div>
 					</div>
 					
-					<div class="bg-dark d-flex flex-column h-100 w-80 p-4" style="position: fixed;top: 0; left: 250;">
+					<div class="bg-dark d-flex flex-column h-100 w-100 p-4" style="position: fixed;top: 0; left: 0;">
 						<h4 class="text-white text-center"></h4>
 						<div class="flex-grow-1">
 
