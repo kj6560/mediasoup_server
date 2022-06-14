@@ -171,7 +171,7 @@ if ($conn && $user_id) {
                 <br />
             </div> -->
 							<div class="row no-gutters h-100" id="remoteVideos">
-								<!-- <div class="col-12 col-md-3 p-1"><video src=""></video></div> -->
+								<div id="remoteAudios"></div>
 							</div>
 						</div>
 						<div class="p-2 bg-white rounded d-flex">
@@ -211,10 +211,10 @@ if ($conn && $user_id) {
 									<br />
 
 								</div>
-
 							</div>
 						</div>
 					</div>
+					
 
 
 					<script src="js/index.js"></script>
