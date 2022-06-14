@@ -30,6 +30,14 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+.vid_local {
+  flex: 0 1 auto;
+  height: 240px;
+  width: 240px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+}
 
 .hidden {
   display: none;

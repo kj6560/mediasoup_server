@@ -367,7 +367,7 @@ class RoomClient {
         elem.height=200
         elem.width=200
         elem.autoplay = true
-        elem.className = 'vid'
+        elem.className = 'vid_local'
         this.localMediaEl.appendChild(elem)
         this.handleFS(elem.id)
       }
@@ -435,9 +435,7 @@ class RoomClient {
           elem.id = consumer.id
           elem.playsinline = false
           elem.autoplay = true
-          elem.width = 860
-          elem.height=540
-          elem.className = 'vid'
+          elem.className = 'vid_remote'
           this.remoteVideoEl.appendChild(elem)
           this.handleFS(elem.id)
         } else {
