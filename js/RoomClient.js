@@ -420,8 +420,9 @@ class RoomClient {
 
   async consume(producer_id) {
     //let info = await this.roomInfo()
-
+    console.log(producer_id);
     this.getConsumeStream(producer_id).then(
+      
       function ({ consumer, stream, kind }) {
         
         this.consumers.set(consumer.id, consumer)
