@@ -115,6 +115,8 @@ if($conn && $user_id){
         </div>
     </div>
 		<script src="js/index.js">
+			<?php echo $current_user['name'] ?>
+			<?php echo $conference['conference_room_id']?>
 			var name = "<?php echo $current_user['name'] ?>";
 			var room_id = "<?php echo $conference['conference_room_id']?>";
 			console.log(name,room_id);
