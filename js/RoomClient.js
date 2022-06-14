@@ -426,6 +426,7 @@ class RoomClient {
 
     this.getConsumeStream(producer_id).then(
       function ({ consumer, stream, kind }) {
+        
         this.consumers.set(consumer.id, consumer)
 
         let elem
@@ -435,6 +436,8 @@ class RoomClient {
           elem.id = consumer.id
           elem.playsinline = false
           elem.autoplay = true
+          elem.width = 860
+          elem.height=540
           elem.className = 'vid'
           this.remoteVideoEl.appendChild(elem)
           this.handleFS(elem.id)
