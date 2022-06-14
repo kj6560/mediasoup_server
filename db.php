@@ -26,7 +26,7 @@ function getConference($conn,$user,$conference_type){
     }else if($conference_type==2){
         $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user['id']." or conference_for in(".$user['id']."))";
     }
-        
+    print_r($query);
     $data = mysqli_query($conn,$query);
     while($row=mysqli_fetch_row($data)){
         $result = $row;
