@@ -1,0 +1,36 @@
+* {
+  font-family: Verdana;
+}
+
+body {
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px 300px;
+  column-gap: 10px;
+  row-gap: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+}
+
+.vid {
+  flex: 0 1 auto;
+  height: 360px;
+  width: 360px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
