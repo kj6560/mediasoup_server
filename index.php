@@ -147,29 +147,19 @@ if ($conn && $user_id) {
 							<br />
 						</div>
 					</div>
+					<div class="flex-grow-1 text-right">
+						<div id="videoMedia" class="hidden">
+							<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
+							<div id="localMedia" class="containers">
+							</div>
+							<br />
+
+						</div>
+					</div>
 					<div class="bg-dark d-flex flex-column h-100 w-100 p-4" style="position: fixed;top: 0; left: 0;">
 						<h4 class="text-white text-center"><?php echo $_GET['room']; ?></h4>
 						<div class="flex-grow-1">
-							<!-- <div id="control" class="hidden">
-                <button id='exitButton' class='hidden' onclick="rc.exit()">Exit</button>
-                <br/>
-                audio: <select id="audioSelect">
-                </select>
-                <br/>
-                video: <select id="videoSelect">
-                </select>
-                <br />
-                <button id='startAudioButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">audio</button>
-                <button id='stopAudioButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.audio)">close
-                    audio</button>
-                <button id='startVideoButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)">video</button>
-                <button id='stopVideoButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.video)">close
-                    video</button>
-                <button id='startScreenButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.screen)">screen</button>
-                <button id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)">close
-                    screen</button>
-                <br />
-            </div> -->
+
 							<div class="row no-gutters h-100" id="remoteVideos">
 								<div id="remoteAudios"></div>
 							</div>
@@ -205,15 +195,7 @@ if ($conn && $user_id) {
 							</div>
 
 						</div>
-						<div class="flex-grow-1 text-right">
-							<div id="videoMedia" class="hidden">
-								<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
-								<div id="localMedia" class="containers">
-								</div>
-								<br />
 
-							</div>
-						</div>
 					</div>
 
 
