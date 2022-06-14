@@ -262,8 +262,8 @@ class RoomClient {
   }
 
   //////// MAIN FUNCTIONS /////////////
-
-  async produce(type, deviceId = null) {
+ 
+  async produce(type, deviceId = null,host=null) {
     let mediaConstraints = {}
     let audio = false
     let screen = false
@@ -278,16 +278,27 @@ class RoomClient {
         audio = true
         break
       case mediaType.video:
+        if(host){
+          var minVidWidth = 640;
+          var minVidHeight = 400;
+          var idealVidWidth = 1920;
+          var idealVidHeight = 1080;
+        }else{
+          var minVidWidth = 200;
+          var minVidHeight = 200;
+          var idealVidWidth = 200;
+          var idealVidHeight = 200;
+        }
         mediaConstraints = {
           audio: false,
           video: {
             width: {
-              min: 640,
-              ideal: 1920
+              min: minVidWidth,
+              ideal: idealVidWidth
             },
             height: {
-              min: 400,
-              ideal: 1080
+              min: minVidHeight,
+              ideal: idealVidHeight
             },
             deviceId: deviceId
             /*aspectRatio: {
