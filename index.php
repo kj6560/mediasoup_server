@@ -34,10 +34,10 @@ if($conn && $user_id){
     </head>
     <body class="font-sans antialiased">
 	<div class="py-12" >
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="display: none;">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="container">
-            <div id="login">
+            <div id="login" style="display: none;">
                 <br />
                 <i class="fas fa-server"> Room: </i><input id="roomidInput" value="123" type="text" />
                 <!--<button id="createRoom" onclick="createRoom(roomid.value)" label="createRoom">Create Room</button>-->
