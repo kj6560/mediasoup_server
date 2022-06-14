@@ -6,10 +6,11 @@ $user_id = !empty($_GET['u'])?$_GET['u']:false;
 $conference_type = !empty($_GET['t'])?$_GET['t']:false;
 if($conn && $user_id){
 	try{
-		$user = getUser($user_id,$conn);
-		if($user){
-			$conference = getConference($conn,$user,$conference_type);
-			print_r($conference);
+		$current_user = getUser($user_id,$conn);
+		if($current_user){
+			$conference = getConference($conn,$current_user,$conference_type);
+			$host= !empty($conference)?getUser($conference['conference_by'],$conn):false;
+			$participants = !empty($conference)?explode(",",$conference['conference_for']):false;
 		}
 	}catch(Exception $e){
 		print_r($e->getMessage());
@@ -113,7 +114,9 @@ if($conn && $user_id){
             </div>
         </div>
     </div>
-		<script src="js/index.js"></script>
+		<script src="js/index.js">
+			joinRoom(<?php echo $current_user['name'] ?>, <?php echo $conference['conference_room_id']?>);
+		</script>
     </body>
 </html>
 
