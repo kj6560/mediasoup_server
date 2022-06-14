@@ -31,9 +31,16 @@ body {
   cursor: pointer;
 }
 .vid_local {
-  flex: 0 1 auto;
   height: 240px;
   width: 240px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.vid_remote {
+  flex: 0 1 auto;
+  height: 840px;
+  width: 840px;
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid black;
