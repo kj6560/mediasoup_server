@@ -41,8 +41,7 @@ body {
   border: 1px solid black;
 }
 .vid_remote {
-  flex: 0 1 auto;
-  height: 840px;
+  height: 480px;
   width: 840px;
   border-radius: 10px;
   cursor: pointer;
