@@ -30,6 +30,7 @@ if($conn && $user_id){
         <script src="js/RoomClient.js"></script>
 
         <link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
         <script src="js/bootstrap.bundle.min.js"></script>
 		<script>
 				var host = "<?php echo $conference['conference_by'];?>";
