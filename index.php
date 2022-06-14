@@ -153,7 +153,7 @@ if ($conn && $user_id) {
 						<div class="flex-grow-1">
 
 							<div class="row no-gutters h-100" id="remoteVideos">
-								<div id="remoteAudios"></div>
+								<div id="remoteAudios" style="display: none;"></div>
 							</div>
 
 						</div>
@@ -192,7 +192,7 @@ if ($conn && $user_id) {
 
 					</div>
 
-					<div class="flex-grow-1 text-right">
+					<div class="flex-grow-1 text-right" >
 						<div id="videoMedia" class="hidden">
 							<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
 							<div id="localMedia" class="containers">
