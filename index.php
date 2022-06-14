@@ -37,8 +37,6 @@ if($conn && $user_id){
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="container">
-			<?php echo $current_user['name'] ?>
-			<?php echo $conference['conference_room_id']?>
             <div id="login">
                 <br />
                 <i class="fas fa-server"> Room: </i><input id="roomidInput" value="123" type="text" />
@@ -116,13 +114,16 @@ if($conn && $user_id){
             </div>
         </div>
     </div>
-		<script src="js/index.js">
-			
-			var name = "<?php echo $current_user['name'] ?>";
-			var room_id = "<?php echo $conference['conference_room_id']?>";
-			console.log(name);
-			console.log(room_id);
-			joinRoom(name,room_id);
+		<script src="js/index.js"></script>
+
+		<script>
+			window.onload = function() {
+				var name = "<?php echo $current_user['name'] ?>";
+				var room_id = "<?php echo $conference['conference_room_id']?>";
+				console.log(name);
+				console.log(room_id);
+				joinRoom(name,room_id);
+			};
 		</script>
     </body>
 </html>
