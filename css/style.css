@@ -43,12 +43,12 @@ body {
 .vid_remote {
   position: absolute; 
     right: 0; 
-    bottom: 60;
+    bottom: 160;
     min-width: 100%; 
     min-height: 100%;
     width: auto; 
     height: auto; 
-    z-index: -20;
+    z-index: -2;
     background-size: cover;
     overflow: hidden;
 }
