@@ -44,7 +44,7 @@ body {
 
 .vid_remote {
   min-width: 100%;
-  min-height: 100%;
+  min-height: 60%;
   width: auto;
   height: auto;
   z-index: -100;
