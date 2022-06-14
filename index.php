@@ -117,6 +117,7 @@ if($conn && $user_id){
 		<script src="js/index.js">
 			var name = "<?php echo $current_user['name'] ?>";
 			var room_id = "<?php echo $conference['conference_room_id']?>";
+			console.log(name,room_id);
 			joinRoom(name,room_id);
 		</script>
     </body>
