@@ -112,7 +112,7 @@ if($conn && $user_id){
         </div>
 
         <div class="container">
-            <div id="control" class="hidden">
+            <div id="control">
                 <br />
                 <button id="exitButton" class="hidden" onclick="rc.exit()" style="display:none ;">
                     <i class="fas fa-arrow-left"></i> Exit
