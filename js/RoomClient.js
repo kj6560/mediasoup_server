@@ -281,8 +281,8 @@ class RoomClient {
         if(host){
           var minVidWidth = 640;
           var minVidHeight = 400;
-          var idealVidWidth = 1920;
-          var idealVidHeight = 1080;
+          var idealVidWidth = 860;
+          var idealVidHeight = 540;
         }else{
           var minVidWidth = 200;
           var minVidHeight = 200;
@@ -483,8 +483,6 @@ class RoomClient {
     })
 
     const stream = new MediaStream()
-    stream.width = 200
-    stream.height = 200
     stream.addTrack(consumer.track)
 
     return {
