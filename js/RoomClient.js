@@ -278,17 +278,12 @@ class RoomClient {
         audio = true
         break
       case mediaType.video:
-        if(host){
+        
           var minVidWidth = 640;
           var minVidHeight = 400;
-          var idealVidWidth = 860;
-          var idealVidHeight = 540;
-        }else{
-          var minVidWidth = 200;
-          var minVidHeight = 200;
-          var idealVidWidth = 200;
-          var idealVidHeight = 200;
-        }
+          var idealVidWidth = 1920;
+          var idealVidHeight = 1080;
+        
         mediaConstraints = {
           audio: false,
           video: {
@@ -369,6 +364,8 @@ class RoomClient {
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
+        elem.height=200
+        elem.width=200
         elem.autoplay = true
         elem.className = 'vid'
         this.localMediaEl.appendChild(elem)
