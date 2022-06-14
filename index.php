@@ -3,10 +3,13 @@
 require 'db.php';
 $conn = connect();
 $user_id = !empty($_GET['u'])?$_GET['u']:false;
-
+$conference_type = !empty($_GET['t'])?$_GET['t']:false;
 if($conn && $user_id){
 	$user = getUser($user_id,$conn);
-	
+	if($user){
+		$conference = getConference($conn,$user,$conference_type);
+		print_r($conference);
+	}
 ?>
 	<!DOCTYPE html>
 <html>
