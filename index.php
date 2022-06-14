@@ -31,6 +31,12 @@ if($conn && $user_id){
 
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <script src="js/bootstrap.bundle.min.js"></script>
+		<script>
+				var host = "<?php echo $conference['conference_by'];?>";
+				var current_user = "<?php echo $current_user['id'];?>";
+				host = host==current_user?1:0;
+				console.log(host);
+		</script>
     </head>
     <body class="font-sans antialiased">
 	<div class="py-12" >
@@ -119,10 +125,6 @@ if($conn && $user_id){
 
 		<script>
 			window.onload = function() {
-				var host = "<?php echo $conference['conference_by'];?>";
-				var current_user = "<?php echo $current_user['id'];?>";
-				host = host==current_user?1:0;
-				console.log(host);
 				var name = "<?php echo $current_user['name'] ?>";
 				var room_id = "<?php echo $conference['conference_room_id']?>";
 				console.log(name);
