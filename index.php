@@ -1,235 +1,109 @@
-<?php
-error_reporting(E_ALL);
-require 'db.php';
-$conn = connect();
-$user_id = !empty($_GET['u']) ? $_GET['u'] : false;
-$conference_type = !empty($_GET['t']) ? $_GET['t'] : false;
-if ($conn && $user_id) {
-	$current_user = getUser($user_id, $conn);
-	if ($current_user) {
-		$conference = getConference($conn, $current_user, $conference_type);
-		$host = !empty($conference) ? getUser($conference['conference_by'], $conn) : false;
-		$participants = !empty($conference) ? explode(",", $conference['conference_for']) : false;
-		if ($conference) {
-
-
-?>
-			<!DOCTYPE html>
-			<html>
-
-			<head>
-				<meta charset="utf-8">
-				<meta name="viewport" content="width=device-width">
-
-				<title>Psychowellness Video Conferencing</title>
-
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-				<script src="js/mediasoupclient.min.js"></script>
-				<script src="js/EventEmitter.min.js"></script>
-				<script src="js/RoomClient.js"></script>
-				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/jquery.keep-ratio@0.1.4/dist/jquery.keep-ratio.min.js"></script>
-				<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-				<link href="css/bootstrap.min.css" rel="stylesheet" />
-				<link href="css/style.css" rel="stylesheet" />
-				<script src="js/bootstrap.bundle.min.js"></script>
-				<script>
-					var host = "<?php echo $conference['conference_by']; ?>";
-					var current_user = "<?php echo $current_user['id']; ?>";
-					host = host == current_user ? 1 : 0;
-					console.log(host);
-				</script>
-				<style>
-					html,
-					body {
-						height: 100vh;
-						width: 100vw;
-						overflow: hidden;
-					}
-
-					video {
-						max-width: 100%;
-						max-height: 100%;
-						width: 100%;
-						margin-bottom: -7px;
-					}
-
-					#participants {
-						position: absolute;
-						top: 0;
-						right: -100%;
-						transition: 0.3s;
-						max-width: 100%;
-						width: 350px;
-						height: 100%;
-					}
-
-					#participants.show {
-						right: 0%;
-					}
-
-					#chat {
-						position: absolute;
-						top: 0;
-						right: -100%;
-						transition: 0.3s;
-						max-width: 100%;
-						width: 350px;
-						height: 100%;
-					}
-
-					#chat.show {
-						right: 0%;
-					}
-				</style>
-			</head>
-
-			<body class="font-sans antialiased">
-				<div class="py-12">
-					<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-						<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-							<div class="container">
-								<div id="login" style="display: none;">
-									<br />
-									<i class="fas fa-server"> Room: </i><input id="roomidInput" value="123" type="text" />
-									<!--<button id="createRoom" onclick="createRoom(roomid.value)" label="createRoom">Create Room</button>-->
-									<i class="fas fa-user"> User: </i><input id="nameInput" value="user" type="text" />
-									<button id="joinButton" onclick="joinRoom(nameInput.value, roomidInput.value)">
-										<i class="fas fa-sign-in-alt"></i> Join
-									</button>
-								</div>
-							</div>
-
-							<div class="container">
-								<div id="control">
-									<br />
-									<button id="exitButton" class="hidden" onclick="rc.exit()" style="display:none ;">
-										<i class="fas fa-arrow-left"></i> Exit
-									</button>
-									<button id="copyButton" class="hidden" style="display:none ;" onclick="rc.copyURL()">
-										<i class="far fa-copy"></i> copy URL
-									</button>
-									<button id="devicesButton" class="hidden" style="display:none ;" onclick="rc.showDevices()">
-										<i class="fas fa-cogs"></i> Devices
-									</button>
-									<button id="startAudioButton" class="hidden" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">
-										<i class="fas fa-volume-up"></i> Open audio
-									</button>
-									<button id="stopAudioButton" class="hidden" onclick="rc.closeProducer(RoomClient.mediaType.audio)">
-										<i class="fas fa-volume-up"></i> Close audio
-									</button>
-									<button id="startVideoButton" class="hidden" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value,host)">
-										<i class="fas fa-camera"></i> Open video
-									</button>
-									<button id="stopVideoButton" class="hidden" onclick="rc.closeProducer(RoomClient.mediaType.video)">
-										<i class="fas fa-camera"></i> Close video
-									</button>
-									<button id="startScreenButton" class="hidden" style="display:none ;" onclick="rc.produce(RoomClient.mediaType.screen)">
-										<i class="fas fa-desktop"></i> Open screen
-									</button>
-									<button id="stopScreenButton" class="hidden" style="display:none ;" onclick="rc.closeProducer(RoomClient.mediaType.screen)">
-										<i class="fas fa-desktop"></i> Close screen
-									</button>
-									<br /><br />
-									<!-- class="hidden"  -->
-									<div id="devicesList" style="display: none;">
-										<i class="fas fa-microphone"></i> Audio:
-										<select id="audioSelect" class="form-select" style="width: auto"></select>
-										<br />
-										<i class="fas fa-video"></i> Video:
-										<select id="videoSelect" class="form-select" style="width: auto"></select>
-									</div>
-									<br />
-								</div>
-							</div>
-
-							<div class="bg-dark d-flex flex-column h-100 w-100 p-4" style="position: fixed;top: 0; left: 0;">
-								<h4 class="text-white text-center"></h4>
-								<div class="flex-grow-1">
-
-									<div class="row no-gutters h-100" id="remoteVideos">
-										<div id="remoteAudios" style="display: none;"></div>
-									</div>
-
-								</div>
-
-								<div class="p-2 bg-white rounded d-flex">
-									<div class="flex-grow-1">
-										<button class="btn btn-danger" id='exitButton' onclick="rc.exit()">
-											Leave
-										</button>
-									</div>
-									<div class="flex-grow-1 text-center">
-
-										<button class="btn btn-outline-dark mr-1" id='startAudioButton' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">
-											<i class="fas fa-microphone"></i>
-										</button>
-										<button class="btn btn-outline-dark mr-1" id='stopAudioButton' onclick="rc.closeProducer(RoomClient.mediaType.audio)">
-											<i class="fas fa-microphone-slash"></i>
-										</button>
-
-										<button class="btn btn-outline-dark mr-1" id='startVideoButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)">
-											<i class="fas fa-video"></i>
-										</button>
-										<button class="btn btn-outline-dark mr-1" id='stopVideoButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.video)">
-											<i class="fas fa-video-slash"></i>
-										</button>
-
-										<button class="btn btn-outline-dark" id='startScreenButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.screen)">
-											<i class="fas fa-desktop"></i>
-										</button>
-										<button class="btn btn-primary" id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)">
-											<i class="fas fa-desktop"></i>
-										</button>
-									</div>
-
-								</div>
-
-							</div>
-
-							<div class="flex-grow-1 text-right">
-								<div id="videoMedia" class="hidden">
-									<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
-									<div id="localMedia" class="containers">
-									</div>
-									<br />
-
-								</div>
-							</div>
-
-							<script src="js/index.js"></script>
-
-							<script>
-								window.onload = function() {
-									var name = "<?php echo $current_user['name'] ?>";
-									var room_id = "<?php echo $conference['conference_room_id'] ?>";
-									console.log(name);
-									console.log(room_id);
-									joinRoom(name, room_id);
-								};
-								$(function() {
-									$('[data-toggle]').click(function() {
-										const $this = $(this)
-										panelId = $this.data('toggle')
-										$('#' + panelId).toggleClass('show')
-									})
-								})
-							</script>
-			</body>
-
-			</html>
-
-<?php
-		}else{
-			echo "No Active conference available";
-			die;
-		}
-	}
-} else {
-	
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
 }
+</style>
+</head>
+<body>
 
-?>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="/w3images/hamburger.jpg" alt="Hamburger Catering" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge">Le Catering</h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="/w3images/tablesetting2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">About Catering</h1><br>
+      <h5 class="w3-center">Tradition since 1889</h5>
+      <p class="w3-large">The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Our Menu</h1><br>
+      <h4>Bread Basket</h4>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+    
+      <h4>Honey Almond Granola with Fruits</h4>
+      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+    
+      <h4>Belgian Waffle</h4>
+      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+    
+      <h4>Scrambled eggs</h4>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+    
+      <h4>Blueberry Pancakes</h4>
+      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>    
+    </div>
+    
+    <div class="w3-col l6 w3-padding-large">
+      <img src="/w3images/tablesetting.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Contact</h1><br>
+    <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
+    <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
+    <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required name="People"></p>
+      <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+  
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+</body>
+</html>
