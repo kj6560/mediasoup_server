@@ -48,7 +48,7 @@ if($conn && $user_id){
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="display: none;">
             <div id="control" class="hidden">
                 <br />
                 <button id="exitButton" class="hidden" onclick="rc.exit()">
@@ -120,9 +120,9 @@ if($conn && $user_id){
 			window.onload = function() {
 				var name = "<?php echo $current_user['name'] ?>";
 				var room_id = "<?php echo $conference['conference_room_id']?>";
-				console.log(name);
-				console.log(room_id);
 				joinRoom(name,room_id);
+				rc.produce(RoomClient.mediaType.video, videoSelect.value);
+				rc.produce(RoomClient.mediaType.audio, audioSelect.value)
 			};
 		</script>
     </body>
