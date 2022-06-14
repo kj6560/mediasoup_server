@@ -181,69 +181,42 @@ if ($conn && $user_id) {
 								</button>
 							</div>
 							<div class="flex-grow-1 text-center">
-								
-									<button class="btn btn-outline-dark mr-1" id='startAudioButton' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">
-										<i class="fas fa-microphone"></i>
-									</button>
-									<button class="btn btn-outline-dark mr-1" id='stopAudioButton' onclick="rc.closeProducer(RoomClient.mediaType.audio)">
-										<i class="fas fa-microphone-slash"></i>
-									</button>
 
-									<button class="btn btn-outline-dark mr-1" id='startVideoButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)">
-										<i class="fas fa-video"></i>
-									</button>
-									<button class="btn btn-outline-dark mr-1" id='stopVideoButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.video)">
-										<i class="fas fa-video-slash"></i>
-									</button>
+								<button class="btn btn-outline-dark mr-1" id='startAudioButton' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">
+									<i class="fas fa-microphone"></i>
+								</button>
+								<button class="btn btn-outline-dark mr-1" id='stopAudioButton' onclick="rc.closeProducer(RoomClient.mediaType.audio)">
+									<i class="fas fa-microphone-slash"></i>
+								</button>
 
-									<button class="btn btn-outline-dark" id='startScreenButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.screen)">
-										<i class="fas fa-desktop"></i>
-									</button>
-									<button class="btn btn-primary" id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)">
-										<i class="fas fa-desktop"></i>
-									</button>
-															</div>
+								<button class="btn btn-outline-dark mr-1" id='startVideoButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)">
+									<i class="fas fa-video"></i>
+								</button>
+								<button class="btn btn-outline-dark mr-1" id='stopVideoButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.video)">
+									<i class="fas fa-video-slash"></i>
+								</button>
+
+								<button class="btn btn-outline-dark" id='startScreenButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.screen)">
+									<i class="fas fa-desktop"></i>
+								</button>
+								<button class="btn btn-primary" id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)">
+									<i class="fas fa-desktop"></i>
+								</button>
+							</div>
 							<div class="flex-grow-1 text-right">
-								<button class="btn btn-outline-dark mr-2" data-toggle="chat">
-									<i class="fas fa-comments"></i>
-								</button>
-								<button class="btn btn-outline-dark" data-toggle="participants">
-									<i class="fas fa-user-friends"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div id="participants" class="bg-white d-flex flex-column">
-						<div class="p-2 bg-primary d-flex justify-content-between">
-							<h5 class="m-0 text-white">Participants</h5>
-							<button class="close text-white" data-toggle="participants">&times;</button>
-						</div>
-						<div class="p-1">
-							<div class="input-group">
-								<input type="text" class="form-control" id="participantSearch" placeholder="Search" />
-								<div class="input-group-append">
-									<button class="btn btn-outline-secondary" onclick="searchParticipant()" type="button">Search</button>
+								<div id="videoMedia" class="hidden">
+									<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
+									<div id="localMedia" class="containers">
+									</div>
+									<br />
+
 								</div>
+
 							</div>
 						</div>
-						<div id="participants-list" class="flex-grow-1 overflow-auto"></div>
 					</div>
 
-					<div id="chat" class="bg-white d-flex flex-column">
-						<div id="videoMedia" class="hidden">
 
-							<h4><i class="fab fa-youtube"></i> Remote media</h4>
-							<div id="remoteVideos" class="containers"></div>
-							<div id="remoteAudios"></div>
-							<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
-							<div id="localMedia" class="containers">
-								<!--<video id="localVideo" autoplay inline class="vid"></video>-->
-								<!--<video id="localScreen" autoplay inline class="vid"></video>-->
-							</div>
-							<br />
-
-						</div>
-					</div>
 					<script src="js/index.js"></script>
 
 					<script>
