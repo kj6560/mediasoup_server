@@ -107,15 +107,16 @@ if($conn && $user_id){
 
         <div class="container">
             <div id="videoMedia" class="hidden">
+			<h4><i class="fab fa-youtube"></i> Remote media</h4>
+                <div id="remoteVideos" class="containers"></div>
+                <div id="remoteAudios"></div>
                 <h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
                 <div id="localMedia" class="containers">
                     <!--<video id="localVideo" autoplay inline class="vid"></video>-->
                     <!--<video id="localScreen" autoplay inline class="vid"></video>-->
                 </div>
                 <br />
-                <h4><i class="fab fa-youtube"></i> Remote media</h4>
-                <div id="remoteVideos" class="containers"></div>
-                <div id="remoteAudios"></div>
+                
             </div>
         </div>
             </div>
