@@ -86,10 +86,10 @@ if($conn && $user_id){
                 <button id="stopVideoButton" class="hidden" onclick="rc.closeProducer(RoomClient.mediaType.video)">
                     <i class="fas fa-camera"></i> Close video
                 </button>
-                <button id="startScreenButton" class="hidden" onclick="rc.produce(RoomClient.mediaType.screen)">
+                <button id="startScreenButton" class="hidden" style="display:none ;" onclick="rc.produce(RoomClient.mediaType.screen)">
                     <i class="fas fa-desktop"></i> Open screen
                 </button>
-                <button id="stopScreenButton" class="hidden" onclick="rc.closeProducer(RoomClient.mediaType.screen)">
+                <button id="stopScreenButton" class="hidden" style="display:none ;" onclick="rc.closeProducer(RoomClient.mediaType.screen)">
                     <i class="fas fa-desktop"></i> Close screen
                 </button>
                 <br /><br />
