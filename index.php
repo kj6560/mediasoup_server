@@ -181,9 +181,7 @@ if ($conn && $user_id) {
 								</button>
 							</div>
 							<div class="flex-grow-1 text-center">
-								<?php
-								if (isset($_SESSION['user_email']) || $_SESSION['user_type'] == "Admin") {
-								?>
+								
 									<button class="btn btn-outline-dark mr-1" id='startAudioButton' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)">
 										<i class="fas fa-microphone"></i>
 									</button>
@@ -204,35 +202,7 @@ if ($conn && $user_id) {
 									<button class="btn btn-primary" id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)">
 										<i class="fas fa-desktop"></i>
 									</button>
-								<?php
-								} else {
-								?>
-
-									<button class="btn btn-outline-dark mr-1" id='startAudioButton' onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)" disabled>
-										<i class="fas fa-microphone"></i>
-									</button>
-									<button class="btn btn-outline-dark mr-1" id='stopAudioButton' onclick="rc.closeProducer(RoomClient.mediaType.audio)" disabled>
-										<i class="fas fa-microphone-slash"></i>
-									</button>
-
-									<button class="btn btn-outline-dark mr-1" id='startVideoButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)" disabled>
-										<i class="fas fa-video"></i>
-									</button>
-									<button class="btn btn-outline-dark mr-1" id='stopVideoButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.video)" disabled>
-										<i class="fas fa-video-slash"></i>
-									</button>
-
-									<button class="btn btn-outline-dark" id='startScreenButton' class='hidden' onclick="rc.produce(RoomClient.mediaType.screen)" disabled>
-										<i class="fas fa-desktop"></i>
-									</button>
-									<button class="btn btn-primary" id='stopScreenButton' class='hidden' onclick="rc.closeProducer(RoomClient.mediaType.screen)" disabled>
-										<i class="fas fa-desktop"></i>
-									</button>
-
-
-
-								<?php } ?>
-							</div>
+															</div>
 							<div class="flex-grow-1 text-right">
 								<button class="btn btn-outline-dark mr-2" data-toggle="chat">
 									<i class="fas fa-comments"></i>
