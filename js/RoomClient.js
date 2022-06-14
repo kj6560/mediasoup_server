@@ -364,8 +364,6 @@ class RoomClient {
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
-        elem.height=200
-        elem.width=200
         elem.autoplay = true
         elem.className = 'vid_local'
         this.localMediaEl.appendChild(elem)
