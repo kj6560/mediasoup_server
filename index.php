@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php  
+
+require 'db.php';
+$conn = connect();
+$user_id = !empty($_GET['u'])?$_GET['u']:false;
+
+if($conn && $user_id){
+	$user = getUser($user_id,$conn);
+	
+?>
+	<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -99,3 +109,11 @@
 		<script src="js/index.js"></script>
     </body>
 </html>
+
+<?php
+}else{
+	die;
+}
+
+?>
+
