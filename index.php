@@ -87,7 +87,8 @@ if($conn && $user_id){
                     <i class="fas fa-desktop"></i> Close screen
                 </button>
                 <br /><br />
-                <div id="devicesList" class="hidden">
+				<!-- class="hidden"  -->
+                <div id="devicesList"  style="display: none;">
                     <i class="fas fa-microphone"></i> Audio:
                     <select id="audioSelect" class="form-select" style="width: auto"></select>
                     <br />
