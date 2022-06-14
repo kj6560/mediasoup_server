@@ -57,13 +57,13 @@ if($conn && $user_id){
         <div class="container">
             <div id="control" class="hidden">
                 <br />
-                <button id="exitButton" class="hidden" onclick="rc.exit()">
+                <button id="exitButton" class="hidden" onclick="rc.exit()" style="display:none ;">
                     <i class="fas fa-arrow-left"></i> Exit
                 </button>
-                <button id="copyButton" class="hidden" onclick="rc.copyURL()">
+                <button id="copyButton" class="hidden" style="display:none ;" onclick="rc.copyURL()">
                     <i class="far fa-copy"></i> copy URL
                 </button>
-                <button id="devicesButton" class="hidden" onclick="rc.showDevices()">
+                <button id="devicesButton" class="hidden" style="display:none ;" onclick="rc.showDevices()">
                     <i class="fas fa-cogs"></i> Devices
                 </button>
                 <button
