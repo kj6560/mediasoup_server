@@ -73,7 +73,7 @@ if($conn && $user_id){
                 <button
                     id="startVideoButton"
                     class="hidden"
-                    onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"
+                    onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value,host)"
                 >
                     <i class="fas fa-camera"></i> Open video
                 </button>
@@ -101,7 +101,7 @@ if($conn && $user_id){
 
         <div class="container">
             <div id="videoMedia" class="hidden">
-                <h4><i class="fab fa-youtube"></i> Local media</h4>
+                <h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
                 <div id="localMedia" class="containers">
                     <!--<video id="localVideo" autoplay inline class="vid"></video>-->
                     <!--<video id="localScreen" autoplay inline class="vid"></video>-->
@@ -119,6 +119,10 @@ if($conn && $user_id){
 
 		<script>
 			window.onload = function() {
+				var host = "<?php echo $conference['conference_by'];?>";
+				var current_user = "<?php echo $current_user['id'];?>";
+				host = host==current_user?1:0;
+				console.log(host);
 				var name = "<?php echo $current_user['name'] ?>";
 				var room_id = "<?php echo $conference['conference_room_id']?>";
 				console.log(name);
