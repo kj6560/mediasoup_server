@@ -23,9 +23,9 @@ function getConference($conn,$user,$conference_type){
     print_r($user);
     $result = array();
     if($conference_type==1){
-        $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user['id']." or conference_for=".$user['id'].")";
+        $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user[0]." or conference_for=".$user[0].")";
     }else if($conference_type==2){
-        $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user['id']." or conference_for in(".$user['id']."))";
+        $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user[0]." or conference_for in(".$user[0]."))";
     }
     print_r($query);
     $data = mysqli_query($conn,$query);
