@@ -20,6 +20,7 @@ function getUser($user_id,$conn){
 }
 
 function getConference($conn,$user,$conference_type){
+    print_r($user);
     $result = array();
     if($conference_type==1){
         $query = "select * from conference where conference_type= ".$conference_type." and is_available=1 and (conference_by = ".$user['id']." or conference_for=".$user['id'].")";
