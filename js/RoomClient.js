@@ -483,6 +483,8 @@ class RoomClient {
     })
 
     const stream = new MediaStream()
+    stream.width = 200
+    stream.height = 200
     stream.addTrack(consumer.track)
 
     return {
