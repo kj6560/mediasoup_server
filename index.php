@@ -155,17 +155,9 @@ if ($conn && $user_id) {
 							<div class="row no-gutters h-100" id="remoteVideos">
 								<div id="remoteAudios"></div>
 							</div>
-							<div class="flex-grow-1 text-right">
-							<div id="videoMedia" class="hidden">
-								<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
-								<div id="localMedia" class="containers">
-								</div>
-								<br />
 
-							</div>
 						</div>
-						</div>
-						
+
 						<div class="p-2 bg-white rounded d-flex">
 							<div class="flex-grow-1">
 								<button class="btn btn-danger" id='exitButton' onclick="rc.exit()">
@@ -200,7 +192,15 @@ if ($conn && $user_id) {
 
 					</div>
 
+					<div class="flex-grow-1 text-right">
+						<div id="videoMedia" class="hidden">
+							<h4><i class="fab fa-youtube"></i> <?php echo $current_user['name'] ?></h4>
+							<div id="localMedia" class="containers">
+							</div>
+							<br />
 
+						</div>
+					</div>
 
 					<script src="js/index.js"></script>
 
