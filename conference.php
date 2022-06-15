@@ -134,9 +134,9 @@ if ($conn && $user_id) {
 						<i class="fas fa-video"></i> Video:
 						<select id="videoSelect" class="form-select" style="width: auto"></select>
 					</div>
-					<div class="remote-side" id="remoteVideos"></div>
+					<div  id="remoteVideos"></div>
 					<div id="remoteAudios" style="display: none;"></div>
-					<div class="local-side" id="localMedia"></div>
+					<div  id="localMedia"></div>
 					<div class="feature">
 						<span class="fas fa-phone" title="End Session" onclick="rc.exit()"></span>
 						<span class="fas fa-video" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
