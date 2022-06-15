@@ -127,8 +127,9 @@ if ($conn && $user_id) {
 					<p class="text-right text-white time">45:00</p>
 				</section>
 				<section class="video-confrence">
-					<div class="remote-side"></div>
-					<div class="local-side"></div>
+					<div class="remote-side" id="remoteVideos"></div>
+					<div id="remoteAudios" style="display: none;"></div>
+					<div class="local-side" id="localMedia"></div>
 					<div class="feature">
 						<span class="fas fa-phone" title="End Session" onclick="rc.exit()"></span>
 						<span class="fas fa-video" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
