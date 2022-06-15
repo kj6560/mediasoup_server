@@ -119,21 +119,21 @@ function initEnumerateDevices() {
 
 function enumerateDevices() {
   // Load mediaDevice options
-  // navigator.mediaDevices.enumerateDevices().then((devices) =>
-  //   devices.forEach((device) => {
-  //     let el = null
-  //     if ('audioinput' === device.kind) {
-  //       el = audioSelect
-  //     } else if ('videoinput' === device.kind) {
-  //       el = videoSelect
-  //     }
-  //     if (!el) return
+  navigator.mediaDevices.enumerateDevices().then((devices) =>
+    devices.forEach((device) => {
+      let el = null
+      if ('audioinput' === device.kind) {
+        el = audioSelect
+      } else if ('videoinput' === device.kind) {
+        el = videoSelect
+      }
+      if (!el) return
 
-  //     let option = document.createElement('option')
-  //     option.value = device.deviceId
-  //     option.innerText = device.label
-  //     el.appendChild(option)
-  //     isEnumerateDevices = true
-  //   })
-  // )
+      let option = document.createElement('option')
+      option.value = device.deviceId
+      option.innerText = device.label
+      el.appendChild(option)
+      isEnumerateDevices = true
+    })
+  )
 }

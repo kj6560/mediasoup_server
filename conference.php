@@ -61,7 +61,7 @@ if ($conn && $user_id) {
 
 					}
 
-					
+
 					.local-side {
 						background: rgb(10, 10, 10);
 						height: 150px;
@@ -127,6 +127,13 @@ if ($conn && $user_id) {
 					<p class="text-right text-white time">45:00</p>
 				</section>
 				<section class="video-confrence">
+					<div id="devicesList" style="display: none;">
+						<i class="fas fa-microphone"></i> Audio:
+						<select id="audioSelect" class="form-select" style="width: auto"></select>
+						<br />
+						<i class="fas fa-video"></i> Video:
+						<select id="videoSelect" class="form-select" style="width: auto"></select>
+					</div>
 					<div class="remote-side" id="remoteVideos"></div>
 					<div id="remoteAudios" style="display: none;"></div>
 					<div class="local-side" id="localMedia"></div>
