@@ -1,4 +1,4 @@
-# Shiwkesh Video Conferencing Service
+# Video Conferencing Service
 
 
 # Running the code
