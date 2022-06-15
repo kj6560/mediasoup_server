@@ -34,17 +34,17 @@ function joinRoom(name, room_id) {
 
 function roomOpen() {
   
-  reveal(startAudioButton)
-  hide(stopAudioButton)
-  reveal(startVideoButton)
-  hide(stopVideoButton)
-  reveal(startScreenButton)
-  hide(stopScreenButton)
-  reveal(exitButton)
-  reveal(copyButton)
-  reveal(devicesButton)
-  control.className = ''
-  reveal(videoMedia)
+  // reveal(startAudioButton)
+  // hide(stopAudioButton)
+  // reveal(startVideoButton)
+  // hide(stopVideoButton)
+  // reveal(startScreenButton)
+  // hide(stopScreenButton)
+  // reveal(exitButton)
+  // reveal(copyButton)
+  // reveal(devicesButton)
+  // control.className = ''
+  // reveal(videoMedia)
 }
 
 function hide(elem) {
