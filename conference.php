@@ -77,7 +77,8 @@ if ($conn && $user_id) {
 
 					.remote-side {
 						background: rgb(39, 34, 34);
-						height: 92vh;
+						height: 91vh;
+						width: 100%;
 						position: relative;
 						bottom: 0;
 						right: 0;
