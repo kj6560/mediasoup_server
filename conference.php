@@ -61,11 +61,7 @@ if ($conn && $user_id) {
 
 					}
 
-					/* .chat-confrence{
-			background: red;
-			height: 92vh;
-			
-		} */
+					
 					.local-side {
 						background: rgb(10, 10, 10);
 						height: 150px;
