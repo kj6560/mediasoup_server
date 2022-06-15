@@ -4,7 +4,7 @@ const socket = io("wss://drrksuri.com:3000")
 
 let producer = null
 
-nameInput.value = 'user_' + Math.round(Math.random() * 1000)
+//nameInput.value = 'user_' + Math.round(Math.random() * 1000)
 
 socket.request = function request(type, data = {}) {
   return new Promise((resolve, reject) => {
