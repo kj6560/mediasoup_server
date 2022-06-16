@@ -361,6 +361,7 @@ class RoomClient {
       let elem
       if (!audio) {
         elem = document.createElement('video')
+        elem.height = 200
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
