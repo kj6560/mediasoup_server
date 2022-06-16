@@ -279,8 +279,8 @@ class RoomClient {
         break
       case mediaType.video:
         
-          var minVidWidth = 640;
-          var minVidHeight = 400;
+          var minVidWidth = 1920;
+          var minVidHeight = 1080;
           var idealVidWidth = 1920;
           var idealVidHeight = 1080;
         
@@ -361,7 +361,6 @@ class RoomClient {
       let elem
       if (!audio) {
         elem = document.createElement('video')
-        elem.height = 200
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
