@@ -57,31 +57,31 @@ function reveal(elem) {
 
 function addListeners() {
   rc.on(RoomClient.EVENTS.startScreen, () => {
-    hide(startScreenButton)
-    reveal(stopScreenButton)
+    // hide(startScreenButton)
+    // reveal(stopScreenButton)
   })
 
   rc.on(RoomClient.EVENTS.stopScreen, () => {
-    hide(stopScreenButton)
-    reveal(startScreenButton)
+    // hide(stopScreenButton)
+    // reveal(startScreenButton)
   })
 
   rc.on(RoomClient.EVENTS.stopAudio, () => {
-    hide(stopAudioButton)
-    reveal(startAudioButton)
+    // hide(stopAudioButton)
+    // reveal(startAudioButton)
   })
   rc.on(RoomClient.EVENTS.startAudio, () => {
-    hide(startAudioButton)
-    reveal(stopAudioButton)
+    // hide(startAudioButton)
+    // reveal(stopAudioButton)
   })
 
   rc.on(RoomClient.EVENTS.startVideo, () => {
-    hide(startVideoButton)
-    reveal(stopVideoButton)
+    // hide(startVideoButton)
+    // reveal(stopVideoButton)
   })
   rc.on(RoomClient.EVENTS.stopVideo, () => {
-    hide(stopVideoButton)
-    reveal(startVideoButton)
+    // hide(stopVideoButton)
+    // reveal(startVideoButton)
   })
   rc.on(RoomClient.EVENTS.exitRoom, () => {
     hide(control)
