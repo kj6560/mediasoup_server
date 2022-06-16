@@ -59,7 +59,7 @@ if ($conn && $user_id) {
 				
 			}
 			#localMedia video{
-				height: 150px;
+				height: 200px;
 			    width: 150px;
 			    position: absolute;
 			    bottom: 10px;
