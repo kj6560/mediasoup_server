@@ -215,7 +215,23 @@ if ($conn && $user_id) {
 				</script>
 
 			</body>
-
+			<script>
+			let remoteVideos =document.querySelector("#remoteVideos");
+			let localMedia =document.querySelector("#localMedia");
+			 let dragSrcEl = null;
+			setInterval(function(){
+				chkremote();
+			},1000);
+				function chkremote(){
+					if(remoteVideos.children.length >1){
+						remoteVideos.classList.remove('remote-single');
+						remoteVideos.classList.add('remote-couple');
+					}else{
+						remoteVideos.classList.add('remote-single');
+						remoteVideos.classList.remove('remote-couple');
+					}
+				}
+		</script>
 			</html>
 <?php
 		} else {
