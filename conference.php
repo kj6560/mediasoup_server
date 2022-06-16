@@ -58,7 +58,7 @@ if ($conn && $user_id) {
 				/*width: 70%;*/
 				
 			}
-			#localMedia .local-side video{
+			#localMedia video{
 				height: 150px;
 			    width: 150px;
 			    position: absolute;
@@ -70,7 +70,10 @@ if ($conn && $user_id) {
 			    z-index: 2;
 			    box-shadow: 0px 0px 4px var(--gray);
 			}
-			
+			.local-side{
+				height: 150px;
+			    width: 150px;
+			}
 			#remoteVideos video{
 				background: rgb(39, 34, 34);
 			    position: relative;
