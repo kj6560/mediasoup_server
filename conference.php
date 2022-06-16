@@ -31,90 +31,111 @@ if ($conn && $user_id) {
 				<script src="js/mediasoupclient.min.js"></script>
 				<script src="js/RoomClient.js"></script>
 				<style>
-			*{
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
-			body{
-				background: rgb(78, 76, 76);
-				width: 100%;
-				height: 100vh;
-			}
-			.top-heading{
-				display: flex;
-			    justify-content: space-between;
-			    padding: 5px;
-			    align-items: center;
-			    height: 50px;
-			}
-			.time{
-				font-size: 1.5rem;
-			}
-			.video-confrence{
-				background: rgb(17, 17, 17);;
-				height: 93vh;
-				position: relative;
-				/*width: 70%;*/
-				
-			}
-			#localMedia video{
-				height: 150px;
-			    width: 150px;
-			    position: absolute;
-			    bottom: 10px;
-			    right: 10px;
-			    background-image: url(https://www.talktoangel.com/images/profile/profile.png);
-			    background-repeat: no-repeat;
-			    background-position: center;
-			    z-index: 2;
-			    box-shadow: 0px 0px 4px var(--gray);
-			}
-			.local-side{
-				height: 150px;
-			    width: 150px;
-			}
-			#remoteVideos video{
-				background: rgb(39, 34, 34);
-			    position: relative;
-			    bottom: 0;
-			    right: 0;
-			    background-image: url(https://www.talktoangel.com/images/profile/profile.png);
-			    background-repeat: no-repeat;
-			    background-position: center;
-			    z-index: 2;
-			    
-			    height: 92.6vh;
-			}
-			.remote-single video{
-				width: 100%;
-			}
-			.remote-couple video{
-				width: calc(100% - 50.2%);
-			}
-			.feature{
-				display: grid;
-			    z-index: 2;
-			    position: absolute;
-			    left: 0;
-			    top: 25%;
-			    background: #15748a;
-			    width: 60px;
-			    place-items: center;
-				
-			}
-			.feature span {
-				margin: 5px;
-			    font-size: 16px;
-			    color: #f3efef;
-			    cursor: pointer;
-			    border-radius: 5px;
-			    padding: 10px;
-			    box-shadow: 0px 0px 10px rgb(80 78 78);
-			    text-align: center;
-				
-			}
-			/*.feature::after {
+					* {
+						box-sizing: border-box;
+						margin: 0;
+						padding: 0;
+					}
+
+					body {
+						background: rgb(78, 76, 76);
+						width: 100%;
+						height: 100vh;
+					}
+
+					.top-heading {
+						display: flex;
+						justify-content: space-between;
+						padding: 5px;
+						align-items: center;
+						height: 50px;
+					}
+
+					.time {
+						font-size: 1.5rem;
+					}
+
+					.video-confrence {
+						background: rgb(17, 17, 17);
+						;
+						height: 93vh;
+						position: relative;
+						/*width: 70%;*/
+
+					}
+
+					#localMedia video {
+						height: 150px;
+						width: 150px;
+						position: absolute;
+						bottom: 10px;
+						right: 10px;
+						background-image: url(https://www.talktoangel.com/images/profile/profile.png);
+						background-repeat: no-repeat;
+						background-position: center;
+						z-index: 2;
+						box-shadow: 0px 0px 4px var(--gray);
+					}
+
+					.local-side {
+						position: absolute;
+						right: 0;
+						bottom: 0;
+						min-width: 100%;
+						min-height: 100%;
+						width: auto;
+						height: auto;
+						z-index: -100;
+						background-size: cover;
+						overflow: hidden;
+					}
+
+					#remoteVideos video {
+						background: rgb(39, 34, 34);
+						position: relative;
+						bottom: 0;
+						right: 0;
+						background-image: url(https://www.talktoangel.com/images/profile/profile.png);
+						background-repeat: no-repeat;
+						background-position: center;
+						z-index: 2;
+
+						height: 92.6vh;
+					}
+
+					.remote-single video {
+						width: 100%;
+					}
+
+					.remote-couple video {
+						width: calc(100% - 50.2%);
+					}
+
+					.feature {
+						display: grid;
+						z-index: 2;
+						position: absolute;
+						left: 0;
+						top: 25%;
+						background: #15748a;
+						width: 60px;
+						place-items: center;
+
+					}
+
+					.feature span {
+						margin: 5px;
+						font-size: 16px;
+						color: #f3efef;
+						cursor: pointer;
+						border-radius: 5px;
+						padding: 10px;
+						box-shadow: 0px 0px 10px rgb(80 78 78);
+						text-align: center;
+
+					}
+
+					/*.feature::after {
 			    content: "";
 			    width: 10px;
 			    height: 10px;
@@ -125,23 +146,24 @@ if ($conn && $user_id) {
 			    border-left: 20px solid #ff5d7d;
 			    cursor: pointer;
 			}*/
-			.feature::before {
-				    content: 'x';
-				    color: #fff;
-				    font-weight: bolder;
-				    font-size: 1.5rem;
-				    position: absolute;
-				    right: -20px;
-				    z-index: -1;
-				    background: #272222;
-				    border-radius: 25px;
-				    width: 30px;
-				    height: 30px;
-				    text-align: center;
-				    cursor: pointer;
-				    line-height: 24px;
-				}
-			/*.chat-confrence {
+					.feature::before {
+						content: 'x';
+						color: #fff;
+						font-weight: bolder;
+						font-size: 1.5rem;
+						position: absolute;
+						right: -20px;
+						z-index: -1;
+						background: #272222;
+						border-radius: 25px;
+						width: 30px;
+						height: 30px;
+						text-align: center;
+						cursor: pointer;
+						line-height: 24px;
+					}
+
+					/*.chat-confrence {
 			    position: absolute;
 			    width: 30%;
 			    height: 60vh;
@@ -150,10 +172,10 @@ if ($conn && $user_id) {
 			    right: 0;
 			    z-index: 2;
 			}*/
-			.hide{
-				display: none;
-			}
-		</style>
+					.hide {
+						display: none;
+					}
+				</style>
 				<script>
 					var host = "<?php echo $conference['conference_by']; ?>";
 					var current_user = "<?php echo $current_user['id']; ?>";
@@ -175,9 +197,9 @@ if ($conn && $user_id) {
 						<i class="fas fa-video"></i> Video:
 						<select id="videoSelect" class="form-select" style="width: auto"></select>
 					</div>
-					<div  id="remoteVideos"></div>
+					<div id="remoteVideos"></div>
 					<div id="remoteAudios" style="display: none;"></div>
-					<div  id="localMedia"></div>
+					<div id="localMedia"></div>
 					<div class="feature">
 						<span class="fas fa-phone" title="End Session" onclick="rc.exit()"></span>
 						<span class="fas fa-video" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
@@ -219,22 +241,24 @@ if ($conn && $user_id) {
 
 			</body>
 			<script>
-			let remoteVideos =document.querySelector("#remoteVideos");
-			let localMedia =document.querySelector("#localMedia");
-			 let dragSrcEl = null;
-			setInterval(function(){
-				chkremote();
-			},1000);
-				function chkremote(){
-					if(remoteVideos.children.length >1){
+				let remoteVideos = document.querySelector("#remoteVideos");
+				let localMedia = document.querySelector("#localMedia");
+				let dragSrcEl = null;
+				setInterval(function() {
+					chkremote();
+				}, 1000);
+
+				function chkremote() {
+					if (remoteVideos.children.length > 1) {
 						remoteVideos.classList.remove('remote-single');
 						remoteVideos.classList.add('remote-couple');
-					}else{
+					} else {
 						remoteVideos.classList.add('remote-single');
 						remoteVideos.classList.remove('remote-couple');
 					}
 				}
-		</script>
+			</script>
+
 			</html>
 <?php
 		} else {
