@@ -83,7 +83,7 @@ if ($conn && $user_id) {
 						bottom: 0;
 						min-width: 15%;
 						min-height: 25%;
-						width: 15%;
+						width: auto;
 						height: auto;
 						z-index: -100;
 						background-size: cover;
