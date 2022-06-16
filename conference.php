@@ -58,7 +58,7 @@ if ($conn && $user_id) {
 				/*width: 70%;*/
 				
 			}
-			#localMedia video{
+			#localMedia .local-side video{
 				height: 150px;
 			    width: 150px;
 			    position: absolute;
