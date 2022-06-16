@@ -77,16 +77,9 @@ if ($conn && $user_id) {
 					}
 
 					.local-side {
-						position: absolute;
-						right: 0;
-						bottom: 0;
 						min-width: 15%;
 						min-height: 25%;
 						width: auto;
-						height: auto;
-						z-index: -100;
-						background-size: cover;
-						overflow: hidden;
 					}
 
 					#remoteVideos video {
