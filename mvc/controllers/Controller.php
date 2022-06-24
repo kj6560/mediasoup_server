@@ -9,7 +9,7 @@ class Controller{
         
         $name = ucfirst($name);
          $path = 'mvc/model/' . $name . '.php';
-         echo file_exists($path);exit;
+         echo $path;exit;
          if(file_exists($path)){
               require 'mvc/model/' . $name . '.php';
               $this->model = new $name();       
