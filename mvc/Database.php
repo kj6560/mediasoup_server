@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    protected $con;
+    public $con;
     public function __construct(){
         $host = $mysql_params['host'];
         $user = $mysql_params['username'];
