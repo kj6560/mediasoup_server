@@ -6,6 +6,7 @@ echo $controller;
 spl_autoload_register(function($className) {
     $path = "/mvc/controllers/";
     $file = $path.$className . '.php';
+    echo $file;
     if (file_exists($file)) {
        echo "$file included\n";
        include $file;
