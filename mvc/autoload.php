@@ -21,6 +21,7 @@ spl_autoload_register(function ($className) {
 });
 try {
     $obj1 = new $path_controller;
+    $obj1->$path_function;
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
