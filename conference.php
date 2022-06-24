@@ -325,11 +325,10 @@ if ($conn && $user_id) {
 						<select id="videoSelect" class="form-select" style="width: auto"></select>
 					</div>
 					<div id="remoteVideos" class="remote-single">
-						<video></video>
-						<video></video>
+						
 					</div>
 					<div id="localMedia">
-						<video></video>
+						
 					</div>
 					<section class="report-a-problem hide"></section>
 					<div class="featurehead">
