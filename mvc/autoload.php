@@ -6,7 +6,7 @@ $path_array = explode("/", $parsed_url['path']);
 $path_params = explode("&", $parsed_url['query']);
 
 $path_controller = ucfirst($path_array[0]);
-$path_function = !empty($path_array[1]) ? $path_array[1] : "index";
+$path_function = !empty($path_array[1]) ? $path_array[1]."()" : "index()";
 
 spl_autoload_register(function ($className) {
     $path = "mvc/controllers/";
@@ -18,8 +18,10 @@ spl_autoload_register(function ($className) {
     }
 });
 try {
+    
     $obj1 = new $path_controller;
-    $obj1->index();
+    $obj1->params = $path_params;
+    $obj1->$path_function;
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
