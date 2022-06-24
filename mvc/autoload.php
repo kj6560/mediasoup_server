@@ -2,7 +2,12 @@
 
 $request_url = substr($_SERVER['REQUEST_URI'], 1);
 $parsed_url = parse_url($request_url);
-print_r($parsed_url);die;
+$path_array = $parsed_url['path'];
+$path_query = $parsed_url['query'];
+$path_controller = explode("/",$path_array)[0];
+$path_params = explode("&",$path_query);
+echo $path_controller;
+print_r($path_params);die;
 spl_autoload_register(function ($className) {
     $path = "/mvc/controllers/";
     $file = $path . $className . '.php';
