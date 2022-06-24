@@ -22,7 +22,7 @@ $dbParams = array(
 
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);
-print_r($entityManager);
+
 // Load Config
 require_once '../config/config.php';
 
