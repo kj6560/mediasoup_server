@@ -1,10 +1,11 @@
 <?php 
 
-$controller = str_replace("/","",$_SERVER['REQUEST_URI']);
+$controller = substr($_SERVER['REQUEST_URI'],1);
 echo $controller;
-$path = "/mvc/controllers/";
+
 spl_autoload_register(function($className) {
-    $file = $className . '.php';
+    $path = "/mvc/controllers/";
+    $file = $path.$className . '.php';
     if (file_exists($file)) {
        echo "$file included\n";
        include $file;
@@ -14,7 +15,7 @@ spl_autoload_register(function($className) {
     }
 });
 try {
-$obj1 = new ucfirst($path.$controller);
+$obj1 = new ucfirst($controller);
 } catch (Exception $e) {
 echo $e->getMessage(), "\n";
 }
