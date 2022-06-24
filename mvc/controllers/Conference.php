@@ -1,5 +1,5 @@
 <?php
-
+require "mvc/controllers/Controller.php";
 class Conference extends Controller
 {
    
