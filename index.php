@@ -1,5 +1,5 @@
 <?php 
 
-  print_r($_SERVER['REQUEST_URI']);
-
+ $controller = str_replace("/","",$_SERVER['REQUEST_URI']);
+echo $controller;
 ?>
