@@ -66,6 +66,7 @@ if ($conn && $user_id) {
 
 					#localMedia video {
 						height: 150px;
+						width: 150px;
 						position: absolute;
 						bottom: 10px;
 						right: 10px;
@@ -74,12 +75,6 @@ if ($conn && $user_id) {
 						background-position: center;
 						z-index: 2;
 						box-shadow: 0px 0px 4px var(--gray);
-					}
-
-					.local-side {
-						min-width: 15%;
-						min-height: 25%;
-						width: auto;
 					}
 
 					#remoteVideos video {
@@ -178,20 +173,17 @@ if ($conn && $user_id) {
 
 			<body>
 				<section class="top-heading">
-					<img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room">
+					<img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">
 					<p class="text-right text-white time">45:00</p>
 				</section>
 				<section class="video-confrence">
-					<div id="devicesList" style="display: none;">
-						<i class="fas fa-microphone"></i> Audio:
-						<select id="audioSelect" class="form-select" style="width: auto"></select>
-						<br />
-						<i class="fas fa-video"></i> Video:
-						<select id="videoSelect" class="form-select" style="width: auto"></select>
+					<div id="remoteVideos" class="remote-single">
+						<video></video>
+						<video></video>
 					</div>
-					<div id="remoteVideos"></div>
-					<div id="remoteAudios" style="display: none;"></div>
-					<div id="localMedia"></div>
+					<div id="localMedia" draggable="true">
+						<video></video>
+					</div>
 					<div class="feature">
 						<span class="fas fa-phone" title="End Session" onclick="rc.exit()"></span>
 						<span class="fas fa-video" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
@@ -201,11 +193,8 @@ if ($conn && $user_id) {
 						<span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
 						<span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
 						<span class="fas fa-comment" title="Chat"></span>
+						<span class="fas fa-exclamation" title="Report a Problem"></span>
 					</div>
-
-				</section>
-
-				<section class="chat-confrence">
 
 				</section>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -249,6 +238,58 @@ if ($conn && $user_id) {
 						remoteVideos.classList.remove('remote-couple');
 					}
 				}
+
+				function handleDragStart(e) {
+					this.style.opacity = '0.4';
+
+					dragSrcEl = this;
+
+					e.dataTransfer.effectAllowed = 'move';
+					e.dataTransfer.setData('text/html', this.innerHTML);
+				}
+
+				function handleDragOver(e) {
+					if (e.preventDefault) {
+						e.preventDefault();
+					}
+
+					e.dataTransfer.dropEffect = 'move';
+
+					return false;
+				}
+
+				function handleDragEnter(e) {
+					this.classList.add('over');
+				}
+
+				function handleDragLeave(e) {
+					this.classList.remove('over');
+				}
+
+				function handleDrop(e) {
+					if (e.stopPropagation) {
+						e.stopPropagation(); // stops the browser from redirecting.
+					}
+
+					if (dragSrcEl != this) {
+						dragSrcEl.innerHTML = this.innerHTML;
+						this.innerHTML = e.dataTransfer.getData('text/html');
+					}
+
+					return false;
+				}
+
+				function handleDragEnd(e) {
+					this.style.opacity = '1';
+
+					localMedia.classList.remove('over');
+				}
+				localMedia.addEventListener('dragstart', handleDragStart);
+				localMedia.addEventListener('dragover', handleDragOver);
+				localMedia.addEventListener('dragenter', handleDragEnter);
+				localMedia.addEventListener('dragleave', handleDragLeave);
+				localMedia.addEventListener('dragend', handleDragEnd);
+				localMedia.addEventListener('drop', handleDrop);
 			</script>
 
 			</html>
