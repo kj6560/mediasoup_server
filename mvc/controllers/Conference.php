@@ -1,9 +1,9 @@
 <?php 
 
-    class Conference{
+    class Conference extends Controller{
 
         public function __construct(){
-           // parent::__construct(get_class($this));
+           parent::__construct(get_class($this));
         }
         public function index($params){
             echo "reached here";
