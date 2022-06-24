@@ -1,6 +1,6 @@
 <?php 
 
-    class Conference extends Controller{
+    class Conference{
 
         public function __construct(){
            // parent::__construct(get_class($this));
