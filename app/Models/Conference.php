@@ -5,8 +5,7 @@ class Conference extends BaseModel
 {
 	
     public function readConferences(){
-        $conference = $this->getAll("conference");
-        print_r($conference);
+        return $this->getAll("conference");
     }
 	
 }
