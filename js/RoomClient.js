@@ -279,8 +279,8 @@ class RoomClient {
         break
       case mediaType.video:
         
-          var minVidWidth = 960;
-          var minVidHeight = 540;
+          var minVidWidth = 1920;
+          var minVidHeight = 1080;
           var idealVidWidth = 1920;
           var idealVidHeight = 1080;
         
