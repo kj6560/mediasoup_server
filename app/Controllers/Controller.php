@@ -7,11 +7,12 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Controller
 {
-    public function loadView($view, $variables = [])
+    public function loadView($layout,$view, $variables = [])
     {
+        $variables['view'] = APP_ROOT ."/views/". $view . ".php";
         if (count($variables)) {
             extract($variables);
         }
-        require APP_ROOT ."/views/". $view . ".php";
+        require APP_ROOT ."/views/layouts/". $layout . ".php";
     }
 }
