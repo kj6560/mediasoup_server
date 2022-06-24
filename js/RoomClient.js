@@ -296,9 +296,9 @@ class RoomClient {
               ideal: idealVidHeight
             },
             deviceId: deviceId,
-            aspectRatio: {
-                            ideal: 1.7777777778
-                        }
+            // aspectRatio: {
+            //                 ideal: 1.7777777778
+            //             }
           }
         }
         break
