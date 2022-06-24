@@ -6,7 +6,6 @@ class Controller
     {
         try {
             $path = 'mvc/model/' . $name . '.php';
-            echo file_exists($path);exit;
             include $path;
             $model = new $name();
             return $model;
