@@ -1,10 +1,13 @@
-Options +FollowSymLinks
+<IfModule mod_rewrite.c>
 RewriteEngine On
-# Redirect requests to index.php
-RewriteCond %{REQUEST_URI} !=/index.php
-RewriteCond %{REQUEST_URI} !.*\.png$ [NC]
-RewriteCond %{REQUEST_URI} !.*\.jpg$ [NC]
-RewriteCond %{REQUEST_URI} !.*\.css$ [NC]
-RewriteCond %{REQUEST_URI} !.*\.gif$ [NC]
-RewriteCond %{REQUEST_URI} !.*\.js$ [NC]
-RewriteRule .* /index.php 
+
+# Stop processing if already in the /public directory
+RewriteRule ^public/ - [L]
+
+# Static resources if they exist
+RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+RewriteRule (.+) public/$1 [L]
+
+# Route all other requests
+RewriteRule (.*) public/index.php?route=$1 [L,QSA]
+</IfModule>

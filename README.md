@@ -1,16 +1,27 @@
-# Video Conferencing Service
+# Simple MVC PHP Framework
 
+## Description
+Some years ago I taught a programming course for a private training school. I built a simple ecommerce with the students. This ecommerce was based on a simple MVC framework based on PHP. Then, people who have continued with code and programming, already had a smattering of what means MVC before get their hands on a real framework. With this repo I am going to show you how create a simple PHP application following the MVC pattern (Model-View-Controller). 
 
-# Running the code
+## Requirements
+PHP >=7.1.20 
+Composer
 
--   run `npm install` then `npm start` to run the application. Then open your browser at `https://localhost:3016` or your own defined port/url in the config file.
--   (optional) edit the `src/config.js` file according to your needs and replace the `ssl/key.pem ssl/cert.pem` certificates with your own. 
+## Tested on 
+PHP 7.1.20 Apache
 
-if errors then run : 
+## Installation
+```
+git clone https://github.com/gmaccario/simple-mvc-php-framework.git
+```
+Or download the package from [Github](https://github.com/gmaccario/simple-mvc-php-framework).
 
-    sudo npm install -g --unsafe-perm=true --allow-root
+Then:
+1. Set up and run your webserver (e.g. Apache);
+2. Open your browser;
+3. Go to the index page (often localhost).
 
-# Deployment
+**Note**: if you decided to put the framework into a subfolder, open */config/config.php* and set up the name of the subfolder here *URL_SUBFOLDER*
 
--   in `config.js` replace the `announcedIP` with your public ip address of the server and modify the port you want to serve it in.
--   add firewall rules of the port of the webpage (default 3000) and the rtc connections (default udp as well as tcp 40000-49999) for the machine.
+## # Simple MVC PHP Framework on my blog
+https://www.giuseppemaccario.com/how-to-build-a-simple-php-mvc-framework/
