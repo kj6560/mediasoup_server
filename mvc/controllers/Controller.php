@@ -6,9 +6,9 @@ class Controller
     {
         try {
             $path = 'mvc/model/' . $name . '.php';
+            echo $path;exit;
             require $path;
             $model = new $name();
-            echo "here";
             return $model;
         } catch (Exception $e) {
             print_r($e->getMessage());
