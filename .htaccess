@@ -3,4 +3,4 @@ RewriteEngine On
 # Redirect requests to index.php
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.php -f
-RewriteRule ^(.*)$ $1.php [L]
+RewriteRule ^(.*)$ $index.php [L]
