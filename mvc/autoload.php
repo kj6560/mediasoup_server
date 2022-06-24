@@ -1,8 +1,11 @@
 <?php
 
 $controller = substr($_SERVER['REQUEST_URI'], 1);
-$url_params = explode(",", $controller);
-print_r($url_params);die;
+$url_params = explode("/", $controller);
+
+foreach($url_params as $param){
+    echo $param;
+}
 spl_autoload_register(function ($className) {
     $path = "/mvc/controllers/";
     $file = $path . $className . '.php';
