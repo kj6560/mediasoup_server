@@ -4,7 +4,7 @@ class Conference extends Database {
        parent::__construct();
     }
 
-    public function select( $table , $where='' , $other='' ){
+    public function select( ){
     //    if($where != '' ){  // condition was wrong
     //      $where = 'where ' . $where; // Added space 
     //    }
