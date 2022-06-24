@@ -10,6 +10,8 @@ class Controller
             require 'mvc/model/' . $name . '.php';
             $modelName = $name . '';
             return new $modelName();
+        }else{
+            echo "file not found"; 
         }
     }
 }
