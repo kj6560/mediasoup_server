@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class Conference extends Eloquent
 {
 	
-
+	protected  $table = "conference";
     // CRUD OPERATIONS
 	public function create(array $data)
 	{
