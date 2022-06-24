@@ -7,6 +7,6 @@
         }
         public function index($params){
             //echo get_class($this);exit;
-            print_r($this->model->select("conference"));
+            print_r($this->model);
         }
     }
