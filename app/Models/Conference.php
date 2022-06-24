@@ -7,8 +7,7 @@ class Conference
 	
     public function readConferences(){
         $conference = R::getAll(
-            'SELECT * FROM conference',
-            [ 50 ] );
+            'SELECT * FROM conference');
         print_r($conference);
     }
 	
