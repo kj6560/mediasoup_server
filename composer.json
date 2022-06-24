@@ -8,6 +8,7 @@
     },
     "require": {
         "symfony/routing": "^4.4",
-        "symfony/http-foundation": "^4.4"
+        "symfony/http-foundation": "^4.4",
+        "doctrine/orm": "^2.12"
     }
 }
