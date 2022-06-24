@@ -11,7 +11,7 @@ class ConferenceController
 	public function showAction(int $id, RouteCollection $routes)
 	{
         $product = new Conference();
-        $product->read($id);
+        print_r($product->read($id));
 
         require_once APP_ROOT . '/views/product.php';
 	}
