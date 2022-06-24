@@ -9,7 +9,7 @@ class Controller
 
     public function loadModel($name)
     {
-        $path = 'mvc/model/' . $name . '.php';
+        $path = APP_PATH.'/mvc/model/' . $name . '.php';
         echo file_exists($path);exit;
         spl_autoload_register(function ($className) {
             $path = 'mvc/model/' . $className . '.php';
