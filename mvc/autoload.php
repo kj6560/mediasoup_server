@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 $request_url = substr($_SERVER['REQUEST_URI'], 1);
 $parsed_url = parse_url($request_url);
@@ -23,3 +23,6 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
+
+
+?>

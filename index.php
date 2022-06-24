@@ -1,3 +1,3 @@
 <?php 
 
-require_once "mvc/autoload.php";
+require_once "mvc/bootstrap.php";
