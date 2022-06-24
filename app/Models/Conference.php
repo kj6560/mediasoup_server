@@ -13,7 +13,7 @@ class Conference extends Eloquent
 	
 	public function read(int $id)
 	{
-		$data = Conference::findAll(array());
+		$data = Conference::find();
 
 		return $data;
 	}
