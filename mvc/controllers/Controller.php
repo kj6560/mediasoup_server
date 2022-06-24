@@ -8,9 +8,8 @@ class Controller
             $path = 'mvc/model/' . $name . '.php';
             include $path;
             $model = new $name();
-            print_r($model);
+            return $model;
         } catch (Exception $e) {
-            print_r($e);
             return false;
         }
     }
