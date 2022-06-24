@@ -5,16 +5,10 @@ ini_set('display_startup_errors', '1');
 
 // Autoloader
 require_once '../vendor/autoload.php';
-// Load Config
-require_once '../config/config.php';
-
-// Routes
-require_once '../routes/web.php';
-require_once '../app/Router.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-$paths = array("../app/Models");
+$paths = array("./app/Models");
 $isDevMode = false;
 
 // the connection configuration
@@ -29,5 +23,10 @@ $dbParams = array(
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);
 print_r($entityManager);
+// Load Config
+require_once '../config/config.php';
 
+// Routes
+require_once '../routes/web.php';
+require_once '../app/Router.php';
 
