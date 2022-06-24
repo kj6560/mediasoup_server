@@ -1,6 +1,3 @@
 <?php 
 
- $controller = str_replace("/","",$_SERVER['REQUEST_URI']);
- echo $controller;
- 
-?>
+require_once "mvc/autoload.php";
