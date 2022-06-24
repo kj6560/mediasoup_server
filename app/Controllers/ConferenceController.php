@@ -9,11 +9,7 @@ class ConferenceController extends Controller
     
 	public function readConference(int $id, RouteCollection $routes)
 	{
-        try {
-            $entityManager->getConnection()->connect();
-        } catch (\Exception $e) {
-            // failed to connect
-        }
+        
         $this->loadView('general_layout','conference/product',array("conference"=>array()));
 	}
 }
