@@ -30,6 +30,7 @@ if ($conn && $user_id) {
 				<script src="js/EventEmitter.min.js"></script>
 				<script src="js/mediasoupclient.min.js"></script>
 				<script src="js/RoomClient.js"></script>
+				<script src="js/index.js"></script>
 				<style>
 					* {
 						box-sizing: border-box;
@@ -506,7 +507,7 @@ if ($conn && $user_id) {
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-				<script src="js/index.js"></script>
+				
 
 				<script>
 					window.onload = function() {
