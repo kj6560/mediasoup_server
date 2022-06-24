@@ -10,7 +10,7 @@ class Database
         $db = $mysql_params['database'];
         $this->con = mysqli_connect($host, $user, $pass, $db);
         if($this->con){
-            echo "connected";die;
+            echo "connected";
         }
     }
     
