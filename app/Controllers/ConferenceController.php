@@ -11,6 +11,6 @@ class ConferenceController extends Controller
 	public function readConference(int $id, RouteCollection $routes)
 	{
         $conference = new Conference();
-        $this->loadView('/views/product',array("conference"=>$conference));
+        $this->loadView('product',array("conference"=>$conference));
 	}
 }
