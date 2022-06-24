@@ -6,10 +6,11 @@ class Conference extends Controller
     
     public function __construct()
     {
-        $this->model = $this->loadModel(get_class($this));
+        
     }
     public function index($params)
     {
-        print_r($this->model);
+        $model = $this->loadModel(get_class($this));
+        print_r($model);
     }
 }
