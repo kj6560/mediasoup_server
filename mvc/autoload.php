@@ -18,9 +18,8 @@ spl_autoload_register(function ($className) {
     }
 });
 try {
-    $controller = "mvc/controllers/".$path_controller;
-    $obj1 = new $controller;
-    $obj1->$path_function;
+    $obj1 = new $path_controller;
+    $obj1->index();
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
