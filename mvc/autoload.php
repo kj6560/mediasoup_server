@@ -5,7 +5,7 @@ $parsed_url = parse_url($request_url);
 $path_array = explode("/",$parsed_url['path']);
 $path_params = explode("&",$parsed_url['query']);
 
-$path_controller = $path_array[0];
+$path_controller = ucfirst($path_array[0]);
 $path_function = !empty($path_array[1])?$path_array[1]:"index";
 echo $path_controller;
 echo $path_function;
