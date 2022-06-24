@@ -19,7 +19,7 @@ spl_autoload_register(function ($className) {
 });
 try {
     $obj1 = new $path_controller;
-    call_user_func($obj1->$path_function, $path_params);
+    call_user_func(array($obj1, $path_function));
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
