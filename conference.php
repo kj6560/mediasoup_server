@@ -201,6 +201,7 @@ if ($conn && $user_id) {
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+				<script src="js/index.js"></script>
 				<script>
 					let remoteVideos = document.querySelector("#remoteVideos");
 					let localMedia = document.querySelector("#localMedia");
