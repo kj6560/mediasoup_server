@@ -17,7 +17,7 @@
 	<section>
 		<h1>My Product:</h1>
 		<ul>
-			<li><?php print_r($variables);  ?></li>
+			<li><?php print_r($data);  ?></li>
             <li><?php ?></li>
             <li><?php  ?></li>
             <li><?php  ?></li>
