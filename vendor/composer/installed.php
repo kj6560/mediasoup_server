@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '675112c15b4113a30e8b1e94564927de848e1440',
+        'reference' => 'fbcb6fc15cafb1b7f10f1ccdb54d77a17a302a16',
         'name' => 'keshav/simple-mvc-php-framework',
         'dev' => true,
     ),
@@ -27,7 +27,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '675112c15b4113a30e8b1e94564927de848e1440',
+            'reference' => 'fbcb6fc15cafb1b7f10f1ccdb54d77a17a302a16',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(
