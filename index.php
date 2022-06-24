@@ -1,3 +1,6 @@
 <?php 
 require 'bootstrap.php';
 require_once 'config/config.php';
+
+require_once 'routes/web.php';
+require_once 'app/Router.php';
