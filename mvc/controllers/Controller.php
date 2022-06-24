@@ -6,13 +6,14 @@ class Controller{
     }
 
     public function loadModel($name){
-        echo $name;exit;
+        
         $name = ucfirst($name);
          $path = 'mvc/model/' . $name . '.php';
 
          if(file_exists($path)){
               require 'mvc/model/' . $name . '.php';
-              $this->model = new $name();            
+              $this->model = new $name();       
+              echo $name;exit;     
          }
     }
 }
