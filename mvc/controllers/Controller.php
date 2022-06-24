@@ -11,6 +11,7 @@ class Controller
     {
         spl_autoload_register(function ($className) {
             $path = '../mvc/model/' . $className . '.php';
+            echo $path;exit;
             $file = $path . $className . '.php';
             if (file_exists($file)) {
                 include $file;
