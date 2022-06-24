@@ -14,5 +14,6 @@ class Controller
             extract($data);
         }
         require APP_ROOT ."/views/layouts/". $layout . ".php";
+        unset($data['view']);
     }
 }
