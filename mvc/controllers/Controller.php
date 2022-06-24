@@ -6,7 +6,7 @@ class Controller
     {
         try {
             $path = 'mvc/model/' . $name . '.php';
-            include $path;
+            require $path;
             $model = new $name();
             return $model;
         } catch (Exception $e) {

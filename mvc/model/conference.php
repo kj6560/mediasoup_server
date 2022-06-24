@@ -6,10 +6,4 @@ class Conference extends Database
     {
         parent::__construct();
     }
-
-    public function select()
-    {
-
-        echo "reached here";
-    }
 }
