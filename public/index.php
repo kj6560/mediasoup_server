@@ -13,3 +13,4 @@ require_once '../config/eloquent.php';
 // Routes
 require_once '../routes/web.php';
 require_once '../app/Router.php';
+

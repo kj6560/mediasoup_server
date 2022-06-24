@@ -5,8 +5,8 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0746db41921dca8c6652a0f61a42d05857d0b651',
-        'name' => 'gmaccario/simple-mvc-php-framework',
+        'reference' => '8931441dd8b0af989eab6e8f5145bd0358d496f7',
+        'name' => 'keshav/simple-mvc-php-framework',
         'dev' => true,
     ),
     'versions' => array(
@@ -17,15 +17,6 @@
             'install_path' => __DIR__ . '/../doctrine/inflector',
             'aliases' => array(),
             'reference' => '8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89',
-            'dev_requirement' => false,
-        ),
-        'gmaccario/simple-mvc-php-framework' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'reference' => '0746db41921dca8c6652a0f61a42d05857d0b651',
             'dev_requirement' => false,
         ),
         'illuminate/collections' => array(
@@ -80,6 +71,15 @@
             'install_path' => __DIR__ . '/../illuminate/support',
             'aliases' => array(),
             'reference' => 'be43102d3491e8335812aa5441a1552108ddd7b5',
+            'dev_requirement' => false,
+        ),
+        'keshav/simple-mvc-php-framework' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '8931441dd8b0af989eab6e8f5145bd0358d496f7',
             'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
