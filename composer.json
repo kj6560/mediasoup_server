@@ -1,5 +1,9 @@
 {
+    "name": "keshav/mvc",
+    "description": "Simple MVC PHP framework",
     "autoload": {
-        "classmap": ["app/models"]
+        "psr-4": {
+            "App\\": "app/"
+        }
     }
 }
