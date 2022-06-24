@@ -9,7 +9,7 @@ $path_controller = ucfirst($path_array[0]);
 $path_function = !empty($path_array[1])?$path_array[1]:"index";
 
 spl_autoload_register(function ($className) {
-    $path = "/mvc/controllers/";
+    $path = "mvc/controllers/";
     $file = $path . $className . '.php';
     echo $file;
     if (file_exists($file)) {
