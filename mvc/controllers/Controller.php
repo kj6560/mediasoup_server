@@ -7,7 +7,8 @@ class Controller
         $path = 'mvc/model/' . $name . '.php';
 
         if (file_exists($path)) {
-            require 'mvc/model/' . $name . '.php';
+            echo "heere";
+            include 'mvc/model/' . $name . '.php';
             $modelName = $name . '';
             return new $modelName();
         }else{
