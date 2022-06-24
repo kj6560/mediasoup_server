@@ -12,6 +12,6 @@ class Controller
         if (count($variables)) {
             extract($variables);
         }
-        require APP_ROOT ."views/". $view . ".php";
+        require APP_ROOT ."/views/". $view . ".php";
     }
 }
