@@ -325,10 +325,11 @@ if ($conn && $user_id) {
 						<select id="videoSelect" class="form-select" style="width: auto"></select>
 					</div>
 					<div id="remoteVideos" class="remote-single">
-						
+						<video></video>
+						<video></video>
 					</div>
 					<div id="localMedia">
-						
+						<video></video>
 					</div>
 					<section class="report-a-problem hide"></section>
 					<div class="featurehead">
@@ -555,15 +556,17 @@ if ($conn && $user_id) {
 
 				// local media draggable function
 				let videoSec = document.querySelector("#localMedia");
-				let localSide = videoSec.querySelector('video');
-				localSide.addEventListener("mousedown", () => {
-					localSide.classList.add("active");
-					localSide.addEventListener("mousemove", localUserDrag);
-				});
-				document.addEventListener("mouseup", () => {
-					localSide.classList.remove("active");
-					localSide.removeEventListener("mousemove", localUserDrag);
-				});
+				let localSide = videoSec.querySelector('.local-side');
+				if (localSide) {
+					localSide.addEventListener("mousedown", () => {
+						localSide.classList.add("active");
+						localSide.addEventListener("mousemove", localUserDrag);
+					});
+					document.addEventListener("mouseup", () => {
+						localSide.classList.remove("active");
+						localSide.removeEventListener("mousemove", localUserDrag);
+					});
+				}
 
 				function localUserDrag({
 					movementX,
