@@ -8,6 +8,6 @@ use Symfony\Component\Routing\RouteCollection;
 class Controller
 {
     public function loadView($view){
-        require $view.".php";
+        require APP_ROOT .$view.".php";
     }
 }
