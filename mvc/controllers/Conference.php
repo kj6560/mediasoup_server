@@ -10,6 +10,6 @@ class Conference extends Controller
     }
     public function index($params)
     {
-        echo $this->model->select("conference");
+        print_r($this->model);
     }
 }
