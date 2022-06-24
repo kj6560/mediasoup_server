@@ -3,6 +3,7 @@ class Database
 {
     public $con;
     public function __construct(){
+        require_once "configs.php";
         $host = $mysql_params['host'];
         $user = $mysql_params['username'];
         $pass = $mysql_params['password'];
