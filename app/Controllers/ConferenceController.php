@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\Product;
+use App\Models\Conference;
 use Symfony\Component\Routing\RouteCollection;
 
-class ProductController
+class ConferenceController
 {
     // Show the product attributes based on the id.
 	public function showAction(int $id, RouteCollection $routes)
 	{
-        $product = new Product();
+        $product = new Conference();
         $product->read($id);
 
         require_once APP_ROOT . '/views/product.php';
