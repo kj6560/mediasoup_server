@@ -1,5 +1,5 @@
 <?php
-
+echo "die";die;
 $request_url = substr($_SERVER['REQUEST_URI'], 1);
 $parsed_url = parse_url($request_url);
 $path_array = explode("/",$parsed_url['path']);
