@@ -279,8 +279,8 @@ class RoomClient {
         break
       case mediaType.video:
         
-          var minVidWidth = 4096;
-          var minVidHeight = 2160;
+          var minVidWidth = 1024;
+          var minVidHeight = 540;
         
         mediaConstraints = {
           audio: false,
