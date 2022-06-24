@@ -6,6 +6,7 @@
            parent::__construct(get_class($this));
         }
         public function index($params){
-            print_r($this->model->select("conference"));
+            echo get_class($this);exit;
+            //print_r($this->model->select("conference"));
         }
     }
