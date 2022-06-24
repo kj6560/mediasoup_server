@@ -2,7 +2,7 @@
 class Controller{
 
     function __construct($class_name){       
-        $this->loadModel(get_class($this));
+        $this->loadModel($class_name);
     }
 
     public function loadModel($name){
