@@ -22,7 +22,7 @@ spl_autoload_register(function ($className) {
     }
 });
 try {
-    $obj1 = new $url_params[0];
+    $obj1 = new $path_controller;
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
