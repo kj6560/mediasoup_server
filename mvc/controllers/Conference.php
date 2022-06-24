@@ -2,15 +2,13 @@
 
 class Conference extends Controller
 {
-    
+    private $model;
+    public function __construct(){
+        $this->model = $this->loadModel(get_class());
+    }
     public function index($params)
     {
-        try{
-            $model = $this->loadModel(get_class($this));
-            print_r($model);
-        }catch(Exception $e){
-            print_r($e->getMessage());
-        }
-       
+        print_r($this->model);
+        
     }
 }
