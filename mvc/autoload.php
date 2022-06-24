@@ -5,7 +5,7 @@ $parsed_url = parse_url($request_url);
 $path_array = explode("/", $parsed_url['path']);
 $path_params = explode("&", $parsed_url['query']);
 
-$path_controller = ucfirst($path_array[0]);
+$path_controller = !empty(ucfirst($path_array[0]))?ucfirst($path_array[0]):"Index";
 $path_function = !empty($path_array[1]) ? $path_array[1] : "index";
 
 spl_autoload_register(function ($className) {
