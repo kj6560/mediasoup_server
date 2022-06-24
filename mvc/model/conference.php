@@ -4,6 +4,7 @@ class Conference extends Database
 {
     public function __construct()
     {
+        echo "here";
         parent::__construct();
     }
 }
