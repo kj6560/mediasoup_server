@@ -27,13 +27,6 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\HttpFoundation\\' => 33,
         ),
-        'D' => 
-        array (
-            'Doctrine\\Deprecations\\' => 22,
-            'Doctrine\\DBAL\\' => 14,
-            'Doctrine\\Common\\Cache\\' => 22,
-            'Doctrine\\Common\\' => 16,
-        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -73,31 +66,10 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Doctrine\\Deprecations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
-        ),
-        'Doctrine\\DBAL\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL',
-        ),
-        'Doctrine\\Common\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
-        ),
-        'Doctrine\\Common\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
-    );
-
-    public static $fallbackDirsPsr0 = array (
-        0 => __DIR__ . '/..' . '/devsdmf/annotations/src',
-        1 => __DIR__ . '/..' . '/devsdmf/datamonkey/src',
     );
 
     public static $classMap = array (
@@ -115,7 +87,6 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr0 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$classMap;
 
         }, null, ClassLoader::class);
