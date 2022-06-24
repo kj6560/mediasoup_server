@@ -311,6 +311,7 @@ if ($conn && $user_id) {
 
 				<section class="video-confrence">
 					<div id="devicesList" style="display: none;">
+					<div id="remoteAudios" style="display: none;"></div>
 						<i class="fas fa-microphone"></i> Audio:
 						<select id="audioSelect" class="form-select" style="width: auto"></select>
 						<br />
