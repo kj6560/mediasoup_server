@@ -1,9 +1,15 @@
-<?php 
+<?php
 
-    class Conference extends Controller{
+class Conference extends Controller
+{
 
-        public function index($params){
-            //echo get_class($this);exit;
-            print_r($this->loadModel(get_class($this)));
-        }
+    public $model;
+    public function __construct()
+    {
+        $this->model = $this->loadModel(get_class($this));
     }
+    public function index($params)
+    {
+        echo $model->select("conference");
+    }
+}
