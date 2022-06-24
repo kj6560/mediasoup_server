@@ -8,9 +8,10 @@ class Controller
             $path = 'mvc/model/' . $name . '.php';
             require $path;
             $model = new $name();
+            echo "here";
             return $model;
         } catch (Exception $e) {
-            return false;
+            print_r($e->getMessage());
         }
     }
 }
