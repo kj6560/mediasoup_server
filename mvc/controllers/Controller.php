@@ -6,6 +6,7 @@ class Controller{
     }
 
     public function loadModel($name){
+        echo $name;exit;
         $name = ucfirst($name);
          $path = 'mvc/model/' . $name . '.php';
 
