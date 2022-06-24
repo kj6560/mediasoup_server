@@ -7,8 +7,15 @@ class Controller
         $this->loadModel($class_name);
     }
 
+
     public function loadModel($name)
     {
-        echo "loading".$name;exit;
+        $path = 'mvc/model/' . $name . '.php';
+
+        if (file_exists($path)) {
+            require 'mvc/model/' . $name . '.php';
+            $modelName = $name . '';
+            $this->model = new $modelName();
+        }
     }
 }
