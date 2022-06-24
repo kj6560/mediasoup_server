@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controllers;
 
@@ -7,7 +7,11 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Controller
 {
-    public function loadView($view){
-        require APP_ROOT .$view.".php";
+    public function loadView($view, $variables = [])
+    {
+        if (count($variables)) {
+            extract($variables);
+        }
+        require APP_ROOT . $view . ".php";
     }
 }
