@@ -30,6 +30,7 @@ if ($conn && $user_id) {
 				<script src="js/EventEmitter.min.js"></script>
 				<script src="js/mediasoupclient.min.js"></script>
 				<script src="js/RoomClient.js"></script>
+				<script src="js/index.js"></script>
 				<style>
 					* {
 						box-sizing: border-box;
@@ -78,11 +79,13 @@ if ($conn && $user_id) {
 						cursor: move;
 						/*transform: translate(-50%, -50%);*/
 					}
+
 					.local-side {
 						max-width: 15%;
 						max-height: 25%;
 						width: auto;
 					}
+
 					#localMedia video.active {
 						cursor: move;
 						user-select: none;
@@ -314,6 +317,7 @@ if ($conn && $user_id) {
 
 				<section class="video-confrence">
 					<div id="devicesList" style="display: none;">
+						<div id="remoteAudios" style="display: none;"></div>
 						<i class="fas fa-microphone"></i> Audio:
 						<select id="audioSelect" class="form-select" style="width: auto"></select>
 						<br />
@@ -510,7 +514,7 @@ if ($conn && $user_id) {
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-				<script src="js/index.js"></script>
+
 
 				<script>
 					window.onload = function() {
