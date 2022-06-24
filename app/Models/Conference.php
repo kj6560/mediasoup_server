@@ -1,12 +1,11 @@
 <?php 
 namespace App\Models;
 use RedBeanPHP\R;
-class Conference
+class Conference extends BaseModel
 {
 	
     public function readConferences(){
-        $conference = R::getAll(
-            'SELECT * FROM conference');
+        $conference = $this->getAll("conference");
         print_r($conference);
     }
 	
