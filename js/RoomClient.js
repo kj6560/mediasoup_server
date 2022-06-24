@@ -279,18 +279,22 @@ class RoomClient {
         break
       case mediaType.video:
         
-          var minVidWidth = 4096;
-          var minVidHeight = 2160;
-        
+          
         mediaConstraints = {
           audio: false,
           video: {
-            width: minVidWidth,
-            height:minVidHeight,
-            deviceId: deviceId,
-            // aspectRatio: {
-            //                 ideal: 1.7777777778
-            //             }
+            width: {
+              min: 640,
+              ideal: 1920
+            },
+            height: {
+              min: 400,
+              ideal: 1080
+            },
+            deviceId: deviceId
+            /*aspectRatio: {
+                            ideal: 1.7777777778
+                        }*/
           }
         }
         break
