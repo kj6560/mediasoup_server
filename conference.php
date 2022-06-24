@@ -81,8 +81,8 @@ if ($conn && $user_id) {
 					}
 
 					.local-side {
-						max-width: 15%;
-						max-height: 25%;
+						max-width: 100%;
+						max-height: 100%;
 						width: auto;
 					}
 
