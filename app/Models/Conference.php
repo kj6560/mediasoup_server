@@ -1,9 +1,12 @@
 <?php 
 namespace App\Models;
-
-class Conference
+use \RedBeanPHP\R;
+class Conference extends \RedBeanPHP\SimpleModel
 {
 	
-    
+    public function readConferences(){
+        $conference = R::dispense("conference");
+        print_r($conference);
+    }
 	
 }

@@ -5,18 +5,29 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4169efbe6e84a1593af97d07a55e010d52cd513e',
+        'reference' => '675112c15b4113a30e8b1e94564927de848e1440',
         'name' => 'keshav/simple-mvc-php-framework',
         'dev' => true,
     ),
     'versions' => array(
+        'gabordemooij/redbean' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gabordemooij/redbean',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '0a599233f3c5a11b67afc17ca5601a334378554e',
+            'dev_requirement' => false,
+        ),
         'keshav/simple-mvc-php-framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4169efbe6e84a1593af97d07a55e010d52cd513e',
+            'reference' => '675112c15b4113a30e8b1e94564927de848e1440',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(

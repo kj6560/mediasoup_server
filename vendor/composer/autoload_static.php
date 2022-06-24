@@ -27,6 +27,10 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\HttpFoundation\\' => 33,
         ),
+        'R' => 
+        array (
+            'RedBeanPHP\\' => 11,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -65,6 +69,10 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
         'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
+        ),
+        'RedBeanPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gabordemooij/redbean/RedBeanPHP',
         ),
         'App\\' => 
         array (
