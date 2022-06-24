@@ -18,7 +18,8 @@ spl_autoload_register(function ($className) {
     }
 });
 try {
-    call_user_func_array(array($path_controller, $path_function), $path_params);
+    call_user_func(array("mvc/controllers/" .$path_controller, $path_function),$path_params); 
+    //call_user_func_array(array($path_controller, $path_function), $path_params);
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
