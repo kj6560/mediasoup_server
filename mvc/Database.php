@@ -9,6 +9,9 @@ class Database
         $pass = $mysql_params['password'];
         $db = $mysql_params['database'];
         $this->con = mysqli_connect($host, $user, $pass, $db);
+        if($this->con){
+            echo "connected";die;
+        }
     }
     
 }
