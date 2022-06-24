@@ -2,11 +2,13 @@
 
 $request_url = substr($_SERVER['REQUEST_URI'], 1);
 $parsed_url = parse_url($request_url);
-$path_array = $parsed_url['path'];
-$path_query = $parsed_url['query'];
-$path_controller = explode("/",$path_array)[0];
-$path_params = explode("&",$path_query);
+$path_array = explode("/",$parsed_url['path']);
+$path_params = explode("&",$parsed_url['query']);
+
+$path_controller = $path_array[0];
+$path_function = !empty($path_array[1])?$path_array[1]:"index";
 echo $path_controller;
+echo $path_function;
 print_r($path_params);die;
 spl_autoload_register(function ($className) {
     $path = "/mvc/controllers/";
