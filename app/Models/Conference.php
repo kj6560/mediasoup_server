@@ -1,6 +1,6 @@
 <?php 
 namespace App\Models;
-use \RedBeanPHP\R;
+use \RedBeanPHP\R as R;
 class Conference extends \RedBeanPHP\SimpleModel
 {
 	
