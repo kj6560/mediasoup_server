@@ -80,11 +80,11 @@ if ($conn && $user_id) {
 						/*transform: translate(-50%, -50%);*/
 					}
 
-					/* .local-side {
+					.local-side {
 						max-width: 15%;
 						max-height: 25%;
 						width: auto;
-					} */
+					}
 
 					#localMedia video.active {
 						cursor: move;
