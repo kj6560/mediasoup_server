@@ -7,7 +7,7 @@ use RedBeanPHP\R;
 class BaseModel
 {
 
-    public function getWhere($table, $params)
+    public function getWhereIn($table, $params)
     {
         $clause = "";
         $i = 0;
