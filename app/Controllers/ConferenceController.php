@@ -11,6 +11,7 @@ class ConferenceController extends Controller
 	{
         $conf = new Conference;
 		$conferences = $conf->readConferences($user_id,$type);
+		print_r($conferences);
         $this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
 }
