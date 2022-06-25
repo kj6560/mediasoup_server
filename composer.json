@@ -1,5 +1,5 @@
 {
-    "name": "keshav/simple-mvc-php-framework",
+    "name": "keshav/bloged",
     "description": "Simple MVC PHP framework",
     "autoload": {
         "psr-4": {
