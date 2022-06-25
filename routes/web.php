@@ -3,7 +3,7 @@
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use app\Auth\Auth;
-use Auth as UserAuth;
+use \app\Auth as UserAuth;
 
 // Main Routes system
 $routes = new RouteCollection();
