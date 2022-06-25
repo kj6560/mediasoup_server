@@ -14,7 +14,7 @@
     <script src="js/EventEmitter.min.js"></script>
     <script src="js/mediasoupclient.min.js"></script>
     <script src="js/RoomClient.js"></script>
-    <script src="js/index.js"></script>
+    <script src="<?php echo  URL_ROOT.'js/index.js'; ?>"></script>
     <style>
         * {
             box-sizing: border-box;
