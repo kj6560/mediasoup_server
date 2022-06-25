@@ -6,4 +6,4 @@ define('SITE_NAME', 'Video Conferencing Service');
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
-
+define('BASE','https://drrksuri.com/');
