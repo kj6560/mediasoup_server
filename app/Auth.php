@@ -4,7 +4,7 @@ use RedBeanPHP\R;
 
     class Auth{
         public function guard($type){
-            $authModel = "app/Models/".ucfirst($type);
+            $authModel = "App\\Models\\".ucfirst($type);
             $model = new $authModel;
             $model->id = 1;
             $authData = $model->find();
