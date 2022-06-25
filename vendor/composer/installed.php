@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '41e54a740abca0533b251394bd6f8e9decd47eee',
+        'reference' => 'a0785a5d82f91986016a18e41b1861be8a62b24c',
         'name' => 'keshav/bloged',
         'dev' => true,
     ),
@@ -27,7 +27,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '41e54a740abca0533b251394bd6f8e9decd47eee',
+            'reference' => 'a0785a5d82f91986016a18e41b1861be8a62b24c',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(
