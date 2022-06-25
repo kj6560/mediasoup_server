@@ -11,6 +11,6 @@ class ConferenceController extends Controller
 	{
         $conf = new Conference;
 		$conferences = $conf->readConferences();
-        $this->loadView('general_layout','conference/conference',array("conference"=>$conferences));
+        $this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
 }
