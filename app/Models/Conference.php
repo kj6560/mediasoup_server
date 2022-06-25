@@ -1,7 +1,7 @@
 <?php 
 namespace App\Models;
 use RedBeanPHP\R;
-class Conference extends \RedBeanPHP\SimpleModel
+class Conference extends BaseModel
 {
 	
     public function readConferences($user_id,$type){
