@@ -205,7 +205,7 @@
 </section>
 <script>
     window.onload = function() {
-        var name = "<?php echo $current_user['name'] ?>";
+        var name = "<?php echo "Keshav Jha"; ?>";
         var room_id = "<?php echo $conference['conference_room_id'] ?>";
         console.log(name);
         console.log(room_id);
