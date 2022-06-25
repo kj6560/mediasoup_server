@@ -7,7 +7,7 @@ use RedBeanPHP\R;
             $authModel = "App\\Models\\".ucfirst($type);
             $model = new $authModel;
             $model->id = 1;
-            $authData = $model->find();
+            $authData = $model->getByPk();
             print_r($authData);
         }
     }
