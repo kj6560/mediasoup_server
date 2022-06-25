@@ -5,7 +5,9 @@ class Conference extends BaseModel
 {
 	
     public function readConferences($user_id,$type){
-        $conference  = R::getAll( "select * from conference where conference_for in ($user_id) and conference_type=$type ");
+        $query = "select * from conference where conference_for in ($user_id) and conference_type=$type ";
+        echo $query;
+        $conference  = R::getAll( );
         return $conference;
     }
 	
