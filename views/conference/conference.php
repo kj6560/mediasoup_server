@@ -1,5 +1,5 @@
 <script>
-    var host = "<?php echo $conference[2]; ?>";
+    var host = "<?php echo $data['conference'][2]; ?>";
     var current_user = 1;//"<?php //echo $current_user['id']; ?>";
     host = host == current_user ? 1 : 0;
     console.log(host);
