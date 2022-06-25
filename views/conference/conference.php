@@ -1,6 +1,6 @@
 <script>
-    var host = "<?php echo $conference['conference_by']; ?>";
-    var current_user = "<?php echo $current_user['id']; ?>";
+    var host = "<?php echo $conference[2]; ?>";
+    var current_user = 1;//"<?php //echo $current_user['id']; ?>";
     host = host == current_user ? 1 : 0;
     console.log(host);
 </script>
