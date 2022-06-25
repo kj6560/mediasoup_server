@@ -13,3 +13,8 @@ $username = "angeltalk";
 $password = "webrtc1@";
 $database = "angeltalk";
 R::setup("mysql:host=$host;dbname=$database", $username, $password);
+$params_auth = array(
+    "table"=>"users",
+    "provider" => "Users",
+    "function" => "getUser"
+);
