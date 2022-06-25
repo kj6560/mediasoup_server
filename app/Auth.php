@@ -1,5 +1,5 @@
 <?php 
-namespace App\Auth;
+namespace App;
 use RedBeanPHP\R;
 
     class Auth{
