@@ -11,7 +11,7 @@ class Conference extends BaseModel
     }
     public function getUserById($user_id){
         $query = "select * from users where id =$user_id LIMIT 1";
-        $user  = R::getAssoc($query);
+        $user  = R::getAssocRow($query);
         return $user;
     }
 	
