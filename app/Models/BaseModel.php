@@ -17,8 +17,10 @@ class BaseModel
                 $clause .= $key . "=" . $param . " and ";
             $i++;
         }
+        $query = 'SELECT * FROM ' . $table . ' where ' . $clause;
+        echo $query;
         $data = R::getAll(
-            'SELECT * FROM ' . $table . ' where ' . $clause
+            $query
         );
         return $data;
     }
