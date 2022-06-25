@@ -14,7 +14,7 @@ class BaseModel
         $count = count($params);
         foreach ($params as $key => $param) {
             if ($i < $count)
-                $clause .= $key . "=" . $param . "and ";
+                $clause .= $key . "=" . $param . " and ";
             $i++;
         }
         $data = R::getAll(
