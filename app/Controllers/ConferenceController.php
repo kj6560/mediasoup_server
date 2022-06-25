@@ -13,6 +13,7 @@ class ConferenceController extends Controller
 		$conferences = $conf->readConferences($user_id,$type);
 		$conferences['current_user'] = $user_id;
 		$user = $conf->getUserById($user_id);
+		print_r($user);die;
 		$conferences['user_name'] = $user['name'];
         $this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
