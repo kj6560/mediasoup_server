@@ -1,7 +1,7 @@
-<?php print_r($data); ?>
+
 <script>
-    var host = "<?php echo $data['conference'][0][2]; ?>";
-    var current_user = 1;//"<?php //echo $current_user['id']; ?>";
+    var host = "<?php echo $data['conference']['conference_by']; ?>";
+    var current_user = "<?php echo $data['conference']['current_user']; ?>";
     host = host == current_user ? 1 : 0;
     console.log(host);
 </script>
@@ -206,8 +206,8 @@
 </section>
 <script>
     window.onload = function() {
-        var name = "<?php echo "Keshav Jha"; ?>";
-        var room_id = "<?php echo $conference['conference_room_id'] ?>";
+        var name = "<?php echo $data['conference']['user_name']; ?>";
+        var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
         console.log(name);
         console.log(room_id);
         joinRoom(name, room_id);
