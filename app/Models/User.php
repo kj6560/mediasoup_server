@@ -10,7 +10,7 @@ class User extends BaseModel
     //     return $conference[0];
     // }
     public function getByPk(){
-        $query = "select * from user where id =$this->id LIMIT 1";
+        $query = "select * from users where id =$this->id LIMIT 1";
         echo $query;
         $user  = R::getAssocRow($query);
         return $user[0];
