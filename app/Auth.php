@@ -7,7 +7,7 @@ use RedBeanPHP\R;
             session_start();
             $authModel = "App\\Models\\".ucfirst($type);
             $model = new $authModel;
-            $model->id = 1;//$_SESSION['user_id'];
+            $model->id = 1;//$_SESSION['login_id'];
             $authData = $model->getByPk();
             if($authData){
                 return $authData;
