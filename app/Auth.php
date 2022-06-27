@@ -1,5 +1,7 @@
 <?php 
 namespace App;
+
+use AppHelpers;
 use RedBeanPHP\R;
 
     class Auth{
@@ -7,12 +9,12 @@ use RedBeanPHP\R;
             session_start();
             $authModel = "App\\Models\\".ucfirst($type);
             $model = new $authModel;
-            $model->id = 1;//$_SESSION['login_id'];
+            $model->id =$_SESSION['login_id'];
             $authData = $model->getByPk();
             if($authData){
                 return $authData;
             }else{
-                return false;
+                return AppHelpers::redirect("homepage");
             }
         }
     }
