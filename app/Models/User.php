@@ -5,5 +5,4 @@ class User extends BaseModel
 {
 	public $id;
     public $table = "users";
-	
 }
