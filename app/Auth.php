@@ -12,6 +12,8 @@ use RedBeanPHP\R;
                 session_start();
                 $_SESSION['user_session'] = $authData;
                 return true;
+            }else{
+                return false;
             }
         }
     }
