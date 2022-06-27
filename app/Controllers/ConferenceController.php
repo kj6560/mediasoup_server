@@ -7,7 +7,7 @@ use Symfony\Component\Routing\RouteCollection;
 class ConferenceController extends Controller
 {
     
-	public function readConference(int $user_id,$type, RouteCollection $routes)
+	public function conference(int $user_id,$type, RouteCollection $routes)
 	{
         $conf = new Conference;
 		$conferences = $conf->readConferences($user_id,$type);

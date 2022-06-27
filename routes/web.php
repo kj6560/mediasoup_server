@@ -8,6 +8,6 @@ use Symfony\Component\Routing\RouteCollection;
 $routes = new RouteCollection();
 $auth = new Auth;
 if($auth->guard('user')){
-    $routes->add('conference', new Route(constant('URL_SUBFOLDER') . '/conference/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'readConference'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
+    $routes->add('conference', new Route(constant('URL_SUBFOLDER') . '/conference/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conference'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
 }
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method'=>'indexAction'), array()));

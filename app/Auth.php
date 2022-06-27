@@ -8,6 +8,10 @@ use RedBeanPHP\R;
             $model = new $authModel;
             $model->id = 1;
             $authData = $model->getByPk();
-            print_r($authData);
+            if($authData){
+                session_start();
+                $_SESSION['user_session'] = $authData;
+                return true;
+            }
         }
     }
