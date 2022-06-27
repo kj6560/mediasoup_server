@@ -4,14 +4,13 @@ use RedBeanPHP\R;
 
     class Auth{
         public function guard($type){
+            session_start();
             $authModel = "App\\Models\\".ucfirst($type);
             $model = new $authModel;
-            $model->id = 1;
+            $model->id = 1;//$_SESSION['user_id'];
             $authData = $model->getByPk();
             if($authData){
-                session_start();
-                $_SESSION['user_session'] = $authData;
-                return true;
+                return $authData;
             }else{
                 return false;
             }
