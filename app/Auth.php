@@ -1,7 +1,6 @@
 <?php 
 namespace App;
 
-use AppHelpers;
 use RedBeanPHP\R;
 
     class Auth{
