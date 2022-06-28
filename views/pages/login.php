@@ -69,10 +69,7 @@
     }
 </style>
 <form action="/action_page.php" method="post">
-    <div class="imgcontainer">
-        <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
+   
     <div class="container">
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
