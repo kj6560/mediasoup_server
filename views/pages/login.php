@@ -57,6 +57,11 @@
         padding-top: 16px;
     }
 
+    span.psw1 {
+        float: left;
+        padding-top: 16px;
+    }
+
     /* The Modal (background) */
     .modal {
         display: none;
@@ -165,7 +170,7 @@
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <span class="psw"> <a href="/register">Register</a></span>
+            <span class="psw1"><a href="/register">Register</a></span>
             <span class="psw">Forgot <a href="/forgotPassword">password?</a></span>
         </div>
     </form>
