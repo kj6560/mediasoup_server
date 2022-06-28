@@ -12,8 +12,6 @@ use RedBeanPHP\R;
             $authData = $model->getByPk();
             if($authData){
                 return $authData;
-            }else{
-                return AppHelpers::redirect("login");
             }
         }
     }
