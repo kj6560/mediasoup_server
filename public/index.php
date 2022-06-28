@@ -15,4 +15,4 @@ require_once '../config/app_auth.php';
 // Routes
 require_once '../routes/web.php';
 require_once '../app/Router.php';
-require_once '../app/Helpers/AppHelpers.php';
+require_once '../app/AppHelpers.php';
