@@ -14,7 +14,7 @@ use RedBeanPHP\R;
             if($authData){
                 return $authData;
             }else{
-                return AppHelpers::redirect("homepage");
+                return AppHelpers::redirect("homepage"); 
             }
         }
     }
