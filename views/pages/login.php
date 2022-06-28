@@ -146,10 +146,10 @@
 </style>
 <h2>Modal Login Form</h2>
 
+
 <div id="id01" class="modal">
 
     <form class="modal-content animate" action="/action_page.php" method="post">
-
 
         <div class="container">
             <label for="uname"><b>Username</b></label>
@@ -164,7 +164,10 @@
             </label>
         </div>
 
-
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
     </form>
 </div>
 
