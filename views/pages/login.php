@@ -68,7 +68,7 @@
         }
     }
 </style>
-<div class="container-fluid">
+<div class="container-fluid text-center">
     <form action="/action_page.php" method="post">
 
         <div class="container">
