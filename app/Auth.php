@@ -1,7 +1,7 @@
 <?php 
 namespace App;
 
-
+use AppHelpers;
 use RedBeanPHP\R;
 
     class Auth{
@@ -13,6 +13,8 @@ use RedBeanPHP\R;
             $authData = $model->getByPk();
             if($authData){
                 return $authData;
+            }else{
+                return AppHelpers::redirect("login");
             }
         }
     }
