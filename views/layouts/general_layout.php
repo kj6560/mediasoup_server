@@ -3,11 +3,7 @@
 
 <head>
     <!-- Theme Made By www.w3schools.com -->
-    <title><?php
-
-use App\AppHelpers;
-
- echo SITE_NAME;?></title>
+    <title><?php echo SITE_NAME;?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -256,7 +252,7 @@ use App\AppHelpers;
                     <li><a href="#portfolio">PORTFOLIO</a></li>
                     <li><a href="#pricing">PRICING</a></li>
                     <li><a href="#contact">CONTACT</a></li>
-                    <li><a href="<?php AppHelpers::redirect("login") ?>">Login/Register</a></li>
+                    <li><a href="/login">Login/Register</a></li>
                 </ul>
             </div>
         </div>
