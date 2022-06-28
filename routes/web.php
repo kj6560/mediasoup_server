@@ -1,6 +1,6 @@
 <?php
 
-use App\Auth;
+use App\Auth\Auth as Auth;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
