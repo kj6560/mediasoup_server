@@ -481,8 +481,6 @@
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        console.log(name);
-        console.log(room_id);
         joinRoom(name, room_id);
     };
     $(function() {
@@ -571,6 +569,10 @@
     // toggle chat option 
     let chattoggle = document.querySelector('.chattoggle');
     let chatBox = document.querySelector('.chat-box');
+    chattoggle.classList.remove('fa-comment');
+    chattoggle.classList.add('fa-comment-slash');
+    chatBox.classList.add('hide');
+    chattoggle.style.background = 'none';
     chattoggle.addEventListener("click", () => {
         if (chatBox.classList.contains('hide')) {
             chattoggle.classList.add('fa-comment');
