@@ -271,7 +271,6 @@
     var host = "<?php echo $data['conference']['conference_by']; ?>";
     var current_user = "<?php echo $data['conference']['current_user']; ?>";
     host = host == current_user ? 1 : 0;
-    console.log(host);
 </script>
 <section class="top-heading">
     <img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">

@@ -122,7 +122,6 @@
         height: 80vh;
         position: fixed;
         border: 1px solid;
-        background: #15748a;
         z-index: 3;
         bottom: 10px;
         right: 10px;
@@ -131,7 +130,7 @@
         place-items: center;
         color: #fff;
         background-image: url('https://www.talktoangel.com/images/logo/chat.png');
-        background-blend-mode: soft-light;
+        background-blend-mode: none;
     }
 
     .report-a-problem {
@@ -272,7 +271,6 @@
     var host = "<?php echo $data['conference']['conference_by']; ?>";
     var current_user = "<?php echo $data['conference']['current_user']; ?>";
     host = host == current_user ? 1 : 0;
-    console.log(host);
 </script>
 <section class="top-heading">
     <img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">
@@ -310,7 +308,7 @@
         <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
         <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
     </div>
-    <div class="chat-box">
+    <div class="chat-box hide">
         <h4 class="text-center">Client Name</h4>
         <div class="history-box">
             <ul>
@@ -481,8 +479,6 @@
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        console.log(name);
-        console.log(room_id);
         joinRoom(name, room_id);
     };
     $(function() {
@@ -571,6 +567,10 @@
     // toggle chat option 
     let chattoggle = document.querySelector('.chattoggle');
     let chatBox = document.querySelector('.chat-box');
+    chattoggle.classList.remove('fa-comment');
+    chattoggle.classList.add('fa-comment-slash');
+    chatBox.classList.add('hide');
+
     chattoggle.addEventListener("click", () => {
         if (chatBox.classList.contains('hide')) {
             chattoggle.classList.add('fa-comment');
