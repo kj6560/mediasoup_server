@@ -122,7 +122,6 @@
         height: 80vh;
         position: fixed;
         border: 1px solid;
-        background: #15748a;
         z-index: 3;
         bottom: 10px;
         right: 10px;
@@ -131,7 +130,7 @@
         place-items: center;
         color: #fff;
         background-image: url('https://www.talktoangel.com/images/logo/chat.png');
-        background-blend-mode: soft-light;
+        background-blend-mode: none;
     }
 
     .report-a-problem {
@@ -310,7 +309,7 @@
         <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
         <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
     </div>
-    <div class="chat-box">
+    <div class="chat-box hide">
         <h4 class="text-center">Client Name</h4>
         <div class="history-box">
             <ul>
@@ -572,7 +571,7 @@
     chattoggle.classList.remove('fa-comment');
     chattoggle.classList.add('fa-comment-slash');
     chatBox.classList.add('hide');
-    chattoggle.style.background = 'none';
+
     chattoggle.addEventListener("click", () => {
         if (chatBox.classList.contains('hide')) {
             chattoggle.classList.add('fa-comment');
