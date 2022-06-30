@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\AppHelpers;
 use App\Models\Organisation;
 use App\Models\Product;
 use App\Models\User;
@@ -17,7 +18,24 @@ class PageController extends Controller
 	// login action
 	public function login(RouteCollection $routes)
 	{
-		$this->loadView('general_layout', 'pages/login', array());
+		$return = array();
+		if (!empty($_POST)) {
+			$data = $_POST;
+			$user  = new User;
+			$user_data = $user->getByAttributes(array('email' => $data['email']));
+			if ($user_data) {
+				if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
+					session_start();
+					$_SESSION['login_id'] = $user_data['id'];
+					AppHelpers::redirect("/");
+				}else{
+					$return['errors'] = "sorry your credentials are invalid";
+				}
+			}else{
+				$return['errors'] = "User Not Found";
+			}
+		}
+		$this->loadView('general_layout', 'pages/login', $data);
 	}
 	// register action
 	public function register(RouteCollection $routes)
@@ -39,7 +57,7 @@ class PageController extends Controller
 					$org->create();
 					$org_id = $org->id;
 				}
-			}else{
+			} else {
 				$org_id = 0;
 			}
 			$user = new User;
@@ -57,5 +75,4 @@ class PageController extends Controller
 
 		$this->loadView('general_layout', 'pages/register', array());
 	}
-	
 }
