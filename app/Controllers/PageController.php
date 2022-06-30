@@ -27,6 +27,7 @@ class PageController extends Controller
 	public function submit_registration(RouteCollection $routes)
 	{
 		$data = $_POST;
+		print_r($data);
 		$user = new User;
 		$user->name = $data['name'];
 		$user->email = $data['email'];
