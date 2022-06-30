@@ -14,6 +14,21 @@ class BaseModel
         return !empty($user) ? $user[0] : false;
     }
 
+    public function getByAttributes($attributes)
+    {
+        $query = "";
+        $i=0;
+        $count = count($attributes);
+        foreach($attributes as $key=>$value){
+            if($count-1 != $i){
+                $query.=$key." = ".$value." AND ";
+            }else{
+                $query.=$key." = ".$value;
+            }
+            $i++;
+        }
+        R::findAll($this->table,$query);
+    }
     public function create()
     {
         $data = get_object_vars($this);
