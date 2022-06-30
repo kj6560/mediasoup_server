@@ -14,6 +14,7 @@ class ConferenceController extends Controller
 		$conferences['current_user'] = $user_id;
 		$user = $conf->getUserById($user_id);
 		$conferences['user_name'] = $user['name'];
+		print_r($conferences);
         $this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
 
