@@ -21,9 +21,9 @@ class BaseModel
         $count = count($attributes);
         foreach($attributes as $key=>$value){
             if($count-1 != $i){
-                $query.=$key." = ".$value." AND ";
+                $query.=$key." = '".$value."' AND ";
             }else{
-                $query.=$key." = ".$value;
+                $query.=$key." = '".$value."'";
             }
             $i++;
         }
