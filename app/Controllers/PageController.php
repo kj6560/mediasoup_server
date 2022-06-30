@@ -28,6 +28,7 @@ class PageController extends Controller
 	{
 		$data = $_POST;
 		$user = new User;
-		print_r(get_object_vars($user));
+		$user->name = "keshav jha";
+		print_r($user->create());
 	}
 }
