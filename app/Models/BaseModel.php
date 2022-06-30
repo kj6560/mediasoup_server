@@ -28,10 +28,27 @@ class BaseModel
             $i++;
         }
         $data = R::findAll($this->table, $query);
-        foreach($data as $key=>$value){
+        foreach ($data as $key => $value) {
             return $value;
         }
         return false;
+    }
+    public function getAllByAttributes($attributes)
+    {
+        $query = "";
+        $i = 0;
+        $count = count($attributes);
+        foreach ($attributes as $key => $value) {
+            if ($count - 1 != $i) {
+                $query .= $key . " = '" . $value . "' AND ";
+            } else {
+                $query .= $key . " = '" . $value . "'";
+            }
+            $i++;
+        }
+        $data = R::findAll($this->table, $query);
+
+        return !empty($data) ? $data : false;
     }
     public function create()
     {
