@@ -11,7 +11,6 @@ class ConferenceController extends Controller
 	{
         $conf = new Conference;
 		$conferences = $conf->readConferences($user_id,$type);
-		print_r($conferences);
 		$conferences['current_user'] = $user_id;
 		$user = $conf->getUserById($user_id);
 		$conferences['user_name'] = $user['name'];
