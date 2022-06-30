@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
 class PageController extends Controller
@@ -26,6 +27,7 @@ class PageController extends Controller
 	public function submit_registration(RouteCollection $routes)
 	{
 		$data = $_POST;
-		print_r($data);
+		$user = new User;
+		print_r(get_object_vars($user));
 	}
 }

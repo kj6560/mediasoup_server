@@ -137,7 +137,10 @@
             <input type="text" placeholder="Enter Name" name="name" required>
 
             <label for="organisation"><b>Organisation</b></label>
-            <input type="text" placeholder="Enter Organisation" name="organisation" required>
+            <input type="text" placeholder="Enter Organisation Name(ABC company Private Limited) if you are a company" name="organisation" required>
+
+            <label for="mobile"><b>Phone Number</b></label>
+            <input type="text" placeholder="Enter Mobile Number" name="mobile" required>
 
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" required>
