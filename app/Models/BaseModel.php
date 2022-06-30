@@ -28,7 +28,10 @@ class BaseModel
             $i++;
         }
         $data = R::findAll($this->table, $query);
-        return !empty($data) ? $data : false;
+        foreach($data as $key=>$value){
+            return $value;
+        }
+        return false;
     }
     public function create()
     {
