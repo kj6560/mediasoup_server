@@ -39,6 +39,8 @@ class PageController extends Controller
 					$org->create();
 					$org_id = $org->id;
 				}
+			}else{
+				$org_id = 0;
 			}
 			$user = new User;
 			$user->name = $data['name'];
