@@ -27,6 +27,7 @@ class BaseModel
             }
             $i++;
         }
+        print_r($query);
         R::findAll($this->table,$query);
     }
     public function create()
