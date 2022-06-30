@@ -30,7 +30,7 @@ class PageController extends Controller
 		$data = $_POST;
 		if (!empty($data['organisation'])) {
 			$org = new Organisation;
-			$organisation = $org->getByAttributes(['name' => $data['name'], 'mobile' => $data['mobile']]);
+			$organisation = $org->getByAttributes(['name' => $data['name']]);
 			if (!empty($organisation)) {
 				$org_id = $organisation->id;
 			} else {
