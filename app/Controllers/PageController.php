@@ -22,37 +22,38 @@ class PageController extends Controller
 	// register action
 	public function register(RouteCollection $routes)
 	{
+
+		if (!empty($_POST)) {
+			$data = $_POST;
+			if (!empty($data['organisation'])) {
+				$org = new Organisation;
+				$organisation = $org->getByAttributes(['name' => $data['name']]);
+				if (!empty($organisation)) {
+					$org_id = $organisation->id;
+				} else {
+					$org = new Organisation;
+					$org->name = $data['name'];
+					$org->mobile = $data['mobile'];
+					$org->admin = 1;
+					$org->is_available = 1;
+					$org->create();
+					$org_id = $org->id;
+				}
+			}
+			$user = new User;
+			$user->name = $data['name'];
+			$user->email = $data['email'];
+			$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+			$user->mobile = $data['mobile'];
+			$user->organisation = $org_id;
+			$user->is_admin = 0;
+			$user->is_available = 1;
+			$user->user_role = 1;
+			$user->parent = 0;
+			$user_created = $user->create();
+		}
+
 		$this->loadView('general_layout', 'pages/register', array());
 	}
-	// submit_registration action
-	public function submit_registration(RouteCollection $routes)
-	{
-		$data = $_POST;
-		if (!empty($data['organisation'])) {
-			$org = new Organisation;
-			$organisation = $org->getByAttributes(['name' => $data['name']]);
-			if (!empty($organisation)) {
-				$org_id = $organisation->id;
-			} else {
-				$org = new Organisation;
-				$org->name = $data['name'];
-				$org->mobile = $data['mobile'];
-				$org->admin = 1;
-				$org->is_available = 1;
-				$org->create();
-				$org_id = $org->id;
-			}
-		}
-		$user = new User;
-		$user->name = $data['name'];
-		$user->email = $data['email'];
-		$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
-		$user->mobile = $data['mobile'];
-		$user->organisation = $org_id;
-		$user->is_admin = 0;
-		$user->is_available = 1;
-		$user->user_role = 1;
-		$user->parent = 0;
-		$user_created = $user->create();
-	}
+	
 }

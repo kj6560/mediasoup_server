@@ -128,7 +128,7 @@
 
 <div id="id01" class="modal">
 
-    <form class="modal-content" method="POST" action="/submit_registration">
+    <form class="modal-content" method="POST" action="/register">
         <div class="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
