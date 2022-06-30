@@ -75,4 +75,10 @@ class PageController extends Controller
 
 		$this->loadView('general_layout', 'pages/register', array());
 	}
+	// logout action
+	public function logout(RouteCollection $routes){
+		unset($_SESSION['login_id']);
+		session_unset();
+		AppHelpers::redirect('/');
+	}
 }
