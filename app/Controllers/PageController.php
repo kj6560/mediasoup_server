@@ -22,4 +22,10 @@ class PageController extends Controller
 	{
 		$this->loadView('general_layout','pages/register',array());
 	}
+	// submit_registration action
+	public function submit_registration(RouteCollection $routes)
+	{
+		print_r($routes);
+		print_r($_POST);
+	}
 }
