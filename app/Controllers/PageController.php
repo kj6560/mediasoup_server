@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Organisation;
 use App\Models\Product;
 use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
@@ -27,7 +28,14 @@ class PageController extends Controller
 	public function submit_registration(RouteCollection $routes)
 	{
 		$data = $_POST;
-		print_r($data);
+		if(!empty($data['organisation'])){
+			$org = new Organisation;
+			$organisation = $org->getByAttributes(['name'=>$data['name'],'mobile'=>$data['mobile']]);
+			if(!empty($organisation)){
+				print_r($organisation);
+			}
+		}
+		die;
 		$user = new User;
 		$user->name = $data['name'];
 		$user->email = $data['email'];
@@ -39,6 +47,5 @@ class PageController extends Controller
 		$user->user_role = 1;
 		$user->parent = 0;
 		$user_created = $user->create();
-		print_r($user_created);
 	}
 }
