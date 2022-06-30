@@ -16,16 +16,16 @@ class BaseModel
 
     public function create()
     {
-        return get_object_vars($this);
-        // $table = R::dispense($this->table);
-        // if (!empty($data)) {
-        //     foreach ($data as $key => $value) {
-        //         $table->$key = $value;
-        //     }
-        //     $id = R::store($table);
-        //     return $id;
-        // } else {
-        //     return false;
-        // }
+        $data = get_object_vars($this);
+        $table = R::dispense($this->table);
+        if (!empty($data)) {
+            foreach ($data as $key => $value) {
+                $table->$key = $value;
+            }
+            R::store($table);
+            return $table;
+        } else {
+            return false;
+        }
     }
 }

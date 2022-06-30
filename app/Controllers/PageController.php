@@ -28,7 +28,16 @@ class PageController extends Controller
 	{
 		$data = $_POST;
 		$user = new User;
-		$user->name = "keshav jha";
-		print_r($user->create());
+		$user->name = $data['name'];
+		$user->email = $data['email'];
+		$user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+		$user->mobile = $data['mobile'];
+		$user->organisation = 1;
+		$user->is_admin=0;
+		$user->is_available = 1;
+		$user->user_role = 1;
+		$user->parent = 0;
+		$user_created = $user->create();
+		print_r($user_created);
 	}
 }
