@@ -133,6 +133,12 @@
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
             <hr>
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" required>
+
+            <label for="organisation"><b>Organisation</b></label>
+            <input type="text" placeholder="Enter Organisation" name="organisation" required>
+
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" required>
 
