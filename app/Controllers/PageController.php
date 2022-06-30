@@ -32,7 +32,9 @@ class PageController extends Controller
 			$org = new Organisation;
 			$organisation = $org->getByAttributes(['name'=>$data['name'],'mobile'=>$data['mobile']]);
 			if(!empty($organisation)){
-				print_r($organisation);
+				echo "org exists";
+			}else{
+				echo "org doesnot exist";
 			}
 		}
 		die;

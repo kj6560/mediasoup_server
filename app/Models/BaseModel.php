@@ -17,18 +17,18 @@ class BaseModel
     public function getByAttributes($attributes)
     {
         $query = "";
-        $i=0;
+        $i = 0;
         $count = count($attributes);
-        foreach($attributes as $key=>$value){
-            if($count-1 != $i){
-                $query.=$key." = '".$value."' AND ";
-            }else{
-                $query.=$key." = '".$value."'";
+        foreach ($attributes as $key => $value) {
+            if ($count - 1 != $i) {
+                $query .= $key . " = '" . $value . "' AND ";
+            } else {
+                $query .= $key . " = '" . $value . "'";
             }
             $i++;
         }
-        print_r($query);
-        R::findAll($this->table,$query);
+        $data = R::findAll($this->table, $query);
+        return !empty($data) ? $data : false;
     }
     public function create()
     {
@@ -41,7 +41,7 @@ class BaseModel
             foreach ($data as $key => $value) {
                 $table->$key = $value;
             }
-            R::store($table,true);
+            R::store($table, true);
             return $table;
         } else {
             return false;
