@@ -127,7 +127,7 @@
 
 
 <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">times;</span>
+
     <form class="modal-content" method="POST" action="/submit_registration">
         <div class="container">
             <h1>Sign Up</h1>

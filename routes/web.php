@@ -15,6 +15,4 @@ $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('contr
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'PageController', 'method'=>'login'), array()));
 $routes->add('register', new Route(constant('URL_SUBFOLDER') . '/register', array('controller' => 'PageController', 'method'=>'register'), array()));
 $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPassword', array('controller' => 'PageController', 'method'=>'forgotPassword'), array()));
-$routes->add('submit_registration', new Route('URL_SUBFOLDER'. '/submit_registration', array(
-    'controller' => 'PageController',
-), array(), array(), '', array(), array('POST')));
+$routes->add('submit_registration', new Route(constant('URL_SUBFOLDER') . '/submit_registration', array('controller' => 'PageController', 'method'=>'submit_registration'), array(),['POST']));
