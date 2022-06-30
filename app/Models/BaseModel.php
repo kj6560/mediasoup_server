@@ -18,8 +18,8 @@ class BaseModel
     {
         $data = get_object_vars($this);
         unset($data['table']);
-        $data['created_at'] = date('d-M-Y H:i:S');
-        $data['updated_at'] = date('d-M-Y H:i:S');
+        $data['created_at'] = date('d-m-Y H:i:s');
+        $data['updated_at'] = date('d-m-Y H:i:s');
         $table = R::dispense($this->table);
         if (!empty($data)) {
             foreach ($data as $key => $value) {
