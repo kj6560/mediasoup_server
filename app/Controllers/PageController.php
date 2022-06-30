@@ -17,4 +17,9 @@ class PageController extends Controller
 	{
 		$this->loadView('general_layout','pages/login',array());
 	}
+	// register action
+	public function register(RouteCollection $routes)
+	{
+		$this->loadView('general_layout','pages/register',array());
+	}
 }
