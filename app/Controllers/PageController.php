@@ -35,7 +35,7 @@ class PageController extends Controller
 				$return['errors'] = "User Not Found";
 			}
 		}
-		$this->loadView('general_layout', 'pages/login', $data);
+		$this->loadView('general_layout', 'pages/login', $return);
 	}
 	// register action
 	public function register(RouteCollection $routes)
