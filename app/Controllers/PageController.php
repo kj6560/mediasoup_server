@@ -81,4 +81,7 @@ class PageController extends Controller
 		session_unset();
 		AppHelpers::redirect('/');
 	}
+	public function route_error(RouteCollection $routes){
+		echo "unauthorised or bad route";
+	}
 }

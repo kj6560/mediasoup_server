@@ -44,7 +44,7 @@ class Router
         } catch (MethodNotAllowedException $e) {
             echo 'Route method is not allowed.';
         } catch (ResourceNotFoundException $e) {
-            echo 'Route does not exists.';
+            AppHelpers::redirect('/route_error');
         } catch (NoConfigurationException $e) {
             echo 'Configuration does not exists.';
         }
