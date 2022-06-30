@@ -17,6 +17,7 @@ class BaseModel
     public function create()
     {
         $data = get_object_vars($this);
+        unset($data['table']);
         $table = R::dispense($this->table);
         if (!empty($data)) {
             foreach ($data as $key => $value) {
