@@ -72,7 +72,6 @@
         /* Sit on top */
         left: 0;
         top: 0;
-        margin: 50px;
         width: 100%;
         /* Full width */
         height: 100%;
@@ -164,7 +163,7 @@
             <input type="password" placeholder="Enter Password" name="password" required>
 
             <button type="submit">Login</button>
-
+            
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
