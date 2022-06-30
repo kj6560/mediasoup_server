@@ -16,14 +16,13 @@ class BaseModel
 
     public function create()
     {
-        R::freeze(false);
         $data = get_object_vars($this);
         $table = R::dispense($this->table);
         if (!empty($data)) {
             foreach ($data as $key => $value) {
                 $table->$key = $value;
             }
-            R::store($table);
+            R::store($table,true);
             return $table;
         } else {
             return false;
