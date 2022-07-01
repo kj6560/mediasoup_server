@@ -23,7 +23,7 @@ class Auth
         $model = new $authModel;
         $model->id = isset($_SESSION['login_id']) ? $_SESSION['login_id'] : 0;
         $authData = $model->getByPk();
-        if (isset($_SESSION['logout']) && !$_SESSION['logout']) {
+        if (!empty($_SESSION['logout']) && !$_SESSION['logout']) {
             echo $_SESSION['logout'];
             print_r($authData);
             return $authData;
