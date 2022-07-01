@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\AppHelpers;
 use App\Models\Organisation;
-use Awixe\Module\Session\Handler;
+use Awixe\Module\Session\src\Handler;
 use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
