@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\AppHelpers;
 use App\Models\Organisation;
-use Awixe\Module\Session\src\Handler;
 use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
@@ -13,8 +12,6 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
-		$session = new Handler();
-		$session->set('hello', 'world');
 		$this->loadView('general_layout', 'pages/home', array());
 	}
 	// login action

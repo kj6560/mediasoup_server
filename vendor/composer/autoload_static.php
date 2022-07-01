@@ -80,16 +80,6 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'M' => 
-        array (
-            'Monolog' => 
-            array (
-                0 => __DIR__ . '/..' . '/awixe/session/src',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -105,7 +95,6 @@ class ComposerStaticInit85b9b704c3452d4a311c80601cd4210f
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit85b9b704c3452d4a311c80601cd4210f::$classMap;
 
         }, null, ClassLoader::class);

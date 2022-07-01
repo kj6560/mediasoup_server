@@ -4,58 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6174aecc851dcca1e753e003b32340f9",
+    "content-hash": "317c99e4aeac753fe4c53515d6ba93c4",
     "packages": [
-        {
-            "name": "awixe/session",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Awixe/Session.git",
-                "reference": "34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Awixe/Session/zipball/34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6",
-                "reference": "34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Monolog": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Nicholas English",
-                    "email": "awixe443@gmail.com",
-                    "homepage": "https://github.com/Awixe",
-                    "role": "Backend Developer"
-                }
-            ],
-            "description": "A session handler that acts as a wrapper",
-            "homepage": "https://github.com/Awixe/Session",
-            "keywords": [
-                "PHP7",
-                "php",
-                "php-framework",
-                "php-library",
-                "php-sessions"
-            ],
-            "support": {
-                "issues": "https://github.com/Awixe/Session/issues",
-                "source": "https://github.com/Awixe/Session/tree/master"
-            },
-            "time": "2017-10-19T04:28:42+00:00"
-        },
         {
             "name": "gabordemooij/redbean",
             "version": "dev-master",

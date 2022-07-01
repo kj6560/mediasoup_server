@@ -1,59 +1,6 @@
 {
     "packages": [
         {
-            "name": "awixe/session",
-            "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Awixe/Session.git",
-                "reference": "34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Awixe/Session/zipball/34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6",
-                "reference": "34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0"
-            },
-            "time": "2017-10-19T04:28:42+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Monolog": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Nicholas English",
-                    "email": "awixe443@gmail.com",
-                    "homepage": "https://github.com/Awixe",
-                    "role": "Backend Developer"
-                }
-            ],
-            "description": "A session handler that acts as a wrapper",
-            "homepage": "https://github.com/Awixe/Session",
-            "keywords": [
-                "PHP7",
-                "php",
-                "php-framework",
-                "php-library",
-                "php-sessions"
-            ],
-            "support": {
-                "issues": "https://github.com/Awixe/Session/issues",
-                "source": "https://github.com/Awixe/Session/tree/master"
-            },
-            "install-path": "../awixe/session"
-        },
-        {
             "name": "gabordemooij/redbean",
             "version": "dev-master",
             "version_normalized": "dev-master",
