@@ -83,6 +83,7 @@ class PageController extends Controller
 			}
 			session_destroy();
 			session_unset();
+			echo "logged out";exit;
 		}else{
 			echo "already logged out";
 		}
