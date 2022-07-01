@@ -256,12 +256,17 @@ use App\Auth;
                     <li><a href="#portfolio">PORTFOLIO</a></li>
                     <li><a href="#pricing">PRICING</a></li>
                     <li><a href="#contact">CONTACT</a></li>
-                    <li><a href="/login">
                         <?php
                             $user = Auth::logger('user');
                             if(!empty($user)){
+                                ?>
+                                <li><a href="/logout">
+                            <?php
                                 echo "Logout(".$user['name'].")";
                             }else{
+                                ?>
+                                <li><a href="/login">
+                                <?php 
                                 echo "Login";
                             } 
                         ?>
