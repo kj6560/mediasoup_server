@@ -76,18 +76,13 @@ class PageController extends Controller
 	// logout action
 	public function logout(RouteCollection $routes)
 	{
-		session_start();
 		if (!empty($_SESSION['login_id'])) {
 			foreach ($_SESSION as $var => $value) {
 				unset($_SESSION[$var]);
 			}
 			session_destroy();
 			session_unset();
-			echo "logged out";exit;
-		}else{
-			echo "already logged out";
-		}
-		
+		}		
 		AppHelpers::redirect('homepage');
 	}
 	public function route_error(RouteCollection $routes)
