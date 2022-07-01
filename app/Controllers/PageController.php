@@ -28,10 +28,10 @@ class PageController extends Controller
 					session_start();
 					$_SESSION['login_id'] = $user_data['id'];
 					AppHelpers::redirect("/");
-				}else{
+				} else {
 					$return['errors'] = "sorry your credentials are invalid";
 				}
-			}else{
+			} else {
 				$return['errors'] = "User Not Found";
 			}
 		}
@@ -76,12 +76,16 @@ class PageController extends Controller
 		$this->loadView('general_layout', 'pages/register', array());
 	}
 	// logout action
-	public function logout(RouteCollection $routes){
+	public function logout(RouteCollection $routes)
+	{
+		session_start();
 		unset($_SESSION['login_id']);
 		session_unset();
+		session_destroy();
 		AppHelpers::redirect('/');
 	}
-	public function route_error(RouteCollection $routes){
+	public function route_error(RouteCollection $routes)
+	{
 		echo "unauthorised or bad route";
 	}
 }
