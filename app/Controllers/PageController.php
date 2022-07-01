@@ -81,8 +81,6 @@ class PageController extends Controller
 	{
 		session_start();
 		$_SESSION['logout'] = true;
-		unset($_SESSION['login_id']);
-		session_unset();
 		session_destroy();
 		AppHelpers::redirect('/');
 	}
