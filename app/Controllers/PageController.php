@@ -80,8 +80,13 @@ class PageController extends Controller
 	public function logout(RouteCollection $routes)
 	{
 		session_start();
-		$_SESSION['logout'] = true;
-		session_destroy();
+		if (isset($_SESSION['logout']) && $_SESSION['logout'] == TRUE) {
+			foreach ($_SESSION as $var => $value) {
+				unset($_SESSION[$var]);
+			}
+			session_destroy();
+			session_unset();
+		}
 		AppHelpers::redirect('/');
 	}
 	public function route_error(RouteCollection $routes)
