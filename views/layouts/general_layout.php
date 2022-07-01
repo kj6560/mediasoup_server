@@ -258,7 +258,6 @@ use App\Auth;
                     <li><a href="#contact">CONTACT</a></li>
                     <li><a href="/login">
                         <?php
-                            echo $_SESSION['logout'];
                             $user = Auth::logger('user');
                             if(!empty($user)){
                                 echo "Logout(".$user['name'].")";
