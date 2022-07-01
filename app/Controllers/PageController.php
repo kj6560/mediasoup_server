@@ -24,9 +24,7 @@ class PageController extends Controller
 			$user_data = $user->getByAttributes(array('email' => $data['email']));
 			if ($user_data) {
 				if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
-					session_start();
 					$_SESSION['login_id'] = $user_data['id'];
-					$_SESSION['logout'] = false;
 					AppHelpers::redirect("/");
 				} else {
 					$return['errors'] = "sorry your credentials are invalid";
@@ -79,12 +77,14 @@ class PageController extends Controller
 	public function logout(RouteCollection $routes)
 	{
 		session_start();
-		if (isset($_SESSION['logout']) && $_SESSION['logout'] == TRUE) {
+		if (!empty($_SESSION['login_id'])) {
 			foreach ($_SESSION as $var => $value) {
 				unset($_SESSION[$var]);
 			}
 			session_destroy();
 			session_unset();
+		}else{
+			echo "already logged out";
 		}
 		
 		AppHelpers::redirect('homepage');
