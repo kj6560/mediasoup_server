@@ -13,7 +13,7 @@ class Auth
         $model = new $authModel;
         $model->id = !empty($_SESSION['login_id']) ? $_SESSION['login_id'] : 0;
         $authData = $model->getByPk();
-        if (isset($_SESSION['logout']) && !$_SESSION['logout']) {
+        if (!empty($_SESSION['login_id']) && !empty($_SESSION['login_id'])) {
             return $authData;
         }
     }
@@ -21,11 +21,9 @@ class Auth
     {
         $authModel = "App\\Models\\" . ucfirst($type);
         $model = new $authModel;
-        $model->id = isset($_SESSION['login_id']) ? $_SESSION['login_id'] : 0;
+        $model->id = !empty($_SESSION['login_id']) ? $_SESSION['login_id'] : 0;
         $authData = $model->getByPk();
-        if (!empty($_SESSION['logout']) && !$_SESSION['logout']) {
-            echo $_SESSION['logout'];
-            print_r($authData);
+        if (!empty($_SESSION['login_id']) && !empty($_SESSION['login_id'])) {
             return $authData;
         }
     }
