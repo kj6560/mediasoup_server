@@ -83,7 +83,7 @@ class PageController extends Controller
 			session_destroy();
 			session_unset();
 		}		
-		AppHelpers::redirect('homepage');
+		AppHelpers::redirect('/');
 	}
 	public function route_error(RouteCollection $routes)
 	{
