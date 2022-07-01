@@ -3,7 +3,11 @@
 
 <head>
     <!-- Theme Made By www.w3schools.com -->
-    <title><?php echo SITE_NAME;?></title>
+    <title><?php
+
+use App\Auth;
+
+ echo SITE_NAME;?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -252,7 +256,14 @@
                     <li><a href="#portfolio">PORTFOLIO</a></li>
                     <li><a href="#pricing">PRICING</a></li>
                     <li><a href="#contact">CONTACT</a></li>
-                    <li><a href="/login">Login/Register</a></li>
+                    <li><a href="/login">
+                        <?php
+                            $user = Auth::logger('user');
+                            if(!empty($user)){
+                                print_r($user);
+                            } 
+                        ?>
+                    </a></li>
                 </ul>
             </div>
         </div>
