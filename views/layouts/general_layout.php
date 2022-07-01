@@ -259,7 +259,7 @@ use App\Auth;
                     <li><a href="/login">
                         <?php
                             $user = Auth::logger('user');
-                            echo $_SESSION['login_in'];
+                            echo $_SESSION['login_id'];
                             if(!empty($user)){
                                 echo "Logout(".$user['name'].")";
                             }else{
