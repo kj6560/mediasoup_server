@@ -85,6 +85,11 @@ class PageController extends Controller
 		}		
 		AppHelpers::redirect('/');
 	}
+	//dashboard action
+	public function dashboard(RouteCollection $routes){
+		
+	}
+	//error route action
 	public function route_error(RouteCollection $routes)
 	{
 		echo "unauthorised or bad route";
