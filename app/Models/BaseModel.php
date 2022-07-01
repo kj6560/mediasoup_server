@@ -9,6 +9,7 @@ class BaseModel
 
     public function getByPk()
     {
+        echo $this->id;
         $query = "select * from $this->table where id =$this->id LIMIT 1";
         $user  = R::getAssocRow($query);
         return !empty($user) ? $user[0] : false;
