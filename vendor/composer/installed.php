@@ -5,11 +5,20 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a0785a5d82f91986016a18e41b1861be8a62b24c',
+        'reference' => '7073dc30d0656d6deecc03858d01f6fa5fa69631',
         'name' => 'keshav/bloged',
         'dev' => true,
     ),
     'versions' => array(
+        'awixe/session' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../awixe/session',
+            'aliases' => array(),
+            'reference' => '34e1e2f76cc5ed8dd0ceac4b110c8f9ff476d3f6',
+            'dev_requirement' => false,
+        ),
         'gabordemooij/redbean' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -27,7 +36,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a0785a5d82f91986016a18e41b1861be8a62b24c',
+            'reference' => '7073dc30d0656d6deecc03858d01f6fa5fa69631',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(

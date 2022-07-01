@@ -13,6 +13,7 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
+		app('session')->set('hello', 'world');
 		$this->loadView('general_layout', 'pages/home', array());
 	}
 	// login action
@@ -87,6 +88,7 @@ class PageController extends Controller
 			session_destroy();
 			session_unset();
 		}
+		
 		AppHelpers::redirect('homepage');
 	}
 	public function route_error(RouteCollection $routes)

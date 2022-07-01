@@ -9,6 +9,7 @@
     "require": {
         "symfony/routing": "^4.4",
         "symfony/http-foundation": "^4.4",
-        "gabordemooij/redbean": "dev-master"
+        "gabordemooij/redbean": "dev-master",
+        "awixe/session": "^1.0"
     }
 }
