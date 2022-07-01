@@ -13,7 +13,6 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
-		session_start();
 		$session = new Handler();
 		$session->set('hello', 'world');
 		$this->loadView('general_layout', 'pages/home', array());

@@ -5,7 +5,7 @@ ini_set('display_startup_errors', '1');
 
 // Autoloader
 require_once '../vendor/autoload.php';
-
+session_start();
 require_once '../config/rb-mysql.php';
 // Load Config
 require_once '../config/config.php';
