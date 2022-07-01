@@ -27,6 +27,7 @@ class PageController extends Controller
 				if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
 					session_start();
 					$_SESSION['login_id'] = $user_data['id'];
+					$_SESSION['logout'] = FALSE;
 					AppHelpers::redirect("/");
 				} else {
 					$return['errors'] = "sorry your credentials are invalid";
@@ -79,6 +80,7 @@ class PageController extends Controller
 	public function logout(RouteCollection $routes)
 	{
 		session_start();
+		$_SESSION['logout'] = TRUE;
 		unset($_SESSION['login_id']);
 		session_unset();
 		session_destroy();
