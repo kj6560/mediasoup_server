@@ -260,6 +260,7 @@ use App\Auth;
                             $user = Auth::logger('user');
                             if(!empty($user)){
                                 ?>
+                                <li><a href="/dashboard">DASHBOARD</a></li>
                                 <li><a href="/logout">
                             <?php
                                 echo "Logout(".$user['name'].")";
