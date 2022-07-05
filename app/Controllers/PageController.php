@@ -87,7 +87,7 @@ class PageController extends Controller
 	}
 	//dashboard action
 	public function dashboard(RouteCollection $routes){
-		
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_index', array());
 	}
 	//error route action
 	public function route_error(RouteCollection $routes)
