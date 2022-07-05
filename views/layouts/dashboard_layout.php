@@ -46,7 +46,7 @@
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="/">
                 <img src="./assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold text-white"><?php echo SITE_NAME;?></span>
+                <span class="ms-1 font-weight-bold text-white"><?php echo SITE_NAME; ?></span>
             </a>
         </div>
 
@@ -127,20 +127,7 @@
                 </li>
 
 
-                <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link text-white " href="./profile.html">
-
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">person</i>
-                        </div>
-
-                        <span class="nav-link-text ms-1">Profile</span>
-                    </a>
-                </li>
             </ul>
         </div>
 
@@ -178,7 +165,7 @@
 
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                        
+
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -188,7 +175,7 @@
                                 </div>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item dropdown ml-10 pe-2 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-bell cursor-pointer"></i>
@@ -283,18 +270,18 @@
                         </div>
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                
+
                                 <li class="nav-item">
-                                    <a href="about us" class="nav-link text-muted" >About Us</a>
+                                    <a href="about us" class="nav-link text-muted">About Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/services" class="nav-link text-muted" >Services</a>
+                                    <a href="/services" class="nav-link text-muted">Services</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/portfolio" class="nav-link pe-0 text-muted" >Portfolio</a>
+                                    <a href="/portfolio" class="nav-link pe-0 text-muted">Portfolio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/pricing" class="nav-link pe-0 text-muted" >Pricing</a>
+                                    <a href="/pricing" class="nav-link pe-0 text-muted">Pricing</a>
                                 </li>
                             </ul>
                         </div>
