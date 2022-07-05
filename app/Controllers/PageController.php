@@ -113,6 +113,22 @@ class PageController extends Controller
 	public function contact_support(RouteCollection $routes){
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_support', array());
 	}
+	//aboutus action
+	public function aboutus(RouteCollection $routes){
+		$this->loadView('general_layout', 'pages/aboutus', array());
+	}
+	//services action
+	public function services(RouteCollection $routes){
+		$this->loadView('general_layout', 'pages/services', array());
+	}
+	//portfolio action
+	public function portfolio(RouteCollection $routes){
+		$this->loadView('general_layout', 'pages/portfolio', array());
+	}
+	//pricing action
+	public function pricing(RouteCollection $routes){
+		$this->loadView('general_layout', 'pages/pricing', array());
+	}
 	//error route action
 	public function route_error(RouteCollection $routes)
 	{

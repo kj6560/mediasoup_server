@@ -19,6 +19,10 @@ if($auth->guard('user')){
 }
 $routes->add('conference_companies', new Route(constant('URL_SUBFOLDER') . '/conference_companies/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conferenceCompanies'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method'=>'index'), array()));
+$routes->add('aboutus', new Route(constant('URL_SUBFOLDER') . '/aboutus', array('controller' => 'PageController', 'method'=>'aboutus'), array()));
+$routes->add('services', new Route(constant('URL_SUBFOLDER') . '/services', array('controller' => 'PageController', 'method'=>'services'), array()));
+$routes->add('portfolio', new Route(constant('URL_SUBFOLDER') . '/portfolio', array('controller' => 'PageController', 'method'=>'portfolio'), array()));
+$routes->add('pricing', new Route(constant('URL_SUBFOLDER') . '/pricing', array('controller' => 'PageController', 'method'=>'pricing'), array()));
 
 $routes->add('route_error', new Route(constant('URL_SUBFOLDER') . '/route_error', array('controller' => 'PageController', 'method'=>'route_error'), array()));
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'PageController', 'method'=>'login'), array()));
