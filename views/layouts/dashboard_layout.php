@@ -176,7 +176,7 @@
                                     document.write(new Date().getFullYear())
                                 </script>,
                                 made with <i class="fa fa-heart"></i> by
-                                <a href="https://www.shiwkesh.com" class="font-weight-bold" target="_blank">Shiwkesh Schematics</a>
+                                <a href="https://www.shiwkesh.com" class="font-weight-bold" target="_blank">Shiwkesh Schematics Private Limited</a>
                             </div>
                         </div>
                         <div class="col-lg-6">
