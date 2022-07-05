@@ -1,36 +1,7 @@
-<!--
-=========================================================
-* Material Dashboard 2 - v3.0.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +11,7 @@
 
     <title>
 
-        Material Dashboard 2 by Creative Tim
+        <?php echo SITE_NAME; ?>
 
     </title>
 
@@ -73,9 +44,9 @@
 
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
+            <a class="navbar-brand m-0" href=" /" target="_blank">
                 <img src="./assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+                <span class="ms-1 font-weight-bold text-white"><?php echo SITE_NAME;?></span>
             </a>
         </div>
 
