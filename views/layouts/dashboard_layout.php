@@ -68,55 +68,55 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="./tables.html">
+                    <a class="nav-link text-white " href="/users">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="material-icons opacity-10">users</i>
                         </div>
 
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Users</span>
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="./billing.html">
+                    <a class="nav-link text-white " href="/conferences">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">receipt_long</i>
+                            <i class="material-icons opacity-10">conferences</i>
                         </div>
 
-                        <span class="nav-link-text ms-1">Billing</span>
+                        <span class="nav-link-text ms-1">Conferences</span>
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="./virtual-reality.html">
+                    <a class="nav-link text-white " href="/history">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
+                            <i class="material-icons opacity-10">history</i>
                         </div>
 
-                        <span class="nav-link-text ms-1">Virtual Reality</span>
+                        <span class="nav-link-text ms-1">History</span>
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="./rtl.html">
+                    <a class="nav-link text-white " href="/reports">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                            <i class="material-icons opacity-10">reports</i>
                         </div>
 
-                        <span class="nav-link-text ms-1">RTL</span>
+                        <span class="nav-link-text ms-1">Reports</span>
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="./notifications.html">
+                    <a class="nav-link text-white " href="/notifications">
 
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">notifications</i>
