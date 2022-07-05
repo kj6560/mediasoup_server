@@ -9,7 +9,6 @@ session_start();
 require_once '../config/rb-mysql.php';
 // Load Config
 require_once '../config/config.php';
-require_once '../config/app_auth.php';
 
 
 // Routes
