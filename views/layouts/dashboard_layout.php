@@ -147,14 +147,7 @@
             <div class="container-fluid py-1 px-3">
                 
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center" style="display:none">
-
-                        <div class="input-group input-group-outline">
-                            <label class="form-label">Type here...</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                    </div>
+                    
                     <ul class="navbar-nav  justify-content-end">
 
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -167,7 +160,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown ml-10 pe-2 d-flex align-items-center">
+                        <li class="nav-item dropdown ml-10 pe-2 d-flex align-items-center" style="float: right;">
                             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-bell cursor-pointer"></i>
                             </a>
