@@ -42,10 +42,6 @@
 
         Material Dashboard 2 by Creative Tim
 
-
-
-
-
     </title>
 
 
