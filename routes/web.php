@@ -15,6 +15,7 @@ if($auth->guard('user')){
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method'=>'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method'=>'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method'=>'notifications'), array()));
+    $routes->add('contact_support', new Route(constant('URL_SUBFOLDER') . '/contact_support', array('controller' => 'PageController', 'method'=>'contact_support'), array()));
 }
 $routes->add('conference_companies', new Route(constant('URL_SUBFOLDER') . '/conference_companies/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conferenceCompanies'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method'=>'index'), array()));
