@@ -13,6 +13,7 @@ if($auth->guard('user')){
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method'=>'users'), array()));
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'PageController', 'method'=>'conferences'), array()));
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method'=>'history'), array()));
+    $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method'=>'reports'), array()));
 }
 $routes->add('conference_companies', new Route(constant('URL_SUBFOLDER') . '/conference_companies/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conferenceCompanies'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method'=>'index'), array()));

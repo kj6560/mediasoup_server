@@ -101,6 +101,10 @@ class PageController extends Controller
 	public function history(RouteCollection $routes){
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_history', array());
 	}
+	//history action
+	public function reports(RouteCollection $routes){
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_reports', array());
+	}
 	//error route action
 	public function route_error(RouteCollection $routes)
 	{
