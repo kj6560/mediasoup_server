@@ -114,7 +114,7 @@ class PageController extends Controller
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_support', array());
 	}
 	//contact_support action
-	public function add_conference(RouteCollection $routes){
+	public function add_conferences(RouteCollection $routes){
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array());
 	}
 	//aboutus action
