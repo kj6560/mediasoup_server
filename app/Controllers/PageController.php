@@ -93,6 +93,10 @@ class PageController extends Controller
 	public function users(RouteCollection $routes){
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array());
 	}
+	//conferences action
+	public function conferences(RouteCollection $routes){
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array());
+	}
 	//error route action
 	public function route_error(RouteCollection $routes)
 	{
