@@ -4,7 +4,7 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Authors table</h6>
-                <h4 type="button" class="btn bg-gradient-success mt-3" style="float: right;"><a href="/add_conference">Add</a></h4>
+                <h4 type="button" class="btn bg-gradient-success mt-3" style="float: right;"><a href="/add_conferences">Add</a></h4>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
