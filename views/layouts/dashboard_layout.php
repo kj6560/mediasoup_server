@@ -183,7 +183,7 @@
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
 
                                 <li class="nav-item">
-                                    <a href="about us" class="nav-link text-muted">About Us</a>
+                                    <a href="/aboutus" class="nav-link text-muted">About Us</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/services" class="nav-link text-muted">Services</a>
