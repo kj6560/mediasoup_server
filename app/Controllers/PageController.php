@@ -113,6 +113,10 @@ class PageController extends Controller
 	public function contact_support(RouteCollection $routes){
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_support', array());
 	}
+	//contact_support action
+	public function add_conference(RouteCollection $routes){
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array());
+	}
 	//aboutus action
 	public function aboutus(RouteCollection $routes){
 		$this->loadView('general_layout', 'pages/aboutus', array());
