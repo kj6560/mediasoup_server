@@ -8,14 +8,15 @@
         </div>
       </div>
       <div class="col-md-6">
-        <select class="mdb-select md-form" searchable="Search here..">
-          <option value="" disabled selected>Choose your country</option>
-          <option value="1">USA</option>
-          <option value="2">Germany</option>
-          <option value="3">France</option>
-          <option value="3">Poland</option>
-          <option value="3">Japan</option>
-        </select>
+        <label for="exampleDataList" class="form-label">Datalist example</label>
+        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        <datalist id="datalistOptions">
+          <option value="San Francisco">
+          <option value="New York">
+          <option value="Seattle">
+          <option value="Los Angeles">
+          <option value="Chicago">
+        </datalist>
       </div>
     </div>
     <div class="row">
