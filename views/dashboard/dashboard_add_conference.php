@@ -8,15 +8,14 @@
         </div>
       </div>
       <div class="col-md-6">
-        <label for="exampleDataList" class="form-label">Datalist example</label>
-        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist id="datalistOptions">
-          <option value="San Francisco">
-          <option value="New York">
-          <option value="Seattle">
-          <option value="Los Angeles">
-          <option value="Chicago">
-        </datalist>
+        <div class="container mt-5">
+          <select class="selectpicker" multiple aria-label="Default select example" data-live-search="true">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="row">
