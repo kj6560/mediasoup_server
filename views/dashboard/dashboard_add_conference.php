@@ -24,11 +24,14 @@
             </div>
             <div class="form-group">
               <select class="choices form-select multiple-remove" multiple="multiple" name="conference_for">
-                <optgroup label="Figures">
-                  <option value="romboid">Romboid</option>
-                  <option value="trapeze" selected>Trapeze</option>
-                  <option value="triangle">Triangle</option>
-                  <option value="polygon">Polygon</option>
+                <optgroup label="Organisation Users">
+                  <?php
+                      foreach($data['users'] as $user){
+                        ?>
+                          <option value="<?php echo $user['id'];?>"><?php echo $user['name'];?></option>
+                        <?php 
+                      }
+                  ?>
                 </optgroup>
               </select>
             </div>

@@ -25,7 +25,10 @@ class ConferenceController extends Controller
 	//add conference action
 	public function add_conferences(RouteCollection $routes)
 	{
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference"));
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$users = $user->getByAttributes(array('organisation' => $organisation));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference","users"=>$users));
 	}
 	//conference detail action
 	public function conference_detail($id,RouteCollection $routes)
