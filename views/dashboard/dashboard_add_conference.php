@@ -24,8 +24,8 @@
             </div>
 
             <div class="form-group">
-              <label for="helperText">With Helper Text</label>
-              <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+              <label for="helperText">Conference Time </label>
+              <input class="form-group" type="datetime-local" id="birthdaytime" name="birthdaytime">
               <p><small class="text-muted">Find helper text here for given textbox.</small>
               </p>
             </div>
