@@ -12,6 +12,7 @@
         "gabordemooij/redbean": "dev-master",
         "symfony/cache": "^5.4",
         "phpoffice/phpspreadsheet": "^1.23",
-        "phpmailer/phpmailer": "^6.6"
+        "phpmailer/phpmailer": "^6.6",
+        "guzzlehttp/guzzle": "^7.4"
     }
 }
