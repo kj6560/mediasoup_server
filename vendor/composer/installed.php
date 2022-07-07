@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fb82e9da1a5f18b27d795c60ffde593116a77fb7',
+        'reference' => 'dbaf7bfaa3162ac6d50cdbc9e8b1dc6ed6e0200b',
         'name' => 'keshav/bloged',
         'dev' => true,
     ),
@@ -36,7 +36,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fb82e9da1a5f18b27d795c60ffde593116a77fb7',
+            'reference' => 'dbaf7bfaa3162ac6d50cdbc9e8b1dc6ed6e0200b',
             'dev_requirement' => false,
         ),
         'maennchen/zipstream-php' => array(
@@ -73,6 +73,15 @@
             'install_path' => __DIR__ . '/../myclabs/php-enum',
             'aliases' => array(),
             'reference' => 'b942d263c641ddb5190929ff840c68f78713e937',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.3',
+            'version' => '6.6.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '9400f305a898f194caff5521f64e5dfa926626f3',
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(

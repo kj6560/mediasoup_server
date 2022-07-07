@@ -52,6 +52,7 @@ class PageController extends Controller
 					$org->mobile = $data['mobile'];
 					$org->admin = 1;
 					$org->is_available = 1;
+					$org->parent = 0;
 					$org->create();
 					$org_id = $org->id;
 				}

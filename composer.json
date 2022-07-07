@@ -11,6 +11,7 @@
         "symfony/http-foundation": "^4.4",
         "gabordemooij/redbean": "dev-master",
         "symfony/cache": "^5.4",
-        "phpoffice/phpspreadsheet": "^1.23"
+        "phpoffice/phpspreadsheet": "^1.23",
+        "phpmailer/phpmailer": "^6.6"
     }
 }
