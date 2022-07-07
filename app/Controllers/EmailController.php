@@ -54,7 +54,7 @@ class EmailController
             }
 
             //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->isHTML($html_body);                                  //Set email format to HTML
             $mail->Subject = $subject;
 
             if ($html_body) {
