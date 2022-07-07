@@ -1,197 +1,323 @@
-<div class="row">
-  <div class="col-12">
-    <div class="card my-4">
-      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-          <h6 class="text-white text-capitalize ps-3">Authors table</h6>
-          <h4 type="button" class="btn bg-gradient-success mt-3" style="float: right;"><a href="/add_conferences">Add</a></h4>
-        </div>
+<div class="page-heading">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-12 col-md-6 order-md-1 order-last">
+        <h3>Input</h3>
+        <p class="text-subtitle text-muted">Give textual form controls like input upgrade with
+          custom styles,
+          sizing, focus states, and more.</p>
       </div>
-      <div class="card-body px-0 pb-2">
-        <div class="table-responsive p-0">
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                <th class="text-secondary opacity-7"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">John Michael</h6>
-                      <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Manager</p>
-                  <p class="text-xs text-secondary mb-0">Organization</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success">Online</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                      <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Programator</p>
-                  <p class="text-xs text-secondary mb-0">Developer</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user3">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                      <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Executive</p>
-                  <p class="text-xs text-secondary mb-0">Projects</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success">Online</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user4">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Michael Levi</h6>
-                      <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Programator</p>
-                  <p class="text-xs text-secondary mb-0">Developer</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success">Online</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user5">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Richard Gran</h6>
-                      <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Manager</p>
-                  <p class="text-xs text-secondary mb-0">Executive</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                      <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">Programator</p>
-                  <p class="text-xs text-secondary mb-0">Developer</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                </td>
-                <td class="align-middle">
-                  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    Edit
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="col-12 col-md-6 order-md-2 order-first">
+        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Input</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
+  <section class="section">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Basic Inputs</h4>
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="basicInput">Basic Input</label>
+              <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
+            </div>
+
+            <div class="form-group">
+              <label for="helpInputTop">Input text with help</label>
+              <small class="text-muted">eg.<i>someone@example.com</i></small>
+              <input type="text" class="form-control" id="helpInputTop">
+            </div>
+
+            <div class="form-group">
+              <label for="helperText">With Helper Text</label>
+              <input type="text" id="helperText" class="form-control" placeholder="Name">
+              <p><small class="text-muted">Find helper text here for given textbox.</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="disabledInput">Disabled Input</label>
+              <input type="text" class="form-control" id="disabledInput" placeholder="Disabled Text" disabled>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput">Readonly Input</label>
+              <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="You can't update me :P">
+            </div>
+
+            <div class="form-group">
+              <label for="disabledInput">Static Text</label>
+              <p class="form-control-static" id="staticInput">email@mazer.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Input Style start -->
+  <section id="input-style">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Input Styles</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <p>To set rounded border to input box, use <code>.round</code> class and
+                  to set square border to input box, use <code>.sqaure</code> class
+                  alongwith
+                  <code>.form-control</code> class.
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="roundText">Rounded Input</label>
+                  <input type="text" id="roundText" class="form-control round" placeholder="Rounded Input">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="squareText">Square Input</label>
+                  <input type="text" id="squareText" class="form-control square" placeholder="Square Input">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Input Style end -->
+
+  <!-- Horizontal Input start -->
+  <section id="horizontal-input">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Horizontal Input</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <p>To make label in center of form-control, use <code>.col-form-label</code>
+                  class with
+                  <code>&lt;label&gt;</code> element. This is default bootstrap class.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row align-items-center">
+                  <div class="col-lg-2 col-3">
+                    <label class="col-form-label">First Name</label>
+                  </div>
+                  <div class="col-lg-10 col-9">
+                    <input type="text" id="first-name" class="form-control" name="fname" placeholder="First Name">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row align-items-center">
+                  <div class="col-lg-2 col-3">
+                    <label class="col-form-label">Last Name</label>
+                  </div>
+                  <div class="col-lg-10 col-9">
+                    <input type="text" id="last-name" class="form-control" name="fname" placeholder="Last Name">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Horizontal Input end -->
+
+  <!-- Basic File Browser start -->
+  <section id="input-file-browser">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">File Input</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6 col-md-12">
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Default file input
+                    example</label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>
+                <div class="mb-3">
+                  <label for="formFileMultiple" class="form-label">Multiple files input
+                    example</label>
+                  <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div>
+                <div class="mb-3">
+                  <label for="formFileDisabled" class="form-label">Disabled file input
+                    example</label>
+                  <input class="form-control" type="file" id="formFileDisabled" disabled>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+
+                <div class="mb-3">
+                  <label for="formFileSm" class="form-label">Small file input
+                    example</label>
+                  <input class="form-control form-control-sm" id="formFileSm" type="file">
+                </div>
+                <div>
+                  <label for="formFileLg" class="form-label">Large file input
+                    example</label>
+                  <input class="form-control form-control-lg" id="formFileLg" type="file">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Basic File Browser end -->
+
+  <!-- Input with Icons start -->
+  <section id="input-with-icons">
+    <div class="row match-height">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Input with Icons</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <p>For Input Box with icon use <code>.position-relative</code> class with
+                  <code>.form-group</code> and use class <code>.has-icon-left</code> or
+                  <code>.has-icon-right</code> class for icon on
+                  left side.
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <h6>Left Icon</h6>
+                <div class="form-group position-relative has-icon-left">
+                  <input type="text" class="form-control is-invalid" placeholder="Input with icon left">
+                  <div class="form-control-icon">
+                    <i class="bi bi-person"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <h6>Right Icon</h6>
+                <div class="form-group position-relative has-icon-right">
+                  <input type="text" class="form-control" placeholder="Icon Right, Default Input">
+                  <div class="form-control-icon">
+                    <i class="bi bi-bookmarks"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Input with Icons end -->
+
+  <!-- Input Sizing start -->
+  <section id="input-sizing">
+    <div class="row match-height">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Control Sizing Option</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <p>For different sizes of Input, Use classes like
+                  <code>.form-control-lg</code> &amp;
+                  <code>.form-control-sm</code> for Large, Small input box.
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <h6>Large</h6>
+                <input class="form-control form-control-lg" type="text" placeholder="Large Input">
+              </div>
+              <div class="col-sm-4">
+                <h6>Default</h6>
+                <input class="form-control" type="text" placeholder="Default Input">
+              </div>
+              <div class="col-sm-4">
+                <h6>Small</h6>
+                <input class="form-control form-control-sm" type="text" placeholder="Small Input">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Input Sizing end -->
+
+  <!-- validations start -->
+  <section id="input-validation">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Input Validation States</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <p>You can indicate invalid and valid form fields with
+                  <code>.is-invalid</code> and
+                  <code>.is-valid</code>. Note that <code>.invalid-feedback</code> is also
+                  supported
+                  with these classes.
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <label for="valid-state">Valid State</label>
+                <input type="text" class="form-control is-valid" id="valid-state" placeholder="Valid" value="Valid" required>
+                <div class="valid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  This is valid state.
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label for="invalid-state">Invalid State</label>
+                <input type="text" class="form-control is-invalid" id="invalid-state" placeholder="Invalid" value="Invalid" required>
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  This is invalid state.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- validations end -->
+
 </div>
