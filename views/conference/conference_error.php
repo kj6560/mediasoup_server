@@ -287,7 +287,7 @@
 
 
 <div class="container text-center" id="mydiv">
-    <h4><?php
+    <h4 style="margin-top: 100px;"><?php
         $error = $data['errors'];
         echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
         ?></h4>
