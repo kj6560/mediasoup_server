@@ -271,14 +271,13 @@
     <img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">
 </section>
 
-<section class="video-confrence">
-    <div class="container">
-        <?php 
-            $error = $data['errors'];
-            echo $error['code']==0 ? $error['msg']:"You reached here accidently";
-        ?>
-    </div>
-</section>
+
+<div class="container">
+    <?php
+    $error = $data['errors'];
+    echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
+    ?>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
