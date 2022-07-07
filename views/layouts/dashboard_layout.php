@@ -87,9 +87,6 @@
                 </a>
             </header>
 
-            <div class="page-heading">
-                <h3>Profile Statistics</h3>
-            </div>
             <?php require $data['view']; ?>
 
             <footer>
