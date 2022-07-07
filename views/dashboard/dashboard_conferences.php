@@ -1,8 +1,9 @@
-<?php 
+<?php
+
 use App\ViewHelpers;
 ?>
 <style>
-  .dataTable-dropdown{
+  .dataTable-dropdown {
     display: none;
   }
 </style>
@@ -29,20 +30,21 @@ use App\ViewHelpers;
           foreach ($data['conferences'] as $conference) {
           ?>
             <tr>
-              <td><a href="<?php echo "/conference_detail/".$conference['id'];?>" ><?php echo $conference['title'] ?></a></td>
+              <td><a href="<?php echo "/conference_detail/" . $conference['id']; ?>"><?php echo $conference['title'] ?></a></td>
               <td><?php echo $conference['name'] ?></td>
               <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
               <td>
-                <?php if($conference['is_available']){ ?>
-                <span class="badge bg-success">Active</span>
-                <?php }else{ ?>
-                <span class="badge bg-danger">InActive</span>
+                <?php if ($conference['is_available']) { ?>
+                  <span class="badge bg-success">Active</span>
+                <?php } else { ?>
+                  <span class="badge bg-danger">InActive</span>
                 <?php } ?>
               </td>
               <td><?php echo $conference['conference_date'] ?></td>
               <td>
-              <a href="<?php echo "/conference_edit/".$conference['id'];?>"><span class="badge bg-primary">Edit</span></a>
-                <a href="<?php echo "/conference_delete/".$conference['id'];?>"><span class="badge bg-danger">Delete</span></a>
+                <a href="<?php echo "/conference_main/" . $conference['id']; ?>"><span class="badge bg-primary">Join</span></a>
+                <a href="<?php echo "/conference_edit/" . $conference['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
               </td>
             </tr>
           <?php
