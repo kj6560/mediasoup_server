@@ -31,6 +31,7 @@ class ConferenceController extends Controller
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
 		$msg = "";
+		$code = 0;
 		if (!empty($_POST)) {
 			$data = $_POST;
 			$conf = new Conference;
@@ -45,9 +46,12 @@ class ConferenceController extends Controller
 			$conference = $conf->create();
 			if ($conference) {
 				$msg = "conference created successfully";
+				$code=1;
+			}else{
+				$msg = "conference creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users,"msg"=>$msg));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users,"msg"=>array('text'=>$msg,'code'=>$code)));
 	}
 	//conference detail action
 	public function conference_detail($id, RouteCollection $routes)

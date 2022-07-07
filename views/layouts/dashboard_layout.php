@@ -96,10 +96,10 @@
                                 </ol>
                             </nav>
                         </div>
-                        <div class="alert alert-primary alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
+                        <div class="alert alert-<?php echo !empty($data['msg']['code'])?'show':'hide'?> alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
                             <?php
                             if ($data['msg']) {
-                                echo $data['msg'];
+                                echo $data['msg']['text'];
                             }
                             ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
