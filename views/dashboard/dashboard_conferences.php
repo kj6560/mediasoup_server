@@ -9,7 +9,6 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
-      All Conferences
       <a href="/add_conferences" class="btn btn-success" style="float: right;">Add</a>
     </div>
     <div class="card-body">
