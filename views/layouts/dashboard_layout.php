@@ -96,30 +96,10 @@
                                 </ol>
                             </nav>
                         </div>
-                        <div class="alert alert-primary alert-dismissible fade hide" role="alert">
+                        <div class="alert alert-primary alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
                             <?php
                             if ($data['msg']) {
-                                
-                            ?>
-                                <script>
-                                    var el = document.getElementsByClassName("alert-dismissible");
-                                    if (hasClass(el, "hide")) {
-                                        removeClass(el, "hide");
-                                        addClass(el, "show");
-                                    }
-                                </script>
-                            <?php
-                            echo $data['msg'];
-                            } else {
-                            ?>
-                                <script>
-                                    var el = document.getElementsByClassName("alert-dismissible");
-                                    if (hasClass(el, "show")) {
-                                        removeClass(el, "show");
-                                        addClass(el, "hide");
-                                    }
-                                </script>
-                            <?php
+                                echo $data['msg'];
                             }
                             ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
