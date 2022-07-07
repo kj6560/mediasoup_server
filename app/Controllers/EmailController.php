@@ -12,7 +12,7 @@ class EmailController
 {
     public static function send($organisation, $from, $to, $subject = null, $body, $attachment = null, $cc = null, $bcc = null, $html_body = false)
     {
-
+        print_r($body);
         $mail = new PHPMailer(true);
 
         try {
