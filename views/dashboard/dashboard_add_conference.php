@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
               <input class="form-group" type="submit" id="submit" name="submit" value="Create">
-              
+
             </div>
           </form>
 
@@ -56,3 +56,6 @@
     </div>
   </div>
 </section>
+<script src="assets/js/app.js"></script>
+
+<script src="assets/js/extensions/form-element-select.js"></script>
