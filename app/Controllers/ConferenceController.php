@@ -30,6 +30,7 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		$userModel = new User;
 		$users = $userModel->getByAttributes(array('organisation' => $organisation));
+		print_r($users);
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference","users"=>$users));
 	}
 	//conference detail action
