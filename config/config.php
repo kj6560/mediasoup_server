@@ -10,7 +10,7 @@ define('BASE', 'https://drrksuri.com/');
 
 define('SMTP_HOST', 'smtp.gmail.com');
 define('SMTP_USER', 'kj6560@gmail.com');
-//define('SMTP_PASSWORD', '');
+define('SMTP_PASSWORD', ' ');
 define('SMTP_PORT', 465);
 $host = "54.70.129.232";
 $username = "angeltalk";
