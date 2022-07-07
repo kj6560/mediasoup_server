@@ -13,6 +13,7 @@
             </div>
 
             <div class="form-group">
+              <label for="basicInput">Conference Type</label>
               <fieldset class="form-group">
                 <select class="form-select" id="basicSelect">
                   <option>IT</option>
@@ -24,7 +25,7 @@
 
             <div class="form-group">
               <label for="helperText">With Helper Text</label>
-              <input type="text" id="helperText" class="form-control" placeholder="Name">
+              <input type="datetime-local" id="birthdaytime" name="birthdaytime">
               <p><small class="text-muted">Find helper text here for given textbox.</small>
               </p>
             </div>
