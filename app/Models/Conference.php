@@ -15,7 +15,7 @@ class Conference extends BaseModel
         return !empty($conference)?$conference[0]:false;
     }
     public function readAllConferencesForCompanies($organisation){
-        $query = "select * from conference where organisation=$organisation";
+        $query = "select * from conference where organisation=$organisation inner join user u on conference.conference_by = u.id";
         $conference  = R::getAssocRow($query);
         return !empty($conference)?$conference:false;
     }
