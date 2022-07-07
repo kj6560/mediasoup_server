@@ -1,6 +1,11 @@
 <?php 
 use App\ViewHelpers;
 ?>
+<style>
+  .dataTable-dropdown{
+    display: none;
+  }
+</style>
 <section class="section">
   <div class="card">
     <div class="card-header">
