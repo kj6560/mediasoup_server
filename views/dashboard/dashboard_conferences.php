@@ -3,7 +3,6 @@
     <div class="card-header">
       All Conferences
       <a href="/add_conferences" class="btn btn-success" style="float: right;">Add</a>
-      <?php print_r($data['conferences']); ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -17,16 +16,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Graiden</td>
-            <td>vehicula.aliquet@semconsequat.co.uk</td>
-            <td>076 4820 8838</td>
-            <td>
-              <span class="badge bg-success">Active</span>
-            </td>
-            <td>Offenburg</td>
+          <?php
 
-          </tr>
+          foreach ($data['conferences'] as $conference) {
+          ?>
+            <tr>
+              <td>Graiden</td>
+              <td>vehicula.aliquet@semconsequat.co.uk</td>
+              <td>076 4820 8838</td>
+              <td>
+                <span class="badge bg-success">Active</span>
+              </td>
+              <td>Offenburg</td>
+
+            </tr>
+          <?php
+          }
+          ?>
+
 
         </tbody>
       </table>
