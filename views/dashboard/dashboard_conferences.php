@@ -19,10 +19,11 @@
             <td>Graiden</td>
             <td>vehicula.aliquet@semconsequat.co.uk</td>
             <td>076 4820 8838</td>
-            <td>Offenburg</td>
             <td>
               <span class="badge bg-success">Active</span>
             </td>
+            <td>Offenburg</td>
+
           </tr>
 
         </tbody>
