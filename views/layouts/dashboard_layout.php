@@ -104,7 +104,7 @@
 
             </div>
 
-            
+
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
@@ -118,7 +118,7 @@
             </footer>
         </div>
     </div>
-    <script src="assets/js/app.js"></script>
+    
 
     <script src="assets/js/pages/dashboard.js"></script>
 
