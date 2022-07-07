@@ -62,6 +62,7 @@ class EmailController
                 $mail->AltBody = $body;
             }
 
+
             if ($mail->send()) {
                 return true;
             } else {
