@@ -2,7 +2,9 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 // Autoloader
 require_once '../vendor/autoload.php';
 session_start();
