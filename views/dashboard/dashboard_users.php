@@ -20,6 +20,7 @@ use App\ViewHelpers;
             <th>Organisation</th>
             <th>Role</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +39,7 @@ use App\ViewHelpers;
                   <a href="<?php echo "/user_status/" . $user['id']."/".$user['user_status']; ?>"><span class="badge bg-danger">InActive</span></a>
                 <?php } ?>
               </td>
-              <td><?php echo $user['user_date'] ?></td>
+              
               <td>
                 <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
                 <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
