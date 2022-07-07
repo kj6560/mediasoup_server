@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Auth;
 use App\Models\Conference;
+use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
 class ConferenceController extends Controller
@@ -27,7 +28,8 @@ class ConferenceController extends Controller
 	{
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
-		$users = $user->getByAttributes(array('organisation' => $organisation));
+		$userModel = new User;
+		$users = $userModel->getByAttributes(array('organisation' => $organisation));
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference","users"=>$users));
 	}
 	//conference detail action
