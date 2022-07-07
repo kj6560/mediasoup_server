@@ -99,7 +99,7 @@
                         <div class="alert alert-primary alert-dismissible fade hide" role="alert">
                             <?php
                             if ($data['msg']) {
-                                echo $data['msg'];
+                                
                             ?>
                                 <script>
                                     var el = document.getElementsByClassName("alert-dismissible");
@@ -109,6 +109,7 @@
                                     }
                                 </script>
                             <?php
+                            echo $data['msg'];
                             } else {
                             ?>
                                 <script>
