@@ -64,7 +64,7 @@ class EmailController
             }
 
 
-            if ($mail->send()) {
+            if ($mail->Send()) {
                 return true;
             } else {
                 return false;
