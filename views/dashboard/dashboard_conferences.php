@@ -26,7 +26,7 @@ use App\ViewHelpers;
             <tr>
               <td><?php echo $conference['title'] ?></td>
               <td><?php echo $conference['name'] ?></td>
-              <td><?php ViewHelpers::getParticipants($conference['conference_for']); ?></td>
+              <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
               <td>
                 <?php if($conference['is_available']){ ?>
                 <span class="badge bg-success">Active</span>

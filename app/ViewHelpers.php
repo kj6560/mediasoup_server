@@ -10,7 +10,6 @@ class ViewHelpers
         foreach($users as $participant){
             array_push($participants,$participant['name']);
         }
-        print_r($participants);
         return implode(",",$participants);
     }
 }
