@@ -96,7 +96,7 @@
                                 </ol>
                             </nav>
                         </div>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <div class="alert alert-primary alert-dismissible fade hide" role="alert">
                             <?php 
                                 if($data['msg']){
                                     echo $data['msg'];
