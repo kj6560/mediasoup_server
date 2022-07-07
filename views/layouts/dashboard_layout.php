@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITE_NAME; ?></title>
 
-    <link rel="stylesheet" href="assets/css/main/app.css">
-    <link rel="stylesheet" href="assets/css/main/app-dark.css">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <link rel="stylesheet" href="<?php echo BASE.'assets/css/main/app.css'?>">
+    <link rel="stylesheet" href="<?php echo BASE.'assets/css/main/app-dark.css'?>">
+    <link rel="shortcut icon" href="<?php echo BASE.'assets/images/logo/favicon.svg'?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE.'assets/images/logo/favicon.png'?>" type="image/png">
 
-    <link rel="stylesheet" href="assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="<?php echo BASE.'assets/css/shared/iconly.css'?>">
 
 </head>
 
