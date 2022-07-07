@@ -119,7 +119,7 @@
                         <p>2022 &copy; Psychowellness Center</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://shiwkesh.online">Shiwkesh</a></p>
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://shiwkesh.online">Shiwkesh Schematics Private Limited</a></p>
                     </div>
                 </div>
             </footer>
