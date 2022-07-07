@@ -22,7 +22,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> -->VideoConf</a>
+                            <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> -->Video Conference</a>
                         </div>
 
                     </div>
@@ -88,14 +88,7 @@
                             <h3><?php echo !empty($data['page_heading']) ? $data['page_heading'] : '' ?></h3>
                             <p class="text-subtitle text-muted"><?php echo !empty($data['page_description']) ? $data['page_description'] : ''; ?></p>
                         </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Input</li>
-                                </ol>
-                            </nav>
-                        </div>
+                        
                         <div class="alert alert-<?php echo !empty($data['msg']['code'])?'show':'hide'?> alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
                             <?php
                             if ($data['msg']) {
