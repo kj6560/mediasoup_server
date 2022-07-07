@@ -2,6 +2,7 @@
   <div class="card">
     <div class="card-header">
       All Conferences
+      <a href="#" class="btn btn-success" style="float: right;">Success</a>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
