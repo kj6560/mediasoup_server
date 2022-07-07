@@ -5,6 +5,20 @@
         padding: 0;
     }
 
+    #mydiv {
+        top: 50%;
+        left: 50%;
+        width: 30em;
+        height: 18em;
+        margin-top: -9em;
+        /*set to a negative number 1/2 of your height*/
+        margin-left: -15em;
+        /*set to a negative number 1/2 of your width*/
+        border: 1px solid #ccc;
+        background-color: #f3f3f3;
+        position: fixed;
+    }
+
     body {
         width: 100%;
         height: 100vh;
@@ -272,7 +286,7 @@
 </section>
 
 
-<div class="container text-center">
+<div class="container text-center" id="mydiv">
     <?php
     $error = $data['errors'];
     echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
