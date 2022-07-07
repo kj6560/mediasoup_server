@@ -33,17 +33,25 @@ class EmailController
                 $mail->addAddress($recp);
             }
             $mail->addReplyTo($from, 'Information');
-            foreach ($cc as $c) {
-                $mail->addCC($c);
+            if ($cc) {
+                foreach ($cc as $c) {
+                    $mail->addCC($c);
+                }
             }
-            foreach ($bcc as $bc) {
-                $mail->addBCC($bc);
+
+            if ($bcc) {
+                foreach ($bcc as $bc) {
+                    $mail->addBCC($bc);
+                }
             }
 
 
             //Attachments
-            $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+            if ($attachment) {
+                foreach ($attachment as $attach) {
+                    $mail->addAttachment($attach);
+                }
+            }
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
