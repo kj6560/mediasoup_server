@@ -22,7 +22,7 @@ class ConferenceController extends Controller
 			$conferences['user_name'] = $user['name'];
 			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
 		} else {
-			AppHelpers::redirect('/conference_error');
+			AppHelpers::redirect('/conference_error/'.$conferences['id']);
 		}
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
