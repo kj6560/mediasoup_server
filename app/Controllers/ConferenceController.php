@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
+use App\AppHelpers;
 use App\Auth;
 use App\Models\Conference;
 use App\Models\User;
+use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
 
 class ConferenceController extends Controller
@@ -21,16 +23,10 @@ class ConferenceController extends Controller
 	}
 	public function conferences(RouteCollection $routes)
 	{
-		$conf = new Conference;
-		// $conferences = $conf->readConferences($user_id, $type);
-		// $conferences['current_user'] = $user_id;
-		// $user = $conf->getUserById($user_id);
-		// $conferences['user_name'] = $user['name'];
-		$user = Auth::logger('user');
+		$conf = new Conference;$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$conferences = $conf->readAllConferencesForCompanies($organisation);
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences, "page_heading" => "Conferences"));
-		//$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
 	//add conference action
 	public function add_conferences(RouteCollection $routes)
@@ -69,6 +65,16 @@ class ConferenceController extends Controller
 		$conf->id = $id;
 		$conference = $conf->getByPk();
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array("page_heading" => "Conference Detail"));
+	}
+	//conference detail action
+	public function conference_status($id,$status, RouteCollection $routes)
+	{
+		$conf = R::load('conference',$id);
+		$conf->is_available = $status==1?0:1;
+		$cnf = R::store($conf);
+		if($cnf){
+			AppHelpers::redirect('/conferences');
+		}
 	}
 	public function conferenceCompanies(int $user_id, $type, RouteCollection $routes)
 	{
