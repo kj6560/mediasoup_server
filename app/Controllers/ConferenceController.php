@@ -20,7 +20,7 @@ class ConferenceController extends Controller
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$conferences = $conf->readAllConferencesForCompanies($organisation);
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences,"page_heading"=>"Conferences"));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences, "page_heading" => "Conferences"));
 		//$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
 	//add conference action
@@ -30,15 +30,31 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference","users"=>$users));
+		if (!empty($_POST)) {
+			$data = $_POST;
+			$conf = new Conference;
+			$conf->title = $data['title'];
+			$conf->conference_by = $user['id'];
+			$conf->conference_for = implode(",", $data['conference_for']);
+			$conf->conference_date = $data['conference_date'];
+			$conf->conference_type = $data['conference_type'];
+			$conf->organisation = $organisation;
+			$conf->conference_room_id = rand(1000, 1000000);
+			$conf->is_available = 1;
+			$conference = $conf->create();
+			if ($conference) {
+				echo "created";
+			}
+		}
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users));
 	}
 	//conference detail action
-	public function conference_detail($id,RouteCollection $routes)
+	public function conference_detail($id, RouteCollection $routes)
 	{
 		$conf = new Conference;
 		$conf->id = $id;
 		$conference = $conf->getByPk();
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array("page_heading"=>"Conference Detail"));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array("page_heading" => "Conference Detail"));
 	}
 	public function conferenceCompanies(int $user_id, $type, RouteCollection $routes)
 	{

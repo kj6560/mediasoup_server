@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
             <label for="basicInput">Select participants for conference</label>
-              <select class="choices form-select multiple-remove" multiple="multiple" name="conference_for">
+              <select class="choices form-select multiple-remove" multiple="multiple" name="conference_for[]">
                 <optgroup label="Organisation Users">
                   <?php
                       foreach($data['users'] as $user){
