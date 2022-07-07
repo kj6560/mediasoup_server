@@ -12,7 +12,6 @@ class EmailController
 {
     public static function send($organisation, $from, $to, $subject = null, $body, $attachment = null, $cc = null, $bcc = null, $html_body = false)
     {
-        print_r($body);
         $mail = new PHPMailer(true);
 
         try {
@@ -62,8 +61,6 @@ class EmailController
             } else {
                 $mail->AltBody = $body;
             }
-
-            echo $mail->Body,$mail->AltBody;
 
             if ($mail->send()) {
                 return true;
