@@ -12,6 +12,7 @@ if($auth->guard('user')){
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method'=>'dashboard'), array()));
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method'=>'users'), array()));
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method'=>'conferences'), array()));
+    $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conference_detail/{conference_id}', array('controller' => 'ConferenceController', 'method'=>'conference_detail'), array()));
     $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method'=>'add_conferences'), array()));
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method'=>'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method'=>'reports'), array()));
