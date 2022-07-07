@@ -58,7 +58,7 @@ class EmailController
             $mail->Subject = $subject;
 
             if ($html_body) {
-                $mail->Body = $body;
+                $mail->Body = 'This is the body in plain text for non-HTML mail clients';
             } else {
                 $mail->AltBody = $body;
             }
