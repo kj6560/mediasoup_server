@@ -17,8 +17,8 @@
               <label for="basicInput">Conference Type</label>
               <fieldset class="form-group">
                 <select class="form-select" id="basicSelect" name="conference_type">
-                  <option>Blade Runner</option>
-                  <option>Thor Ragnarok</option>
+                  <option value="1">One To One</option>
+                  <option value="2">Many To Many</option>
                 </select>
               </fieldset>
             </div>
