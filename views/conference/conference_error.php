@@ -10,7 +10,7 @@
         left: 50%;
         width: 30em;
         height: 18em;
-        margin-top: 100px;
+        margin-top: -9em;
         /*set to a negative number 1/2 of your height*/
         margin-left: -15em;
         /*set to a negative number 1/2 of your width*/
@@ -287,10 +287,10 @@
 
 
 <div class="container text-center" id="mydiv">
-    <?php
-    $error = $data['errors'];
-    echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
-    ?>
+    <h4><?php
+        $error = $data['errors'];
+        echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
+        ?></h4>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
