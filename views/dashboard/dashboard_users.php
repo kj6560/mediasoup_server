@@ -32,7 +32,7 @@ use App\ViewHelpers;
               <td><?php echo $user['org_name'] ?></td>
               <td><?php echo $user['role']; ?></td>
               <td>
-                <?php if ($user['is_available']) { ?>
+                <?php if ($user['user_status']) { ?>
                   <a href="<?php echo "/user_status/" . $user['id']."/".$user['user_status']; ?>"><span class="badge bg-success">Active</span></a>
                 <?php } else { ?>
                   <a href="<?php echo "/user_status/" . $user['id']."/".$user['user_status']; ?>"><span class="badge bg-danger">InActive</span></a>
