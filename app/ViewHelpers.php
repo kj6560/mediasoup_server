@@ -1,7 +1,7 @@
 <?php
 namespace App;
 use RedBeanPHP\R;
-class AppHelpers
+class ViewHelpers
 {
     public static function getParticipants($user_ids){
         $query = "select name from users where id in ($user_ids)";
