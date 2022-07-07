@@ -8,7 +8,7 @@ use Symfony\Component\Routing\RouteCollection;
 $routes = new RouteCollection();
 $auth = new Auth;
 if($auth->guard('user')){
-    $routes->add('conference', new Route(constant('URL_SUBFOLDER') . '/conference/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conference'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
+    $routes->add('conference_main', new Route(constant('URL_SUBFOLDER') . '/conference_mian/{conf_id}', array('controller' => 'ConferenceController', 'method'=>'conference_main'), array('conf_id' => '[0-9]+','type' => '[0-9]+')));
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method'=>'dashboard'), array()));
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method'=>'users'), array()));
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method'=>'conferences'), array()));

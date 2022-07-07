@@ -10,6 +10,15 @@ use Symfony\Component\Routing\RouteCollection;
 class ConferenceController extends Controller
 {
 
+	public function conference_main($conf_id,RouteCollection $routes)
+	{
+		$user = Auth::logger('user');
+		$conf = new Conference;
+		$conferences = $conf->readConferences($conf_id);
+		$conferences['current_user'] = $user['id'];
+		$conferences['user_name'] = $user['name'];
+		$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
+	}
 	public function conferences(RouteCollection $routes)
 	{
 		$conf = new Conference;
