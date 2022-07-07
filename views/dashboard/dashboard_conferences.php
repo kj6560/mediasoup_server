@@ -20,6 +20,7 @@ use App\ViewHelpers;
             <th>Participants</th>
             <th>Status</th>
             <th>Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +40,9 @@ use App\ViewHelpers;
                 <?php } ?>
               </td>
               <td><?php echo $conference['conference_date'] ?></td>
-
+              <td>
+                <a href="<?php echo "/conference_delete/".$conference['id'];?>"><span class="badge bg-danger">Delete</span></a>
+              </td>
             </tr>
           <?php
           }
