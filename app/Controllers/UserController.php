@@ -26,7 +26,7 @@ class UserController extends Controller
 		$user->is_available = $status == 1 ? 0 : 1;
 		$usr = R::store($user);
 		if ($usr) {
-			AppHelpers::redirect('/dashboard_users');
+			AppHelpers::redirect('/users');
 		}
 	}
 	
