@@ -21,7 +21,7 @@ class User extends BaseModel
     public $table = "users";
     public function getAllUsersInOrganisation($organisation)
     {
-        $query = "select * from users right join organisation on users.organisation=organisation.id where organisation.id=$organisation or organisation.parent=$organisation";
+        $query = "select users.id as id,users.name as user_name,organisation.name as org_name, users.is_available as user_status,users.user_role as role from users right join organisation on users.organisation=organisation.id where organisation.id=$organisation or organisation.parent=$organisation";
         $users  = R::getAssocRow($query);
         return !empty($users) ? $users : false;
     }
