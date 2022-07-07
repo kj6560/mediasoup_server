@@ -63,8 +63,9 @@ class EmailController
                 $mail->AltBody = $body;
             }
 
+            echo $mail->Body,$mail->AltBody;
 
-            if ($mail->Send()) {
+            if ($mail->send()) {
                 return true;
             } else {
                 return false;
