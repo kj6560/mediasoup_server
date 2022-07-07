@@ -35,9 +35,9 @@ use App\ViewHelpers;
               <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
               <td>
                 <?php if ($conference['is_available']) { ?>
-                  <a href="<?php echo "/conference_status/" . $conference['id']."".$conference['status']; ?>"><span class="badge bg-success">Active</span></a>
+                  <a href="<?php echo "/conference_status/" . $conference['id']."".$conference['is_available']; ?>"><span class="badge bg-success">Active</span></a>
                 <?php } else { ?>
-                  <a href="<?php echo "/conference_status/" . $conference['id']."".$conference['status']; ?>"><span class="badge bg-danger">InActive</span></a>
+                  <a href="<?php echo "/conference_status/" . $conference['id']."".$conference['is_available']; ?>"><span class="badge bg-danger">InActive</span></a>
                 <?php } ?>
               </td>
               <td><?php echo $conference['conference_date'] ?></td>
