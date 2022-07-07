@@ -275,7 +275,7 @@
 <section class="video-confrence">
     <div class="container">
         <?php 
-            $error = $data['error'];
+            $error = $data['errors'];
             echo $error['code']==0 ? $error['msg']:"You reached here accidently";
         ?>
     </div>
