@@ -33,7 +33,7 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conf->id = $conference_id;
 		$conference = $conf->getByPk();
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array());
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array());
 	}
 	public function conferenceCompanies(int $user_id, $type, RouteCollection $routes)
 	{
