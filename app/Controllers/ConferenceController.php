@@ -12,18 +12,39 @@ use Symfony\Component\Routing\RouteCollection;
 class ConferenceController extends Controller
 {
 
-	public function conference_main($conf_id,RouteCollection $routes)
+	public function conference_main($conf_id, RouteCollection $routes)
 	{
 		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
-		$conferences['current_user'] = $user['id'];
-		$conferences['user_name'] = $user['name'];
-		$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
+		if ($conferences['is_available']) {
+			$conferences['current_user'] = $user['id'];
+			$conferences['user_name'] = $user['name'];
+			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
+		} else {
+			AppHelpers::redirect('/conference_error');
+		}
+	}
+	public function conference_error($conf_id, RouteCollection $routes)
+	{
+		$user = Auth::logger('user');
+		$conf = new Conference;
+		$conferences = $conf->readConferences($conf_id);
+		$msg = "";
+		$code = 0;
+		if (!$conferences['is_available']) {
+			$msg .= "Conference is inactive";
+		}
+		$participants = explode(",", $conferences['conference_for']);
+		if (array_search($user['id'], $participants)) {
+			$msg .= "you are not a part of the conference";
+		}
+		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg'=>$msg,'code'=>$code)));
 	}
 	public function conferences(RouteCollection $routes)
 	{
-		$conf = new Conference;$user = Auth::logger('user');
+		$conf = new Conference;
+		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$conferences = $conf->readAllConferencesForCompanies($organisation);
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences, "page_heading" => "Conferences"));
@@ -51,12 +72,12 @@ class ConferenceController extends Controller
 			$conference = $conf->create();
 			if ($conference) {
 				$msg = "conference created successfully";
-				$code=1;
-			}else{
+				$code = 1;
+			} else {
 				$msg = "conference creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users,"msg"=>array('text'=>$msg,'code'=>$code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//conference detail action
 	public function conference_detail($id, RouteCollection $routes)
@@ -67,12 +88,12 @@ class ConferenceController extends Controller
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array("page_heading" => "Conference Detail"));
 	}
 	//conference detail action
-	public function conference_status($id,$status, RouteCollection $routes)
+	public function conference_status($id, $status, RouteCollection $routes)
 	{
-		$conf = R::load('conference',$id);
-		$conf->is_available = $status==1?0:1;
+		$conf = R::load('conference', $id);
+		$conf->is_available = $status == 1 ? 0 : 1;
 		$cnf = R::store($conf);
-		if($cnf){
+		if ($cnf) {
 			AppHelpers::redirect('/conferences');
 		}
 	}
