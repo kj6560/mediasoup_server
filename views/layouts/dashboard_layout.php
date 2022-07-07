@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITE_NAME; ?></title>
 
-    <link rel="stylesheet" href="<?php echo BASE.'assets/css/main/app.css'?>">
-    <link rel="stylesheet" href="<?php echo BASE.'assets/css/main/app-dark.css'?>">
-    <link rel="shortcut icon" href="<?php echo BASE.'assets/images/logo/favicon.svg'?>" type="image/x-icon">
-    <link rel="shortcut icon" href="<?php echo BASE.'assets/images/logo/favicon.png'?>" type="image/png">
+    <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app.css' ?>">
+    <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app-dark.css' ?>">
+    <link rel="shortcut icon" href="<?php echo BASE . 'assets/images/logo/favicon.svg' ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE . 'assets/images/logo/favicon.png' ?>" type="image/png">
 
-    <link rel="stylesheet" href="<?php echo BASE.'assets/css/shared/iconly.css'?>">
+    <link rel="stylesheet" href="<?php echo BASE . 'assets/css/shared/iconly.css' ?>">
 
 </head>
 
@@ -85,8 +85,8 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Create Conferences</h3>
-                            <p class="text-subtitle text-muted">Create Conferences for your organisation.</p>
+                            <h3><?php echo !empty($data['page_heading']) ? $data['page_heading'] : '' ?></h3>
+                            <p class="text-subtitle text-muted"><?php echo !empty($data['page_description']) ? $data['page_description'] : ''; ?></p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -118,7 +118,7 @@
             </footer>
         </div>
     </div>
-   
+
 
 </body>
 
