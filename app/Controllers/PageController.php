@@ -12,7 +12,8 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
-		EmailController::send(1, 'kj6560@gmail.com', 'shiwkesh@gmail.com', "some test sub", "Hi there!", null, null, null, false);
+		
+		EmailController::send(1, 'kj6560@gmail.com', array('shiwkesh@gmail.com'), "some test sub", "Hi there!", null, null, null, false);
 		$this->loadView('general_layout', 'pages/home', array());
 	}
 	// login action
