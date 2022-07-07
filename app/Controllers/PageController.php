@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\AppHelpers;
+use App\Auth;
 use App\Models\Organisation;
 use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
