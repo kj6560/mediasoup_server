@@ -25,7 +25,7 @@ class ConferenceController extends Controller
 	//add conference action
 	public function add_conferences(RouteCollection $routes)
 	{
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array());
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("page_heading"=>"Add conference"));
 	}
 	//conference detail action
 	public function conference_detail($id,RouteCollection $routes)
@@ -33,7 +33,7 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conf->id = $id;
 		$conference = $conf->getByPk();
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array());
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conference_detail', array("page_heading"=>"Conference Detail"));
 	}
 	public function conferenceCompanies(int $user_id, $type, RouteCollection $routes)
 	{
