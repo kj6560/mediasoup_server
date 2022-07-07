@@ -27,6 +27,7 @@ use App\ViewHelpers;
           <?php
 
           foreach ($data['conferences'] as $conference) {
+            print_r($conference);
           ?>
             <tr>
               <td><a href="/conference_detail/".<?php echo $conference['id'];?> ><?php echo $conference['title'] ?></a></td>
