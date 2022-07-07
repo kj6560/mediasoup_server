@@ -3,6 +3,7 @@
     <div class="card-header">
       All Conferences
       <a href="/add_conferences" class="btn btn-success" style="float: right;">Add</a>
+      <?php print_r($data['conferences']); ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
