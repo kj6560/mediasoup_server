@@ -35,7 +35,7 @@ class BaseModel
     }
     public function getAllByAttributes($attributes)
     {
-        $query = "";
+        $query = "select * from ".$this->table." where ";
         $i = 0;
         $count = count($attributes);
         foreach ($attributes as $key => $value) {
@@ -46,7 +46,7 @@ class BaseModel
             }
             $i++;
         }
-        $data = R::findAll($this->table, $query);
+        $data = R::getAssocRow($query);
 
         return !empty($data) ? $data : false;
     }
