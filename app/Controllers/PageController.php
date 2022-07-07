@@ -12,6 +12,7 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
+		EmailController::send(1, 'kj6560@gmail.com', 'shiwkesh@gmail.com', "some test sub", "Hi there!", null, null, null, false);
 		$this->loadView('general_layout', 'pages/home', array());
 	}
 	// login action
@@ -83,55 +84,67 @@ class PageController extends Controller
 			}
 			session_destroy();
 			session_unset();
-		}		
+		}
 		AppHelpers::redirect('/');
 	}
 	//dashboard action
-	public function dashboard(RouteCollection $routes){
+	public function dashboard(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_index', array());
 	}
 	//users action
-	public function users(RouteCollection $routes){
+	public function users(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array());
 	}
 	//conferences action
-	public function conferences(RouteCollection $routes){
+	public function conferences(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array());
 	}
 	//history action
-	public function history(RouteCollection $routes){
+	public function history(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_history', array());
 	}
 	//history action
-	public function reports(RouteCollection $routes){
+	public function reports(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_reports', array());
 	}
 	//notifications action
-	public function notifications(RouteCollection $routes){
+	public function notifications(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_notifications', array());
 	}
 	//contact_support action
-	public function contact_support(RouteCollection $routes){
+	public function contact_support(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_support', array());
 	}
 	//contact_support action
-	public function add_conferences(RouteCollection $routes){
+	public function add_conferences(RouteCollection $routes)
+	{
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array());
 	}
 	//aboutus action
-	public function aboutus(RouteCollection $routes){
+	public function aboutus(RouteCollection $routes)
+	{
 		$this->loadView('general_layout', 'pages/aboutus', array());
 	}
 	//services action
-	public function services(RouteCollection $routes){
+	public function services(RouteCollection $routes)
+	{
 		$this->loadView('general_layout', 'pages/services', array());
 	}
 	//portfolio action
-	public function portfolio(RouteCollection $routes){
+	public function portfolio(RouteCollection $routes)
+	{
 		$this->loadView('general_layout', 'pages/portfolio', array());
 	}
 	//pricing action
-	public function pricing(RouteCollection $routes){
+	public function pricing(RouteCollection $routes)
+	{
 		$this->loadView('general_layout', 'pages/pricing', array());
 	}
 	//error route action
