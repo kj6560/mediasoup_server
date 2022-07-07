@@ -8,9 +8,9 @@ class ViewHelpers
         $users  = R::getAssocRow($query);
         $participants = array();
         foreach($users as $participant){
-            print_r($participant);
             array_push($participants,$participant['name']);
         }
+        print_r($participants);
         return implode(",",$participants);
     }
 }
