@@ -8,7 +8,7 @@ use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-class EmailController extends Controller
+class EmailController
 {
     public function send($organisation, $from, $to, $subject = null, $body, $attachment = null, $cc = null, $bcc = null, $html_body = false)
     {
