@@ -18,6 +18,7 @@ class ConferenceController extends Controller
 		// $conferences['user_name'] = $user['name'];
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
+		print_r($user);die;
 		$conferences = $conf->readAllConferencesForCompanies($organisation);
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conference" => $conferences));
 		//$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
