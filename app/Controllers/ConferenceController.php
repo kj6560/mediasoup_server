@@ -2,19 +2,23 @@
 
 namespace App\Controllers;
 
+use App\Auth;
 use App\Models\Conference;
 use Symfony\Component\Routing\RouteCollection;
 
 class ConferenceController extends Controller
 {
 
-	public function conferences(int $user_id, $type, RouteCollection $routes)
+	public function conferences(RouteCollection $routes)
 	{
 		$conf = new Conference;
-		$conferences = $conf->readConferences($user_id, $type);
-		$conferences['current_user'] = $user_id;
-		$user = $conf->getUserById($user_id);
-		$conferences['user_name'] = $user['name'];
+		// $conferences = $conf->readConferences($user_id, $type);
+		// $conferences['current_user'] = $user_id;
+		// $user = $conf->getUserById($user_id);
+		// $conferences['user_name'] = $user['name'];
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$conferences = $conf->readAllConferencesForCompanies($organisation);
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conference" => $conferences));
 		//$this->loadView('conference_layout','conference/conference',array("conference"=>$conferences));
 	}
