@@ -23,13 +23,13 @@
             <tr>
               <td><?php echo $conference['title'] ?></td>
               <td><?php echo $conference['name'] ?></td>
-              <td><? echo $conference['conference_for'] ?></td>
+              <td><?php echo $conference['conference_for'] ?></td>
               <td>
-                <? if ($conference['is_available']){ ?>
+                <?php if($conference['is_available']){ ?>
                 <span class="badge bg-success">Active</span>
-                <? }else{ ?>
+                <?php }else{ ?>
                 <span class="badge bg-danger">InActive</span>
-                <? } ?>
+                <?php } ?>
               </td>
               <td>Offenburg</td>
 
