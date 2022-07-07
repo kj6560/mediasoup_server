@@ -28,7 +28,7 @@
                 <? if ($conference['is_available']){ ?>
                 <span class="badge bg-success">Active</span>
                 <? }else{ ?>
-                <span class="badge bg-success">Active</span>
+                <span class="badge bg-failure">InActive</span>
                 <? } ?>
               </td>
               <td>Offenburg</td>
