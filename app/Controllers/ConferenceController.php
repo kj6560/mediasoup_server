@@ -25,7 +25,7 @@ class ConferenceController extends Controller
 	//add conference action
 	public function add_conferences(RouteCollection $routes)
 	{
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("page_heading"=>"Add conference"));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading"=>"Add conference"));
 	}
 	//conference detail action
 	public function conference_detail($id,RouteCollection $routes)
