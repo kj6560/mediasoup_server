@@ -44,7 +44,7 @@ use App\ViewHelpers;
               <td>
                 <a href="<?php echo "/conference_edit/" . $conference['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
                 <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-                <a href="<?php echo "/conference_main/" . $conference['id']; ?>"><span class="badge bg-primary">Join</span></a>
+                <a href="<?php echo "/conference_main/" . $conference['id']; ?>" target="_blank"><span class="badge bg-primary">Join</span></a>
               </td>
             </tr>
           <?php
