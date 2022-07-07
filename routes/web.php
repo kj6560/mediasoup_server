@@ -11,8 +11,8 @@ if($auth->guard('user')){
     $routes->add('conference', new Route(constant('URL_SUBFOLDER') . '/conference/{user_id}/{type}', array('controller' => 'ConferenceController', 'method'=>'conference'), array('user_id' => '[0-9]+','type' => '[0-9]+')));
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method'=>'dashboard'), array()));
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method'=>'users'), array()));
-    $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'PageController', 'method'=>'conferences'), array()));
-    $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'PageController', 'method'=>'add_conferences'), array()));
+    $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method'=>'conferences'), array()));
+    $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method'=>'add_conferences'), array()));
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method'=>'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method'=>'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method'=>'notifications'), array()));
