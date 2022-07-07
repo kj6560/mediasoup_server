@@ -21,11 +21,15 @@
           foreach ($data['conferences'] as $conference) {
           ?>
             <tr>
-              <td>Graiden</td>
-              <td>vehicula.aliquet@semconsequat.co.uk</td>
-              <td>076 4820 8838</td>
+              <td><?php echo $conference['title'] ?></td>
+              <td><?php echo $conference['name'] ?></td>
+              <td><? echo $conference['conference_for'] ?></td>
               <td>
+                <? if ($conference['is_available']){ ?>
                 <span class="badge bg-success">Active</span>
+                <? }else{ ?>
+                <span class="badge bg-success">Active</span>
+                <? } ?>
               </td>
               <td>Offenburg</td>
 
