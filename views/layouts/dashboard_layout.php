@@ -118,9 +118,7 @@
             </footer>
         </div>
     </div>
-    
-
-    <script src="assets/js/pages/dashboard.js"></script>
+   
 
 </body>
 
