@@ -1,6 +1,7 @@
 <?php
 namespace App;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use GuzzleHttp\Client;
 class AppHelpers
 {
     public static function redirect($url, $statusCode = 303)
@@ -33,5 +34,13 @@ class AppHelpers
         $cacheItem->set(4711);
 		$cache->save($item);
         return $cacheItem->get();
+    }
+    public static function makeRequest(){
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'http://httpbin.org',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,
+        ]);
     }
 }
