@@ -97,10 +97,29 @@
                             </nav>
                         </div>
                         <div class="alert alert-primary alert-dismissible fade hide" role="alert">
-                            <?php 
-                                if($data['msg']){
-                                    echo $data['msg'];
-                                }
+                            <?php
+                            if ($data['msg']) {
+                                echo $data['msg'];
+                            ?>
+                                <script>
+                                    var el = document.getElementsByClassName("alert-dismissible");
+                                    if (hasClass(el, "hide")) {
+                                        removeClass(el, "hide");
+                                        addClass(el, "show");
+                                    }
+                                </script>
+                            <?php
+                            } else {
+                            ?>
+                                <script>
+                                    var el = document.getElementsByClassName("alert-dismissible");
+                                    if (hasClass(el, "show")) {
+                                        removeClass(el, "show");
+                                        addClass(el, "hide");
+                                    }
+                                </script>
+                            <?php
+                            }
                             ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -129,5 +148,28 @@
 
 
 </body>
+<script>
+    function hasClass(el, className) {
+        if (el.classList)
+            return el.classList.contains(className);
+        return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+    }
+
+    function addClass(el, className) {
+        if (el.classList)
+            el.classList.add(className)
+        else if (!hasClass(el, className))
+            el.className += " " + className;
+    }
+
+    function removeClass(el, className) {
+        if (el.classList)
+            el.classList.remove(className)
+        else if (hasClass(el, className)) {
+            var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+            el.className = el.className.replace(reg, ' ');
+        }
+    }
+</script>
 
 </html>
