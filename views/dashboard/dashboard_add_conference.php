@@ -6,7 +6,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
-          <form action="/add_conference" method="POST">
+          <form action="/add_conferences" method="POST">
 
             <div class="form-group">
               <label for="basicInput">Conference Title</label>
