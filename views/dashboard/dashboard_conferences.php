@@ -29,7 +29,7 @@ use App\ViewHelpers;
           foreach ($data['conferences'] as $conference) {
           ?>
             <tr>
-              <td><a href=""<?php echo "/conference_detail/".$conference['id'];?> ><?php echo $conference['title'] ?></a></td>
+              <td><a href="<?php echo "/conference_detail/".$conference['id'];?>" ><?php echo $conference['title'] ?></a></td>
               <td><?php echo $conference['name'] ?></td>
               <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
               <td>
