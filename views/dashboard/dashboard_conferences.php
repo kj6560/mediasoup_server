@@ -34,7 +34,7 @@ use App\ViewHelpers;
                 <span class="badge bg-danger">InActive</span>
                 <?php } ?>
               </td>
-              <td>Offenburg</td>
+              <td><?php echo $conference['conference_date'] ?></td>
 
             </tr>
           <?php
