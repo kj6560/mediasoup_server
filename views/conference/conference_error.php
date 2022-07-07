@@ -272,7 +272,7 @@
 </section>
 
 
-<div class="container">
+<div class="container text-center">
     <?php
     $error = $data['errors'];
     echo $error['code'] == 0 ? $error['msg'] : "You reached here accidently";
