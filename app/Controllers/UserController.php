@@ -33,9 +33,10 @@ class UserController extends Controller
 	public function add_client(RouteCollection $routes)
 	{
 		$data = $_POST;
+		$msg = "";
+		$code = 0;
 		if (!empty($data)) {
-			$msg = "";
-			$code = 0;
+
 			$user = Auth::logger('user');
 			$organisation = $user['organisation'];
 			$org = new Organisation;
