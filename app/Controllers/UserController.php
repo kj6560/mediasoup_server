@@ -31,6 +31,6 @@ class UserController extends Controller
 	}
 	public function add_client(RouteCollection $routes)
 	{
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array());
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client"));
 	}
 }
