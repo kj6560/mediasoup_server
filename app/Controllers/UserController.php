@@ -10,7 +10,7 @@ use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
 
 class UserController extends Controller
-{	
+{
 	//user detail action
 	public function user_detail($id, RouteCollection $routes)
 	{
@@ -29,5 +29,8 @@ class UserController extends Controller
 			AppHelpers::redirect('/users');
 		}
 	}
-	
+	public function add_client(RouteCollection $routes)
+	{
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array());
+	}
 }
