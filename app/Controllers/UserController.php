@@ -55,4 +55,30 @@ class UserController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
+	public function add_users(RouteCollection $routes)
+	{
+		$data = $_POST;
+		$msg = "";
+		$code = 0;
+		if (!empty($data)) {
+
+			$user = Auth::logger('user');
+			$organisation = $user['organisation'];
+			$newuser = new User;
+			$newuser->name = $data['name'];
+			$newuser->address = $data['address'];
+			$newuser->mobile = $data['mobile'];
+			$newuser->admin = 1;
+			$newuser->is_available = 1;
+			$newuser->organisation = $organisation;
+			$client = $newuser->create();
+			if ($client) {
+				$msg = "Client created successfully";
+				$code = 1;
+			} else {
+				$msg = "Client creation failed";
+			}
+		}
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
+	}
 }
