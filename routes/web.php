@@ -12,6 +12,7 @@ if($auth->guard('user')){
     $routes->add('conference_error', new Route(constant('URL_SUBFOLDER') . '/conference_error/{conf_id}', array('controller' => 'ConferenceController', 'method'=>'conference_error'), array('conf_id' => '[0-9]+','type' => '[0-9]+')));
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method'=>'dashboard'), array()));
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method'=>'users'), array()));
+    $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method'=>'add_users'), array()));
     $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/add_client', array('controller' => 'UserController', 'method'=>'add_client'), array()));
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method'=>'conferences'), array()));
     $routes->add('conference_detail', new Route(constant('URL_SUBFOLDER') . '/conference_detail/{id}', array('controller' => 'ConferenceController', 'method'=>'conference_detail'), array('id' => '[0-9]+')));
