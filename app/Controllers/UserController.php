@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\AppHelpers;
 use App\Auth;
-use App\Models\Conference;
 use App\Models\Organisation;
 use App\Models\User;
 use RedBeanPHP\R;

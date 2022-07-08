@@ -17,4 +17,3 @@ $username = "angeltalk";
 $password = "webrtc1@";
 $database = "angeltalk";
 R::setup("mysql:host=$host;dbname=$database", $username, $password);
-R::freeze(TRUE);
