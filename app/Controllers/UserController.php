@@ -70,11 +70,13 @@ class UserController extends Controller
 			$newuser->name = $data['name'];
 			$newuser->email = $data['email'];
 			$newuser->mobile = $data['mobile'];
-			$newuser->admin = 1;
+			$newuser->user_role = $data['role'];
 			$newuser->is_available = 1;
 			$newuser->organisation = $data['organisation'];
-			$client = $newuser->create();
-			if ($client) {
+			$pass_text = explode("@", $data['email'])[0];
+			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+			$user_created = $newuser->create();
+			if ($user_created) {
 				$msg = "User created successfully";
 				$code = 1;
 			} else {

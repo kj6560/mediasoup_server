@@ -22,6 +22,18 @@
                             <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile">
                         </div>
                         <div class="form-group">
+                            <label for="basicInput">User Role</label>
+                            <fieldset class="form-group">
+                                <select class="form-select" id="basicSelect" name="role">
+
+                                    <option value="1">Admin</option>
+                                    <option value="2">Manager</option>
+                                    <option value="3">Supervisor</option>
+                                    <option value="4">User</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
                             <label for="basicInput">Organisation</label>
                             <fieldset class="form-group">
                                 <select class="form-select" id="basicSelect" name="organisation">
