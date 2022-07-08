@@ -31,6 +31,11 @@ class UserController extends Controller
 	}
 	public function add_client(RouteCollection $routes)
 	{
+		$data = $_POST;
+		if (!empty($data)) {
+			print_r($data);
+			die;
+		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client"));
 	}
 }
