@@ -73,12 +73,12 @@ class UserController extends Controller
 			$newuser->organisation = $organisation;
 			$client = $newuser->create();
 			if ($client) {
-				$msg = "Client created successfully";
+				$msg = "User created successfully";
 				$code = 1;
 			} else {
-				$msg = "Client creation failed";
+				$msg = "User creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 }
