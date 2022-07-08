@@ -25,7 +25,14 @@
                             <label for="basicInput">Organisation</label>
                             <fieldset class="form-group">
                                 <select class="form-select" id="basicSelect" name="organisation">
-                                    <option value="1">One To One</option>
+                                    <?php
+                                    foreach ($data['orgs'] as $org) {
+                                    ?>
+                                        <option value="<?php echo $org['id']; ?>"><?php echo $org['name']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+
                                 </select>
                             </fieldset>
                         </div>

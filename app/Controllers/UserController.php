@@ -65,12 +65,13 @@ class UserController extends Controller
 			$user = Auth::logger('user');
 			$organisation = $user['organisation'];
 			$newuser = new User;
+			$orgs = $newuser->getAllOrganisationFor($organisation);
 			$newuser->name = $data['name'];
-			$newuser->address = $data['address'];
+			$newuser->email = $data['email'];
 			$newuser->mobile = $data['mobile'];
 			$newuser->admin = 1;
 			$newuser->is_available = 1;
-			$newuser->organisation = $organisation;
+			$newuser->organisation = $data['organisation'];
 			$client = $newuser->create();
 			if ($client) {
 				$msg = "User created successfully";
@@ -79,6 +80,6 @@ class UserController extends Controller
 				$msg = "User creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs"=>$orgs,"page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 }
