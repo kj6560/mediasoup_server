@@ -6,41 +6,20 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="/add_conferences" method="POST">
+                    <form action="/add_client" method="POST">
 
                         <div class="form-group">
-                            <label for="basicInput">Conference Title</label>
-                            <input type="text" class="form-control" id="basicInput" placeholder="Enter email" name="title">
+                            <label for="basicInput">Client Name</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Name" name="name">
                         </div>
 
                         <div class="form-group">
-                            <label for="basicInput">Conference Type</label>
-                            <fieldset class="form-group">
-                                <select class="form-select" id="basicSelect" name="conference_type">
-                                    <option value="1">One To One</option>
-                                    <option value="2">Many To Many</option>
-                                </select>
-                            </fieldset>
+                            <label for="basicInput">Client Address</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Address" name="address">
                         </div>
                         <div class="form-group">
-                            <label for="basicInput">Select participants for conference</label>
-                            <select class="choices form-select multiple-remove" multiple="multiple" name="conference_for[]">
-                                <optgroup label="Organisation Users">
-                                    <?php
-                                    foreach ($data['users'] as $user) {
-                                    ?>
-                                        <option value="<?php echo $user['id']; ?>"><?php echo $user['name']; ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </optgroup>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="helperText">Conference Time </label>
-                            <input class="form-group" type="datetime-local" id="conference_date" name="conference_date">
-                            <p><small class="text-muted">Select conference time and date</small>
-                            </p>
+                            <label for="basicInput">Client Mobile</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile">
                         </div>
                         <div class="form-group">
                             <input class="form-group" type="submit" id="submit" name="submit" value="Create">
