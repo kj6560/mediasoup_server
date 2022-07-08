@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Symfony\Component\Routing\RouteCollection;
 
-class PageController extends Controller
+class UsersController extends Controller
 {
 
     public function add_client(RouteCollection $routes)
