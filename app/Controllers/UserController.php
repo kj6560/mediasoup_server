@@ -60,13 +60,13 @@ class UserController extends Controller
 		$data = $_POST;
 		$msg = "";
 		$code = 0;
-		$orgs = array();
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$newuser = new User;
+		$orgs = $newuser->getAllOrganisationFor($organisation);
 		if (!empty($data)) {
 
-			$user = Auth::logger('user');
-			$organisation = $user['organisation'];
-			$newuser = new User;
-			$orgs = $newuser->getAllOrganisationFor($organisation);
+
 			$newuser->name = $data['name'];
 			$newuser->email = $data['email'];
 			$newuser->mobile = $data['mobile'];
@@ -81,6 +81,6 @@ class UserController extends Controller
 				$msg = "User creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs"=>$orgs,"page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 }
