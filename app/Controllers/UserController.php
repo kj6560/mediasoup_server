@@ -60,6 +60,7 @@ class UserController extends Controller
 		$data = $_POST;
 		$msg = "";
 		$code = 0;
+		$orgs = array();
 		if (!empty($data)) {
 
 			$user = Auth::logger('user');
