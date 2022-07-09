@@ -72,13 +72,10 @@ class BaseModel
     {
         $data = get_object_vars($this);
         unset($data['table']);
-
-        $table = R::dispense($this->table);
-        if (!empty($data)) {
-            foreach ($data as $key => $value) {
-                $table->$key = $value;
-            }
-            R::trash($table);
+        if (!empty($data['id'])) {
+            $table = R::load($this->table, $data['id']);
+            $table->is_available = 0;
+            R::store($table, true);
             return true;
         } else {
             return false;

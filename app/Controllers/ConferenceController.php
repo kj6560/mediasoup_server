@@ -22,7 +22,7 @@ class ConferenceController extends Controller
 			$conferences['user_name'] = $user['name'];
 			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
 		} else {
-			AppHelpers::redirect('/conference_error/'.$conferences['id']);
+			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
@@ -39,7 +39,7 @@ class ConferenceController extends Controller
 		if (array_search($user['id'], $participants)) {
 			$msg .= "you are not a part of the conference";
 		}
-		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg'=>$msg,'code'=>$code)));
+		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg' => $msg, 'code' => $code)));
 	}
 	public function conferences(RouteCollection $routes)
 	{
@@ -97,13 +97,17 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conferences');
 		}
 	}
-	public function conferenceCompanies(int $user_id, $type, RouteCollection $routes)
+
+	//conference delete action
+	public function conference_delete($id, RouteCollection $routes)
 	{
 		$conf = new Conference;
-		$conferences = $conf->readConferencesForCompanies($user_id, $type);
-		$conferences['current_user'] = $user_id;
-		$user = $conf->getUserById($user_id);
-		$conferences['user_name'] = $user['name'];
-		$this->loadView('conference_layout', 'conference/conference_companies', array("conference" => $conferences));
+		$conf->id = $id;
+		$deleted = $conf->delete();
+		if ($deleted) {
+			AppHelpers::redirect('/conferences');
+		}else{
+			echo "failed to delete";
+		}
 	}
 }
