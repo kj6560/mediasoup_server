@@ -35,7 +35,7 @@ class BaseModel
     }
     public function getAllByAttributes($attributes)
     {
-        $query = "select * from ".$this->table." where ";
+        $query = "select * from " . $this->table . " where ";
         $i = 0;
         $count = count($attributes);
         foreach ($attributes as $key => $value) {
@@ -58,6 +58,40 @@ class BaseModel
         $data['updated_at'] = date('Y-m-d H:i:s');
         $table = R::dispense($this->table);
         if (!empty($data)) {
+            foreach ($data as $key => $value) {
+                $table->$key = $value;
+            }
+            R::store($table, true);
+            return $table;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete()
+    {
+        $data = get_object_vars($this);
+        unset($data['table']);
+
+        $table = R::dispense($this->table);
+        if (!empty($data)) {
+            foreach ($data as $key => $value) {
+                $table->$key = $value;
+            }
+            R::trash($table);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function update()
+    {
+        $data = get_object_vars($this);
+        unset($data['table']);
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        if (!empty($data)) {
+            $table = R::load($this->table, $data['id']);
             foreach ($data as $key => $value) {
                 $table->$key = $value;
             }
