@@ -9,7 +9,7 @@ $routes = new RouteCollection();
 $auth = new Auth;
 if ($auth->guard('user')) {
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method' => 'dashboard'), array()));
-    
+
     //user routes
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'UserController', 'method' => 'users'), array()));
     $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method' => 'add_users'), array()));
@@ -24,9 +24,10 @@ if ($auth->guard('user')) {
     $routes->add('conference_detail', new Route(constant('URL_SUBFOLDER') . '/conference_detail/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_detail'), array('id' => '[0-9]+')));
     $routes->add('conference_status', new Route(constant('URL_SUBFOLDER') . '/conference_status/{id}/{status}', array('controller' => 'ConferenceController', 'method' => 'conference_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
     $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method' => 'add_conferences'), array()));
+    $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
-    
-    
+
+
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method' => 'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method' => 'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method' => 'notifications'), array()));

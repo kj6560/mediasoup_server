@@ -79,6 +79,38 @@ class ConferenceController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
+	
+	//add conference action
+	public function conference_edit($id,RouteCollection $routes)
+	{
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$userModel = new User;
+		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
+		$msg = "";
+		$code = 0;
+		if (!empty($_POST)) {
+			$data = $_POST;
+			$conf = new Conference;
+			$conf->title = $data['title'];
+			$conf->conference_by = $user['id'];
+			$conf->conference_for = implode(",", $data['conference_for']);
+			$conf->conference_date = $data['conference_date'];
+			$conf->conference_type = $data['conference_type'];
+			$conf->organisation = $organisation;
+			$conf->conference_room_id = rand(1000, 1000000);
+			$conf->is_available = 1;
+			$conference = $conf->create();
+			if ($conference) {
+				$msg = "conference created successfully";
+				$code = 1;
+			} else {
+				$msg = "conference creation failed";
+			}
+		}
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
+	}
+	
 	//conference detail action
 	public function conference_detail($id, RouteCollection $routes)
 	{
@@ -110,4 +142,5 @@ class ConferenceController extends Controller
 			echo "failed to delete";
 		}
 	}
+
 }
