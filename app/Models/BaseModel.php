@@ -61,6 +61,7 @@ class BaseModel
             foreach ($data as $key => $value) {
                 $table->$key = $value;
             }
+            $table->is_deleted = 0;
             R::store($table, true);
             return $table;
         } else {
@@ -74,7 +75,7 @@ class BaseModel
         unset($data['table']);
         if (!empty($data['id'])) {
             $table = R::load($this->table, $data['id']);
-            $table->is_available = 0;
+            $table->is_deleted = 1;
             R::store($table, true);
             return true;
         } else {
