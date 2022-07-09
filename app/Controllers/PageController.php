@@ -94,15 +94,7 @@ class PageController extends Controller
 	{ 
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_index', array());
 	}
-	//users action
-	public function users(RouteCollection $routes)
-	{
-		$user = Auth::logger('user');
-		$organisation = $user['organisation'];
-		$users = new User;
-		$all_users = $users->getAllUsersInOrganisation($organisation);
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users"=>$all_users));
-	}
+	
 	//conferences action
 	public function conferences(RouteCollection $routes)
 	{

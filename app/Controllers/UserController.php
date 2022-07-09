@@ -11,6 +11,16 @@ use Symfony\Component\Routing\RouteCollection;
 
 class UserController extends Controller
 {
+	//users action
+	public function users(RouteCollection $routes)
+	{
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$users = new User;
+		$all_users = $users->getAllUsersInOrganisation($organisation);
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users"=>$all_users));
+	}
+	
 	//user detail action
 	public function user_detail($id, RouteCollection $routes)
 	{
@@ -85,5 +95,17 @@ class UserController extends Controller
 			}
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+	}
+	//user delete action
+	public function conference_delete($id, RouteCollection $routes)
+	{
+		$user = new User;
+		$user->id = $id;
+		$deleted = $user->delete();
+		if ($deleted) {
+			AppHelpers::redirect('/users');
+		} else {
+			echo "failed to delete";
+		}
 	}
 }

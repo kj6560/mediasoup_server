@@ -11,7 +11,7 @@ if ($auth->guard('user')) {
     $routes->add('dashboard', new Route(constant('URL_SUBFOLDER') . '/dashboard', array('controller' => 'PageController', 'method' => 'dashboard'), array()));
     
     //user routes
-    $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'PageController', 'method' => 'users'), array()));
+    $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'UserController', 'method' => 'users'), array()));
     $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method' => 'add_users'), array()));
     $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/add_client', array('controller' => 'UserController', 'method' => 'add_client'), array()));
     $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/user_delete/{id}', array('controller' => 'UserController', 'method' => 'user_delete'), array('id' => '[0-9]+')));
