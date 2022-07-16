@@ -34,7 +34,7 @@ class ConferenceController extends Controller
 		$conferences = $conf->readConferences($conf_id);
 		$conf->isAllowed($conferences['id'],$user_id);
 		
-		$this->loadView('conference_layout', 'dashboard/conference_secondary', array("conference" => $conferences));
+		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("conference" => $conferences));
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
