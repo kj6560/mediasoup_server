@@ -11,7 +11,7 @@ use App\ViewHelpers;
   <div class="card">
     <div class="card-header">
       <a href="/add_client" class="btn btn-success" style="float: left;">Add Client</a>
-      <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
+      <a href="/add_clients" class="btn btn-success" style="float: right;">Add clients</a>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -27,25 +27,25 @@ use App\ViewHelpers;
         </thead>
         <tbody>
           <?php
-          if ($data['users'])
-            foreach ($data['users'] as $user) {
+          if ($data['clients'])
+            foreach ($data['clients'] as $client) {
           ?>
             <tr>
-              <td><a href="<?php echo "/user_detail/" . $user['id']; ?>"><?php echo $user['user_name'] ?></a></td>
-              <td><?php echo $user['org_name'] ?></td>
-              <td><?php echo $user['org_parent'] != 0 ? "Client" : "Parent" ?></td>
-              <td><?php echo $user['role']; ?></td>
+              <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['client_name'] ?></a></td>
+              <td><?php echo $client['name'] ?></td>
+              <td><?php echo $client['address'] != 0 ? "Client" : "Parent" ?></td>
+              <td><?php echo $client['mobile']; ?></td>
               <td>
-                <?php if ($user['user_status']) { ?>
-                  <a href="<?php echo "/user_status/" . $user['id'] . "/" . $user['user_status']; ?>"><span class="badge bg-success">Active</span></a>
+                <?php if ($client['is_available']) { ?>
+                  <a href="<?php echo "/client_status/" . $client['id'] . "/" . $client['is_available']; ?>"><span class="badge bg-success">Active</span></a>
                 <?php } else { ?>
-                  <a href="<?php echo "/user_status/" . $user['id'] . "/" . $user['user_status']; ?>"><span class="badge bg-danger">InActive</span></a>
+                  <a href="<?php echo "/client_status/" . $client['id'] . "/" . $client['is_available']; ?>"><span class="badge bg-danger">InActive</span></a>
                 <?php } ?>
               </td>
 
               <td>
-                <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
-                <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+                <a href="<?php echo "/client_edit/" . $client['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <a href="<?php echo "/client_delete/" . $client['id']; ?>"><span class="badge bg-danger">Delete</span></a>
               </td>
             </tr>
           <?php
