@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\AppHelpers;
 use App\Auth;
 use App\Models\Conference;
+use App\Models\ConferenceSession;
 use App\Models\User;
 use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
@@ -25,7 +26,7 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_room($conf_id,$user_id, RouteCollection $routes)
+	public function conference_room($conf_id,$user_id,$session_id, RouteCollection $routes)
 	{
 		$user = new User;
 		$user->id = $user_id;
@@ -51,7 +52,13 @@ class ConferenceController extends Controller
 			$user_passkey = $_POST['passkey'];
 			$url = '/conference_error/' . $conferences['id'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
-				$url = "/conference_room/".$conf_id."/".$user_id;
+				$conf_session = new ConferenceSession;
+				$conf_session->conf_id = $conf_id;
+				$conf_session->user_id = $user_id;
+				$conf_session->is_deleted = 0;
+				$conf_session->is_available = 1;
+				$conf_session = $conf_session->create();
+				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session->id;
 			}
 			AppHelpers::redirect($url);
 		}
