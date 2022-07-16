@@ -84,6 +84,11 @@ class ConferenceController extends Controller
 			$conf->conference_type = $data['conference_type'];
 			$conf->organisation = $organisation;
 			$conf->conference_room_id = rand(1000, 1000000);
+			$key_map = array();
+			foreach($data['conference_for'] as $conf_user){
+				$key_map[$conf_user] = password_hash($conf_user.$conf->conference_room_id, PASSWORD_DEFAULT)
+			}
+			$conf->conference_keys = json_encode($key_map);
 			$conf->is_available = 1;
 			$conference = $conf->create();
 			if ($conference) {
