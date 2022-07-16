@@ -34,7 +34,7 @@ class User extends BaseModel
 
     public function getAllUserClients($organisation)
     {
-        $query = "select * from organisation where organisation.parent=$organisation  and users.is_deleted !=1 ";
+        $query = "select * from organisation where organisation.parent=$organisation and organisation.is_available=1 and organisation.is_deleted !=1 ";
         $users  = R::getAssocRow($query);
         return !empty($users) ? $users : false;
     }
