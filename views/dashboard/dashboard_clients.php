@@ -11,7 +11,6 @@ use App\ViewHelpers;
   <div class="card">
     <div class="card-header">
       <a href="/add_client" class="btn btn-success" style="float: left;">Add Client</a>
-      <a href="/add_clients" class="btn btn-success" style="float: right;">Add clients</a>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
