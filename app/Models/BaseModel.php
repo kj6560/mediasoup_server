@@ -56,6 +56,7 @@ class BaseModel
         unset($data['table']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
+        echo $this->table;
         $table = R::dispense($this->table);
         if (!empty($data)) {
             foreach ($data as $key => $value) {
