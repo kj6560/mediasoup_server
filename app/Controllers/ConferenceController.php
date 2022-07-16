@@ -60,7 +60,8 @@ class ConferenceController extends Controller
 				$conf_session = $conf_session->create();
 				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session->id;
 			}
-			AppHelpers::redirect($url);
+			echo $url;
+			//AppHelpers::redirect($url);
 		}
 		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("user_id" => $user_id,"conf_id"=>$conf_id));
 	}
