@@ -13,10 +13,12 @@ if ($auth->guard('user')) {
     //user routes
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'UserController', 'method' => 'users'), array()));
     $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method' => 'add_users'), array()));
-    $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/add_client', array('controller' => 'UserController', 'method' => 'add_client'), array()));
     $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/user_delete/{id}', array('controller' => 'UserController', 'method' => 'user_delete'), array('id' => '[0-9]+')));
     $routes->add('user_status', new Route(constant('URL_SUBFOLDER') . '/user_status/{id}/{status}', array('controller' => 'UserController', 'method' => 'user_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
 
+    //client routes
+    $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/clients', array('controller' => 'ClientController', 'method' => 'clients'), array()));
+    $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/add_client', array('controller' => 'ClientController', 'method' => 'add_client'), array()));
     //conference routes
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method' => 'conferences'), array()));
     $routes->add('conference_main', new Route(constant('URL_SUBFOLDER') . '/conference_main/{conf_id}', array('controller' => 'ConferenceController', 'method' => 'conference_main'), array('conf_id' => '[0-9]+', 'type' => '[0-9]+')));

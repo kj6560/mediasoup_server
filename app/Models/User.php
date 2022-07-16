@@ -31,4 +31,11 @@ class User extends BaseModel
         $org  = R::getAssocRow($query);
         return !empty($org) ? $org : false;
     }
+
+    public function getAllUserClients($organisation)
+    {
+        $query = "select * from organisation where organisation.parent=$organisation  and users.is_deleted !=1 ";
+        $users  = R::getAssocRow($query);
+        return !empty($users) ? $users : false;
+    }
 }
