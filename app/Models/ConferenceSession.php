@@ -4,6 +4,6 @@ use RedBeanPHP\R;
 class ConferenceSession extends BaseModel
 {
     public $id;
-	public $table = "conference_sessions";
+	public $table = "conferencesessions";
     	
 }
