@@ -48,5 +48,35 @@ class ClientController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
+	//user detail action
+	public function client_detail($id, RouteCollection $routes)
+	{
+		$user = new User;
+		$user->id = $id;
+		$users = $user->getByPk();
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_user_detail', array("page_heading" => "User Detail"));
+	}
+	//user status action
+	public function client_status($id, $status, RouteCollection $routes)
+	{
+		$user = R::load('users', $id);
+		$user->is_available = $status == 1 ? 0 : 1;
+		$usr = R::store($user);
+		if ($usr) {
+			AppHelpers::redirect('/users');
+		}
+	}
+	//conference delete action
+	public function client_delete($id, RouteCollection $routes)
+	{
+		$client = new User;
+		$client->id = $id;
+		$deleted = $client->delete();
+		if ($deleted) {
+			AppHelpers::redirect('/clients');
+		}else{
+			echo "failed to delete";
+		}
+	}
 	
 }
