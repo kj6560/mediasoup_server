@@ -48,7 +48,8 @@ class ConferenceController extends Controller
 		if($_POST){
 			$user_passkey = $_POST['passkey'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
-				AppHelpers::redirect("/conference_room/".$conf_id."/".$user_id);
+				echo "reached here";
+				//AppHelpers::redirect("/conference_room/".$conf_id."/".$user_id);
 			}
 		}
 		
