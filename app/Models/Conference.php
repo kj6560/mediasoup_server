@@ -22,6 +22,8 @@ class Conference extends BaseModel
     }
     public function isAllowed($conf_id,$user_id){
         $conference = $this->readConferences($conf_id);
+        print_r($conference);
+        
         if(!empty($conference)){
             $conference_keys = json_decode($conference['conference_keys']);
             $conf_key_user = $conference_keys[$user_id];
