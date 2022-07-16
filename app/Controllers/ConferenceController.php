@@ -95,7 +95,7 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
-		$msg = "";
+		$msg = "conference creation failed";
 		$code = 0;
 		if (!empty($_POST)) {
 			$data = $_POST;
@@ -119,14 +119,14 @@ class ConferenceController extends Controller
 			$conf->conference_keys = json_encode($key_map);
 			$conf->is_available = 1;
 			$conference = $conf->create();
+			
 			if ($conference) {
 				foreach($data['conference_for'] as $conf_user){
 					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi ". $email_map[$conf_user]['name']." You have been invited for a conference ... your passkey is ".$email_map[$conf_user]['passkey'], null, null, null, true);
 				}
 				$msg = "conference created successfully";
 				$code = 1;
-			} else {
-				$msg = "conference creation failed";
+				AppHelpers::redirect('/conferences');
 			}
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
@@ -139,7 +139,7 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
-		$msg = "";
+		$msg = "conference creation failed";
 		$code = 0;
 		if (!empty($_POST)) {
 			$data = $_POST;
@@ -153,11 +153,11 @@ class ConferenceController extends Controller
 			$conf->conference_room_id = rand(1000, 1000000);
 			$conf->is_available = 1;
 			$conference = $conf->create();
+
 			if ($conference) {
 				$msg = "conference created successfully";
 				$code = 1;
-			} else {
-				$msg = "conference creation failed";
+				AppHelpers::redirect('/conferences');
 			}
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
