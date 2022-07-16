@@ -33,13 +33,8 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		$conf->isAllowed($conferences['id'],$user_id);
-		if ($conferences['is_available']) {
-			$conferences['current_user'] = $user['id'];
-			$conferences['user_name'] = $user['name'];
-			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
-		} else {
-			AppHelpers::redirect('/conference_error/' . $conferences['id']);
-		}
+		
+		$this->loadView('conference_layout', 'conference/conference_secondary', array("conference" => $conferences));
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
