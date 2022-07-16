@@ -25,9 +25,11 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_secondary($conf_id, RouteCollection $routes)
+	public function conference_secondary($conf_id,$user_id, RouteCollection $routes)
 	{
-		$user = Auth::logger('user');
+		$user = new User;
+		$user->id = $user_id;
+		$user = $user->getByPk();
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if ($conferences['is_available']) {
