@@ -10,7 +10,7 @@ define('BASE', 'https://drrksuri.com/');
 
 define('SMTP_HOST', 'talktoangel.com');
 define('SMTP_USER', 'info2018@talktoangel.com');
-define('SMTP_PASSWORD', 'NeY])^XS%..[');
+define('SMTP_PASSWORD', 'info!@#$%^&*()');
 define('SMTP_PORT', 465);
 $host = "54.70.129.232";
 $username = "angeltalk";
