@@ -17,7 +17,7 @@ if ($auth->guard('user')) {
     $routes->add('user_status', new Route(constant('URL_SUBFOLDER') . '/user_status/{id}/{status}', array('controller' => 'UserController', 'method' => 'user_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
 
     //client routes
-    $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/clients', array('controller' => 'ClientController', 'method' => 'clients'), array()));
+    $routes->add('clients', new Route(constant('URL_SUBFOLDER') . '/clients', array('controller' => 'ClientController', 'method' => 'clients'), array()));
     $routes->add('add_client', new Route(constant('URL_SUBFOLDER') . '/add_client', array('controller' => 'ClientController', 'method' => 'add_client'), array()));
     //conference routes
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method' => 'conferences'), array()));
