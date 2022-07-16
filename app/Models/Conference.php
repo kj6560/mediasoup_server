@@ -20,10 +20,8 @@ class Conference extends BaseModel
         $conference  = R::getAssocRow($query);
         return !empty($conference)?$conference:false;
     }
-    // public function getUserById($user_id){
-    //     $query = "select * from users where id =$user_id LIMIT 1";
-    //     $user  = R::getAssocRow($query);
-    //     return !empty($user)?$user[0]:false;
-    // }
+    public function isAllowed($conf_id,$user_id){
+        
+    }
 	
 }
