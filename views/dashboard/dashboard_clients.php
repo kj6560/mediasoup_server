@@ -18,9 +18,8 @@ use App\ViewHelpers;
         <thead>
           <tr>
             <th>Name</th>
-            <th>Organisation</th>
-            <th>Organisation Type</th>
-            <th>Role</th>
+            <th>Address</th>
+            <th>Mobile</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -32,7 +31,7 @@ use App\ViewHelpers;
           ?>
             <tr>
               <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['name'] ?></a></td>
-              <td><?php echo $client['address'] != 0 ? "Client" : "Parent" ?></td>
+              <td><?php echo $client['address']; ?></td>
               <td><?php echo $client['mobile']; ?></td>
               <td>
                 <?php if ($client['is_available']) { ?>
