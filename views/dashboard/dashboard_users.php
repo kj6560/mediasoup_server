@@ -10,7 +10,6 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
-      <a href="/add_client" class="btn btn-success" style="float: left;">Add Client</a>
       <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
     </div>
     <div class="card-body">
