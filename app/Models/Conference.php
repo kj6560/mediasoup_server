@@ -20,7 +20,7 @@ class Conference extends BaseModel
         $conference  = R::getAssocRow($query);
         return !empty($conference)?$conference:false;
     }
-    public function isAllowed($conf_id,$user_id){
+    public function isAllowed($conf_id,$user_id,$user_passkey){
         $conference = $this->readConferences($conf_id);
         
 
@@ -29,7 +29,7 @@ class Conference extends BaseModel
             
             $conf_key_user = $conference_keys[$user_id];
             print_r($conference_keys);
-            if(password_verify($user_id.$conference['conference_room_id'],$conf_key_user)){
+            if(password_verify($user_passkey,$conf_key_user)){
                 echo "match";
                 return true;
             }else{
