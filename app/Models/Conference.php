@@ -22,19 +22,14 @@ class Conference extends BaseModel
     }
     public function isAllowed($conf_id,$user_id,$user_passkey){
         $conference = $this->readConferences($conf_id);
+        $return = false;
         if(!empty($conference)){
             $conference_keys = json_decode($conference['conference_keys'],true);
             $conf_key_user = $conference_keys[$user_id];
-            print_r($conference_keys);
-            print_r($conf_key_user);
-            if(password_verify($user_passkey,$conf_key_user)){
-                echo "match";
-                return true;
-            }else{
-                echo "no match";
-                return false;
-            }
+            if(password_verify($user_passkey,$conf_key_user))
+                $return = true;
         }
+        return $return;
     }
 	
 }

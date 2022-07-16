@@ -46,15 +46,13 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if($_POST){
-			echo "here";
 			$user_passkey = $_POST['passkey'];
+			$url = '/conference_error/' . $conferences['id'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
-				echo "reached here";
-				//AppHelpers::redirect("/conference_room/".$conf_id."/".$user_id);
+				$url = "/conference_room/".$conf_id."/".$user_id;
 			}
+			AppHelpers::redirect($url);
 		}
-		
-		
 		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("user_id" => $user_id,"conf_id"=>$conf_id));
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
