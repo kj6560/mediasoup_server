@@ -40,7 +40,6 @@ class ConferenceController extends Controller
 	}
 	public function conference_secondary($conf_id,$user_id, RouteCollection $routes)
 	{
-		echo "here";die;
 		$user = new User;
 		$user->id = $user_id;
 		$user = $user->getByPk();
@@ -56,7 +55,7 @@ class ConferenceController extends Controller
 		}
 		
 		
-		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("conference" => $conferences));
+		$this->loadView('general_layout', 'dashboard/dashboard_secondary', array("conference" => $conferences));
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
