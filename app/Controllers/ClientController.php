@@ -59,17 +59,17 @@ class ClientController extends Controller
 	//user status action
 	public function client_status($id, $status, RouteCollection $routes)
 	{
-		$user = R::load('users', $id);
+		$user = R::load('organisation', $id);
 		$user->is_available = $status == 1 ? 0 : 1;
 		$usr = R::store($user);
 		if ($usr) {
-			AppHelpers::redirect('/users');
+			AppHelpers::redirect('/clients');
 		}
 	}
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
 	{
-		$client = new User;
+		$client = new Organisation;
 		$client->id = $id;
 		$deleted = $client->delete();
 		if ($deleted) {
