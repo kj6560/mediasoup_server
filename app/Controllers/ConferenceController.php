@@ -6,6 +6,7 @@ use App\AppHelpers;
 use App\Auth;
 use App\Models\Conference;
 use App\Models\ConferenceSession;
+use App\Models\Organisation;
 use App\Models\User;
 use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
@@ -93,6 +94,9 @@ class ConferenceController extends Controller
 	{
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
+		$org = new Organisation;
+		$org->id = $organisation;
+		$org = $org->getByPk();
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
 		$msg = "conference creation failed";
@@ -122,7 +126,7 @@ class ConferenceController extends Controller
 			
 			if ($conference) {
 				foreach($data['conference_for'] as $conf_user){
-					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi ". $email_map[$conf_user]['name']." You have been invited for a conference ... your passkey is ".$email_map[$conf_user]['passkey'], null, null, null, true);
+					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi ". $email_map[$conf_user]['name']." You have been invited for a conference". $data['title']." your passkey is ".$email_map[$conf_user]['passkey'].".", null, null, null, true);
 				}
 				$msg = "conference created successfully";
 				$code = 1;
