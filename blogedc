@@ -1,0 +1,8 @@
+<?php 
+      $comm = ucfirst($argv[1]);
+      array_shift($argv);
+      require  __DIR__."\\app\\Commands\\".$comm.".php";
+      $obj = new $comm;
+      $obj->run($argv);
+
+?>
