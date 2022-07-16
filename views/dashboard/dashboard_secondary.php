@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="/conference_secondary" method="POST">
+                    <form action="/conference_secondary/$data['conf_id']/$data['user_id']" method="POST">
 
                         
                         <div class="form-group">
