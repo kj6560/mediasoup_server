@@ -26,8 +26,9 @@ class Conference extends BaseModel
 
         if(!empty($conference)){
             $conference_keys = json_decode(json_encode($conference['conference_keys']), true);
-            print_r($conference_keys);
+            
             $conf_key_user = $conference_keys[$user_id];
+            print_r($conf_key_user);
             if(password_verify($user_id.$conference['conference_room_id'],$conf_key_user)){
                 echo "match";
                 return true;
