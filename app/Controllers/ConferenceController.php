@@ -32,6 +32,7 @@ class ConferenceController extends Controller
 		$user = $user->getByPk();
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
+		print_r($conferences);
 		if ($conferences['is_available']) {
 			$conferences['current_user'] = $user['id'];
 			$conferences['user_name'] = $user['name'];
