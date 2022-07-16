@@ -108,13 +108,21 @@ class ConferenceController extends Controller
 			$conf->organisation = $organisation;
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
+			$email_map = array();
 			foreach($data['conference_for'] as $conf_user){
 				$key_map[$conf_user] = password_hash($conf_user.$conf->conference_room_id, PASSWORD_DEFAULT);
+				$conf_em_user = new User;
+				$conf_em_user->id = $conf_user;
+				$conf_em_user = $conf_em_user->getByPk();
+				$email_map[$conf_user] = array("name"=>$conf_em_user['name'],"email"=>$conf_em_user['email'],"passkey"=>$conf_user.$conf->conference_room_id);
 			}
 			$conf->conference_keys = json_encode($key_map);
 			$conf->is_available = 1;
 			$conference = $conf->create();
 			if ($conference) {
+				foreach($data['conference_for'] as $conf_user){
+					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi ". $email_map[$conf_user]['name']." You have been invited for a conference ... your passkey is ".$email_map[$conf_user]['passkey'], null, null, null, true);
+				}
 				$msg = "conference created successfully";
 				$code = 1;
 			} else {
