@@ -21,7 +21,18 @@ class Conference extends BaseModel
         return !empty($conference)?$conference:false;
     }
     public function isAllowed($conf_id,$user_id){
-        
+        $conference = $this->readConferences($conf_id);
+        if(!empty($conference)){
+            $conference_keys = json_decode($conference['conference_keys']);
+            $conf_key_user = $conference_keys[$user_id];
+            if(password_verify($user_id.$conference['conference_room_id'],$conf_key_user)){
+                echo "match";
+                return true;
+            }else{
+                echo "no match";
+                return false;
+            }
+        }
     }
 	
 }
