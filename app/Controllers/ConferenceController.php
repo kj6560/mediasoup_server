@@ -46,6 +46,7 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if($_POST){
+			echo "here";
 			$user_passkey = $_POST['passkey'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
 				echo "reached here";
