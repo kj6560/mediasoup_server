@@ -31,8 +31,7 @@ use App\ViewHelpers;
             foreach ($data['clients'] as $client) {
           ?>
             <tr>
-              <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['client_name'] ?></a></td>
-              <td><?php echo $client['name'] ?></td>
+              <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['name'] ?></a></td>
               <td><?php echo $client['address'] != 0 ? "Client" : "Parent" ?></td>
               <td><?php echo $client['mobile']; ?></td>
               <td>
