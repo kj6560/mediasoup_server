@@ -14,6 +14,6 @@ require_once '../config/config.php';
 
 // Routes
 require_once '../routes/web.php';
-//require_once '../routes/api.php';
+require_once '../routes/api.php';
 require_once '../app/Router.php';
 require_once '../app/AppHelpers.php';
