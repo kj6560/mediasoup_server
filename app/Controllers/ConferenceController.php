@@ -54,6 +54,7 @@ class ConferenceController extends Controller
 			$url = '/conference_error/' . $conferences['id'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
 				$conf_session = ConferenceSession::isInSession($conf_id,$user_id);
+				print_r($conf_session);die;
 				if(!$conf_session){
 					$conf_session = new ConferenceSession;
 					$conf_session->conf_id = $conf_id;
@@ -62,7 +63,7 @@ class ConferenceController extends Controller
 					$conf_session->is_available = 1;
 					$conf_session = $conf_session->create();
 				}
-				print_r($conf_session);die;
+				
 				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session->id;
 			}
 			AppHelpers::redirect($url);
