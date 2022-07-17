@@ -22,6 +22,10 @@
                             <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile">
                         </div>
                         <div class="form-group">
+                            <label for="basicInput">Client Passphrase</label>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Passphrase" name="passphrase">
+                        </div>
+                        <div class="form-group">
                             <input class="form-group" type="submit" id="submit" name="submit" value="Create">
 
                         </div>
