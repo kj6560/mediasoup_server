@@ -50,21 +50,15 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if($_POST){
-			echo "die";
 			$user_passkey = $_POST['passkey'];
 			$url = '/conference_error/' . $conferences['id'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
-				$conf_session = ConferenceSession::isInSession($conf_id,$user_id);
-				print_r($conf_session);die;
-				if(!$conf_session){
-					$conf_session = new ConferenceSession;
-					$conf_session->conf_id = $conf_id;
-					$conf_session->user_id = $user_id;
-					$conf_session->is_deleted = 0;
-					$conf_session->is_available = 1;
-					$conf_session = $conf_session->create();
-				}
-				
+				$conf_session = new ConferenceSession;
+				$conf_session->conf_id = $conf_id;
+				$conf_session->user_id = $user_id;
+				$conf_session->is_deleted = 0;
+				$conf_session->is_available = 1;
+				$conf_session = $conf_session->create();
 				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session->id;
 			}
 			AppHelpers::redirect($url);
