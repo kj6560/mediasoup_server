@@ -61,6 +61,7 @@ class ConferenceController extends Controller
 					$conf_session->user_id = $user_id;
 					$conf_session->is_deleted = 0;
 					$conf_session->is_available = 1;
+					$conf_session->start_time = date('Y-m-d H:i:s');
 					$conf_session = $conf_session->create();
 					$conf_session_id = $conf_session->id;
 				}else{
