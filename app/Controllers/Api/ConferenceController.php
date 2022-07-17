@@ -4,7 +4,7 @@ namespace App\Controllers\Api;
 
 use App\AppHelpers;
 use App\Auth;
-use App\Controllers\ApiController;
+use App\Controllers\Api\ApiController;
 use App\Controllers\Controller;
 use App\Models\Conference;
 use App\Models\ConferenceSession;

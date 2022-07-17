@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Api;
 
 use App\Models\Conference;
 use Symfony\Component\Routing\RouteCollection;
