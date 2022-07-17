@@ -13,7 +13,6 @@ class UserController extends ApiController
 
     public function generate_token(RouteCollection $routes)
     {
-        header('Content-type: application/json');
         $data = $this->getData();
         $org = new Organisation;
         $org->id = $data['org_id'];
