@@ -13,6 +13,7 @@ class UserController extends ApiController
 
     public function generate_token(RouteCollection $routes)
     {
+        header('Content-type: application/json');
         $data = $this->getData();
         $org = new Organisation;
         $org->id = $data['org_id'];
@@ -32,6 +33,6 @@ class UserController extends ApiController
             $this->response['msg'] = "Token generation failed";
             $this->response['data'] = null;
         }
-        return json_encode($this->response);
+        echo json_encode($this->response);
     }
 }
