@@ -103,53 +103,54 @@ class ConferenceController extends ApiController
 	//add conference action
 	public function create_conf(RouteCollection $routes)
 	{
-		$user = Auth::logger('user');
-		$organisation = $user['organisation'];
-		$org = new Organisation;
-		$org->id = $organisation;
-		$org = $org->getByPk();
-		$userModel = new User;
-		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
-		$msg = "conference creation failed";
-		$code = 0;
-		if (!empty($_POST)) {
-			$data = $_POST;
-			$conf = new Conference;
-			$conf->title = $data['title'];
-			$conf->conference_by = $user['id'];
-			$conf->conference_for = implode(",", $data['conference_for']);
-			$conf->conference_date = $data['conference_date'];
-			$conf->conference_type = $data['conference_type'];
-			$confdur = $data['duration'];
-			$conf_dur_hour = intval($confdur / 60);
-			$conf_dur_min = $confdur % 60;
-			$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
-			$conf->conference_duration = $conf_dur;
-			$conf->organisation = $organisation;
-			$conf->conference_room_id = rand(1000, 1000000);
-			$key_map = array();
-			$email_map = array();
-			foreach ($data['conference_for'] as $conf_user) {
-				$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
-				$conf_em_user = new User;
-				$conf_em_user->id = $conf_user;
-				$conf_em_user = $conf_em_user->getByPk();
-				$email_map[$conf_user] = array("name" => $conf_em_user['name'], "email" => $conf_em_user['email'], "passkey" => $conf_user . $conf->conference_room_id);
-			}
-			$conf->conference_keys = json_encode($key_map);
-			$conf->is_available = 1;
-			$conference = $conf->create();
+        echo "reached here";
+		// $user = Auth::logger('user');
+		// $organisation = $user['organisation'];
+		// $org = new Organisation;
+		// $org->id = $organisation;
+		// $org = $org->getByPk();
+		// $userModel = new User;
+		// $users = $userModel->getAllByAttributes(array('organisation' => $organisation));
+		// $msg = "conference creation failed";
+		// $code = 0;
+		// if (!empty($_POST)) {
+		// 	$data = $_POST;
+		// 	$conf = new Conference;
+		// 	$conf->title = $data['title'];
+		// 	$conf->conference_by = $user['id'];
+		// 	$conf->conference_for = implode(",", $data['conference_for']);
+		// 	$conf->conference_date = $data['conference_date'];
+		// 	$conf->conference_type = $data['conference_type'];
+		// 	$confdur = $data['duration'];
+		// 	$conf_dur_hour = intval($confdur / 60);
+		// 	$conf_dur_min = $confdur % 60;
+		// 	$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
+		// 	$conf->conference_duration = $conf_dur;
+		// 	$conf->organisation = $organisation;
+		// 	$conf->conference_room_id = rand(1000, 1000000);
+		// 	$key_map = array();
+		// 	$email_map = array();
+		// 	foreach ($data['conference_for'] as $conf_user) {
+		// 		$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
+		// 		$conf_em_user = new User;
+		// 		$conf_em_user->id = $conf_user;
+		// 		$conf_em_user = $conf_em_user->getByPk();
+		// 		$email_map[$conf_user] = array("name" => $conf_em_user['name'], "email" => $conf_em_user['email'], "passkey" => $conf_user . $conf->conference_room_id);
+		// 	}
+		// 	$conf->conference_keys = json_encode($key_map);
+		// 	$conf->is_available = 1;
+		// 	$conference = $conf->create();
 
-			if ($conference) {
-				foreach ($data['conference_for'] as $conf_user) {
-					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
-				}
-				$msg = "conference created successfully";
-				$code = 1;
-				AppHelpers::redirect('/conferences');
-			}
-		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
+		// 	if ($conference) {
+		// 		foreach ($data['conference_for'] as $conf_user) {
+		// 			EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
+		// 		}
+		// 		$msg = "conference created successfully";
+		// 		$code = 1;
+		// 		AppHelpers::redirect('/conferences');
+		// 	}
+		// }
+		// $this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
 
 	//add conference action
