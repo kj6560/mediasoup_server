@@ -62,11 +62,12 @@ class ConferenceController extends Controller
 					$conf_session->is_deleted = 0;
 					$conf_session->is_available = 1;
 					$conf_session = $conf_session->create();
+					$conf_session_id = $conf_session->id;
 				}else{
 					$conf_session_id = $conf_session['id'];
 				}
 				
-				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session;
+				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session_id;
 			}
 			AppHelpers::redirect($url);
 		}
