@@ -10,6 +10,7 @@ class ApiController
         return $_POST;
     }
     public function sendResponse(){
-        return json_encode($this->response);
+        header('Content-type: application/json');
+        echo json_encode($this->response);
     }
 }

@@ -33,6 +33,6 @@ class UserController extends ApiController
             $this->response['msg'] = "Token generation failed";
             $this->response['data'] = null;
         }
-        echo json_encode($this->response);
+        $this->sendResponse();
     }
 }
