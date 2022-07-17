@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
               <label for="basicInput">Conference Duration</label>
-              <input type="number" class="form-control" id="basicInput" placeholder="Enter duration" name="duration">
+              <input type="number" class="form-control" id="basicInput" placeholder="Enter duration in minutes" name="duration">
             </div>
             <div class="form-group">
               <input class="form-group" type="submit" id="submit" name="submit" value="Create">
