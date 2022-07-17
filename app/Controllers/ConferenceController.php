@@ -50,6 +50,7 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if($_POST){
+			echo "die";
 			$user_passkey = $_POST['passkey'];
 			$url = '/conference_error/' . $conferences['id'];
 			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
