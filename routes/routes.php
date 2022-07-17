@@ -53,4 +53,6 @@ $routes->add('register', new Route(constant('URL_SUBFOLDER') . '/register', arra
 $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPassword', array('controller' => 'PageController', 'method' => 'forgotPassword'), array()));
 //$routes->add('submit_registration', new Route(constant('URL_SUBFOLDER') . '/submit_registration', array('controller' => 'PageController', 'method'=>'submit_registration'), array(),['POST']));
 
-$routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));
+
+//api routes
+$routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\ConferenceController', 'method'=>'generate_token'), array(),['POST']));
