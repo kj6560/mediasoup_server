@@ -13,6 +13,7 @@ class ConferenceSession extends BaseModel
     {
         $query = "select * from $this->table where conf_id =$conf_id and user_id =$user_id and is_available=1 and is_deleted !=1 LIMIT 1";
         $conf_sess  = R::getAssocRow($query);
+        print_r($conf_sess);die;
         return !empty($conf_sess) ? $conf_sess[0] : false;
     }
 }
