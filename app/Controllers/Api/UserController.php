@@ -10,10 +10,7 @@ class UserController extends ApiController
 {
 
     public function generate_token(RouteCollection $routes){
-        $data = $this->getData();
-        if(!empty($data)){
-            print_r($data);
-        }
+        print_r($_POST);
     }
 	
 }
