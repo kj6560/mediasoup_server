@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Api;
 
+use App\Auth;
 
 class ApiController
 {
@@ -12,5 +13,13 @@ class ApiController
     public function sendResponse(){
         header('Content-type: application/json');
         echo json_encode($this->response);
+    }
+    public function verifyToken(){
+        $data = $this->getData();
+        if($data['access_token']){
+            $auth = new Auth;
+            $org = $auth->apiGuard($data['access_token']);
+            return $org;
+        }
     }
 }

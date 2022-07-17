@@ -56,3 +56,4 @@ $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPas
 
 //api routes
 $routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\UserController', 'method'=>'generate_token'), array(),['POST']));
+$routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));

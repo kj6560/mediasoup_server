@@ -31,7 +31,7 @@ class AppHelpers
     }
     public static function getCacheItem($cache, $item)
     {
-        $cacheItem = $cache->getItem('stats.products_count');
+        $cacheItem = $cache->getItem($item);
         if ($cacheItem->isHit()) {
             return $cacheItem;
         }
