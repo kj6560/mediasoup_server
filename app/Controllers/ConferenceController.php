@@ -27,7 +27,7 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_room($conf_id,$user_id,$session_id, RouteCollection $routes)
+	public function conference_room($conf_id, $user_id, $session_id, RouteCollection $routes)
 	{
 		$user = new User;
 		$user->id = $user_id;
@@ -42,20 +42,20 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_secondary($conf_id,$user_id, RouteCollection $routes)
+	public function conference_secondary($conf_id, $user_id, RouteCollection $routes)
 	{
 		$user = new User;
 		$user->id = $user_id;
 		$user = $user->getByPk();
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
-		if($_POST){
+		if ($_POST) {
 			$user_passkey = $_POST['passkey'];
 			$url = '/conference_error/' . $conferences['id'];
-			if($conf->isAllowed($conferences['id'],$user_id,$user_passkey)){
-				$conf_session = ConferenceSession::isInSession($conf_id,$user_id);
-				
-				if(!$conf_session){
+			if ($conf->isAllowed($conferences['id'], $user_id, $user_passkey)) {
+				$conf_session = ConferenceSession::isInSession($conf_id, $user_id);
+
+				if (!$conf_session) {
 					$conf_session = new ConferenceSession;
 					$conf_session->conf_id = $conf_id;
 					$conf_session->user_id = $user_id;
@@ -64,15 +64,15 @@ class ConferenceController extends Controller
 					$conf_session->start_time = date('Y-m-d H:i:s');
 					$conf_session = $conf_session->create();
 					$conf_session_id = $conf_session->id;
-				}else{
+				} else {
 					$conf_session_id = $conf_session['id'];
 				}
-				
-				$url = "/conference_room/".$conf_id."/".$user_id."/".$conf_session_id;
+
+				$url = "/conference_room/" . $conf_id . "/" . $user_id . "/" . $conf_session_id;
 			}
 			AppHelpers::redirect($url);
 		}
-		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("user_id" => $user_id,"conf_id"=>$conf_id));
+		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("user_id" => $user_id, "conf_id" => $conf_id));
 	}
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
@@ -118,24 +118,29 @@ class ConferenceController extends Controller
 			$conf->conference_for = implode(",", $data['conference_for']);
 			$conf->conference_date = $data['conference_date'];
 			$conf->conference_type = $data['conference_type'];
+			$confdur = $data['duration'];
+			$conf_dur_hour = $confdur / 60;
+			$conf_dur_min = $confdur % 60;
+			$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
+			$conf->conference_duration = $conf_dur;
 			$conf->organisation = $organisation;
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
 			$email_map = array();
-			foreach($data['conference_for'] as $conf_user){
-				$key_map[$conf_user] = password_hash($conf_user.$conf->conference_room_id, PASSWORD_DEFAULT);
+			foreach ($data['conference_for'] as $conf_user) {
+				$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
 				$conf_em_user = new User;
 				$conf_em_user->id = $conf_user;
 				$conf_em_user = $conf_em_user->getByPk();
-				$email_map[$conf_user] = array("name"=>$conf_em_user['name'],"email"=>$conf_em_user['email'],"passkey"=>$conf_user.$conf->conference_room_id);
+				$email_map[$conf_user] = array("name" => $conf_em_user['name'], "email" => $conf_em_user['email'], "passkey" => $conf_user . $conf->conference_room_id);
 			}
 			$conf->conference_keys = json_encode($key_map);
 			$conf->is_available = 1;
 			$conference = $conf->create();
-			
+
 			if ($conference) {
-				foreach($data['conference_for'] as $conf_user){
-					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi ". $email_map[$conf_user]['name']." You have been invited for a conference". $data['title']." your passkey is ".$email_map[$conf_user]['passkey'].".", null, null, null, true);
+				foreach ($data['conference_for'] as $conf_user) {
+					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
 				}
 				$msg = "conference created successfully";
 				$code = 1;
@@ -144,9 +149,9 @@ class ConferenceController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
-	
+
 	//add conference action
-	public function conference_edit($id,RouteCollection $routes)
+	public function conference_edit($id, RouteCollection $routes)
 	{
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
@@ -175,7 +180,7 @@ class ConferenceController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
-	
+
 	//conference detail action
 	public function conference_detail($id, RouteCollection $routes)
 	{
@@ -203,9 +208,8 @@ class ConferenceController extends Controller
 		$deleted = $conf->delete();
 		if ($deleted) {
 			AppHelpers::redirect('/conferences');
-		}else{
+		} else {
 			echo "failed to delete";
 		}
 	}
-
 }
