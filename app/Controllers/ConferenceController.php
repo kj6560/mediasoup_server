@@ -122,6 +122,7 @@ class ConferenceController extends Controller
 			$conf_dur_hour = $confdur / 60;
 			$conf_dur_min = $confdur % 60;
 			$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
+			echo $conf_dur;die;
 			$conf->conference_duration = $conf_dur;
 			$conf->organisation = $organisation;
 			$conf->conference_room_id = rand(1000, 1000000);
