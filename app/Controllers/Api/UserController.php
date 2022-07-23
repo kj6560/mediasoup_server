@@ -26,7 +26,7 @@ class UserController extends ApiController
             $token = $token->create();
             if ($token) {
                 $this->response['msg'] = "Token generated";
-                $this->response['data'] = $token;
+                $this->response['data'] = array("token"=>$token->token,"created_at"=>$token->created_at);
             }
         } else {
             $this->response['msg'] = "Token generation failed";
