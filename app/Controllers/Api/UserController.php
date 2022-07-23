@@ -16,9 +16,9 @@ class UserController extends ApiController
         $data = $this->getData();
         $org = new Organisation;
         $org->id = $data['org_id'];
+        $post_hash = $data['api_key'];
         $org = $org->getByPk();
-        $passphrase = $data['org_passkey'];
-        if (password_verify($passphrase, $org['passphrase'])) {
+        if ($post_hash == $org['passphrase']) {
             $token = new Tokens;
             $token->org_id = $data['org_id'];
             $token->token = $org['passphrase'];

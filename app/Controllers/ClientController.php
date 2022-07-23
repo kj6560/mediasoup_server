@@ -35,7 +35,7 @@ class ClientController extends Controller
 			$org->name = $data['name'];
 			$org->address = $data['address'];
 			$org->mobile = $data['mobile'];
-			$org->passphrase = password_hash($data['passphrase'], PASSWORD_DEFAULT);
+			$org->passphrase = md5($data['passphrase']);
 			$org->admin = 1;
 			$org->is_available = 1;
 			$org->parent = $organisation;
