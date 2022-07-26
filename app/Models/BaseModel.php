@@ -103,9 +103,10 @@ class BaseModel
     {
         $data = get_object_vars($this);
         $rules = $data['validationRule'];
+        $return = true;
         if (!empty($rules)) {
             print_r($rules);
         }
-        return false;
+        return $return;
     }
 }
