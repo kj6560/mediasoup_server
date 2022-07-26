@@ -19,7 +19,7 @@ class User extends BaseModel
     public $is_admin;
     public $parent;
     public $table = "users";
-    protected $validationRule = array(
+    protected $validation_rule = array(
         "name" => ['required', 'string']
     );
 

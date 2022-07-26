@@ -110,8 +110,8 @@ class BaseModel
     public function validate()
     {
         $data = get_object_vars($this);
-        $rules = $data['validationRule'];
-        unset($data['validationRule']);
+        $rules = $data['validation_rule'];
+        unset($data['validation_rule']);
         $return['error'] = array();
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
