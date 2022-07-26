@@ -75,6 +75,9 @@ class ConferenceController extends ApiController
 			$confs = $confs->readAllConferencesForCompanies($org['org_id']);
 			$this->response['msg'] = "conference list fetched successfully";
 			$this->response['data'] = !empty($confs) ? $confs : "Empty";
+		} else {
+			$this->response['msg'] = "conference list fetch failed. invalide token";
+			$this->response['data'] = null;
 		}
 		$this->sendResponse();
 	}
