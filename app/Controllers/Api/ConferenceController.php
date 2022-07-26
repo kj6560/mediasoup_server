@@ -13,12 +13,12 @@ class ConferenceController extends ApiController
 {
 
 
-    //add conference action
-    public function create_conf(RouteCollection $routes)
-    {
-        $org = $this->verifyToken();
-        if($org){
-            $data = $_POST;
+	//add conference action
+	public function create_conf(RouteCollection $routes)
+	{
+		$org = $this->verifyToken();
+		if ($org) {
+			$data = $_POST;
 			$conf_for = array($data['conference_for']);
 			$conf = new Conference;
 			$conf->title = $data['title'];
@@ -35,7 +35,7 @@ class ConferenceController extends ApiController
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
 			$email_map = array();
-			
+
 			foreach ($conf_for as $conf_user) {
 				$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
 				$conf_em_user = new User;
@@ -49,33 +49,36 @@ class ConferenceController extends ApiController
 
 			if ($conference) {
 				foreach ($conf_for as $conf_user) {
-                    $user =new User;
+					$user = new User;
 					$user->id = $conf_user;
 					$user = $user->getByPk();
 					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
 				}
 				$this->response['msg'] = "conference created successfully";
 				$this->response['data'] = $conference;
-				
-			}else{
+			} else {
 				$this->response['msg'] = "conference creation failed";
 				$this->response['data'] = null;
 			}
-        }else{
+		} else {
 			$this->response['msg'] = "conference creation failed. Invalid token";
 			$this->response['data'] = null;
-        }
+		}
 		$this->sendResponse();
-    }
+	}
 
-	public function conf_list(RouteCollection $routes){
+	public function conf_list(RouteCollection $routes)
+	{
 		$org = $this->verifyToken();
-        if($org){
+		if ($org) {
 			$this->response['msg'] = "conference list fetch failed";
 			$this->response['data'] = null;
 			$confs = new Conference;
 			$confs = $confs->readAllConferencesForCompanies($org['id']);
-			print_r($confs);
+			if ($confs) {
+				$this->response['msg'] = "conference list fetched successfully";
+				$this->response['data'] = $confs;
+			}
 		}
 		$this->sendResponse();
 	}
