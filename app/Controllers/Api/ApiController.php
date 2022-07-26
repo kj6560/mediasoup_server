@@ -8,7 +8,7 @@ class ApiController
 {
     public $response=array();
     public function getData(){
-        return $_POST;
+        return $_REQUEST;
     }
     public function sendResponse(){
         header('Content-type: application/json');

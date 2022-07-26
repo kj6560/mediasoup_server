@@ -67,4 +67,13 @@ class ConferenceController extends ApiController
         }
 		$this->sendResponse();
     }
+
+	public function conf_list(RouteCollection $routes){
+		$org = $this->verifyToken();
+        if($org){
+			$this->response['msg'] = "conference list fetched successfully";
+			$this->response['data'] = null;
+		}
+		$this->sendResponse();
+	}
 }
