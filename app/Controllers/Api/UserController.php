@@ -160,4 +160,21 @@ class UserController extends ApiController
         }
         $this->sendResponse();
     }
+    public function client_delete(RouteCollection $routes)
+    {
+        $org = $this->verifyToken();
+        if ($org) {
+            $data = $_POST;
+            $this->response['msg'] = "client deletion failed";
+            $this->response['data'] = null;
+            $client = new Organisation;
+            $client->id = $data['id'];
+            $deleted = $client->delete();
+            if ($deleted) {
+                $this->response['msg'] = "client deleted successfully";
+                $this->response['data'] = array('id' => $data['id']);
+            }
+        }
+        $this->sendResponse();
+    }
 }
