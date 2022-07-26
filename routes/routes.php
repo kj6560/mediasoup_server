@@ -58,7 +58,7 @@ $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPas
 $routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\UserController', 'method'=>'generate_token'), array(),['POST']));
 
 //user
-$routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_user', array('controller' => 'Api\UserController', 'method'=>'create_user'), array(),['POST']));
+$routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_user', array('controller' => 'Api\UserController', 'method'=>'add_users'), array(),['POST']));
 
 //conference
 $routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));
