@@ -63,7 +63,7 @@ $routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/genera
 //user
 $routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_user', array('controller' => 'Api\UserController', 'method' => 'add_users'), array(), ['POST']));
 $routes->add('user_list', new Route(constant('URL_SUBFOLDER') . '/v1/user_list', array('controller' => 'Api\UserController', 'method' => 'user_list'), array(), ['POST']));
-$routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/v1/user_delete', array('controller' => 'Api\UserController', 'method' => 'user_delete'), array(), ['POST']));
+$routes->add('user_delete_api', new Route(constant('URL_SUBFOLDER') . '/v1/user_delete', array('controller' => 'Api\UserController', 'method' => 'user_delete'), array(), ['POST']));
 
 //clients
 $routes->add('create_client', new Route(constant('URL_SUBFOLDER') . '/v1/create_client', array('controller' => 'Api\UserController', 'method' => 'create_client'), array(), ['POST']));
