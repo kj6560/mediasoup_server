@@ -63,3 +63,4 @@ $routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_us
 //conference
 $routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));
 $routes->add('conf_list', new Route(constant('URL_SUBFOLDER') . '/v1/conf_list', array('controller' => 'Api\ConferenceController', 'method'=>'conf_list'), array(),['POST']));
+$routes->add('conf_delete', new Route(constant('URL_SUBFOLDER') . '/v1/conf_delete', array('controller' => 'Api\ConferenceController', 'method'=>'conf_delete'), array(),['POST']));
