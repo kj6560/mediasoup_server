@@ -119,7 +119,7 @@ class BaseModel
                 }
             }
         }
-        print_r($return);
-        return !empty($return['errors']) ? $return['errors'] : true;
+        
+        return !empty($return['error']) ? $return['error'] : true;
     }
 }
