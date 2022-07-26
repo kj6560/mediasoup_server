@@ -143,7 +143,8 @@ class UserController extends ApiController
                 $org->name = $data['name'];
                 $org->address = $data['address'];
                 $org->mobile = $data['mobile'];
-                $org->passphrase = md5($data['passphrase']);
+                if (!empty($data['passphrase']))
+                    $org->passphrase = md5($data['passphrase']);
                 $org->admin = 1;
                 $org->is_available = 1;
                 $org->parent = $orga['org_id'];
