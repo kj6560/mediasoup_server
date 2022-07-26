@@ -16,7 +16,7 @@ class ApiController
         header('Content-type: application/json');
         echo json_encode($this->response);
     }
-    public function verifyToken($token)
+    public function verifyToken()
     {
         $data = $this->getData();
         if (!empty($data['access_token'])) {
