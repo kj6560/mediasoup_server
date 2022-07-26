@@ -109,7 +109,7 @@ class UserController extends ApiController
         if ($org) {
             $data = $_POST;
             $users = new User;
-            $users = $users->getAllUsersInOrganisation($data['id']);
+            $users = $users->getAllUsersInOrganisation($org['org_id']);
             $this->response['msg'] = "user list fetched successfully";
             $this->response['data'] = !empty($users) ? $users : "Empty";
         }
