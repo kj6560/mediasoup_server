@@ -103,7 +103,7 @@ class BaseModel
         $data = get_object_vars($this);
         $rules = $this->validationRule;
         foreach($data as $attr){
-            print_r($rules[$attr]);
+            print_r($attr);
         }
     }
 }
