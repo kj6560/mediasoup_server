@@ -113,7 +113,7 @@ class BaseModel
         $rules = $data['validation_rule'];
         print_r($data);
         print_r($rules);
-        
+
         unset($data['validation_rule']);
         $return['error'] = array();
         if (!empty($rules)) {
@@ -123,6 +123,7 @@ class BaseModel
                     $rule = $rules[$attr];
                     foreach ($rule as $r) {
                         if ($r == "required") {
+                            echo "reached here";
                             if (empty($value)) {
                                 array_push($return['error'], array($attr => $r));
                             }
