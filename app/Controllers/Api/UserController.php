@@ -177,4 +177,15 @@ class UserController extends ApiController
         }
         $this->sendResponse();
     }
+    public function client_list(RouteCollection $routes)
+    {
+        $org = $this->verifyToken();
+        if ($org) {
+            $clients = new User;
+            $clients = $clients->getAllOrganisationFor($org['org_id']);
+            $this->response['msg'] = "user list fetched successfully";
+            $this->response['data'] = !empty($clients) ? $clients : "Empty";
+        }
+        $this->sendResponse();
+    }
 }
