@@ -9,6 +9,6 @@ class Organisation extends BaseModel
     public $id;
     public $table = "organisation";
     protected $validation_rule = array(
-        "name" => ['required', 'string']
+        "passphrase" => ['required', 'string']
     );
 }
