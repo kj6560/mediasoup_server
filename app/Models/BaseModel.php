@@ -99,9 +99,13 @@ class BaseModel
             return false;
         }
     }
-    public function validate(){
+    public function validate()
+    {
         $data = get_object_vars($this);
-        $rules = $this->validationRule;
-        print_r($data);
+        $rules = $data['validationRule'];
+        if (!empty($rules)) {
+            print_r($rules);
+        }
+        return false;
     }
 }
