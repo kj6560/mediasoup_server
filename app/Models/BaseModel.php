@@ -115,18 +115,15 @@ class BaseModel
         $return['error'] = array();
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
-                if ($attr != "table") {
-                    if (!empty($value)) {
-                        $this->$attr = $this->clean_data($value);
-                    }
-                    print_r(!empty($rules[$attr]) ? $rules[$attr] : "");
-                    if (!empty($rules[$attr])) {
-                        $rule = $rules[$attr];
-                        foreach ($rule as $r) {
-                            if ($r == "required") {
-                                if (empty($value)) {
-                                    array_push($return['error'], array($attr => $r));
-                                }
+                if (!empty($value)) {
+                    $this->$attr = $this->clean_data($value);
+                }
+                if (!empty($rules[$attr])) {
+                    $rule = $rules[$attr];
+                    foreach ($rule as $r) {
+                        if ($r == "required") {
+                            if (empty($value)) {
+                                array_push($return['error'], array($attr => $r));
                             }
                         }
                     }
