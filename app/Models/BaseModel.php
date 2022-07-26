@@ -115,7 +115,10 @@ class BaseModel
         $return['error'] = array();
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
-                $this->$attr = $this->clean_data($value);
+                if (!empty($value)) {
+                    $this->$attr = $this->clean_data($value);
+                }
+                echo "reached a";
                 if (!empty($rules[$attr])) {
                     $rule = $rules[$attr];
                     foreach ($rule as $r) {
