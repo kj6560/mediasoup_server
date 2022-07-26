@@ -65,5 +65,6 @@ class ConferenceController extends ApiController
 			$this->response['msg'] = "conference creation failed. Invalid token";
 			$this->response['data'] = null;
         }
+		$this->sendResponse();
     }
 }
