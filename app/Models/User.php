@@ -31,7 +31,7 @@ class User extends BaseModel
     }
     public function getAllOrganisationFor($organisation)
     {
-        $query = "select * from organisation where organisation.id=$organisation or organisation.parent=$organisation ";
+        $query = "select * from organisation where organisation.id=$organisation or organisation.parent=$organisation order by organisation.id desc";
         $org  = R::getAssocRow($query);
         return !empty($org) ? $org : false;
     }
