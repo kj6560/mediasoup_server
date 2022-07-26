@@ -99,6 +99,13 @@ class BaseModel
             return false;
         }
     }
+    public function clean_data($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
     public function validate()
     {
         $data = get_object_vars($this);
@@ -107,6 +114,7 @@ class BaseModel
         $return['error'] = array();
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
+                $this->$attr = $this->clean_data($value);
                 if (!empty($rules[$attr])) {
                     $rule = $rules[$attr];
                     foreach ($rule as $r) {
@@ -120,6 +128,7 @@ class BaseModel
             }
         }
         
+
         return !empty($return['error']) ? $return['error'] : true;
     }
 }
