@@ -89,7 +89,7 @@ class UserController extends ApiController
             $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
             $validation = $newuser->validate();
             $this->response['msg'] = "user creation failed. validation error";
-            $this->response['data'] = $validation['return'];
+            $this->response['data'] = isset($validation['return'])?$validation['return']:"";
             if (empty($validation['error'])) {
                 $user_created = $newuser->create();
                 if ($user_created) {
