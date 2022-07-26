@@ -115,4 +115,21 @@ class UserController extends ApiController
         }
         $this->sendResponse();
     }
+    public function user_delete(RouteCollection $routes)
+	{
+		$org = $this->verifyToken();
+		if ($org) {
+			$data = $_POST;
+			$this->response['msg'] = "user deletion failed";
+			$this->response['data'] = null;
+			$user = new User;
+			$user->id = $data['id'];
+			$deleted = $user->delete();
+			if ($deleted) {
+				$this->response['msg'] = "user deleted successfully";
+				$this->response['data'] = array('id' => $data['id']);
+			}
+		}
+		$this->sendResponse();
+	}
 }
