@@ -108,7 +108,6 @@ class UserController extends ApiController
         $org = $this->verifyToken();
         if ($org) {
             $users = new User;
-            print_r($org);
             $users = $users->getAllUsersInOrganisation($org['id']);
             $this->response['msg'] = "user list fetched successfully";
             $this->response['data'] = !empty($users) ? $users : "Empty";
