@@ -104,7 +104,7 @@ class BaseModel
         $data = get_object_vars($this);
         $rules = $data['validationRule'];
         unset($data['validationRule']);
-        $return = array();
+        $return['error'] = array();
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
                 if (!empty($rules[$attr])) {
