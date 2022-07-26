@@ -9,6 +9,7 @@ class ApiController
     public $response = array();
     public function getData()
     {
+        echo $_SERVER['REQUEST_METHOD'];
         return $_SERVER['REQUEST_METHOD']=='GET' ? $_GET : $_POST;
     }
     public function sendResponse()
