@@ -22,7 +22,7 @@ class ConferenceController extends ApiController
 			$conf = new Conference;
 			$conf->title = $data['title'];
 			$conf->conference_by = $data['user_id'];
-			$conf->conference_for = implode(",", $data['conference_for']);
+			$conf->conference_for = implode(",", array($data['conference_for']));
 			$conf->conference_date = $data['conference_date'];
 			$conf->conference_type = $data['conference_type'];
 			$confdur = $data['duration'];
