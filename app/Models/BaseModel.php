@@ -110,12 +110,10 @@ class BaseModel
                 if (!empty($rules[$attr])) {
                     $rule = $rules[$attr]; //this is an array of rules for $attr
                     foreach ($rule as $r) {
-                        switch ($r) {
-                            case "required":
-                                if (empty($value)) {
-                                    $return['error'] = $attr . " is required";
-                                }
-                                break;
+                        if ($r == "required") {
+                            if (empty($value)) {
+                                $return['error'] = $attr . " is required";
+                            }
                         }
                     }
                 }
