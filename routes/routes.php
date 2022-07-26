@@ -64,7 +64,7 @@ $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/v1/user_dele
 
 //clients
 $routes->add('create_client', new Route(constant('URL_SUBFOLDER') . '/v1/create_client', array('controller' => 'Api\UserController', 'method' => 'create_client'), array(), ['POST']));
-$routes->add('client_delete', new Route(constant('URL_SUBFOLDER') . '/v1/client_delete', array('controller' => 'Api\UserController', 'method' => 'client_delete'), array(), ['POST']));
+$routes->add('client_delete_api', new Route(constant('URL_SUBFOLDER') . '/v1/client_delete', array('controller' => 'Api\UserController', 'method' => 'client_delete'), array(), ['POST']));
 $routes->add('client_list', new Route(constant('URL_SUBFOLDER') . '/v1/client_list', array('controller' => 'Api\UserController', 'method' => 'client_list'), array(), ['POST']));
 
 //conference
