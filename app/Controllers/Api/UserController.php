@@ -71,7 +71,6 @@ class UserController extends ApiController
     }
     public function add_users(RouteCollection $routes)
     {
-        //add validation technique;
         $org = $this->verifyToken();
         if ($org) {
             $data = $_POST;
@@ -116,20 +115,48 @@ class UserController extends ApiController
         $this->sendResponse();
     }
     public function user_delete(RouteCollection $routes)
-	{
-		$org = $this->verifyToken();
-		if ($org) {
-			$data = $_POST;
-			$this->response['msg'] = "user deletion failed";
-			$this->response['data'] = null;
-			$user = new User;
-			$user->id = $data['id'];
-			$deleted = $user->delete();
-			if ($deleted) {
-				$this->response['msg'] = "user deleted successfully";
-				$this->response['data'] = array('id' => $data['id']);
-			}
-		}
-		$this->sendResponse();
-	}
+    {
+        $org = $this->verifyToken();
+        if ($org) {
+            $data = $_POST;
+            $this->response['msg'] = "user deletion failed";
+            $this->response['data'] = null;
+            $user = new User;
+            $user->id = $data['id'];
+            $deleted = $user->delete();
+            if ($deleted) {
+                $this->response['msg'] = "user deleted successfully";
+                $this->response['data'] = array('id' => $data['id']);
+            }
+        }
+        $this->sendResponse();
+    }
+    public function create_client(RouteCollection $routes)
+    {
+        $org = $this->verifyToken();
+        if ($org) {
+            $data = $_POST;
+            $this->response['msg'] = "client creation failed";
+            $this->response['data'] = null;
+            if (!empty($data)) {
+                $org = new Organisation;
+                $org->name = $data['name'];
+                $org->address = $data['address'];
+                $org->mobile = $data['mobile'];
+                $org->passphrase = md5($data['passphrase']);
+                $org->admin = 1;
+                $org->is_available = 1;
+                $org->parent = $org['org_id'];
+                $validation = $org->validate();
+                if (empty($validation['error'])) {
+                    $client = $org->create();
+                    if ($client) {
+                        $this->response['msg'] = "client creation successful";
+                        $this->response['data'] = $client;
+                    }
+                }
+            }
+        }
+        $this->sendResponse();
+    }
 }

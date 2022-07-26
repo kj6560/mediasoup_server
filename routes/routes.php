@@ -62,6 +62,10 @@ $routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_us
 $routes->add('user_list', new Route(constant('URL_SUBFOLDER') . '/v1/user_list', array('controller' => 'Api\UserController', 'method'=>'user_list'), array(),['POST']));
 $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/v1/user_delete', array('controller' => 'Api\UserController', 'method'=>'user_delete'), array(),['POST']));
 
+//clients
+$routes->add('create_client', new Route(constant('URL_SUBFOLDER') . '/v1/create_client', array('controller' => 'Api\UserController', 'method'=>'create_client'), array(),['POST']));
+
+
 //conference
 $routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));
 $routes->add('conf_list', new Route(constant('URL_SUBFOLDER') . '/v1/conf_list', array('controller' => 'Api\ConferenceController', 'method'=>'conf_list'), array(),['POST']));
