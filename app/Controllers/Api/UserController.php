@@ -88,12 +88,14 @@ class UserController extends ApiController
             $pass_text = explode("@", $data['email'])[0];
             $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
             $validation = $newuser->validate();
-            print_r($validation);
-            die;
-            $user_created = $newuser->create();
-            if ($user_created) {
-                $this->response['msg'] = "user created successfully";
-                $this->response['data'] = $user_created;
+            $this->response['msg'] = "user creation failed. validation error";
+            $this->response['data'] = $validation['return'];
+            if (empty($validation['error'])) {
+                $user_created = $newuser->create();
+                if ($user_created) {
+                    $this->response['msg'] = "user created successfully";
+                    $this->response['data'] = $user_created;
+                }
             }
         } else {
             $this->response['msg'] = "user creation failed. invalid or empty token";
