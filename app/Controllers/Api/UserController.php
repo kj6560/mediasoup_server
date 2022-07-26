@@ -134,7 +134,6 @@ class UserController extends ApiController
     public function create_client(RouteCollection $routes)
     {
         $orga = $this->verifyToken();
-        print_r($orga);
         if ($orga) {
             $data = $_POST;
             $this->response['msg'] = "client creation failed";
