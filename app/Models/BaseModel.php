@@ -108,7 +108,7 @@ class BaseModel
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
                 if (!empty($rules[$attr])) {
-                    $rule = $rules[$attr]; //this is an array of rules for $attr
+                    $rule = $rules[$attr];
                     foreach ($rule as $r) {
                         if ($r == "required") {
                             if (empty($value)) {
@@ -119,6 +119,7 @@ class BaseModel
                 }
             }
         }
-        return !empty($return['errors']) ? false : true;
+
+        return !empty($return['errors']) ? $return['errors'] : true;
     }
 }
