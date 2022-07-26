@@ -6,27 +6,24 @@ use App\Auth;
 
 class ApiController
 {
-    public $response=array();
-    public function getData(){
-        return $_REQUEST;
+    public $response = array();
+    public function getData()
+    {
+        return empty($_GET) ? $_GET : $_POST;
     }
-    public function getToken(){
-        return $_GET;
-    }
-    public function postToken(){
-        return $_POST;
-    }
-    public function sendResponse(){
+    public function sendResponse()
+    {
         header('Content-type: application/json');
         echo json_encode($this->response);
     }
-    public function verifyToken($token){
-        print_r($_POST);
-        if(!empty($token)){
+    public function verifyToken($token)
+    {
+        $data = $this->getData();
+        if (!empty($data['access_token'])) {
             $auth = new Auth;
-            $org = $auth->apiGuard($token);
+            $org = $auth->apiGuard($data['access_token']);
             return $org;
-        }else{
+        } else {
             return false;
         }
     }
