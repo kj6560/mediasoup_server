@@ -133,8 +133,9 @@ class UserController extends ApiController
     }
     public function create_client(RouteCollection $routes)
     {
-        $org = $this->verifyToken();
-        if ($org) {
+        $orga = $this->verifyToken();
+        print_r($orga);
+        if ($orga) {
             $data = $_POST;
             $this->response['msg'] = "client creation failed";
             $this->response['data'] = null;
@@ -146,7 +147,7 @@ class UserController extends ApiController
                 $org->passphrase = md5($data['passphrase']);
                 $org->admin = 1;
                 $org->is_available = 1;
-                $org->parent = $org->org_id;
+                $org->parent = $orga['org_id'];
                 $validation = $org->validate();
                 if (empty($validation['error'])) {
                     $client = $org->create();
