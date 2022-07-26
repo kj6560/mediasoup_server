@@ -117,9 +117,9 @@ class BaseModel
             foreach ($data as $attr => $value) {
                 if (!empty($value)) {
                     $this->$attr = $this->clean_data($value);
-                }
+                } 
+                print_r($rules);
                 if (!empty($rules[$attr])) {
-                    echo "reached a";
                     $rule = $rules[$attr];
                     foreach ($rule as $r) {
                         if ($r == "required") {
