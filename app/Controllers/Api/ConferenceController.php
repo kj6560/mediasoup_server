@@ -93,7 +93,7 @@ class ConferenceController extends ApiController
 			$conf->id = $data['id'];
 			$deleted = $conf->delete();
 			if ($deleted) {
-				$this->response['msg'] = "conference list fetched successfully";
+				$this->response['msg'] = "conference deleted successfully";
 				$this->response['data'] = array('id' => $data['id']);
 			}
 		}
