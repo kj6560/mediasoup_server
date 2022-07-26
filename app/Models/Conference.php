@@ -20,10 +20,16 @@ class Conference extends BaseModel
         $conference  = R::getAssocRow($query);
         return !empty($conference)?$conference:false;
     }
-    // public function getUserById($user_id){
-    //     $query = "select * from users where id =$user_id LIMIT 1";
-    //     $user  = R::getAssocRow($query);
-    //     return !empty($user)?$user[0]:false;
-    // }
+    public function isAllowed($conf_id,$user_id,$user_passkey){
+        $conference = $this->readConferences($conf_id);
+        $return = false;
+        if(!empty($conference)){
+            $conference_keys = json_decode($conference['conference_keys'],true);
+            $conf_key_user = $conference_keys[$user_id];
+            if(password_verify($user_passkey,$conf_key_user))
+                $return = true;
+        }
+        return $return;
+    }
 	
 }

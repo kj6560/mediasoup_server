@@ -97,7 +97,7 @@ class UserController extends Controller
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//user delete action
-	public function conference_delete($id, RouteCollection $routes)
+	public function user_delete($id, RouteCollection $routes)
 	{
 		$user = new User;
 		$user->id = $id;

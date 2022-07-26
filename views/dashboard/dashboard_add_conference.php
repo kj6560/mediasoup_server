@@ -23,15 +23,15 @@
               </fieldset>
             </div>
             <div class="form-group">
-            <label for="basicInput">Select participants for conference</label>
+              <label for="basicInput">Select participants for conference</label>
               <select class="choices form-select multiple-remove" multiple="multiple" name="conference_for[]">
                 <optgroup label="Organisation Users">
                   <?php
-                      foreach($data['users'] as $user){
-                        ?>
-                          <option value="<?php echo $user['id'];?>"><?php echo $user['name'];?></option>
-                        <?php 
-                      }
+                  foreach ($data['users'] as $user) {
+                  ?>
+                    <option value="<?php echo $user['id']; ?>"><?php echo $user['name']; ?></option>
+                  <?php
+                  }
                   ?>
                 </optgroup>
               </select>
@@ -41,6 +41,10 @@
               <input class="form-group" type="datetime-local" id="conference_date" name="conference_date">
               <p><small class="text-muted">Select conference time and date</small>
               </p>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Conference Duration</label>
+              <input type="number" class="form-control" id="basicInput" placeholder="Enter duration in minutes" name="duration">
             </div>
             <div class="form-group">
               <input class="form-group" type="submit" id="submit" name="submit" value="Create">

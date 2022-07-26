@@ -54,6 +54,7 @@ class BaseModel
     {
         $data = get_object_vars($this);
         unset($data['table']);
+        unset($data['validation_rule']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
         $table = R::dispense($this->table);
@@ -98,5 +99,37 @@ class BaseModel
         } else {
             return false;
         }
+    }
+    public function clean_data($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    public function validate()
+    {
+        $data = get_object_vars($this);
+        $rules = $data['validation_rule'];
+        unset($data['validation_rule']);
+        $return['error'] = array();
+        if (!empty($rules)) {
+            foreach ($data as $attr => $value) {
+                if (!empty($value)) {
+                    $this->$attr = $this->clean_data($value);
+                }
+                if (!empty($rules[$attr])) {
+                    $rule = $rules[$attr];
+                    foreach ($rule as $r) {
+                        if ($r == "required") {
+                            if (empty($value)) {
+                                array_push($return['error'], array($attr => $r));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return $return;
     }
 }

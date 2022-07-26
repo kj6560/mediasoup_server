@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\Organisation;
+use App\Models\Tokens;
 use RedBeanPHP\R;
 
 class Auth
@@ -16,6 +18,15 @@ class Auth
         if (!empty($_SESSION['login_id']) && !empty($_SESSION['login_id'])) {
             return $authData;
         }
+    }
+    public function apiGuard($token)
+    {
+        $model = new Tokens;
+        $org = $model->findToken($token); 
+        if(empty($org)){
+            return false;
+        }
+        return $org;
     }
     public static function logger($type)
     {

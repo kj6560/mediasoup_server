@@ -35,6 +35,7 @@ class ClientController extends Controller
 			$org->name = $data['name'];
 			$org->address = $data['address'];
 			$org->mobile = $data['mobile'];
+			$org->passphrase = md5($data['passphrase']);
 			$org->admin = 1;
 			$org->is_available = 1;
 			$org->parent = $organisation;
@@ -47,6 +48,36 @@ class ClientController extends Controller
 			}
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
+	}
+	//user detail action
+	public function client_detail($id, RouteCollection $routes)
+	{
+		$user = new User;
+		$user->id = $id;
+		$users = $user->getByPk();
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_user_detail', array("page_heading" => "User Detail"));
+	}
+	//user status action
+	public function client_status($id, $status, RouteCollection $routes)
+	{
+		$user = R::load('organisation', $id);
+		$user->is_available = $status == 1 ? 0 : 1;
+		$usr = R::store($user);
+		if ($usr) {
+			AppHelpers::redirect('/clients');
+		}
+	}
+	//conference delete action
+	public function client_delete($id, RouteCollection $routes)
+	{
+		$client = new Organisation;
+		$client->id = $id;
+		$deleted = $client->delete();
+		if ($deleted) {
+			AppHelpers::redirect('/clients');
+		}else{
+			echo "failed to delete";
+		}
 	}
 	
 }
