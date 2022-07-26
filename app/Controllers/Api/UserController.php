@@ -103,7 +103,7 @@ class UserController extends ApiController
                 $this->response['msg'] = "user creation failed. empty post data";
             }
         } else {
-            $this->response['msg'] = "user creation failed";
+            $this->response['msg'] = "user creation failed. invalid or empty token";
             $this->response['data'] = null;
         }
 
