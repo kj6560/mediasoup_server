@@ -146,7 +146,7 @@ class UserController extends ApiController
                 $org->passphrase = md5($data['passphrase']);
                 $org->admin = 1;
                 $org->is_available = 1;
-                $org->parent = $org['org_id'];
+                $org->parent = $org->org_id;
                 $validation = $org->validate();
                 if (empty($validation['error'])) {
                     $client = $org->create();
