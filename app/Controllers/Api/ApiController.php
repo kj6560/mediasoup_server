@@ -9,8 +9,7 @@ class ApiController
     public $response = array();
     public function getData()
     {
-        echo $_SERVER['REQUEST_METHOD'];
-        return $_SERVER['REQUEST_METHOD']=='GET' ? $_GET : $_POST;
+        return $_SERVER['REQUEST_METHOD'] == 'GET' ? $_GET : $_POST;
     }
     public function sendResponse()
     {
@@ -20,7 +19,6 @@ class ApiController
     public function verifyToken()
     {
         $data = $this->getData();
-        print_r($data);die;
         if (!empty($data['access_token'])) {
             $auth = new Auth;
             $org = $auth->apiGuard($data['access_token']);
