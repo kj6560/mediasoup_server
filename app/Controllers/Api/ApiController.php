@@ -9,7 +9,7 @@ class ApiController
     public $response = array();
     public function getData()
     {
-        return empty($_GET) ? $_GET : $_POST;
+        return !empty($_GET) ? $_GET : $_POST;
     }
     public function sendResponse()
     {
