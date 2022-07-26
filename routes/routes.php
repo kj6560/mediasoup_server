@@ -31,7 +31,7 @@ if ($auth->guard('user')) {
     $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
 
-
+    //priviledged general routes
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method' => 'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method' => 'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method' => 'notifications'), array()));
@@ -46,6 +46,7 @@ $routes->add('services', new Route(constant('URL_SUBFOLDER') . '/services', arra
 $routes->add('portfolio', new Route(constant('URL_SUBFOLDER') . '/portfolio', array('controller' => 'PageController', 'method' => 'portfolio'), array()));
 $routes->add('pricing', new Route(constant('URL_SUBFOLDER') . '/pricing', array('controller' => 'PageController', 'method' => 'pricing'), array()));
 
+//general
 $routes->add('route_error', new Route(constant('URL_SUBFOLDER') . '/route_error', array('controller' => 'PageController', 'method' => 'route_error'), array()));
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'PageController', 'method' => 'login'), array()));
 $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('controller' => 'PageController', 'method' => 'logout'), array()));
@@ -55,6 +56,8 @@ $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPas
 
 
 //api routes
+
+//generate token
 $routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\UserController', 'method' => 'generate_token'), array(), ['POST']));
 
 //user
