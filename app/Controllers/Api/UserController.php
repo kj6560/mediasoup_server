@@ -74,8 +74,6 @@ class UserController extends ApiController
         //add validation technique;
         $org = $this->verifyToken();
         if ($org) {
-            $this->response['msg'] = "user creation failed";
-            $this->response['data'] = null;
             $data = $_POST;
             $newuser = new User;
             $newuser->name = $data['name'];
