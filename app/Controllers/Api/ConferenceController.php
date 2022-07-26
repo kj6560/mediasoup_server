@@ -15,6 +15,8 @@ class ConferenceController extends ApiController
     public function create_conf(RouteCollection $routes)
     {
         $org = $this->verifyToken();
-        print_r($org);
+        if($org){
+            print_r($_POST);
+        }
     }
 }

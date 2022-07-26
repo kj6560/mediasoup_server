@@ -21,21 +21,12 @@ class Auth
     }
     public function apiGuard($token)
     {
-        // $model = new Tokens;
-        // $token_data = $model->findToken($token);
-        // $org = new Organisation;
-        // $org->id = $token_data['org_id'];
-        // $org = $org->getByPk();
-        // $return = false;
-        // if($token == $org['passphrase'])){
-        //     $return = $org;
-        // }
-        // return $return;
-
-        //change the logic here
         $model = new Tokens;
         $org = $model->findToken($token); 
-        print_r($org);
+        if(empty($org)){
+            return false;
+        }
+        return $org;
     }
     public static function logger($type)
     {
