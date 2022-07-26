@@ -20,7 +20,6 @@ class ConferenceController extends ApiController
         if($org){
             $data = $_POST;
 			$conf_for = array($data['conference_for']);
-			print_r($conf_for);
 			$conf = new Conference;
 			$conf->title = $data['title'];
 			$conf->conference_by = $data['user_id'];
