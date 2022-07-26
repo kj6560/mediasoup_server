@@ -81,13 +81,14 @@ class UserController extends ApiController
             $newuser->mobile = $data['mobile'];
             $newuser->user_role = $data['role'];
             $newuser->is_available = 1;
+            $newuser->parent = 0;
             $newuser->organisation = $data['organisation'];
             $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
             $pass_text = explode("@", $data['email'])[0];
             $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
             $validation = $newuser->validate();
             $this->response['msg'] = "user creation failed. validation error";
-            $this->response['data'] = isset($validation['error'])?$validation['error']:"";
+            $this->response['data'] = isset($validation['error']) ? $validation['error'] : "";
             if (empty($validation['error'])) {
                 $user_created = $newuser->create();
                 if ($user_created) {
