@@ -38,7 +38,7 @@ if ($auth->guard('user')) {
     $routes->add('contact_support', new Route(constant('URL_SUBFOLDER') . '/contact_support', array('controller' => 'PageController', 'method' => 'contact_support'), array()));
 }
 $routes->add('conference_secondary', new Route(constant('URL_SUBFOLDER') . '/conference_secondary/{conf_id}/{user_id}', array('controller' => 'ConferenceController', 'method' => 'conference_secondary'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+')));
-$routes->add('conference_room', new Route(constant('URL_SUBFOLDER') . '/conference_room/{conf_id}/{user_id}/{session_id}', array('controller' => 'ConferenceController', 'method' => 'conference_room'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+','session_id'=> '[0-9]+')));
+$routes->add('conference_room', new Route(constant('URL_SUBFOLDER') . '/conference_room/{conf_id}/{user_id}/{session_id}', array('controller' => 'ConferenceController', 'method' => 'conference_room'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+', 'session_id' => '[0-9]+')));
 //page routes
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method' => 'index'), array()));
 $routes->add('aboutus', new Route(constant('URL_SUBFOLDER') . '/aboutus', array('controller' => 'PageController', 'method' => 'aboutus'), array()));
@@ -55,18 +55,19 @@ $routes->add('forgotPassword', new Route(constant('URL_SUBFOLDER') . '/forgotPas
 
 
 //api routes
-$routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\UserController', 'method'=>'generate_token'), array(),['POST']));
+$routes->add('generate_token', new Route(constant('URL_SUBFOLDER') . '/v1/generate_token', array('controller' => 'Api\UserController', 'method' => 'generate_token'), array(), ['POST']));
 
 //user
-$routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_user', array('controller' => 'Api\UserController', 'method'=>'add_users'), array(),['POST']));
-$routes->add('user_list', new Route(constant('URL_SUBFOLDER') . '/v1/user_list', array('controller' => 'Api\UserController', 'method'=>'user_list'), array(),['POST']));
-$routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/v1/user_delete', array('controller' => 'Api\UserController', 'method'=>'user_delete'), array(),['POST']));
+$routes->add('create_user', new Route(constant('URL_SUBFOLDER') . '/v1/create_user', array('controller' => 'Api\UserController', 'method' => 'add_users'), array(), ['POST']));
+$routes->add('user_list', new Route(constant('URL_SUBFOLDER') . '/v1/user_list', array('controller' => 'Api\UserController', 'method' => 'user_list'), array(), ['POST']));
+$routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/v1/user_delete', array('controller' => 'Api\UserController', 'method' => 'user_delete'), array(), ['POST']));
 
 //clients
-$routes->add('create_client', new Route(constant('URL_SUBFOLDER') . '/v1/create_client', array('controller' => 'Api\UserController', 'method'=>'create_client'), array(),['POST']));
-$routes->add('client_delete', new Route(constant('URL_SUBFOLDER') . '/v1/client_delete', array('controller' => 'Api\UserController', 'method'=>'client_delete'), array(),['POST']));
+$routes->add('create_client', new Route(constant('URL_SUBFOLDER') . '/v1/create_client', array('controller' => 'Api\UserController', 'method' => 'create_client'), array(), ['POST']));
+$routes->add('client_delete', new Route(constant('URL_SUBFOLDER') . '/v1/client_delete', array('controller' => 'Api\UserController', 'method' => 'client_delete'), array(), ['POST']));
+$routes->add('client_list', new Route(constant('URL_SUBFOLDER') . '/v1/client_list', array('controller' => 'Api\UserController', 'method' => 'client_list'), array(), ['POST']));
 
 //conference
-$routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method'=>'create_conf'), array(),['POST']));
-$routes->add('conf_list', new Route(constant('URL_SUBFOLDER') . '/v1/conf_list', array('controller' => 'Api\ConferenceController', 'method'=>'conf_list'), array(),['POST']));
-$routes->add('conf_delete', new Route(constant('URL_SUBFOLDER') . '/v1/conf_delete', array('controller' => 'Api\ConferenceController', 'method'=>'conf_delete'), array(),['POST']));
+$routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method' => 'create_conf'), array(), ['POST']));
+$routes->add('conf_list', new Route(constant('URL_SUBFOLDER') . '/v1/conf_list', array('controller' => 'Api\ConferenceController', 'method' => 'conf_list'), array(), ['POST']));
+$routes->add('conf_delete', new Route(constant('URL_SUBFOLDER') . '/v1/conf_delete', array('controller' => 'Api\ConferenceController', 'method' => 'conf_delete'), array(), ['POST']));
