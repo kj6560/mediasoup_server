@@ -19,10 +19,12 @@ class ConferenceController extends ApiController
         $org = $this->verifyToken();
         if($org){
             $data = $_POST;
+			$conf_for = array($data['conference_for']);
+			print_r($conf_for);
 			$conf = new Conference;
 			$conf->title = $data['title'];
 			$conf->conference_by = $data['user_id'];
-			$conf->conference_for = implode(",", array($data['conference_for']));
+			$conf->conference_for = implode(",", $conf_for);
 			$conf->conference_date = $data['conference_date'];
 			$conf->conference_type = $data['conference_type'];
 			$confdur = $data['duration'];
@@ -34,7 +36,8 @@ class ConferenceController extends ApiController
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
 			$email_map = array();
-			foreach ($data['conference_for'] as $conf_user) {
+			
+			foreach ($conf_for as $conf_user) {
 				$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
 				$conf_em_user = new User;
 				$conf_em_user->id = $conf_user;
@@ -46,7 +49,7 @@ class ConferenceController extends ApiController
 			$conference = $conf->create();
 
 			if ($conference) {
-				foreach ($data['conference_for'] as $conf_user) {
+				foreach ($conf_for as $conf_user) {
                     $user =new User;
 					$user->id = $conf_user;
 					$user = $user->getByPk();
