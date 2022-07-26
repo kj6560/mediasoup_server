@@ -34,7 +34,8 @@ class Auth
 
         //change the logic here
         $model = new Tokens;
-        $model->findToken($token); 
+        $org = $model->findToken($token); 
+        print_r($org);
     }
     public static function logger($type)
     {
