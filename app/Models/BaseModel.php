@@ -111,6 +111,9 @@ class BaseModel
     {
         $data = get_object_vars($this);
         $rules = $data['validation_rule'];
+        print_r($data);
+        print_r($rules);
+        
         unset($data['validation_rule']);
         $return['error'] = array();
         if (!empty($rules)) {
