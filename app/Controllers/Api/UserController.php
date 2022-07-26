@@ -54,6 +54,7 @@ class UserController extends ApiController
                 $org->admin = 0;
                 $org->is_available = 1;
                 $org->parent = $organisation;
+                $org->validate();die;
                 $client = $org->create();
 
                 if ($client) {
@@ -71,6 +72,7 @@ class UserController extends ApiController
     }
     public function add_users(RouteCollection $routes)
     {
+        //add validation technique;
         $org = $this->verifyToken();
         if ($org) {
             $this->response['msg'] = "user creation failed";

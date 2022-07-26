@@ -19,6 +19,10 @@ class User extends BaseModel
     public $is_admin;
     public $parent;
     public $table = "users";
+    protected $validationRule = array(
+        "name" => ['required', 'string']
+    );
+
     public function getAllUsersInOrganisation($organisation)
     {
         $query = "select users.id as id,users.name as user_name,organisation.name as org_name, users.is_available as user_status,users.user_role as role,organisation.parent as org_parent from users right join organisation on users.organisation=organisation.id where organisation.id=$organisation or organisation.parent=$organisation and users.name != '' and users.is_deleted !=1 ";
