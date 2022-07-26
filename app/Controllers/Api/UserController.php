@@ -72,19 +72,13 @@ class UserController extends ApiController
     public function add_users(RouteCollection $routes)
     {
         $org = $this->verifyToken();
+        print_r($org);die;
         if ($org) {
             $this->response['msg'] = "user creation failed";
             $this->response['data'] = null;
             $data = $_POST;
-            $user = new User;
-            $user->id = $data['user_id'];
-            $user = $user->getByPk();
-            $organisation = $user['organisation'];
             $newuser = new User;
-            $orgs = $newuser->getAllOrganisationFor($organisation);
             if (!empty($data)) {
-
-
                 $newuser->name = $data['name'];
                 $newuser->email = $data['email'];
                 $newuser->mobile = $data['mobile'];
