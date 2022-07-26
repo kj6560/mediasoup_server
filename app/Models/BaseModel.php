@@ -107,7 +107,7 @@ class BaseModel
         $return = true;
         if (!empty($rules)) {
             foreach ($data as $attr => $value) {
-                print_r(!empty($rule[$attr])?$rule[$attr]:"no rule");
+                print_r(!empty($rules[$attr])?$rules[$attr]:"no rule");
             }
         }
         return $return;
