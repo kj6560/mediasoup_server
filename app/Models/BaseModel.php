@@ -54,6 +54,7 @@ class BaseModel
     {
         $data = get_object_vars($this);
         unset($data['table']);
+        unset($data['validation_rule']);
         $data['created_at'] = date('Y-m-d H:i:s');
         $data['updated_at'] = date('Y-m-d H:i:s');
         $table = R::dispense($this->table);
