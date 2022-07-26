@@ -54,7 +54,6 @@ class UserController extends ApiController
                 $org->admin = 0;
                 $org->is_available = 1;
                 $org->parent = $organisation;
-                $org->validate();die;
                 $client = $org->create();
 
                 if ($client) {
@@ -88,6 +87,7 @@ class UserController extends ApiController
             $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
             $pass_text = explode("@", $data['email'])[0];
             $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+            $newuser->validate();die;
             $user_created = $newuser->create();
             if ($user_created) {
                 $this->response['msg'] = "user created successfully";
