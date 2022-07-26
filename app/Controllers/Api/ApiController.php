@@ -16,10 +16,12 @@ class ApiController
     }
     public function verifyToken(){
         $data = $this->getData();
-        if($data['access_token']){
+        if(!empty($data['access_token'])){
             $auth = new Auth;
             $org = $auth->apiGuard($data['access_token']);
             return $org;
+        }else{
+            return false;
         }
     }
 }
