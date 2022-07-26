@@ -87,7 +87,9 @@ class UserController extends ApiController
             $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
             $pass_text = explode("@", $data['email'])[0];
             $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
-            $newuser->validate();die;
+            $validation = $newuser->validate();
+            print_r($validation);
+            die;
             $user_created = $newuser->create();
             if ($user_created) {
                 $this->response['msg'] = "user created successfully";

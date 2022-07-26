@@ -112,8 +112,8 @@ class BaseModel
                     foreach ($rule as $r) {
                         switch ($r) {
                             case "required":
-                                if(empty($value)){
-                                    echo "empty";
+                                if (empty($value)) {
+                                    $return['error'] = $attr . " is required";
                                 }
                                 break;
                         }
@@ -121,6 +121,6 @@ class BaseModel
                 }
             }
         }
-        return $return;
+        return !empty($return['errors']) ? false : true;
     }
 }
