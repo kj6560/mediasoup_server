@@ -10,16 +10,21 @@ class ApiController
     public function getData(){
         return $_REQUEST;
     }
+    public function getToken(){
+        return $_GET;
+    }
+    public function postToken(){
+        return $_POST;
+    }
     public function sendResponse(){
         header('Content-type: application/json');
         echo json_encode($this->response);
     }
-    public function verifyToken(){
-        $data = $this->getData();
-        print_r($data);die;
-        if(!empty($data['access_token'])){
+    public function verifyToken($token){
+        print_r($_POST);
+        if(!empty($token)){
             $auth = new Auth;
-            $org = $auth->apiGuard($data['access_token']);
+            $org = $auth->apiGuard($token);
             return $org;
         }else{
             return false;
