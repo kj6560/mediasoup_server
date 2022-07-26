@@ -74,7 +74,7 @@ class ConferenceController extends ApiController
 			$confs = new Conference;
 			$confs = $confs->readAllConferencesForCompanies($org['id']);
 			$this->response['msg'] = "conference list fetched successfully";
-			$this->response['data'] = $confs;
+			$this->response['data'] = !empty($confs) ? $confs : "Empty";
 		}
 		$this->sendResponse();
 	}
