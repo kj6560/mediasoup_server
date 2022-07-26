@@ -120,15 +120,13 @@ class BaseModel
                     foreach ($rule as $r) {
                         if ($r == "required") {
                             if (empty($value)) {
-                                $return['error'] = $attr . " is required";
+                                array_push($return['error'], array($attr => $r));
                             }
                         }
                     }
                 }
             }
         }
-        
-
-        return !empty($return['error']) ? $return['error'] : true;
+        return $return;
     }
 }
