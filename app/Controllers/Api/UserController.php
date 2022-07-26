@@ -21,7 +21,7 @@ class UserController extends ApiController
         if ($post_hash == $org['passphrase']) {
             $token = new Tokens;
             $token->org_id = $data['org_id'];
-            $token->token = md5(date('Y-m-d H:is'));
+            $token->token = md5(date('Y-m-d'));
             $token->is_available = 1;
             $token = $token->create();
             if ($token) {

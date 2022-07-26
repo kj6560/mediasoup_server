@@ -33,6 +33,8 @@ class Auth
         // return $return;
 
         //change the logic here
+        $model = new Tokens;
+        $model->findToken($token); 
     }
     public static function logger($type)
     {
