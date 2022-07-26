@@ -86,13 +86,15 @@ class ConferenceController extends ApiController
 	{
 		$org = $this->verifyToken();
 		if ($org) {
-			$this->response['msg'] = "conference list fetch failed";
+			$data = $_POST;
+			$this->response['msg'] = "conference deletion failed";
 			$this->response['data'] = null;
-			$confs = new Conference;
-			$confs = $confs->readAllConferencesForCompanies($org['id']);
-			if ($confs) {
+			$conf = new Conference;
+			$conf->id = $data['id'];
+			$deleted = $conf->delete();
+			if ($deleted) {
 				$this->response['msg'] = "conference list fetched successfully";
-				$this->response['data'] = $confs;
+				$this->response['data'] = array('id' => $data['id']);
 			}
 		}
 		$this->sendResponse();
