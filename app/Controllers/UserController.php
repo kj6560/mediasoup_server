@@ -109,10 +109,7 @@ class UserController extends Controller
 		$userToEdit = new User;
 		$userToEdit->id = $id;
 		$userToEdit = $userToEdit->getByPk();
-		print_r($userToEdit);
 		if (!empty($data)) {
-
-
 			$newuser->name = $data['name'];
 			$newuser->email = $data['email'];
 			$newuser->mobile = $data['mobile'];
@@ -130,7 +127,7 @@ class UserController extends Controller
 				$msg = "User creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,$user=>$userToEdit, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)

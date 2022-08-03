@@ -1,3 +1,6 @@
+<?php 
+    print_r($data['user']);
+?>
 <link rel="stylesheet" href="assets/css/pages/form-element-select.css">
 <section class="section">
     <div class="card">
