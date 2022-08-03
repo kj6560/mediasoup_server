@@ -127,7 +127,7 @@ class UserController extends Controller
 				$msg = "User creation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,"user"=>$userToEdit, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,"user"=>$userToEdit, "page_heading" => "Edit User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)
