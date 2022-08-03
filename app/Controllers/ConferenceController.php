@@ -140,7 +140,7 @@ class ConferenceController extends Controller
 
 			if ($conference) {
 				foreach ($data['conference_for'] as $conf_user) {
-					$user =new User;
+					$user = new User;
 					$user->id = $conf_user;
 					$user = $user->getByPk();
 					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
@@ -160,23 +160,29 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		$userModel = new User;
 		$users = $userModel->getAllByAttributes(array('organisation' => $organisation));
-		$msg = "conference creation failed";
+		$confToEdit = new Conference;
+		$confToEdit->id = $id;
+		$confToEdit = $confToEdit->getByPk();
+		$msg = "conference updation failed";
 		$code = 0;
-		if (!empty($_POST)) {
+		if (!empty($_POST) && !empty($confToEdit)) {
 			$data = $_POST;
 			$conf = new Conference;
+			$conf->id = $id;
 			$conf->title = $data['title'];
-			$conf->conference_by = $user['id'];
+			$conf->conference_by = $confToEdit['conference_by'];
 			$conf->conference_for = implode(",", $data['conference_for']);
 			$conf->conference_date = $data['conference_date'];
 			$conf->conference_type = $data['conference_type'];
-			$conf->organisation = $organisation;
-			$conf->conference_room_id = rand(1000, 1000000);
-			$conf->is_available = 1;
-			$conference = $conf->create();
+			$conf->organisation = $confToEdit['organisation'];
+			$conf->conference_room_id = $confToEdit['conference_room_id'];
+			$conf->is_available = $confToEdit['is_available'];
+			$conf->is_deleted = $confToEdit['is_deleted'];
+			$conf->conference_keys =$confToEdit['conference_keys'];
+			$conference = $conf->update();
 
 			if ($conference) {
-				$msg = "conference created successfully";
+				$msg = "conference updated successfully";
 				$code = 1;
 				AppHelpers::redirect('/conferences');
 			}

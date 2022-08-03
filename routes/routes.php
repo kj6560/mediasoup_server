@@ -30,7 +30,7 @@ if ($auth->guard('user')) {
     $routes->add('conference_detail', new Route(constant('URL_SUBFOLDER') . '/conference_detail/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_detail'), array('id' => '[0-9]+')));
     $routes->add('conference_status', new Route(constant('URL_SUBFOLDER') . '/conference_status/{id}/{status}', array('controller' => 'ConferenceController', 'method' => 'conference_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
     $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method' => 'add_conferences'), array()));
-    $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
+    $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
 
     //priviledged general routes
