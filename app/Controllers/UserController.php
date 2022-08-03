@@ -119,7 +119,7 @@ class UserController extends Controller
 			$newuser->is_admin = $data['role'] == 1 ? 1 : 0;
 			$pass_text = explode("@", $data['email'])[0];
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
-			$user_created = $newuser->create();
+			$user_created = $newuser->update();
 			if ($user_created) {
 				$msg = "User created successfully";
 				$code = 1;
