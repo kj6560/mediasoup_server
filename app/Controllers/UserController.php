@@ -96,6 +96,42 @@ class UserController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
+	//user edit
+	public function user_edit($id,RouteCollection $routes)
+	{
+		$data = $_POST;
+		$msg = "";
+		$code = 0;
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$newuser = new User;
+		$orgs = $newuser->getAllOrganisationFor($organisation);
+		$userToEdit = new User;
+		$userToEdit->id = $id;
+		$userToEdit = $userToEdit->getByPk();
+		print_r($userToEdit);
+		if (!empty($data)) {
+
+
+			$newuser->name = $data['name'];
+			$newuser->email = $data['email'];
+			$newuser->mobile = $data['mobile'];
+			$newuser->user_role = $data['role'];
+			$newuser->is_available = 1;
+			$newuser->organisation = $data['organisation'];
+			$newuser->is_admin = $data['role'] == 1 ? 1 : 0;
+			$pass_text = explode("@", $data['email'])[0];
+			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+			$user_created = $newuser->create();
+			if ($user_created) {
+				$msg = "User created successfully";
+				$code = 1;
+			} else {
+				$msg = "User creation failed";
+			}
+		}
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+	}
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)
 	{
