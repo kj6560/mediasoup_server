@@ -88,6 +88,7 @@ class BaseModel
     {
         $data = get_object_vars($this);
         unset($data['table']);
+        unset($data['validation_rule']);
         $data['updated_at'] = date('Y-m-d H:i:s');
         if (!empty($data)) {
             $table = R::load($this->table, $data['id']);
