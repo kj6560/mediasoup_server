@@ -21,7 +21,7 @@ class ClientController extends Controller
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_clients', array("clients"=>$all_clients));
 	}
 	
-	
+	//client add action
 	public function add_client(RouteCollection $routes)
 	{
 		$data = $_POST;
@@ -49,7 +49,7 @@ class ClientController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
-	//user detail action
+	//client detail action
 	public function client_detail($id, RouteCollection $routes)
 	{
 		$user = new User;
@@ -57,7 +57,7 @@ class ClientController extends Controller
 		$users = $user->getByPk();
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_user_detail', array("page_heading" => "User Detail"));
 	}
-	//user status action
+	//client status action
 	public function client_status($id, $status, RouteCollection $routes)
 	{
 		$user = R::load('organisation', $id);
@@ -66,6 +66,34 @@ class ClientController extends Controller
 		if ($usr) {
 			AppHelpers::redirect('/clients');
 		}
+	}
+	//client edit action
+	public function client_edit($id,RouteCollection $routes)
+	{
+		$data = $_POST;
+		$msg = "";
+		$code = 0;
+		if (!empty($data)) {
+
+			$user = Auth::logger('user');
+			$organisation = $user['organisation'];
+			$org = new Organisation;
+			$org->name = $data['name'];
+			$org->address = $data['address'];
+			$org->mobile = $data['mobile'];
+			$org->passphrase = md5($data['passphrase']);
+			$org->admin = 1;
+			$org->is_available = 1;
+			$org->parent = $organisation;
+			$client = $org->create();
+			if ($client) {
+				$msg = "Client created successfully";
+				$code = 1;
+			} else {
+				$msg = "Client creation failed";
+			}
+		}
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
