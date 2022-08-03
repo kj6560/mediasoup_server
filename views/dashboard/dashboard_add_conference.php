@@ -50,7 +50,7 @@ $conf = !empty($data['conference']) ? $data['conference'] : array();
               <input type="number" class="form-control" id="basicInput" placeholder="Enter duration in minutes" name="duration">
             </div>
             <div class="form-group">
-              <input class="form-group" type="submit" id="submit" name="submit" value="Create">
+              <input class="form-group" type="submit" id="submit" name="submit" value="<?php echo !empty($conf) ? "Update" : "Create" ?>">
 
             </div>
           </form>
