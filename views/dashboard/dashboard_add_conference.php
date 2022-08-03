@@ -61,6 +61,6 @@ $conf = !empty($data['conference']) ? $data['conference'] : array();
     </div>
   </div>
 </section>
+<script src="<?php echo BASE . 'assets/js/app.js' ?>"></script>
 
-
-<script src="assets/js/extensions/form-element-select.js"></script>
+<script src="<?php echo BASE . 'assets/js/extensions/form-element-select.js'; ?>"></script>
