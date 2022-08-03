@@ -61,6 +61,6 @@ $conf = !empty($data['conference']) ? $data['conference'] : array();
     </div>
   </div>
 </section>
-<script src="assets/js/app.js"></script>
+
 
 <script src="assets/js/extensions/form-element-select.js"></script>
