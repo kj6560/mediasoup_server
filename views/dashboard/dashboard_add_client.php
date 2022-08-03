@@ -9,7 +9,7 @@ $client = !empty($data['client']) ? $data['client'] : array();
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="<?php echo !empty($client) ? "/client_edit/" . $user['id'] : "/add_client" ?>" method="POST">
+                    <form action="<?php echo !empty($client) ? "/client_edit/" . $client['id'] : "/add_client" ?>" method="POST">
 
                         <div class="form-group">
                             <label for="basicInput">Client Name</label>
