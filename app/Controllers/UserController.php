@@ -110,6 +110,7 @@ class UserController extends Controller
 		$userToEdit->id = $id;
 		$userToEdit = $userToEdit->getByPk();
 		if (!empty($data)) {
+			$newuser->id = $id;
 			$newuser->name = $data['name'];
 			$newuser->email = $data['email'];
 			$newuser->mobile = $data['mobile'];
