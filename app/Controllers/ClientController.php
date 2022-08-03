@@ -98,7 +98,7 @@ class ClientController extends Controller
 			} else {
 				$msg = "Client updation failed";
 			}
-			AppHelpers::redirect('/clients')
+			AppHelpers::redirect('/clients');
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client"=>$clientToEdit,"page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}

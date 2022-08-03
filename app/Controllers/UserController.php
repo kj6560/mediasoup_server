@@ -127,6 +127,7 @@ class UserController extends Controller
 			} else {
 				$msg = "User updation failed";
 			}
+			AppHelpers::redirect('/users');
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,"user"=>$userToEdit, "page_heading" => "Edit User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
