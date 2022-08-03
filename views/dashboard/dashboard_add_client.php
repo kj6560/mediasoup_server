@@ -18,11 +18,11 @@ $client = !empty($data['client']) ? $data['client'] : array();
 
                         <div class=" form-group">
                             <label for="basicInput">Client Address</label>
-                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Address" name="address" value="<?php echo !empty($client['name']) ? $client['name'] : "" ?>>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Address" name="address" value="<?php echo !empty($client['address']) ? $client['address'] : "" ?>>
                         </div>
                         <div class=" form-group">
                             <label for="basicInput">Client Mobile</label>
-                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile" value="<?php echo !empty($client['name']) ? $client['name'] : "" ?>>
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile" value="<?php echo !empty($client['mobile']) ? $client['mobile'] : "" ?>>
                         </div>
                         <div class=" form-group">
                             <label for="basicInput">Client Passphrase</label>
