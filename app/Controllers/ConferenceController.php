@@ -187,7 +187,7 @@ class ConferenceController extends Controller
 				AppHelpers::redirect('/conferences');
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("page_heading" => "Add conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("conference"=>$confToEdit,"page_heading" => "Edit conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
 
 	//conference detail action

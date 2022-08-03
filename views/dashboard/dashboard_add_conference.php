@@ -1,3 +1,6 @@
+<?php
+$conf = !empty($data['conference']) ? $data['conference'] : array();
+?>
 <link rel="stylesheet" href="assets/css/pages/form-element-select.css">
 <section class="section">
   <div class="card">
@@ -6,7 +9,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
-          <form action="/add_conferences" method="POST">
+          <form action="<?php echo !empty($conf) ? "/conference_edit/" . $conf['id'] : "/add_conferences" ?>" method="POST">
 
             <div class="form-group">
               <label for="basicInput">Conference Title</label>
