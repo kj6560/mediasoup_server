@@ -18,9 +18,9 @@ class ClientController extends Controller
 		$organisation = $user['organisation'];
 		$users = new User;
 		$all_clients = $users->getAllUserClients($organisation);
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_clients', array("clients"=>$all_clients));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_clients', array("clients" => $all_clients));
 	}
-	
+
 	//client add action
 	public function add_client(RouteCollection $routes)
 	{
@@ -68,16 +68,20 @@ class ClientController extends Controller
 		}
 	}
 	//client edit action
-	public function client_edit($id,RouteCollection $routes)
+	public function client_edit($id, RouteCollection $routes)
 	{
 		$data = $_POST;
 		$msg = "";
 		$code = 0;
+		$clientToEdit = new Organisation;
+		$clientToEdit->id = $id;
+		$clientToEdit = $clientToEdit->getByPk();
 		if (!empty($data)) {
 
 			$user = Auth::logger('user');
 			$organisation = $user['organisation'];
 			$org = new Organisation;
+			$org->id = $id;
 			$org->name = $data['name'];
 			$org->address = $data['address'];
 			$org->mobile = $data['mobile'];
@@ -85,15 +89,15 @@ class ClientController extends Controller
 			$org->admin = 1;
 			$org->is_available = 1;
 			$org->parent = $organisation;
-			$client = $org->create();
+			$client = $org->update();
 			if ($client) {
-				$msg = "Client created successfully";
+				$msg = "Client updated successfully";
 				$code = 1;
 			} else {
-				$msg = "Client creation failed";
+				$msg = "Client updation failed";
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("page_heading" => "Add Client", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client"=>$clientToEdit,"page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
@@ -103,9 +107,8 @@ class ClientController extends Controller
 		$deleted = $client->delete();
 		if ($deleted) {
 			AppHelpers::redirect('/clients');
-		}else{
+		} else {
 			echo "failed to delete";
 		}
 	}
-	
 }

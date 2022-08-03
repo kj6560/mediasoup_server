@@ -122,10 +122,10 @@ class UserController extends Controller
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
 			$user_created = $newuser->update();
 			if ($user_created) {
-				$msg = "User created successfully";
+				$msg = "User updated successfully";
 				$code = 1;
 			} else {
-				$msg = "User creation failed";
+				$msg = "User updation failed";
 			}
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,"user"=>$userToEdit, "page_heading" => "Edit User", "msg" => array('text' => $msg, 'code' => $code)));
