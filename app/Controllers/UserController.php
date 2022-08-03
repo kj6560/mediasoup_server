@@ -116,7 +116,7 @@ class UserController extends Controller
 			$newuser->mobile = $data['mobile'];
 			$newuser->user_role = $data['role'];
 			$newuser->is_available = 1;
-			$newuser->is_deleted = $userToEdit->is_deleted;
+			$newuser->is_deleted = $userToEdit['is_deleted'];
 			$newuser->organisation = $data['organisation'];
 			$newuser->is_admin = $data['role'] == 1 ? 1 : 0;
 			$pass_text = explode("@", $data['email'])[0];

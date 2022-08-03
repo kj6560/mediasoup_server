@@ -90,7 +90,7 @@ class ClientController extends Controller
 			}
 			$org->admin = 1;
 			$org->is_available = 1;
-			$org->is_deleted = $clientToEdit->is_deleted;
+			$org->is_deleted = $clientToEdit['is_deleted'];
 			$org->parent = $organisation;
 			$client = $org->update();
 			if ($client) {
