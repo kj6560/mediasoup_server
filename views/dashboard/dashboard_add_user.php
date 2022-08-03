@@ -43,7 +43,7 @@
                                     <?php
                                     foreach ($data['orgs'] as $org) {
                                     ?>
-                                        <option value="<?php echo $org['id']; ?>"><?php echo $org['name']; ?></option>
+                                        <option value="<?php echo $org['id']; ?>" <?php echo !empty($user['organisation'])&& $user['organisation']==$org['id']?"selected":""?>><?php echo $org['name']; ?></option>
                                     <?php
                                     }
                                     ?>
