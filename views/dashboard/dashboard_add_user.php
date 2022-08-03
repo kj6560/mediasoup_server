@@ -18,21 +18,21 @@
 
                         <div class="form-group">
                             <label for="basicInput">User Email</label>
-                            <input type="email" class="form-control" id="basicInput" placeholder="Enter Address" name="email">
+                            <input type="email" class="form-control" id="basicInput" placeholder="Enter Email" name="email" value="<?php echo !empty($user['email'])?$user['email']:""?>">
                         </div>
                         <div class="form-group">
                             <label for="basicInput">User Mobile</label>
-                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile">
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Mobile" name="mobile" value="<?php echo !empty($user['mobile'])?$user['mobile']:""?>">
                         </div>
                         <div class="form-group">
                             <label for="basicInput">User Role</label>
                             <fieldset class="form-group">
                                 <select class="form-select" id="basicSelect" name="role">
 
-                                    <option value="1">Admin</option>
-                                    <option value="2">Manager</option>
-                                    <option value="3">Supervisor</option>
-                                    <option value="4">User</option>
+                                    <option value="1" <?php echo !empty($user['user_role'])&& $user['user_role']==1?"selected":""?>>Admin</option>
+                                    <option value="2" <?php echo !empty($user['user_role'])&& $user['user_role']==2?"selected":""?>>Manager</option>
+                                    <option value="3" <?php echo !empty($user['user_role'])&& $user['user_role']==3?"selected":""?>>Supervisor</option>
+                                    <option value="4" <?php echo !empty($user['user_role'])&& $user['user_role']==4?"selected":""?>>User</option>
                                 </select>
                             </fieldset>
                         </div>
