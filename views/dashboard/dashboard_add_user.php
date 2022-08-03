@@ -1,5 +1,5 @@
 <?php 
-    print_r($data['user']);
+    $user = !empty($data['user'])?$data['user']:array();
 ?>
 <link rel="stylesheet" href="assets/css/pages/form-element-select.css">
 <section class="section">
@@ -13,7 +13,7 @@
 
                         <div class="form-group">
                             <label for="basicInput">User Name</label>
-                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Name" name="name">
+                            <input type="text" class="form-control" id="basicInput" placeholder="Enter Name" name="name" value="<?php echo !empty($user['name'])?$user['name']:""?>">
                         </div>
 
                         <div class="form-group">
