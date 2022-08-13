@@ -214,7 +214,7 @@ class UserController extends Controller
 				if(move_uploaded_file($file_tmp, "../upload/" .$file_name)){
 					$spreadsheet = IOFactory::load("../upload/".$file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
-					unlink($file_name);
+					unlink("../upload/".$file_name);
 					print_r($data);
 				}
 				
