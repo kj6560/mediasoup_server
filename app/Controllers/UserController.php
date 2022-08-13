@@ -292,8 +292,7 @@ class UserController extends Controller
 		$f = fopen('php://output', 'a');
 		$spreadsheet = IOFactory::load("../templates/" . $file_name);
 		$data = $spreadsheet->getActiveSheet()->toArray();
-		print_r($data);die;
-		fputcsv($f, $data);
+		fputcsv($f, $data[0]);
 		fclose($f);
 	}
 }
