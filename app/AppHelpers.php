@@ -65,4 +65,25 @@ class AppHelpers
             
         return $response;
     }
+    public static function clean_data($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        return $data;
+    }
+    public static function processData($data){
+        $processedData = array();
+        if(!empty($data)){
+            $headers = !empty($data[0])?$data[0]:array();
+            for($i=1;$i<count($data);$i++){
+                $da = $data[$i];
+                $res = array();
+                for($j=0;$j<count($headers);$j++){
+                    $res[$headers[$j]] = $da[$j];
+                }
+                array_push($processedData,$res);
+            }
+        }
+        return $processedData;
+    }
 }

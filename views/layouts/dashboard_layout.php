@@ -22,14 +22,14 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> -->Video Conference</a>
+                            <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> --><?php echo SITE_NAME ?></a>
                         </div>
 
                     </div>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+                        
 
                         <li class="sidebar-item active ">
                             <a href="/dashboard" class='sidebar-link'>
@@ -83,6 +83,12 @@
                                 <span>Notifications</span>
                             </a>
                         </li>
+                        <li class="sidebar-item active ">
+                            <a href="/logout" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +126,7 @@
                         <p>2022 &copy; Psychowellness Center</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://shiwkesh.online">Shiwkesh Schematics Private Limited</a></p>
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span></p>
                     </div>
                 </div>
             </footer>

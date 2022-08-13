@@ -4,7 +4,7 @@ namespace App\Models;
 
 use RedBeanPHP\R;
 
-class BaseModel
+class BaseAppModel
 {
 
     public function getByPk()

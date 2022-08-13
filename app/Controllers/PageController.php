@@ -13,6 +13,9 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
+		if (!empty($_SESSION['login_id'])) {
+			AppHelpers::redirect('/dashboard');
+		}
 
 		//EmailController::send(1, 'info2018@talktoangel.com', array('kj6560@gmail.com'), "some test sub", "Hi there!", null, null, null, true);
 		$this->loadView('general_layout', 'pages/home', array());
@@ -28,7 +31,7 @@ class PageController extends Controller
 			if ($user_data) {
 				if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
 					$_SESSION['login_id'] = $user_data['id'];
-					AppHelpers::redirect("/");
+					AppHelpers::redirect("/dashboard");
 				} else {
 					$return['errors'] = "sorry your credentials are invalid";
 				}

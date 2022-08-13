@@ -1,12 +1,13 @@
-<link rel="stylesheet" href="assets/css/pages/form-element-select.css">
+<?php
+$conf = !empty($data['conference']) ? $data['conference'] : array();
+?>
+<link rel="stylesheet" href="<?php echo BASE . 'assets/css/pages/form-element-select.css'; ?>">
 <section class="section">
   <div class="card">
-
-
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
-          <form action="/add_conferences" method="POST">
+          <form action="<?php echo !empty($conf) ? "/conference_edit/" . $conf['id'] : "/add_conferences" ?>" method="POST">
 
             <div class="form-group">
               <label for="basicInput">Conference Title</label>
@@ -47,7 +48,7 @@
               <input type="number" class="form-control" id="basicInput" placeholder="Enter duration in minutes" name="duration">
             </div>
             <div class="form-group">
-              <input class="form-group" type="submit" id="submit" name="submit" value="Create">
+              <input class="form-group" type="submit" id="submit" name="submit" value="<?php echo !empty($conf) ? "Update" : "Create" ?>">
 
             </div>
           </form>
@@ -58,6 +59,6 @@
     </div>
   </div>
 </section>
-<script src="assets/js/app.js"></script>
+<script src="<?php echo BASE . 'assets/js/app.js' ?>"></script>
 
-<script src="assets/js/extensions/form-element-select.js"></script>
+<script src="<?php echo BASE . 'assets/js/extensions/form-element-select.js'; ?>"></script>
