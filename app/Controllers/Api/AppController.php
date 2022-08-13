@@ -17,7 +17,7 @@ class AppController extends AppApiController
             $data = $_POST;
             $user  = new AppUserModel;
 
-            $user_data = $user->getByAttributes(array('email_d' => $data['email_id']));
+            $user_data = $user->getByAttributes(array('email_id' => $data['email_id']));
             if ($user_data) {
                 if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
                     $this->response['data'] = $user_data;
