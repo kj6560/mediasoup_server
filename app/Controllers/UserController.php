@@ -236,6 +236,9 @@ class UserController extends Controller
 							if (empty($pdata['mobile'])) {
 								$errors[$i] = "Mobile id at row: [$i+1] is missing";
 							}
+							if (empty($pdata['user_role'])) {
+								$errors[$i] = "user_role at row: [$i+1] is missing";
+							}
 
 							if (empty($errors[$i])) {
 								$pass_text = explode("@", $pdata['email'])[0];
@@ -248,6 +251,8 @@ class UserController extends Controller
 								$beans[$i]->organisation = $organisation;
 								$beans[$i]->is_available = 1;
 								$beans[$i]->is_deleted = 0;
+								$beans[$i]->is_admin = 0;
+								$beans[$i]->user_role = $pdata['user_role'];
 							}
 						} else {
 							$existing['email'] = $pdata['email'];
