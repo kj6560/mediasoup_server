@@ -276,8 +276,6 @@ class UserController extends Controller
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
-			} else {
-				echo "not set";
 			}
 		} catch (Exception $e) {
 			print_r($e->getMessage());
