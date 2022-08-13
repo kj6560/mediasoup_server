@@ -191,8 +191,6 @@ class UserController extends Controller
 	public function add_users_upload_file(RouteCollection $routes)
 	{
 		try {
-			$msg = "Please Select a file to upload";
-			$code = 0;
 			if (isset($_FILES['csv'])) {
 				$user = Auth::logger('user');
 				$organisation = $user['organisation'];
@@ -255,7 +253,8 @@ class UserController extends Controller
 							}
 						}
 					}
-
+					$msg = "";
+					$code = 0;
 					if (!empty($errors)) {
 						foreach ($errors as $error) {
 							$msg .= $error . "<br>";
