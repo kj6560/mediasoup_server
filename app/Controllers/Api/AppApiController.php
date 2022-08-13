@@ -9,12 +9,7 @@ class AppApiController
 {
     public function __construct()
     {
-        $host = "talktoangel.com";
-        $username = "radeshsuri";
-        $password = "vUN%.VUu%GRE";
-        $database = "ttacorporate";
-        R::setup("mysql:host=$host;dbname=$database", $username, $password);
-        R::freeze(TRUE);
+        R::selectDatabase('DB1');
     }
     public $response = array();
     public function getData()
