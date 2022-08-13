@@ -283,11 +283,11 @@ class UserController extends Controller
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
 						}
-						if(!empty($dup_data)){
-							foreach($dup_data as $key=>$value){
+						if (!empty($dup_data)) {
+							foreach ($dup_data as $key => $value) {
 								$msg .= "duplicate email " . $value['email'] . " at $key<br>";
 							}
-							$msg .="if two rows has same email, none of them will be stored";
+							$msg .= "if two rows has same email, none of them will be stored";
 						}
 						R::storeAll($beans);
 					}
@@ -300,5 +300,17 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
+	}
+	public function downloadUserUploadTemplate(RouteCollection $routes)
+	{
+		$file_name = "user_template.csv";
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename=' . $file_name);
+		header("Content-Transfer-Encoding: UTF-8");
+		$f = fopen('php://output', 'a');
+		$spreadsheet = IOFactory::load("../templates/" . $file_name);
+		$data = $spreadsheet->getActiveSheet()->toArray();
+		fputcsv($f, $data[0]);
+		fclose($f);
 	}
 }
