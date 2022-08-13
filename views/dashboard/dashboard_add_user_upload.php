@@ -5,7 +5,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title">With Validation</h5>
+            <h5 class="card-title"><a href="/downloadUserUploadTemplate">Download Template</a></h5>
         </div>
         <div class="card-content">
             <form action="/add_users_upload_file" method="POST" enctype="multipart/form-data">

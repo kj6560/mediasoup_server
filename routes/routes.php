@@ -18,6 +18,7 @@ if ($auth->guard('user')) {
     $routes->add('user_edit', new Route(constant('URL_SUBFOLDER') . '/user_edit/{id}', array('controller' => 'UserController', 'method' => 'user_edit'), array()));
     $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/user_delete/{id}', array('controller' => 'UserController', 'method' => 'user_delete'), array('id' => '[0-9]+')));
     $routes->add('user_status', new Route(constant('URL_SUBFOLDER') . '/user_status/{id}/{status}', array('controller' => 'UserController', 'method' => 'user_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
+    $routes->add('downloadUserUploadTemplate', new Route(constant('URL_SUBFOLDER') . '/downloadUserUploadTemplate', array('controller' => 'UserController', 'method' => 'downloadUserUploadTemplate'), array()));
 
     //client routes
     $routes->add('clients', new Route(constant('URL_SUBFOLDER') . '/clients', array('controller' => 'ClientController', 'method' => 'clients'), array()));

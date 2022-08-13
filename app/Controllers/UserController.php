@@ -186,24 +186,6 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
-
-		// $newuser->name = $data['name'];
-		// $newuser->email = $data['email'];
-		// $newuser->mobile = $data['mobile'];
-		// $newuser->user_role = $data['role'];
-		// $newuser->is_available = 1;
-		// $newuser->organisation = $data['organisation'];
-		// $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
-		// $pass_text = explode("@", $data['email'])[0];
-		// $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
-		// $user_created = $newuser->create();
-		// if ($user_created) {
-		// 	$msg = "User created successfully";
-		// 	$code = 1;
-		// } else {
-		// 	$msg = "User creation failed";
-		// }
-
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	public function add_users_upload_file(RouteCollection $routes)
@@ -300,5 +282,17 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
+	}
+	public function downloadUserUploadTemplate(RouteCollection $routes)
+	{
+		$file_name = "user_template.csv";
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename=' . $file_name);
+		header("Content-Transfer-Encoding: UTF-8");
+		$f = fopen('php://output', 'a');
+		$spreadsheet = IOFactory::load("../templates/" . $file_name);
+		$data = $spreadsheet->getActiveSheet()->toArray();
+		fputcsv($f, $data);
+		fclose($f);
 	}
 }
