@@ -186,6 +186,24 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
+
+		// $newuser->name = $data['name'];
+		// $newuser->email = $data['email'];
+		// $newuser->mobile = $data['mobile'];
+		// $newuser->user_role = $data['role'];
+		// $newuser->is_available = 1;
+		// $newuser->organisation = $data['organisation'];
+		// $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
+		// $pass_text = explode("@", $data['email'])[0];
+		// $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+		// $user_created = $newuser->create();
+		// if ($user_created) {
+		// 	$msg = "User created successfully";
+		// 	$code = 1;
+		// } else {
+		// 	$msg = "User creation failed";
+		// }
+
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	public function add_users_upload_file(RouteCollection $routes)
@@ -213,10 +231,10 @@ class UserController extends Controller
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
-							$dup_data[$i]['email'] = AppHelpers::clean_data($pdata['email']);
+							$dup_data[$i]['email'] = $pdata['email'];
 						} else {
 							$user = new User;
-							$user = $user->getAllByAttributes(array("email" => AppHelpers::clean_data($pdata['email'])));
+							$user = $user->getAllByAttributes(array("email" => $pdata['email']));
 
 							if (empty($user)) {
 								if (empty($pdata['email'])) {
@@ -233,23 +251,23 @@ class UserController extends Controller
 								}
 
 								if (empty($errors[$i])) {
-									$pass_text = explode("@", AppHelpers::clean_data($pdata['email']))[0];
+									$pass_text = explode("@", $pdata['email'])[0];
 
 									$beans[$i] = R::dispense('users');
-									$beans[$i]->name = AppHelpers::clean_data($pdata['name']);
-									$beans[$i]->email = AppHelpers::clean_data($pdata['email']);
+									$beans[$i]->name = $pdata['name'];
+									$beans[$i]->email = $pdata['email'];
 									$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
-									$beans[$i]->mobile = AppHelpers::clean_data($pdata['mobile']);
+									$beans[$i]->mobile = $pdata['mobile'];
 									$beans[$i]->organisation = $organisation;
 									$beans[$i]->is_available = 1;
 									$beans[$i]->is_deleted = 0;
 									$beans[$i]->is_admin = 0;
 									$beans[$i]->created_at = date('Y-m-d H:i:s');;
 									$beans[$i]->updated_at = date('Y-m-d H:i:s');;
-									$beans[$i]->user_role = ($pdata['user_role']);
+									$beans[$i]->user_role = $pdata['user_role'];
 								}
 							} else {
-								$existing[$i]['email'] = AppHelpers::clean_data($pdata['email']);
+								$existing[$i]['email'] = $pdata['email'];
 							}
 						}
 					}
@@ -265,11 +283,11 @@ class UserController extends Controller
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
 						}
-						if (!empty($dup_data)) {
-							foreach ($dup_data as $key => $value) {
+						if(!empty($dup_data)){
+							foreach($dup_data as $key=>$value){
 								$msg .= "duplicate email " . $value['email'] . " at $key<br>";
 							}
-							$msg .= "if two rows has same email, none of them will be stored";
+							$msg .="if two rows has same email, none of them will be stored";
 						}
 						R::storeAll($beans);
 					}
@@ -282,17 +300,5 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
-	}
-	public function downloadUserUploadTemplate(RouteCollection $routes)
-	{
-		$file_name = "user_template.csv";
-		header('Content-type: application/csv');
-		header('Content-Disposition: attachment; filename=' . $file_name);
-		header("Content-Transfer-Encoding: UTF-8");
-		$f = fopen('php://output', 'a');
-		$spreadsheet = IOFactory::load("../templates/" . $file_name);
-		$data = $spreadsheet->getActiveSheet()->toArray();
-		fputcsv($f, $data[0]);
-		fclose($f);
 	}
 }
