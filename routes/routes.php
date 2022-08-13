@@ -39,7 +39,7 @@ if ($auth->guard('user')) {
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method' => 'notifications'), array()));
     $routes->add('contact_support', new Route(constant('URL_SUBFOLDER') . '/contact_support', array('controller' => 'PageController', 'method' => 'contact_support'), array()));
 }
-$routes->add('conference_secondary', new Route(constant('URL_SUBFOLDER') . '/conference_secondary/{conf_id}/{user_id}', array('controller' => 'ConferenceController', 'method' => 'conference_secondary'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+')));
+//$routes->add('conference_secondary', new Route(constant('URL_SUBFOLDER') . '/conference_secondary/{conf_id}/{user_id}', array('controller' => 'ConferenceController', 'method' => 'conference_secondary'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+')));
 $routes->add('conference_room', new Route(constant('URL_SUBFOLDER') . '/conference_room/{conf_id}/{user_id}/{session_id}', array('controller' => 'ConferenceController', 'method' => 'conference_room'), array('conf_id' => '[0-9]+', 'user_id' => '[0-9]+', 'session_id' => '[0-9]+')));
 //page routes
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method' => 'index'), array()));
