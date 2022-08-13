@@ -267,11 +267,12 @@ class UserController extends Controller
 							$msg .= $error . "<br>";
 						}
 					} else {
-						R::storeAll($beans);
 						if (!empty($existing)) {
 							foreach ($existing as $exist) {
 								$msg .= "User with email " . $exist . " exists<br>";
 							}
+						}else{
+							R::storeAll($beans);
 						}
 					}
 
