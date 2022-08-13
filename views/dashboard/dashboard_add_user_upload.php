@@ -19,7 +19,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
                     </p>
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="file" id="file" class="basic-filepond" required multiple data-max-file-size="10MB" data-max-files="3">
+                    <input type="file" name="file" id="file" class="basic-filepond">
 
                 </div>
                 <div class="form-group">
