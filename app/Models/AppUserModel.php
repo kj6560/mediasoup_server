@@ -4,7 +4,7 @@ namespace App\Models;
 
 use RedBeanPHP\R;
 
-class AppUserModel extends BaseModel
+class AppUserModel extends BaseAppModel
 {
     public $id;
     public $name;
