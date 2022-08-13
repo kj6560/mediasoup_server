@@ -13,7 +13,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
                    
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="csv" id="csv">
+                    <input type="file" name="csv" id="csv" class="basic-filepond">
 
                 </div>
                 <div class="form-group">
