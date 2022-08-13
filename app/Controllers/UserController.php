@@ -231,10 +231,10 @@ class UserController extends Controller
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
-							$dup_data[$i]['email'] = $pdata['email'];
+							$dup_data[$i]['email'] = AppHelpers::clean_data($pdata['email']);
 						} else {
 							$user = new User;
-							$user = $user->getAllByAttributes(array("email" => $pdata['email']));
+							$user = $user->getAllByAttributes(array("email" => AppHelpers::clean_data($pdata['email'])));
 
 							if (empty($user)) {
 								if (empty($pdata['email'])) {
@@ -251,23 +251,23 @@ class UserController extends Controller
 								}
 
 								if (empty($errors[$i])) {
-									$pass_text = explode("@", $pdata['email'])[0];
+									$pass_text = explode("@", AppHelpers::clean_data($pdata['email']))[0];
 
 									$beans[$i] = R::dispense('users');
-									$beans[$i]->name = $pdata['name'];
-									$beans[$i]->email = $pdata['email'];
+									$beans[$i]->name = AppHelpers::clean_data($pdata['name']);
+									$beans[$i]->email = AppHelpers::clean_data($pdata['email']);
 									$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
-									$beans[$i]->mobile = $pdata['mobile'];
+									$beans[$i]->mobile = AppHelpers::clean_data($pdata['mobile']);
 									$beans[$i]->organisation = $organisation;
 									$beans[$i]->is_available = 1;
 									$beans[$i]->is_deleted = 0;
 									$beans[$i]->is_admin = 0;
 									$beans[$i]->created_at = date('Y-m-d H:i:s');;
 									$beans[$i]->updated_at = date('Y-m-d H:i:s');;
-									$beans[$i]->user_role = $pdata['user_role'];
+									$beans[$i]->user_role = ($pdata['user_role']);
 								}
 							} else {
-								$existing[$i]['email'] = $pdata['email'];
+								$existing[$i]['email'] = AppHelpers::clean_data($pdata['email']);
 							}
 						}
 					}
@@ -283,11 +283,11 @@ class UserController extends Controller
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
 						}
-						if(!empty($dup_data)){
-							foreach($dup_data as $key=>$value){
+						if (!empty($dup_data)) {
+							foreach ($dup_data as $key => $value) {
 								$msg .= "duplicate email " . $value['email'] . " at $key<br>";
 							}
-							$msg .="if two rows has same email, none of them will be stored";
+							$msg .= "if two rows has same email, none of them will be stored";
 						}
 						R::storeAll($beans);
 					}

@@ -65,6 +65,12 @@ class AppHelpers
             
         return $response;
     }
+    public static function clean_data($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        return $data;
+    }
     public static function processData($data){
         $processedData = array();
         if(!empty($data)){
