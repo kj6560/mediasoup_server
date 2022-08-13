@@ -217,6 +217,9 @@ class UserController extends Controller
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
 					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
+					if(empty($data)){
+						AppHelpers::redirect("/add_user_upload");
+					}
 					unlink("../upload/" . $file_name);
 					$processedData = AppHelpers::processData($data);
 					$beans = array();
@@ -295,7 +298,8 @@ class UserController extends Controller
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
 			} else {
-				echo "not set";
+				$msg = "Please select a file to upload";
+				return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 			}
 		} catch (Exception $e) {
 			print_r($e->getMessage());
