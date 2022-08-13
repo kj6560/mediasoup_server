@@ -225,7 +225,7 @@ class UserController extends Controller
 					$dup = array();
 					for ($i = 0; $i < count($processedData); $i++) {
 						$values = array_values($processedData[$i]);
-						empty($dup) ? array_push($values) : array_merge($dup, $values);
+						array_push($dup,$values);
 					}
 					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
