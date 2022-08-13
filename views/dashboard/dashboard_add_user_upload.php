@@ -19,7 +19,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
                     </p>
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="file" id="file" class="basic-filepond">
+                    <input type="file" name="csv" id="file" class="basic-filepond">
 
                 </div>
                 <div class="form-group">
