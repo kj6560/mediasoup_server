@@ -191,6 +191,8 @@ class UserController extends Controller
 	public function add_users_upload_file(RouteCollection $routes)
 	{
 		try {
+			$msg = "Please Select a file to upload";
+			$code = 0;
 			if (isset($_FILES['csv'])) {
 				$user = Auth::logger('user');
 				$organisation = $user['organisation'];
@@ -199,80 +201,85 @@ class UserController extends Controller
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
 					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
-					unlink("../upload/" . $file_name);
-					$processedData = AppHelpers::processData($data);
-					$beans = array();
-					$existing = array();
-					$errors = array();
-					$dup = array();
-					$dup_data = array();
-					for ($i = 0; $i < count($processedData); $i++) {
-						$values = $processedData[$i];
-						array_push($dup, $values['email']);
-					}
-					for ($i = 0; $i < count($processedData); $i++) {
-						$pdata = $processedData[$i];
-						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
-							$dup_data[$i]['email'] = AppHelpers::clean_data($pdata['email']);
-						} else {
-							$user = new User;
-							$user = $user->getAllByAttributes(array("email" => AppHelpers::clean_data($pdata['email'])));
-
-							if (empty($user)) {
-								if (empty($pdata['email'])) {
-									$errors[$i] = "Email id at row: [$i+1] is missing";
-								}
-								if (empty($pdata['name'])) {
-									$errors[$i] = "Name  at row: [$i+1] is missing";
-								}
-								if (empty($pdata['mobile'])) {
-									$errors[$i] = "Mobile id at row: [$i+1] is missing";
-								}
-								if (empty($pdata['user_role'])) {
-									$errors[$i] = "user_role at row: [$i+1] is missing";
-								}
-
-								if (empty($errors[$i])) {
-									$pass_text = explode("@", AppHelpers::clean_data($pdata['email']))[0];
-
-									$beans[$i] = R::dispense('users');
-									$beans[$i]->name = AppHelpers::clean_data($pdata['name']);
-									$beans[$i]->email = AppHelpers::clean_data($pdata['email']);
-									$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
-									$beans[$i]->mobile = AppHelpers::clean_data($pdata['mobile']);
-									$beans[$i]->organisation = $organisation;
-									$beans[$i]->is_available = 1;
-									$beans[$i]->is_deleted = 0;
-									$beans[$i]->is_admin = 0;
-									$beans[$i]->created_at = date('Y-m-d H:i:s');;
-									$beans[$i]->updated_at = date('Y-m-d H:i:s');;
-									$beans[$i]->user_role = ($pdata['user_role']);
-								}
+					if (!empty($data)) {
+						unlink("../upload/" . $file_name);
+						$processedData = AppHelpers::processData($data);
+						$beans = array();
+						$existing = array();
+						$errors = array();
+						$dup = array();
+						$dup_data = array();
+						for ($i = 0; $i < count($processedData); $i++) {
+							$values = $processedData[$i];
+							array_push($dup, $values['email']);
+						}
+						for ($i = 0; $i < count($processedData); $i++) {
+							$pdata = $processedData[$i];
+							if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
+								$dup_data[$i]['email'] = AppHelpers::clean_data($pdata['email']);
 							} else {
-								$existing[$i]['email'] = AppHelpers::clean_data($pdata['email']);
+								$user = new User;
+								$user = $user->getAllByAttributes(array("email" => AppHelpers::clean_data($pdata['email'])));
+
+								if (empty($user)) {
+									if (empty($pdata['email'])) {
+										$errors[$i] = "Email id at row: [$i+1] is missing";
+									}
+									if (empty($pdata['name'])) {
+										$errors[$i] = "Name  at row: [$i+1] is missing";
+									}
+									if (empty($pdata['mobile'])) {
+										$errors[$i] = "Mobile id at row: [$i+1] is missing";
+									}
+									if (empty($pdata['user_role'])) {
+										$errors[$i] = "user_role at row: [$i+1] is missing";
+									}
+
+									if (empty($errors[$i])) {
+										$pass_text = explode("@", AppHelpers::clean_data($pdata['email']))[0];
+
+										$beans[$i] = R::dispense('users');
+										$beans[$i]->name = AppHelpers::clean_data($pdata['name']);
+										$beans[$i]->email = AppHelpers::clean_data($pdata['email']);
+										$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
+										$beans[$i]->mobile = AppHelpers::clean_data($pdata['mobile']);
+										$beans[$i]->organisation = $organisation;
+										$beans[$i]->is_available = 1;
+										$beans[$i]->is_deleted = 0;
+										$beans[$i]->is_admin = 0;
+										$beans[$i]->created_at = date('Y-m-d H:i:s');;
+										$beans[$i]->updated_at = date('Y-m-d H:i:s');;
+										$beans[$i]->user_role = ($pdata['user_role']);
+									}
+								} else {
+									$existing[$i]['email'] = AppHelpers::clean_data($pdata['email']);
+								}
 							}
 						}
-					}
-					$msg = "";
-					$code = 0;
-					if (!empty($errors)) {
-						foreach ($errors as $error) {
-							$msg .= $error . "<br>";
+
+						if (!empty($errors)) {
+							foreach ($errors as $error) {
+								$msg .= $error . "<br>";
+							}
+						} else {
+							if (!empty($existing)) {
+								foreach ($existing as $exist) {
+									$msg .= "User with email " . $exist['email'] . " exists<br>";
+								}
+							}
+							if (!empty($dup_data)) {
+								foreach ($dup_data as $key => $value) {
+									$msg .= "duplicate email " . $value['email'] . " at $key<br>";
+								}
+								$msg .= "if two rows has same email, none of them will be stored";
+							}
+							R::storeAll($beans);
 						}
 					} else {
-						if (!empty($existing)) {
-							foreach ($existing as $exist) {
-								$msg .= "User with email " . $exist['email'] . " exists<br>";
-							}
-						}
-						if (!empty($dup_data)) {
-							foreach ($dup_data as $key => $value) {
-								$msg .= "duplicate email " . $value['email'] . " at $key<br>";
-							}
-							$msg .= "if two rows has same email, none of them will be stored";
-						}
-						R::storeAll($beans);
+						$msg = "Empty File";
+						$code = 0;
 					}
+
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
