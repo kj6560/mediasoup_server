@@ -191,7 +191,7 @@ class UserController extends Controller
 	public function add_users_upload_file(RouteCollection $routes)
 	{
 		try {
-			$msg = "Please Select a file to upload";
+			$msg = "";
 			$code = 0;
 			if (isset($_FILES['csv'])) {
 				$user = Auth::logger('user');
@@ -279,11 +279,12 @@ class UserController extends Controller
 						$msg = "Empty File";
 						$code = 0;
 					}
-
-
-					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
+			} else {
+				$msg = "Please Select a file to upload";
+				$code = 0;
 			}
+			return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
