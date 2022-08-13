@@ -215,7 +215,8 @@ class UserController extends Controller
 					$spreadsheet = IOFactory::load("../upload/".$file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
 					unlink("../upload/".$file_name);
-					print_r($data);
+					$processedData = AppHelpers::processData($data);
+					print_r($processedData);
 				}
 				
 			} else {
