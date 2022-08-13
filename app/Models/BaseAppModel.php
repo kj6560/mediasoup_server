@@ -27,6 +27,7 @@ class BaseModel
             }
             $i++;
         }
+        echo $query;
         $data = R::findAll($this->table, $query);
         foreach ($data as $key => $value) {
             return $value;
