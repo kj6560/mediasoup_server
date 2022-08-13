@@ -263,6 +263,7 @@ class UserController extends Controller
 
 					if (!empty($existing)) {
 						echo "some users already exists hence can't be stored ";
+						die;
 					}
 					if (!empty($errors)) {
 						print_r($errors);
