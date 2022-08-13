@@ -260,17 +260,25 @@ class UserController extends Controller
 							$existing['email'] = $pdata['email'];
 						}
 					}
-
+					$msg = "";
+					$code = 0;
 					if (!empty($existing)) {
-						echo "some users already exists hence can't be stored ";
-						die;
+
+						foreach ($existing as $exist) {
+							$msg .= "User with email " . $exist . " exists<br>";
+						}
 					}
 					if (!empty($errors)) {
-						print_r($errors);
-					} else {
-						R::storeAll($beans);
-						AppHelpers::redirect("/users");
+						foreach ($errors as $error) {
+							$msg .= $error . "<br>";
+						}
 					}
+					if($msg){
+						return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+					}
+					
+					R::storeAll($beans);
+					AppHelpers::redirect("/users");
 				}
 			} else {
 				echo "not set";
