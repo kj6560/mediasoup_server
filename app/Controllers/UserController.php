@@ -10,6 +10,7 @@ use Exception;
 use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
 use \PhpOffice\PhpSpreadsheet\IOFactory;
+
 class UserController extends Controller
 {
 	//users action
@@ -209,16 +210,57 @@ class UserController extends Controller
 	{
 		try {
 			if (isset($_FILES['csv'])) {
-				$file_name = rand(1,10000).strtolower($_FILES['csv']['name']);
+				$file_name = rand(1, 10000) . strtolower($_FILES['csv']['name']);
 				$file_tmp = $_FILES['csv']['tmp_name'];
-				if(move_uploaded_file($file_tmp, "../upload/" .$file_name)){
-					$spreadsheet = IOFactory::load("../upload/".$file_name);
+				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
+					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
-					unlink("../upload/".$file_name);
+					unlink("../upload/" . $file_name);
 					$processedData = AppHelpers::processData($data);
-					print_r($processedData);
+					$beans = array();
+					$existing = array();
+					$errors = array();
+					for ($i = 0; $i < count($processedData); $i++) {
+						$pdata = $processedData[$i];
+						$user = new User;
+						$user = $user->getAllByAttributes(array("email" => $pdata['email']));
+						if (empty($user)) {
+							if (empty($pdata['email'])) {
+								$errors[$i] = "Email id at row: [$i+1] is missing";
+							}
+							if (empty($pdata['name'])) {
+								$errors[$i] = "Name  at row: [$i+1] is missing";
+							}
+							if (empty($pdata['mobile'])) {
+								$errors[$i] = "Mobile id at row: [$i+1] is missing";
+							}
+
+							if (empty($errors[$i])) {
+								$pass_text = explode("@", $pdata['email'])[0];
+
+								$beans[$i] = R::dispense('users');
+								$beans[$i]->name = $pdata['name'];
+								$beans[$i]->email = $pdata['email'];
+								$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
+								$beans[$i]->mobile = $pdata['mobile'];
+								$beans[$i]->organisation = $pdata['organisation'];
+								$beans[$i]->is_available = $pdata['is_available'];
+								$beans[$i]->is_deleted = $pdata['is_deleted'];
+							}
+						} else {
+							$existing['email'] = $pdata['email'];
+						}
+					}
+
+					if (!empty($existing)) {
+						echo "some users already exists hence can't be stored ";
+					}
+					if (!empty($errors)) {
+						print_r($errors);
+					} else {
+						R::storeAll($beans);
+					}
 				}
-				
 			} else {
 				echo "not set";
 			}
