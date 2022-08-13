@@ -222,7 +222,8 @@ class UserController extends Controller
 					$beans = array();
 					$existing = array();
 					$errors = array();
-					for ($i = 0; $i < count($processedData)+1; $i++) {
+					print_r($processedData);
+					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						$user = new User;
 						$user = $user->getAllByAttributes(array("email" => $pdata['email']));
