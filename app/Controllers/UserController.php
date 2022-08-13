@@ -9,7 +9,7 @@ use App\Models\User;
 use Exception;
 use RedBeanPHP\R;
 use Symfony\Component\Routing\RouteCollection;
-
+use \PhpOffice\PhpSpreadsheet\IOFactory;
 class UserController extends Controller
 {
 	//users action
@@ -209,11 +209,15 @@ class UserController extends Controller
 	{
 		try {
 			if (isset($_FILES['csv'])) {
-				$file_name = $_FILES['csv']['name'];
+				$file_name = rand(1,10000).$_FILES['csv']['name'];//$_FILES['csv']['name'];
 				$file_tmp = $_FILES['csv']['tmp_name'];
-				echo $file_name,$file_tmp;
-				move_uploaded_file($file_tmp, "../upload/" . $file_name);
-				echo "Success";
+				if(move_uploaded_file($file_tmp, "../upload/" .$file_name)){
+					$spreadsheet = IOFactory::load("../upload/".$file_name);
+					$data = $spreadsheet->getActiveSheet()->toArray();
+					unlink($file_name);
+					print_r($data);
+				}
+				
 			} else {
 				echo "not set";
 			}
