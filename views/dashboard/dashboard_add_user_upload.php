@@ -13,7 +13,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
                    
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="csv" id="csv" class="basic-filepond">
+                    <input type="file" name="csv" id="csv">
 
                 </div>
                 <div class="form-group">
@@ -24,5 +24,5 @@ $user = !empty($data['user']) ? $data['user'] : array();
         </div>
     </div>
 </section>
-
+<script src="assets/js/app.js"></script>
 <script src="<?php echo BASE . 'assets/js/extensions/filepond.js' ?>"></script>
