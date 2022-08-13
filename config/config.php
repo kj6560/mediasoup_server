@@ -16,5 +16,12 @@ $host = "54.70.129.232";
 $username = "angeltalk";
 $password = "webrtc1@";
 $database = "angeltalk";
+
+$host1 = "talktoangel.com";
+$username1 = "radeshsuri";
+$password1 = "vUN%.VUu%GRE";
+$database1 = "ttacorporate";
+
 R::setup("mysql:host=$host;dbname=$database", $username, $password);
+R::addDatabase('DB1', "mysql:host=$host;dbname=$database", $username, $password, $frozen);
 R::freeze(TRUE);
