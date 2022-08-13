@@ -24,5 +24,5 @@ $user = !empty($data['user']) ? $data['user'] : array();
         </div>
     </div>
 </section>
-<script src="assets/js/app.js"></script>
+<script src="<?php echo BASE . 'assets/js/app.js' ?>"></script>
 <script src="<?php echo BASE . 'assets/js/extensions/filepond.js' ?>"></script>
