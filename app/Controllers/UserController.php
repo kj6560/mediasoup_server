@@ -223,15 +223,15 @@ class UserController extends Controller
 					$existing = array();
 					$errors = array();
 					$dup = array();
+					$dup_data = array();
 					for ($i = 0; $i < count($processedData); $i++) {
 						$values = $processedData[$i];
 						array_push($dup, $values['email']);
 					}
-					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
-							$existing[$i]['email'] = $pdata['email'];
+							$dup_data[$i]['email'] = $pdata['email'];
 						} else {
 							$user = new User;
 							$user = $user->getAllByAttributes(array("email" => $pdata['email']));
@@ -282,6 +282,12 @@ class UserController extends Controller
 							foreach ($existing as $exist) {
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
+						}
+						if(!empty($dup_data)){
+							foreach($dup_data as $key=>$value){
+								$msg .= "duplicate email " . $value['email'] . " at $key<br>";
+							}
+							$msg .="if two rows has same email, none of them will be stored";
 						}
 						R::storeAll($beans);
 					}
