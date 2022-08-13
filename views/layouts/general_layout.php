@@ -45,7 +45,6 @@
             <div class="col-lg-7 d-lg-block">
                 <div id="auth-right">
                     <div class="text-center">
-                        TalkToAngel
                     </div>
                 </div>
             </div>
