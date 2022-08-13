@@ -224,7 +224,7 @@ class UserController extends Controller
 					$errors = array();
 					$dup = array();
 					for ($i = 0; $i < count($processedData); $i++) {
-						array_merge($dup, array_values($processedData[$i]));
+						empty($dup)?array_push(array_values($processedData[$i])):array_merge($dup, array_values($processedData[$i]));
 					}
 					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
