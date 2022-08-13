@@ -11,7 +11,7 @@ use Symfony\Component\Routing\RouteCollection;
 
 class AppController extends ApiController
 {
-    public function app_login(){
+    public function app_login(RouteCollection $routes){
         echo "hello";
     }
 }
