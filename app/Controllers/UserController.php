@@ -224,8 +224,8 @@ class UserController extends Controller
 					$errors = array();
 					$dup = array();
 					for ($i = 0; $i < count($processedData); $i++) {
-						$values = array_values($processedData[$i]);
-						array_push($dup,$values);
+						$values = $processedData[$i];
+						array_push($dup,$values['email']);
 					}
 					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
