@@ -231,6 +231,8 @@ class UserController extends Controller
 				} else {
 					print_r($errors);
 				}
+			}else{
+				echo "not set";
 			}
 		} catch (Exception $e) {
 			print_r($e->getMessage());

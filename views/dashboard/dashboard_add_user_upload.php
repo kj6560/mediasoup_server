@@ -10,16 +10,10 @@ $user = !empty($data['user']) ? $data['user'] : array();
         <div class="card-content">
             <form action="/add_users_upload_file" method="POST" enctype="multipart/form-data">
                 <div class="card-body">
-                    <p class="card-text">Using the basic table up, upload here to see how
-                        <code>.with-validation-filepond</code>-based basic file uploader look. You can use
-                        <a href="https://pqina.nl/filepond/docs/patterns/plugins/file-validate-size/#properties" target="_blank">see here</a>
-                        or <code>required (to make your input required), data-max-file-size (to limit your input file size),
-                            data-max-files (to limit your uploaded files), etc (start with data-)</code> attribute
-                        too to implement validation.
-                    </p>
+                   
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="csv" id="file" class="basic-filepond">
+                    <input type="file" name="csv" id="csv">
 
                 </div>
                 <div class="form-group">
