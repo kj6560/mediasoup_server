@@ -28,7 +28,7 @@ class PageController extends Controller
 			if ($user_data) {
 				if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
 					$_SESSION['login_id'] = $user_data['id'];
-					AppHelpers::redirect("/");
+					AppHelpers::redirect("/dashboard");
 				} else {
 					$return['errors'] = "sorry your credentials are invalid";
 				}
