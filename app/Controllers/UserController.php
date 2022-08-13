@@ -225,7 +225,7 @@ class UserController extends Controller
 					$dup = array();
 					for ($i = 0; $i < count($processedData); $i++) {
 						$values = $processedData[$i];
-						array_push($dup,$values['email']);
+						array_push($dup, $values['email']);
 					}
 					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
@@ -282,9 +282,8 @@ class UserController extends Controller
 							foreach ($existing as $exist) {
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
-						} else {
-							R::storeAll($beans);
 						}
+						R::storeAll($beans);
 					}
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
