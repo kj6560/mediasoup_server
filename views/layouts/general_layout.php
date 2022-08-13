@@ -15,7 +15,7 @@
     <div id="auth">
 
         <div class="row h-100">
-            <div class="col-lg-5 col-12 m-5">
+            <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <!-- <div class="auth-logo">
                         <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo"></a>
