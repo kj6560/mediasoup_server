@@ -22,7 +22,8 @@
                     </div> -->
                     <h1 class="auth-title">TalkToAngel</h1>
 
-
+                    <hr>
+                    
                     <form action="/login" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Enter Email" name="email" required>
