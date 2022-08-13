@@ -19,11 +19,11 @@ $user = !empty($data['user']) ? $data['user'] : array();
                     </p>
                     <!-- File uploader with validation -->
 
-                    <input type="file" name="file" id="file" class="basic-filepond" required multiple data-max-file-size="1MB" data-max-files="3">
+                    <input type="file" name="file" id="file" class="basic-filepond" required multiple data-max-file-size="10MB" data-max-files="3">
 
                 </div>
                 <div class="form-group">
-                    <input class="form-group" type="submit" id="submit" name="submit" value="<?php echo !empty($user) ? "Update" : "Create" ?>">
+                    <input class="form-group" type="submit" id="submit" name="submit" value="Upload">
 
                 </div>
             </form>
