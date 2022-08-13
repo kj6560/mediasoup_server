@@ -201,6 +201,9 @@ class UserController extends Controller
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
 					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
+					if(empty($data)){
+						AppHelpers::redirect("/add_users_upload");
+					}
 					unlink("../upload/" . $file_name);
 					$processedData = AppHelpers::processData($data);
 					$beans = array();
