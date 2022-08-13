@@ -23,5 +23,5 @@ $password1 = "vUN%.VUu%GRE";
 $database1 = "ttacorporate";
 
 R::setup("mysql:host=$host;dbname=$database", $username, $password);
-R::addDatabase('DB1', "mysql:host=$host;dbname=$database", $username, $password, TRUE);
+R::addDatabase('DB1', "mysql:host=$host1;dbname=$database1", $username1, $password1, TRUE);
 R::freeze(TRUE);
