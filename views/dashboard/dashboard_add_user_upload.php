@@ -1,7 +1,7 @@
 <?php
 $user = !empty($data['user']) ? $data['user'] : array();
 ?>
-<link rel="stylesheet" href="assets/css/pages/form-element-select.css">
+<link rel="stylesheet" href="<?php echo BASE . 'assets/css/pages/filepond.css' ?>">
 <section class="section">
     <div class="card">
         <div class="card-header">
@@ -23,4 +23,4 @@ $user = !empty($data['user']) ? $data['user'] : array();
     </div>
 </section>
 <script src="assets/js/app.js"></script>
-<script src="assets/js/extensions/filepond.js"></script>
+<script src="<?php echo BASE . 'assets/js/extensions/filepond.js' ?>"></script>
