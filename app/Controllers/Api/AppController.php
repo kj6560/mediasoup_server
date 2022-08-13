@@ -12,7 +12,7 @@ class AppController extends AppApiController
 {
     public function app_login(RouteCollection $routes)
     {
-        R::selectDatabase('DB1');
+        
         $this->response['msg'] = "login failed";
         $this->response['data'] = null;
         if ($_POST) {
