@@ -161,6 +161,8 @@ class UserController extends Controller
 				echo "here";
 				$tmpName = $_FILES['file']['tmp_name'];
 				$csvAsArray = array_map('str_getcsv', file($tmpName));
+			}else{
+				echo "error hai bhai";
 			}
 		} catch (Exception $e) {
 			print_r($e->getMessage());
