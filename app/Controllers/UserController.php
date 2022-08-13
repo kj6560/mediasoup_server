@@ -215,7 +215,7 @@ class UserController extends Controller
 				$file_type = $_FILES['csv']['type'];
 				$file_ext = strtolower(end(explode('.', $_FILES['csv']['name'])));
 
-				$extensions = array("jpeg", "jpg", "png");
+				$extensions = array("csv", "xlsx", "xls");
 
 				if (in_array($file_ext, $extensions) === false) {
 					$errors[] = "extension not allowed, please choose a JPEG or PNG file.";
@@ -226,7 +226,7 @@ class UserController extends Controller
 				}
 
 				if (empty($errors) == true) {
-					move_uploaded_file($file_tmp, "images/" . $file_name);
+					move_uploaded_file($file_tmp, "upload/" . $file_name);
 					echo "Success";
 				} else {
 					print_r($errors);
