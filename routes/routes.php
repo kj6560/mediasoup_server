@@ -76,3 +76,8 @@ $routes->add('client_list', new Route(constant('URL_SUBFOLDER') . '/v1/client_li
 $routes->add('create_conf', new Route(constant('URL_SUBFOLDER') . '/v1/create_conf', array('controller' => 'Api\ConferenceController', 'method' => 'create_conf'), array(), ['POST']));
 $routes->add('conf_list', new Route(constant('URL_SUBFOLDER') . '/v1/conf_list', array('controller' => 'Api\ConferenceController', 'method' => 'conf_list'), array(), ['POST']));
 $routes->add('conf_delete', new Route(constant('URL_SUBFOLDER') . '/v1/conf_delete', array('controller' => 'Api\ConferenceController', 'method' => 'conf_delete'), array(), ['POST']));
+
+
+//mobile app apis
+
+$routes->add('app_login', new Route(constant('URL_SUBFOLDER') . '/v1/app_login', array('controller' => 'Api\AppController', 'method' => 'app_login'), array(), ['POST']));
