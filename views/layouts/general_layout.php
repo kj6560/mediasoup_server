@@ -23,7 +23,7 @@
                     <h1 class="auth-title">TalkToAngel</h1>
 
                     <hr>
-                    
+
                     <form action="/login" method="post">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Enter Email" name="email" required>
@@ -50,6 +50,16 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2022 &copy; Psychowellness Center</p>
+                </div>
+                <div class="float-end">
+                    <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a href="https://shiwkesh.online">Shiwkesh Schematics Private Limited</a></p>
+                </div>
+            </div>
+        </footer>
 
     </div>
 </body>
