@@ -20,7 +20,7 @@
                     <!-- <div class="auth-logo">
                         <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo"></a>
                     </div> -->
-                    <h1 class="auth-title">Log in</h1>
+                    <h1 class="auth-title">TalkToAngel</h1>
 
 
                     <form action="/login" method="post">
@@ -42,7 +42,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-7 d-none d-lg-block">
+            <div class="col-lg-7 d-lg-block">
                 <div id="auth-right">
                     <div class="text-center">
                         TalkToAngel
