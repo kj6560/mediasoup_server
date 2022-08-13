@@ -222,42 +222,51 @@ class UserController extends Controller
 					$beans = array();
 					$existing = array();
 					$errors = array();
+					$dup = array();
+					for ($i = 0; $i < count($processedData); $i++) {
+						array_merge($dup, array_values($processedData[$i]));
+					}
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
-						$user = new User;
-						$user = $user->getAllByAttributes(array("email" => $pdata['email']));
-						if (empty($user)) {
-							if (empty($pdata['email'])) {
-								$errors[$i] = "Email id at row: [$i+1] is missing";
-							}
-							if (empty($pdata['name'])) {
-								$errors[$i] = "Name  at row: [$i+1] is missing";
-							}
-							if (empty($pdata['mobile'])) {
-								$errors[$i] = "Mobile id at row: [$i+1] is missing";
-							}
-							if (empty($pdata['user_role'])) {
-								$errors[$i] = "user_role at row: [$i+1] is missing";
-							}
-
-							if (empty($errors[$i])) {
-								$pass_text = explode("@", $pdata['email'])[0];
-
-								$beans[$i] = R::dispense('users');
-								$beans[$i]->name = $pdata['name'];
-								$beans[$i]->email = $pdata['email'];
-								$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
-								$beans[$i]->mobile = $pdata['mobile'];
-								$beans[$i]->organisation = $organisation;
-								$beans[$i]->is_available = 1;
-								$beans[$i]->is_deleted = 0;
-								$beans[$i]->is_admin = 0;
-								$beans[$i]->created_at = date('Y-m-d H:i:s');;
-								$beans[$i]->updated_at = date('Y-m-d H:i:s');;
-								$beans[$i]->user_role = $pdata['user_role'];
-							}
-						} else {
+						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
 							$existing[$i]['email'] = $pdata['email'];
+						} else {
+							$user = new User;
+							$user = $user->getAllByAttributes(array("email" => $pdata['email']));
+
+							if (empty($user)) {
+								if (empty($pdata['email'])) {
+									$errors[$i] = "Email id at row: [$i+1] is missing";
+								}
+								if (empty($pdata['name'])) {
+									$errors[$i] = "Name  at row: [$i+1] is missing";
+								}
+								if (empty($pdata['mobile'])) {
+									$errors[$i] = "Mobile id at row: [$i+1] is missing";
+								}
+								if (empty($pdata['user_role'])) {
+									$errors[$i] = "user_role at row: [$i+1] is missing";
+								}
+
+								if (empty($errors[$i])) {
+									$pass_text = explode("@", $pdata['email'])[0];
+
+									$beans[$i] = R::dispense('users');
+									$beans[$i]->name = $pdata['name'];
+									$beans[$i]->email = $pdata['email'];
+									$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
+									$beans[$i]->mobile = $pdata['mobile'];
+									$beans[$i]->organisation = $organisation;
+									$beans[$i]->is_available = 1;
+									$beans[$i]->is_deleted = 0;
+									$beans[$i]->is_admin = 0;
+									$beans[$i]->created_at = date('Y-m-d H:i:s');;
+									$beans[$i]->updated_at = date('Y-m-d H:i:s');;
+									$beans[$i]->user_role = $pdata['user_role'];
+								}
+							}else{
+								$existing[$i]['email'] = $pdata['email'];
+							}
 						}
 					}
 					$msg = "";
@@ -271,7 +280,7 @@ class UserController extends Controller
 							foreach ($existing as $exist) {
 								$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
-						}else{
+						} else {
 							R::storeAll($beans);
 						}
 					}
