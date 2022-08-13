@@ -13,6 +13,9 @@ class PageController extends Controller
 	// Homepage action
 	public function index(RouteCollection $routes)
 	{
+		if (!empty($_SESSION['login_id'])) {
+			AppHelpers::redirect('/dashboard');
+		}
 
 		//EmailController::send(1, 'info2018@talktoangel.com', array('kj6560@gmail.com'), "some test sub", "Hi there!", null, null, null, true);
 		$this->loadView('general_layout', 'pages/home', array());
