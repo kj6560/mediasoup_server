@@ -209,7 +209,7 @@ class UserController extends Controller
 	{
 		try {
 			if (isset($_FILES['csv'])) {
-				$file_name = rand(1,10000).$_FILES['csv']['name'];//$_FILES['csv']['name'];
+				$file_name = rand(1,10000).strtolower($_FILES['csv']['name']);
 				$file_tmp = $_FILES['csv']['tmp_name'];
 				if(move_uploaded_file($file_tmp, "../upload/" .$file_name)){
 					$spreadsheet = IOFactory::load("../upload/".$file_name);
