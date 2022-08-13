@@ -14,6 +14,7 @@ if ($auth->guard('user')) {
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'UserController', 'method' => 'users'), array()));
     $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method' => 'add_users'), array()));
     $routes->add('add_users_upload', new Route(constant('URL_SUBFOLDER') . '/add_users_upload', array('controller' => 'UserController', 'method' => 'add_users_upload'), array()));
+    $routes->add('add_users_upload_file', new Route(constant('URL_SUBFOLDER') . '/add_users_upload_file', array('controller' => 'UserController', 'method' => 'add_users_upload_file'), array(),['POST']));
     $routes->add('user_edit', new Route(constant('URL_SUBFOLDER') . '/user_edit/{id}', array('controller' => 'UserController', 'method' => 'user_edit'), array()));
     $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/user_delete/{id}', array('controller' => 'UserController', 'method' => 'user_delete'), array('id' => '[0-9]+')));
     $routes->add('user_status', new Route(constant('URL_SUBFOLDER') . '/user_status/{id}/{status}', array('controller' => 'UserController', 'method' => 'user_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));

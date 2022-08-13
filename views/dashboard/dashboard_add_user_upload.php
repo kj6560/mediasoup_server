@@ -8,7 +8,7 @@ $user = !empty($data['user']) ? $data['user'] : array();
             <h5 class="card-title">With Validation</h5>
         </div>
         <div class="card-content">
-            <form action="/add_users_upload" method="POST" enctype="multipart/form-data">
+            <form action="/add_users_upload_file" method="POST" enctype="multipart/form-data">
                 <div class="card-body">
                     <p class="card-text">Using the basic table up, upload here to see how
                         <code>.with-validation-filepond</code>-based basic file uploader look. You can use

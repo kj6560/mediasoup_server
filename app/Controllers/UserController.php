@@ -205,4 +205,35 @@ class UserController extends Controller
 
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
+	public function add_users_upload_file(RouteCollection $routes){
+		try {
+			if (isset($_FILES['csv'])) {
+				$errors = array();
+				$file_name = $_FILES['csv']['name'];
+				$file_size = $_FILES['csv']['size'];
+				$file_tmp = $_FILES['csv']['tmp_name'];
+				$file_type = $_FILES['csv']['type'];
+				$file_ext = strtolower(end(explode('.', $_FILES['csv']['name'])));
+
+				$extensions = array("jpeg", "jpg", "png");
+
+				if (in_array($file_ext, $extensions) === false) {
+					$errors[] = "extension not allowed, please choose a JPEG or PNG file.";
+				}
+
+				if ($file_size > 2097152) {
+					$errors[] = 'File size must be excately 2 MB';
+				}
+
+				if (empty($errors) == true) {
+					move_uploaded_file($file_tmp, "images/" . $file_name);
+					echo "Success";
+				} else {
+					print_r($errors);
+				}
+			}
+		} catch (Exception $e) {
+			print_r($e->getMessage());
+		}
+	}
 }
