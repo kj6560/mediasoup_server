@@ -1,6 +1,6 @@
 <?php
 //site name
-define('SITE_NAME', 'Video Conferencing Service');
+define('SITE_NAME', 'TalkToAngel');
 
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));

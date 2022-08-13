@@ -29,7 +29,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
+                        
 
                         <li class="sidebar-item active ">
                             <a href="/dashboard" class='sidebar-link'>
@@ -81,6 +81,12 @@
                             <a href="/notifications" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Notifications</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item active ">
+                            <a href="/logout" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Logout</span>
                             </a>
                         </li>
                     </ul>
