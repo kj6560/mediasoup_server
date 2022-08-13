@@ -144,4 +144,37 @@ class UserController extends Controller
 			echo "failed to delete";
 		}
 	}
+
+	//user upload
+	public function add_users_upload(RouteCollection $routes)
+	{
+		
+		$msg = "";
+		$code = 0;
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$newuser = new User;
+		$orgs = $newuser->getAllOrganisationFor($organisation);
+		
+
+
+			// $newuser->name = $data['name'];
+			// $newuser->email = $data['email'];
+			// $newuser->mobile = $data['mobile'];
+			// $newuser->user_role = $data['role'];
+			// $newuser->is_available = 1;
+			// $newuser->organisation = $data['organisation'];
+			// $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
+			// $pass_text = explode("@", $data['email'])[0];
+			// $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+			// $user_created = $newuser->create();
+			// if ($user_created) {
+			// 	$msg = "User created successfully";
+			// 	$code = 1;
+			// } else {
+			// 	$msg = "User creation failed";
+			// }
+		
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array( "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+	}
 }
