@@ -210,6 +210,8 @@ class UserController extends Controller
 	{
 		try {
 			if (isset($_FILES['csv'])) {
+				$user = Auth::logger('user');
+				$organisation = $user['organisation'];
 				$file_name = rand(1, 10000) . strtolower($_FILES['csv']['name']);
 				$file_tmp = $_FILES['csv']['tmp_name'];
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
@@ -243,7 +245,7 @@ class UserController extends Controller
 								$beans[$i]->email = $pdata['email'];
 								$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
 								$beans[$i]->mobile = $pdata['mobile'];
-								$beans[$i]->organisation = $pdata['organisation'];
+								$beans[$i]->organisation = $organisation;
 								$beans[$i]->is_available = $pdata['is_available'];
 								$beans[$i]->is_deleted = $pdata['is_deleted'];
 							}
