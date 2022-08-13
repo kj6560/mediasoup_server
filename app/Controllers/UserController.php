@@ -212,7 +212,7 @@ class UserController extends Controller
 				$file_name = $_FILES['csv']['name'];
 				$file_tmp = $_FILES['csv']['tmp_name'];
 				echo $file_name,$file_tmp;
-				move_uploaded_file($file_tmp, "upload/" . $file_name);
+				move_uploaded_file($file_tmp, "../upload/" . $file_name);
 				echo "Success";
 			} else {
 				echo "not set";
