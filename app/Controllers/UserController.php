@@ -224,7 +224,8 @@ class UserController extends Controller
 					$errors = array();
 					$dup = array();
 					for ($i = 0; $i < count($processedData); $i++) {
-						empty($dup)?array_push(array_values($processedData[$i])):array_merge($dup, array_values($processedData[$i]));
+						$values = array_values($processedData[$i]);
+						empty($dup) ? array_push($values) : array_merge($dup, $values);
 					}
 					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
@@ -265,7 +266,7 @@ class UserController extends Controller
 									$beans[$i]->updated_at = date('Y-m-d H:i:s');;
 									$beans[$i]->user_role = $pdata['user_role'];
 								}
-							}else{
+							} else {
 								$existing[$i]['email'] = $pdata['email'];
 							}
 						}
