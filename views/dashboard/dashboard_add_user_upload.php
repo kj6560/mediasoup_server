@@ -8,17 +8,25 @@ $user = !empty($data['user']) ? $data['user'] : array();
             <h5 class="card-title">With Validation</h5>
         </div>
         <div class="card-content">
-            <div class="card-body">
-                <p class="card-text">Using the basic table up, upload here to see how
-                    <code>.with-validation-filepond</code>-based basic file uploader look. You can use
-                    <a href="https://pqina.nl/filepond/docs/patterns/plugins/file-validate-size/#properties" target="_blank">see here</a>
-                    or <code>required (to make your input required), data-max-file-size (to limit your input file size),
-                        data-max-files (to limit your uploaded files), etc (start with data-)</code> attribute
-                    too to implement validation.
-                </p>
-                <!-- File uploader with validation -->
-                <input type="file" class="with-validation-filepond" required multiple data-max-file-size="1MB" data-max-files="3">
-            </div>
+            <form action="/add_user_upload/" method="POST" enctype="multipart/form-data">
+                <div class="card-body">
+                    <p class="card-text">Using the basic table up, upload here to see how
+                        <code>.with-validation-filepond</code>-based basic file uploader look. You can use
+                        <a href="https://pqina.nl/filepond/docs/patterns/plugins/file-validate-size/#properties" target="_blank">see here</a>
+                        or <code>required (to make your input required), data-max-file-size (to limit your input file size),
+                            data-max-files (to limit your uploaded files), etc (start with data-)</code> attribute
+                        too to implement validation.
+                    </p>
+                    <!-- File uploader with validation -->
+
+                    <input type="file" name="file" id="file" class="with-validation-filepond" required multiple data-max-file-size="1MB" data-max-files="3">
+
+                </div>
+                <div class="form-group">
+                    <input class="form-group" type="submit" id="submit" name="submit" value="<?php echo !empty($user) ? "Update" : "Create" ?>">
+
+                </div>
+            </form>
         </div>
     </div>
 </section>

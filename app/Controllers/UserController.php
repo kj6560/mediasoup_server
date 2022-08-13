@@ -18,9 +18,9 @@ class UserController extends Controller
 		$organisation = $user['organisation'];
 		$users = new User;
 		$all_users = $users->getAllUsersInOrganisation($organisation);
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users"=>$all_users));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users" => $all_users));
 	}
-	
+
 	//user detail action
 	public function user_detail($id, RouteCollection $routes)
 	{
@@ -97,7 +97,7 @@ class UserController extends Controller
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//user edit
-	public function user_edit($id,RouteCollection $routes)
+	public function user_edit($id, RouteCollection $routes)
 	{
 		$data = $_POST;
 		$msg = "";
@@ -130,7 +130,7 @@ class UserController extends Controller
 			}
 			AppHelpers::redirect('/users');
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs,"user"=>$userToEdit, "page_heading" => "Edit User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user', array("orgs" => $orgs, "user" => $userToEdit, "page_heading" => "Edit User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)
@@ -148,33 +148,57 @@ class UserController extends Controller
 	//user upload
 	public function add_users_upload(RouteCollection $routes)
 	{
-		
+
 		$msg = "";
 		$code = 0;
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$newuser = new User;
 		$orgs = $newuser->getAllOrganisationFor($organisation);
-		
 
+		if (isset($_FILES["file"])) {
 
-			// $newuser->name = $data['name'];
-			// $newuser->email = $data['email'];
-			// $newuser->mobile = $data['mobile'];
-			// $newuser->user_role = $data['role'];
-			// $newuser->is_available = 1;
-			// $newuser->organisation = $data['organisation'];
-			// $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
-			// $pass_text = explode("@", $data['email'])[0];
-			// $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
-			// $user_created = $newuser->create();
-			// if ($user_created) {
-			// 	$msg = "User created successfully";
-			// 	$code = 1;
-			// } else {
-			// 	$msg = "User creation failed";
-			// }
-		
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array( "page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+			//if there was an error uploading the file
+			if ($_FILES["file"]["error"] > 0) {
+				echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+			} else {
+				//Print file details
+				echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+				echo "Type: " . $_FILES["file"]["type"] . "<br />";
+				echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+				echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+
+				//if file already exists
+				if (file_exists("upload/" . $_FILES["file"]["name"])) {
+					echo $_FILES["file"]["name"] . " already exists. ";
+				} else {
+					//Store file in directory "upload" with the name of "uploaded_file.txt"
+					$storagename = "uploaded_file.txt";
+					move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $storagename);
+					echo "Stored in: " . "upload/" . $_FILES["file"]["name"] . "<br />";
+				}
+			}
+		} else {
+			echo "No file selected <br />";
+		}
+
+		// $newuser->name = $data['name'];
+		// $newuser->email = $data['email'];
+		// $newuser->mobile = $data['mobile'];
+		// $newuser->user_role = $data['role'];
+		// $newuser->is_available = 1;
+		// $newuser->organisation = $data['organisation'];
+		// $newuser->is_admin = $data['role'] == 1 ? 1 : 0;
+		// $pass_text = explode("@", $data['email'])[0];
+		// $newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
+		// $user_created = $newuser->create();
+		// if ($user_created) {
+		// 	$msg = "User created successfully";
+		// 	$code = 1;
+		// } else {
+		// 	$msg = "User creation failed";
+		// }
+
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 }
