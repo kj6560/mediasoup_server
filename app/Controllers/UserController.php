@@ -286,9 +286,9 @@ class UserController extends Controller
 	public function downloadUserUploadTemplate(RouteCollection $routes)
 	{
 		$file_name = "user_template.csv";
-		//header('Content-type: application/csv');
-		//header('Content-Disposition: attachment; filename=' . $file_name);
-		//header("Content-Transfer-Encoding: UTF-8");
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename=' . $file_name);
+		header("Content-Transfer-Encoding: UTF-8");
 		$f = fopen('php://output', 'a');
 		$spreadsheet = IOFactory::load("../templates/" . $file_name);
 		$data = $spreadsheet->getActiveSheet()->toArray();
