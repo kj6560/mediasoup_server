@@ -69,7 +69,7 @@ class AppHelpers
         $processedData = array();
         if(!empty($data)){
             $headers = !empty($data[0])?$data[0]:array();
-            for($i=1;$i<count($data)-1;$i++){
+            for($i=1;$i<count($data);$i++){
                 $da = $data[$i];
                 $res = array();
                 for($j=0;$j<count($headers);$j++){

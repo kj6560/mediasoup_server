@@ -222,7 +222,6 @@ class UserController extends Controller
 					$beans = array();
 					$existing = array();
 					$errors = array();
-					print_r($processedData);
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						$user = new User;
@@ -269,6 +268,7 @@ class UserController extends Controller
 						print_r($errors);
 					} else {
 						R::storeAll($beans);
+						AppHelpers::redirect("/users")
 					}
 				}
 			} else {
