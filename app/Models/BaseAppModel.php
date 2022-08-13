@@ -46,6 +46,7 @@ class BaseAppModel
             }
             $i++;
         }
+        echo $query;
         $data = R::getAssocRow($query);
 
         return !empty($data) ? $data : false;
