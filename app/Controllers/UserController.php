@@ -252,6 +252,8 @@ class UserController extends Controller
 								$beans[$i]->is_available = 1;
 								$beans[$i]->is_deleted = 0;
 								$beans[$i]->is_admin = 0;
+								$beans[$i]->created_at = date('Y-m-d H:i:s');;
+								$beans[$i]->updated_at = date('Y-m-d H:i:s');;
 								$beans[$i]->user_role = $pdata['user_role'];
 							}
 						} else {
