@@ -266,15 +266,15 @@ class UserController extends Controller
 						foreach ($errors as $error) {
 							$msg .= $error . "<br>";
 						}
-						return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
-					}
-					R::storeAll($beans);
-					if (!empty($existing)) {
-
-						foreach ($existing as $exist) {
-							$msg .= "User with email " . $exist . " exists<br>";
+					} else {
+						R::storeAll($beans);
+						if (!empty($existing)) {
+							foreach ($existing as $exist) {
+								$msg .= "User with email " . $exist . " exists<br>";
+							}
 						}
 					}
+
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
 			} else {
