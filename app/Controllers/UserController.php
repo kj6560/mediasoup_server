@@ -157,8 +157,11 @@ class UserController extends Controller
 		$newuser = new User;
 		$orgs = $newuser->getAllOrganisationFor($organisation);
 		try {
-			$tmpName = $_FILES['file']['tmp_name'];
-			$csvAsArray = array_map('str_getcsv', file($tmpName));
+			if (!empty($_FILES)) {
+				echo "here";
+				$tmpName = $_FILES['file']['tmp_name'];
+				$csvAsArray = array_map('str_getcsv', file($tmpName));
+			}
 		} catch (Exception $e) {
 			print_r($e->getMessage());
 		}
