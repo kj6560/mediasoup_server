@@ -246,8 +246,8 @@ class UserController extends Controller
 								$beans[$i]->password = password_hash($pass_text . "@123", PASSWORD_DEFAULT);
 								$beans[$i]->mobile = $pdata['mobile'];
 								$beans[$i]->organisation = $organisation;
-								$beans[$i]->is_available = $pdata['is_available'];
-								$beans[$i]->is_deleted = $pdata['is_deleted'];
+								$beans[$i]->is_available = 1;
+								$beans[$i]->is_deleted = 0;
 							}
 						} else {
 							$existing['email'] = $pdata['email'];
