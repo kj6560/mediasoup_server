@@ -257,7 +257,7 @@ class UserController extends Controller
 								$beans[$i]->user_role = $pdata['user_role'];
 							}
 						} else {
-							$existing['email'] = $pdata['email'];
+							$existing[$i]['email'] = $pdata['email'];
 						}
 					}
 					$msg = "";
