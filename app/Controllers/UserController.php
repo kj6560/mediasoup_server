@@ -268,7 +268,7 @@ class UserController extends Controller
 						print_r($errors);
 					} else {
 						R::storeAll($beans);
-						AppHelpers::redirect("/users")
+						AppHelpers::redirect("/users");
 					}
 				}
 			} else {
