@@ -226,6 +226,7 @@ class UserController extends Controller
 					for ($i = 0; $i < count($processedData); $i++) {
 						array_merge($dup, array_values($processedData[$i]));
 					}
+					print_r($dup);
 					for ($i = 0; $i < count($processedData); $i++) {
 						$pdata = $processedData[$i];
 						if (count(array_keys($dup, $processedData[$i]['email'])) > 1) {
