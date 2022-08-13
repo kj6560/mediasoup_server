@@ -204,7 +204,7 @@ class UserController extends Controller
 		// 	$msg = "User creation failed";
 		// }
 
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	public function add_users_upload_file(RouteCollection $routes)
 	{
@@ -262,23 +262,20 @@ class UserController extends Controller
 					}
 					$msg = "";
 					$code = 0;
+					if (!empty($errors)) {
+						foreach ($errors as $error) {
+							$msg .= $error . "<br>";
+						}
+						return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
+					}
+					R::storeAll($beans);
 					if (!empty($existing)) {
 
 						foreach ($existing as $exist) {
 							$msg .= "User with email " . $exist . " exists<br>";
 						}
 					}
-					if (!empty($errors)) {
-						foreach ($errors as $error) {
-							$msg .= $error . "<br>";
-						}
-					}
-					if($msg){
-						return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Add User", "msg" => array('text' => $msg, 'code' => $code)));
-					}
-					
-					R::storeAll($beans);
-					AppHelpers::redirect("/users");
+					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
 			} else {
 				echo "not set";
