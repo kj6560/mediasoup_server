@@ -269,7 +269,8 @@ class UserController extends Controller
 					} else {
 						if (!empty($existing)) {
 							foreach ($existing as $exist) {
-								$msg .= "User with email " . $exist['email'] . " exists<br>";
+								print_r($exist);
+								//$msg .= "User with email " . $exist['email'] . " exists<br>";
 							}
 						}else{
 							R::storeAll($beans);
