@@ -4,11 +4,11 @@ namespace App\Controllers\Api;
 
 use App\Auth;
 use App\Controllers\Api\AppApiController;
-use App\Models\AppUserModel;
+use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 use RedBeanPHP\R;
 
-class AppController extends AppApiController
+class AppController extends ApiController
 {
     public function app_login(RouteCollection $routes)
     {
@@ -17,9 +17,9 @@ class AppController extends AppApiController
         $this->response['data'] = null;
         if ($_POST) {
             $data = $_POST;
-            $user  = new AppUserModel;
+            $user  = new User;
 
-            $user_data = $user->getAllByAttributes(array('email_id' => $data['email_id']));
+            $user_data = $user->getAllByAttributes(array('email' => $data['email']));
             if ($user_data) {
                 if (password_verify($data['password'], password_hash($data['password'], PASSWORD_DEFAULT))) {
                     $this->response['msg'] = "login success";
