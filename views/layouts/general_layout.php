@@ -21,27 +21,29 @@
                         <img src="<?php echo BASE . 'img/logo.png' ?>" alt="Logo">
                     </div>
 
-                    <h3 class="text-center">Login</h3>
+                    <div class="form_div">
+                        <h3 class="text-center">Login</h3>
 
-                    <hr>
+                        <hr>
 
-                    <form action="/login" method="post">
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Enter Email" name="email" required>
-                            <div class="form-control-icon">
-                                <i class="bi bi-person"></i>
+                        <form action="/login" method="post">
+                            <div class="form-group position-relative has-icon-left mb-4">
+                                <input type="text" class="form-control form-control-xl" placeholder="Enter Email" name="email" required>
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Enter Password" name="password" required>
-                            <div class="form-control-icon">
-                                <i class="bi bi-shield-lock"></i>
+                            <div class="form-group position-relative has-icon-left mb-4">
+                                <input type="password" class="form-control form-control-xl" placeholder="Enter Password" name="password" required>
+                                <div class="form-control-icon">
+                                    <i class="bi bi-shield-lock"></i>
+                                </div>
                             </div>
-                        </div>
 
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
-                    </form>
+                            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                        </form>
 
+                    </div>
                 </div>
             </div>
             <div class="col-lg-7 d-lg-block">
