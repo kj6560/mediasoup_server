@@ -18,9 +18,9 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="index.html"><img src="<?php echo BASE.'img/logo.png' ?>" alt="Logo"></a>
+                    <h1 class="auth-title">TalkToAngel</h1><img src="<?php echo BASE.'img/logo.png' ?>" alt="Logo">
                     </div>
-                    <h1 class="auth-title">TalkToAngel</h1>
+                    
 
                     <hr>
 
