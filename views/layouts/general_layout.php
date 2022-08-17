@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <style>
+        .form_div {
+            margin-top: 100px;
+            border: 5px black solid;
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
