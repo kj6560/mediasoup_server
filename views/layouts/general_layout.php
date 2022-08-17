@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITE_NAME;?></title>
+    <title><?php echo SITE_NAME; ?></title>
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
@@ -17,10 +17,10 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                    <h1 class="auth-title">TalkToAngel</h1><img src="<?php echo BASE.'img/logo.png' ?>" alt="Logo">
+                    <div class="auth-logo" style="float: center;">
+                        <img src="<?php echo BASE . 'img/logo.png' ?>" alt="Logo">
                     </div>
-                    
+
 
                     <hr>
 
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
 
