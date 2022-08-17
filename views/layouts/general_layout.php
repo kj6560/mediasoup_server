@@ -17,7 +17,7 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo" style="float: center;">
+                    <div  style="float: center;">
                         <img src="<?php echo BASE . 'img/logo.png' ?>" alt="Logo">
                     </div>
 
