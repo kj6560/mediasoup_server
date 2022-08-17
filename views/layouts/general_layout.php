@@ -21,6 +21,7 @@
                         <img src="<?php echo BASE . 'img/logo.png' ?>" alt="Logo">
                     </div>
 
+                    <h3 class="text-center">Login</h3>
 
                     <hr>
 
