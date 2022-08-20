@@ -289,7 +289,7 @@ class RoomClient {
               },
               height: {
                 min: 800,
-                ideal: 1080
+                ideal: 800
               },
               deviceId: deviceId
               /*aspectRatio: {
