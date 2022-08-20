@@ -1,9 +1,5 @@
 <style>
-    html {
-        overflow: hidden;
-        height: 100%;
-    }
-
+    
     .one video {
         object-fit: cover;
     }
@@ -36,18 +32,6 @@
         flex-shrink: 1;
         min-width: 0px;
         min-height: 0px;
-    }
-
-    body {
-        background-color: black;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
     }
 
     span {
@@ -90,7 +74,7 @@
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container mBody">
     <div id="devicesList" style="display: none;">
         <div id="remoteAudios" style="display: none;"></div>
         <i class="fas fa-microphone"></i> Audio:
