@@ -10,7 +10,6 @@
 
     .localVideo {
         width: 20%;
-        height: 5%;
         position: absolute;
         z-index: 2;
         bottom: 10px;
