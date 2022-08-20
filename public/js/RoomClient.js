@@ -15,13 +15,13 @@ const _EVENTS = {
 }
 
 class RoomClient {
-  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback) {
+  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile) {
     this.name = name
     this.localMediaEl = localMediaEl
     this.remoteVideoEl = remoteVideoEl
     this.remoteAudioEl = remoteAudioEl
     this.mediasoupClient = mediasoupClient
-
+    this.isMobile = isMobile
     this.socket = socket
     this.producerTransport = null
     this.consumerTransport = null
@@ -262,8 +262,8 @@ class RoomClient {
   }
 
   //////// MAIN FUNCTIONS /////////////
- 
-  async produce(type, deviceId = null,host=null) {
+
+  async produce(type, deviceId = null, host = null) {
     let mediaConstraints = {}
     let audio = false
     let screen = false
@@ -278,25 +278,46 @@ class RoomClient {
         audio = true
         break
       case mediaType.video:
-        
-          
-        mediaConstraints = {
-          audio: false,
-          video: {
-            width: {
-              min: 640,
-              ideal: 1920
-            },
-            height: {
-              min: 400,
-              ideal: 1080
-            },
-            deviceId: deviceId
-            /*aspectRatio: {
-                            ideal: 1.7777777778
-                        }*/
+
+        if (this.isMobile) {
+          mediaConstraints = {
+            audio: false,
+            video: {
+              width: {
+                min: 480,
+                ideal: 640
+              },
+              height: {
+                min: 800,
+                ideal: 1080
+              },
+              deviceId: deviceId
+              /*aspectRatio: {
+                              ideal: 1.7777777778
+                          }*/
+            }
+          }
+        } else {
+          mediaConstraints = {
+            audio: false,
+            video: {
+              width: {
+                min: 640,
+                ideal: 1920
+              },
+              height: {
+                min: 400,
+                ideal: 1080
+              },
+              deviceId: deviceId
+              /*aspectRatio: {
+                              ideal: 1.7777777778
+                          }*/
+            }
           }
         }
+
+
         break
       case mediaType.screen:
         mediaConstraints = false
@@ -417,9 +438,9 @@ class RoomClient {
     console.log(producer_id);
     console.log(info);
     this.getConsumeStream(producer_id).then(
-      
+
       function ({ consumer, stream, kind }) {
-        
+
         this.consumers.set(consumer.id, consumer)
 
         let elem

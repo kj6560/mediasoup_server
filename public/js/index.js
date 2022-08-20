@@ -20,13 +20,13 @@ socket.request = function request(type, data = {}) {
 
 let rc = null
 
-function joinRoom(name, room_id) {
+function joinRoom(name, room_id,isMobile) {
   if (rc && rc.isOpen()) {
     console.log('Already connected to a room')
   } else {
     initEnumerateDevices()
 
-    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen)
+    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen,isMobile)
 
     addListeners()
   }

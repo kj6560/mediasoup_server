@@ -89,11 +89,23 @@
     }
 </style>
 <script>
-    var host = "<?php echo $data['conference']['conference_by']; ?>";
+    var host = "<?php
+
+                use App\ViewHelpers;
+
+                echo $data['conference']['conference_by']; ?>";
     var current_user = "<?php echo $data['conference']['current_user']; ?>";
     host = host == current_user ? 1 : 0;
 </script>
-
+<?php
+if (ViewHelpers::is_mobile()) {
+?>
+    <script>
+        var mobile = true;
+    </script>
+<?php
+}
+?>
 
 <div id="devicesList" style="display: none;">
     <div id="remoteAudios" style="display: none;"></div>
@@ -132,7 +144,8 @@
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        joinRoom(name, room_id);
+        joinRoom(name, room_id, mobile);
+
     };
     $(function() {
         $('[data-toggle]').click(function() {
@@ -141,20 +154,6 @@
             $('#' + panelId).toggleClass('show')
         })
     })
-
-    // add remove remote media
-
-
-
-
-
-
-
-    // feature section hide show function 
-
-
-    // toggle chat option 
-
 
 
 
