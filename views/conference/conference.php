@@ -146,9 +146,7 @@
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
         joinRoom(name, room_id, mobile);
-        rc.on('newpeer',function(peer){
-            console.log("new peer: "+peer.name )
-        })
+
     };
     $(function() {
         $('[data-toggle]').click(function() {

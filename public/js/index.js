@@ -20,20 +20,20 @@ socket.request = function request(type, data = {}) {
 
 let rc = null
 
-function joinRoom(name, room_id,isMobile) {
+function joinRoom(name, room_id, isMobile) {
   if (rc && rc.isOpen()) {
     console.log('Already connected to a room')
   } else {
     initEnumerateDevices()
 
-    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen,isMobile)
+    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen, isMobile)
 
     addListeners()
   }
 }
 
 function roomOpen() {
-  
+
   // reveal(startAudioButton)
   // hide(stopAudioButton)
   // reveal(startVideoButton)
@@ -90,6 +90,9 @@ function addListeners() {
     hide(copyButton)
     hide(devicesButton)
     reveal(login)
+  })
+  rc.on('newpeer', function (peer) {
+    console.log("new peer: " + peer.name)
   })
 }
 
