@@ -19,6 +19,7 @@ class ConferenceController extends Controller
 		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
+		print_r($conferences);die;
 		if ($conferences['is_available']) {
 			$conferences['current_user'] = $user['id'];
 			$conferences['user_name'] = $user['name'];
