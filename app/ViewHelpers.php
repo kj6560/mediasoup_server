@@ -26,7 +26,7 @@ class ViewHelpers
     public static function is_mobile()
     {
         $browser = get_browser(null, true);
-        if ($browser['ismobiledevice']) {
+        if (!empty($browser['ismobiledevice']) && $browser['ismobiledevice']) {
             return true;
         }
         return false;
