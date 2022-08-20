@@ -284,12 +284,12 @@ class RoomClient {
             audio: false,
             video: {
               width: {
-                min: 480,
-                ideal: 480
+                min: 640,
+                ideal: 1920
               },
               height: {
-                min: 800,
-                ideal: 800
+                min: 400,
+                ideal: 1080
               },
               deviceId: deviceId
               /*aspectRatio: {
@@ -297,7 +297,7 @@ class RoomClient {
                           }*/
             }
           }
-        } else {
+        }else{
           mediaConstraints = {
             audio: false,
             video: {
@@ -382,6 +382,10 @@ class RoomClient {
         elem.id = producer.id
         elem.playsinline = false
         elem.autoplay = true
+        if(this.isMobile){
+          elem.height = 200
+          elem.width =  200
+        }
         elem.className = 'localVideo'
         this.localMediaEl.appendChild(elem)
         this.handleFS(elem.id)
