@@ -13,7 +13,7 @@
         position: absolute;
         z-index: 2;
         bottom: 10px;
-        right: 10px;
+        left: 10px;
         display: block;
     }
 
@@ -109,10 +109,7 @@
     <div id="localMedia">
 
     </div>
-    <section class="report-a-problem hide"></section>
-    <div class="featurehead">
-        <span class="fas fa-times"></span>
-    </div>
+    
     <div class="feature">
 
         <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
@@ -154,19 +151,7 @@
 
     
     // feature section hide show function 
-    let featureHead = document.querySelector(".featurehead");
-    let feature = document.querySelector(".feature");
-    featureHead.addEventListener("click", () => {
-        if (feature.classList.contains('hide')) {
-            featureHead.innerHTML = '<span class="fas fa-times"></span>';
-            feature.classList.remove('hide');
-            featureHead.style.bottom = '17rem';
-        } else {
-            featureHead.innerHTML = '<span class="fas fa-bars"></span>';
-            feature.classList.add('hide');
-            featureHead.style.bottom = 0;
-        }
-    });
+    
 
     // toggle chat option 
     
