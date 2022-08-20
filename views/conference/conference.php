@@ -95,39 +95,36 @@
 </script>
 
 
-    <div id="devicesList" style="display: none;">
-        <div id="remoteAudios" style="display: none;"></div>
-        <i class="fas fa-microphone"></i> Audio:
-        <select id="audioSelect" class="form-select" style="width: auto"></select>
-        <br />
-        <i class="fas fa-video"></i> Video:
-        <select id="videoSelect" class="form-select" style="width: auto"></select>
-    </div>
-    <div id="remoteVideos" class="remoteVideos">
+<div id="devicesList" style="display: none;">
+    <div id="remoteAudios" style="display: none;"></div>
+    <i class="fas fa-microphone"></i> Audio:
+    <select id="audioSelect" class="form-select" style="width: auto"></select>
+    <br />
+    <i class="fas fa-video"></i> Video:
+    <select id="videoSelect" class="form-select" style="width: auto"></select>
+</div>
+<div id="remoteVideos" class="remoteVideos">
 
-    </div>
-    <div id="localMedia">
+</div>
+<div id="localMedia">
 
-    </div>
-    
-    <div class="feature">
+</div>
 
-        <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
-        <span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
-        <span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span>
-        <span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span>
-        <span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span>
-        <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
-        <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
-        <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
-        <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
-    </div>
-    
+<div class="feature">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
+    <span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
+    <span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span>
+    <span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span>
+    <span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span>
+    <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
+    <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
+    <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
+    <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
+</div>
+
+
+
 <script>
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
@@ -144,21 +141,21 @@
 
     // add remove remote media
 
-    
 
 
-    
 
-    
+
+
+
     // feature section hide show function 
-    
+
 
     // toggle chat option 
-    
 
-    
 
-    
+
+
+
 
     // toggle video 
     let videoOpen = document.querySelector('.videoOpen');
