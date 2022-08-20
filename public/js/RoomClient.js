@@ -285,7 +285,7 @@ class RoomClient {
             video: {
               width: {
                 min: 480,
-                ideal: 640
+                ideal: 480
               },
               height: {
                 min: 800,
