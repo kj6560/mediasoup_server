@@ -297,7 +297,7 @@ class RoomClient {
                           }*/
             }
           }
-        } else {
+        }else{
           mediaConstraints = {
             audio: false,
             video: {
@@ -377,22 +377,22 @@ class RoomClient {
 
       let elem
       if (!audio) {
-        
+        let locName = document.createElement('h6');
+        locName.id = 'localVideoName'
+        this.localMediaEl.appendChild(document.createElement('br'))
         elem = document.createElement('video')
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
         elem.autoplay = true
-        if (this.isMobile) {
+        if(this.isMobile){
           elem.height = 200
-          elem.width = 200
+          elem.width =  200
         }
         elem.className = 'localVideo'
 
         this.localMediaEl.appendChild(elem)
-        let locName = document.createElement('h6');
-        locName.id = 'localVideoName'
-        this.localMediaEl.appendChild(locName)
+        
         this.handleFS(elem.id)
       }
 
@@ -454,10 +454,6 @@ class RoomClient {
 
         let elem
         if (kind === 'video') {
-          let locName = document.createElement('h6');
-          locName.id = 'remoteVideoName'
-          this.remoteVideoEl.appendChild(locName)
-          this.remoteVideoEl.appendChild(document.createElement('br'))
           elem = document.createElement('video')
           elem.srcObject = stream
           elem.id = consumer.id
