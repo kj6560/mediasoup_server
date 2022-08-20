@@ -377,10 +377,7 @@ class RoomClient {
 
       let elem
       if (!audio) {
-        let locName = document.createElement('h6');
-        locName.id = 'localVideoName'
-        this.localMediaEl.appendChild(locName)
-        this.localMediaEl.appendChild(document.createElement('br'))
+        
         elem = document.createElement('video')
         elem.srcObject = stream
         elem.id = producer.id
@@ -393,7 +390,9 @@ class RoomClient {
         elem.className = 'localVideo'
 
         this.localMediaEl.appendChild(elem)
-
+        let locName = document.createElement('h6');
+        locName.id = 'localVideoName'
+        this.localMediaEl.appendChild(locName)
         this.handleFS(elem.id)
       }
 
