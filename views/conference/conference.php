@@ -1,4 +1,8 @@
 <style>
+    html {
+            overflow: hidden;
+            height: 100%;
+        }
     * {
         box-sizing: border-box;
         margin: 0;
