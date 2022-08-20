@@ -50,42 +50,16 @@
         right: 0;
     }
 
-    .feature {
-        display: flex;
-        z-index: 2;
-        position: absolute;
-        left: 40%;
-        top: 0;
-        background: #15748a;
-        width: 270px;
-        cursor: pointer;
-    }
-
-
-    .feature span {
+    span {
         margin: 5px;
         font-size: 16px;
         color: #f3efef;
         cursor: pointer;
         border-radius: 5px;
-        padding: 10px;
+        padding: 2px;
         box-shadow: 0px 0px 10px rgb(80 78 78);
         text-align: center;
 
-    }
-
-    .featurehead {
-        position: absolute;
-        bottom: 17rem;
-        color: #fff;
-        z-index: 3;
-        background: #15748a;
-        width: 60px;
-        display: flex;
-        justify-content: center;
-        height: 34px;
-        place-items: center;
-        cursor: pointer;
     }
 </style>
 <script>
