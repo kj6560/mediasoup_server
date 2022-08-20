@@ -16,27 +16,32 @@
     <script src="<?php echo  BASE . 'js/mediasoupclient.min.js'; ?>"></script>
     <script src="<?php echo  BASE . 'js/RoomClient.js'; ?> "></script>
     <script src="<?php echo  BASE . 'js/index.js'; ?>"></script>
-    <style>
-        html {
-            overflow: hidden;
-            height: 100%;
-        }
 
-        .mBody {
-            background-color: black;
-            margin: 0;
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-        }
-    </style>
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><?php echo SITE_NAME; ?></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span></li>
+                <li><span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span></li>
+                <li><span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span></li>
+                <li><span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span></li>
+                <li><span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span></li>
+                <li><span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span></li>
+                <li><span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span></li>
+                <li><span class="fas fa-comment-slash chattoggle" title="Chat"></span></li>
+                <li><span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+            </ul>
+        </div>
+    </nav>
     <?php require $data['view'];  ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>

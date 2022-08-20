@@ -1,5 +1,9 @@
 <style>
-    
+    html {
+        overflow: hidden;
+        height: 100%;
+    }
+
     .one video {
         object-fit: cover;
     }
@@ -34,6 +38,18 @@
         min-height: 0px;
     }
 
+    body {
+        background-color: white;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
     span {
         margin: 5px;
         font-size: 16px;
@@ -52,29 +68,7 @@
     host = host == current_user ? 1 : 0;
 </script>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#"><?php echo SITE_NAME; ?></a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span></li>
-            <li><span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span></li>
-            <li><span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span></li>
-            <li><span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span></li>
-            <li><span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span></li>
-            <li><span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span></li>
-            <li><span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span></li>
-            <li><span class="fas fa-comment-slash chattoggle" title="Chat"></span></li>
-            <li><span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-        </ul>
-    </div>
-</nav>
-<div class="container mBody">
+<div class="container">
     <div id="devicesList" style="display: none;">
         <div id="remoteAudios" style="display: none;"></div>
         <i class="fas fa-microphone"></i> Audio:
