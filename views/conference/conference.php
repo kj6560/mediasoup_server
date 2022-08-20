@@ -13,7 +13,7 @@
         position: absolute;
         z-index: 2;
         bottom: 10px;
-        left: 10px;
+        right: 10px;
         display: block;
     }
 
@@ -21,7 +21,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        top: 0;
+        top: 80;
         left: 0;
         display: flex;
         flex-direction: row;
