@@ -8,7 +8,7 @@
         object-fit: cover;
     }
 
-    .localVideo {
+    .localMedia {
         width: 20%;
         position: absolute;
         z-index: 2;
@@ -94,7 +94,7 @@
     host = host == current_user ? 1 : 0;
 </script>
 <section class="top-heading">
-    <img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">
+    <img src="<?php echo BASE.'img/logo.png'; ?>" alt="Confrence Room" width="100">
     <p class="text-right text-white time">45:00</p>
 </section>
 
