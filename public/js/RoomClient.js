@@ -361,7 +361,7 @@ class RoomClient {
         elem.id = producer.id
         elem.playsinline = false
         elem.autoplay = true
-        elem.className = 'local-side'
+        elem.className = 'localVideo'
         this.localMediaEl.appendChild(elem)
         this.handleFS(elem.id)
       }
