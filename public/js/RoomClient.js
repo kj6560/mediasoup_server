@@ -379,6 +379,7 @@ class RoomClient {
       if (!audio) {
         let locName = document.createElement('h6');
         locName.id = 'localVideoName'
+        this.localMediaEl.appendChild(locName)
         this.localMediaEl.appendChild(document.createElement('br'))
         elem = document.createElement('video')
         elem.srcObject = stream
@@ -456,7 +457,8 @@ class RoomClient {
         if (kind === 'video') {
           let locName = document.createElement('h6');
           locName.id = 'remoteVideoName'
-          this.localMediaEl.appendChild(document.createElement('br'))
+          this.remoteVideoEl.appendChild(locName)
+          this.remoteVideoEl.appendChild(document.createElement('br'))
           elem = document.createElement('video')
           elem.srcObject = stream
           elem.id = consumer.id

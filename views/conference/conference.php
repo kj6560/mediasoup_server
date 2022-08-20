@@ -117,10 +117,9 @@
     <select id="videoSelect" class="form-select" style="width: auto"></select>
 </div>
 <div id="remoteVideos" class="remoteVideos">
-    <h5>Name</h5>
+
 </div>
 <div id="localMedia">
-    <h5>Name</h5>
 
 </div>
 
