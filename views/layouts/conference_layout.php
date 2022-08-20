@@ -50,5 +50,63 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script>
+    window.onload = function() {
+        var name = "<?php echo $data['conference']['user_name']; ?>";
+        var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
+        joinRoom(name, room_id);
+    };
+    $(function() {
+        $('[data-toggle]').click(function() {
+            const $this = $(this)
+            panelId = $this.data('toggle')
+            $('#' + panelId).toggleClass('show')
+        })
+    })
+
+    // add remove remote media
+
+
+
+
+
+
+
+    // feature section hide show function 
+
+
+    // toggle chat option 
+
+
+
+
+
+
+    // toggle video 
+    let videoOpen = document.querySelector('.videoOpen');
+    let videoClose = document.querySelector('.videoClose');
+    videoOpen.addEventListener("click", () => {
+        videoOpen.classList.add('hide');
+        videoClose.classList.remove('hide');
+        videoClose.style.background = '#ff5d7d';
+    });
+    videoClose.addEventListener("click", () => {
+        videoClose.classList.add('hide');
+        videoOpen.classList.remove('hide');
+    });
+
+    // toggle audio 
+    let audioOpen = document.querySelector('.audioOpen');
+    let audioClose = document.querySelector('.audioClose');
+    audioOpen.addEventListener("click", () => {
+        audioOpen.classList.add('hide');
+        audioClose.classList.remove('hide');
+        audioClose.style.background = '#ff5d7d';
+    });
+    audioClose.addEventListener("click", () => {
+        audioClose.classList.add('hide');
+        audioOpen.classList.remove('hide');
+    })
+</script>
 
 </html>
