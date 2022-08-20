@@ -39,7 +39,7 @@
     }
 
     body {
-        background-color: white;
+        background-color: black;
         margin: 0;
         height: 100%;
         width: 100%;
@@ -50,16 +50,42 @@
         right: 0;
     }
 
-    span {
+    .feature {
+        display: flex;
+        z-index: 2;
+        position: absolute;
+        left: 40%;
+        top: 0;
+        background: #15748a;
+        width: 270px;
+        cursor: pointer;
+    }
+
+
+    .feature span {
         margin: 5px;
         font-size: 16px;
         color: #f3efef;
         cursor: pointer;
         border-radius: 5px;
-        padding: 2px;
+        padding: 10px;
         box-shadow: 0px 0px 10px rgb(80 78 78);
         text-align: center;
 
+    }
+
+    .featurehead {
+        position: absolute;
+        bottom: 17rem;
+        color: #fff;
+        z-index: 3;
+        background: #15748a;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        height: 34px;
+        place-items: center;
+        cursor: pointer;
     }
 </style>
 <script>
@@ -68,19 +94,92 @@
     host = host == current_user ? 1 : 0;
 </script>
 
-<div class="container">
-    <div id="devicesList" style="display: none;">
-        <div id="remoteAudios" style="display: none;"></div>
-        <i class="fas fa-microphone"></i> Audio:
-        <select id="audioSelect" class="form-select" style="width: auto"></select>
-        <br />
-        <i class="fas fa-video"></i> Video:
-        <select id="videoSelect" class="form-select" style="width: auto"></select>
-    </div>
-    <div id="remoteVideos" class="remoteVideos">
-    </div>
-    <div id="localMedia">
-    </div>
+
+<div id="devicesList" style="display: none;">
+    <div id="remoteAudios" style="display: none;"></div>
+    <i class="fas fa-microphone"></i> Audio:
+    <select id="audioSelect" class="form-select" style="width: auto"></select>
+    <br />
+    <i class="fas fa-video"></i> Video:
+    <select id="videoSelect" class="form-select" style="width: auto"></select>
+</div>
+<div id="remoteVideos" class="remoteVideos">
+
+</div>
+<div id="localMedia">
+
+</div>
+
+<div class="feature">
+
+    <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
+    <span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
+    <span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span>
+    <span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span>
+    <span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span>
+    <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
+    <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
+    <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
+    <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
 
 
+
+<script>
+    window.onload = function() {
+        var name = "<?php echo $data['conference']['user_name']; ?>";
+        var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
+        joinRoom(name, room_id);
+    };
+    $(function() {
+        $('[data-toggle]').click(function() {
+            const $this = $(this)
+            panelId = $this.data('toggle')
+            $('#' + panelId).toggleClass('show')
+        })
+    })
+
+    // add remove remote media
+
+
+
+
+
+
+
+    // feature section hide show function 
+
+
+    // toggle chat option 
+
+
+
+
+
+
+    // toggle video 
+    let videoOpen = document.querySelector('.videoOpen');
+    let videoClose = document.querySelector('.videoClose');
+    videoOpen.addEventListener("click", () => {
+        videoOpen.classList.add('hide');
+        videoClose.classList.remove('hide');
+        videoClose.style.background = '#ff5d7d';
+    });
+    videoClose.addEventListener("click", () => {
+        videoClose.classList.add('hide');
+        videoOpen.classList.remove('hide');
+    });
+
+    // toggle audio 
+    let audioOpen = document.querySelector('.audioOpen');
+    let audioClose = document.querySelector('.audioClose');
+    audioOpen.addEventListener("click", () => {
+        audioOpen.classList.add('hide');
+        audioClose.classList.remove('hide');
+        audioClose.style.background = '#ff5d7d';
+    });
+    audioClose.addEventListener("click", () => {
+        audioClose.classList.add('hide');
+        audioOpen.classList.remove('hide');
+    })
+</script>
