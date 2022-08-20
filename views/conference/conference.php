@@ -33,7 +33,7 @@
     }
 
     #localMedia {
-        height: 150px;
+        /* height: 150px;
         width: 150px;
         position: fixed;
         left: 0;
@@ -43,8 +43,14 @@
         background-position: center;
         z-index: 2;
         box-shadow: 0px 0px 4px var(--gray);
-        cursor: move;
+        cursor: move; */
         /*transform: translate(-50%, -50%);*/
+        width: 20%;
+        position: absolute;
+        z-index: 2;
+        bottom: 10px;
+        left: 10px;
+        display: block;
     }
 
     .local-side {
@@ -58,26 +64,35 @@
         user-select: none;
     }
 
-    #remoteVideos video {
-        background: rgb(39, 34, 34);
-        position: relative;
-        bottom: 0;
-        right: 0;
-        background-image: url(https://www.talktoangel.com/images/profile/profile.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: 2;
-
-        height: 92.6vh;
+    .remoteVideos {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
     }
 
+    #remoteVideos video {
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 0px;
+        min-height: 0px;
+    }
+
+    /* 
     .remote-single video {
         width: 100%;
     }
 
     .remote-couple video {
         width: calc(100% - 50.2%);
-    }
+    } */
 
     .feature {
         display: flex;

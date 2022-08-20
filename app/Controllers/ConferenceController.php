@@ -19,11 +19,14 @@ class ConferenceController extends Controller
 		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
-		print_r($conferences);die;
 		if ($conferences['is_available']) {
+			$layout = "conference_layout";
 			$conferences['current_user'] = $user['id'];
 			$conferences['user_name'] = $user['name'];
-			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
+			if($conferences['conference_type'] == 2){
+				$layout = "conference_layou_mtom";
+			}
+			$this->loadView($layout, 'conference/conference', array("conference" => $conferences));
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
