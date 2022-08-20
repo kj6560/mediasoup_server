@@ -330,46 +330,46 @@
 
 
     // local media draggable function
-    let videoSec = document.querySelector("#localMedia");
-    let localSide = videoSec.querySelector('.local-side');
-    if (localSide) {
-        localSide.addEventListener("mousedown", () => {
-            localSide.classList.add("active");
-            localSide.addEventListener("mousemove", localUserDrag);
-        });
-        document.addEventListener("mouseup", () => {
-            localSide.classList.remove("active");
-            localSide.removeEventListener("mousemove", localUserDrag);
-        });
-    }
+    // let videoSec = document.querySelector("#localMedia");
+    // let localSide = videoSec.querySelector('.local-side');
+    // if (localSide) {
+    //     localSide.addEventListener("mousedown", () => {
+    //         localSide.classList.add("active");
+    //         localSide.addEventListener("mousemove", localUserDrag);
+    //     });
+    //     document.addEventListener("mouseup", () => {
+    //         localSide.classList.remove("active");
+    //         localSide.removeEventListener("mousemove", localUserDrag);
+    //     });
+    // }
 
-    function localUserDrag({
-        movementX,
-        movementY
-    }) {
-        let getStyle = window.getComputedStyle(videoSec);
-        let topval = parseInt(getStyle.top);
-        let leftval = parseInt(getStyle.left);
+    // function localUserDrag({
+    //     movementX,
+    //     movementY
+    // }) {
+    //     let getStyle = window.getComputedStyle(videoSec);
+    //     let topval = parseInt(getStyle.top);
+    //     let leftval = parseInt(getStyle.left);
 
-        if (leftval + movementX < 0) {
-            videoSec.style.left = 0;
-        } else if (leftval + movementX > (screenWidth.offsetWidth - videoSec.offsetWidth)) {
-            // do nothing here but its important
-        } else {
-            videoSec.style.left = `${leftval + movementX}px`;
-        }
+    //     if (leftval + movementX < 0) {
+    //         videoSec.style.left = 0;
+    //     } else if (leftval + movementX > (screenWidth.offsetWidth - videoSec.offsetWidth)) {
+    //         // do nothing here but its important
+    //     } else {
+    //         videoSec.style.left = `${leftval + movementX}px`;
+    //     }
 
-        if (topval + movementY < 50) {
-            videoSec.style.top = 50;
-        } else if (topval + movementY > (screenWidth.clientHeight - 100)) {
-            // do nothing here but its important
-        } else {
-            videoSec.style.top = `${topval + movementY}px`;
-        }
+    //     if (topval + movementY < 50) {
+    //         videoSec.style.top = 50;
+    //     } else if (topval + movementY > (screenWidth.clientHeight - 100)) {
+    //         // do nothing here but its important
+    //     } else {
+    //         videoSec.style.top = `${topval + movementY}px`;
+    //     }
 
 
 
-    }
+    // }
     // feature section hide show function 
     let featureHead = document.querySelector(".featurehead");
     let feature = document.querySelector(".feature");
