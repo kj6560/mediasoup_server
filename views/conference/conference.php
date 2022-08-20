@@ -129,7 +129,7 @@
         <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
         <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
     </div>
-    <div class="chat-box hide">
+    <!-- <div class="chat-box hide">
         <h4 class="text-center">Client Name</h4>
         <div class="history-box">
             <ul>
@@ -289,7 +289,7 @@
             <p class="input" contenteditable="true"></p><span class="btn btn-message fas fa-send"> Send</span>
         </div>
 
-    </div>
+    </div> -->
 
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -387,25 +387,25 @@
 
     // toggle chat option 
     let chattoggle = document.querySelector('.chattoggle');
-    let chatBox = document.querySelector('.chat-box');
+    //let chatBox = document.querySelector('.chat-box');
     chattoggle.classList.remove('fa-comment');
     chattoggle.classList.add('fa-comment-slash');
-    chatBox.classList.add('hide');
+    //chatBox.classList.add('hide');
 
-    chattoggle.addEventListener("click", () => {
-        if (chatBox.classList.contains('hide')) {
-            chattoggle.classList.add('fa-comment');
-            chattoggle.classList.remove('fa-comment-slash');
-            chatBox.classList.remove('hide');
-            chattoggle.style.background = '#ff5d7d';
+    // chattoggle.addEventListener("click", () => {
+    //     if (chatBox.classList.contains('hide')) {
+    //         chattoggle.classList.add('fa-comment');
+    //         chattoggle.classList.remove('fa-comment-slash');
+    //         chatBox.classList.remove('hide');
+    //         chattoggle.style.background = '#ff5d7d';
 
-        } else {
-            chattoggle.classList.remove('fa-comment');
-            chattoggle.classList.add('fa-comment-slash');
-            chatBox.classList.add('hide');
-            chattoggle.style.background = 'none';
-        }
-    });
+    //     } else {
+    //         chattoggle.classList.remove('fa-comment');
+    //         chattoggle.classList.add('fa-comment-slash');
+    //         chatBox.classList.add('hide');
+    //         chattoggle.style.background = 'none';
+    //     }
+    // });
 
     // toggle report a problem
     let reportAproblem = document.querySelector(".report-a-problem");
