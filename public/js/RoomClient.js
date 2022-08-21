@@ -449,11 +449,11 @@ class RoomClient {
         consumer_name = peers[t][1].name
       }
     }
-    console.log(consumer_name)
+    
     this.getConsumeStream(producer_id).then(
 
       function ({ consumer, stream, kind }) {
-
+        console.log(consumer_name)
         this.consumers.set(consumer.id, consumer)
 
         let elem
