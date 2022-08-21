@@ -103,10 +103,10 @@ class AppHelpers
         $conf_dur_sec = $conf_duration_ar[2];
         $interval = $conf_date->diff($date_current);
         $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
-        $left_duration = ($interval->h - 8) * 60 * 60 + $interval->i * 60 + $interval->s;
+        $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
         $cur_duration = $cur_H * 60 * 60 + $cur_m * 60 + $cur_s;
         print_r($interval);
-        echo "left: " . $left_duration, "total_conf_duration: " . $total_conf_duration, "cur_duration: " . $cur_duration;
+        echo "left: ".$left_duration,"total_conf_duration: ".$total_conf_duration,"cur_duration: ".$cur_duration;
         die;
         if ($interval->invert) {
             return false;
