@@ -442,14 +442,10 @@ class RoomClient {
 
   async consume(producer_id,producer_socket_id) {
     let info = await this.roomInfo()
-    var peers = info.peers
+    var peers = JSON.parse(peers)
     let consumer_name = ""
-    console.log(JSON.parse(peers))
     for(let t=0;t<peers.length;t++){
       console.log(peers[t])
-      if(producer_socket_id == peers[t][0]){
-        consumer_name = peers[t][1].name
-      }
     }
     console.log(consumer_name)
     this.getConsumeStream(producer_id).then(
