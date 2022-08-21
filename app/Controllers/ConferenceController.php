@@ -26,7 +26,7 @@ class ConferenceController extends Controller
 		$conf_dur_hour = $conf_duration_ar[0];
 		$conf_dur_min = $conf_duration_ar[1];
 		$conf_dur_sec = $conf_duration_ar[2];
-		$interval = $conf_date->diff($date_current);
+		$interval = $date_current->diff($conf_date);
 		print_r($date_current);
 		print_r($interval);
 
