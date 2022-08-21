@@ -34,8 +34,6 @@ class RoomClient {
     this.consumers = new Map()
     this.producers = new Map()
 
-    console.log('Mediasoup client', mediasoupClient)
-
     /**
      * map that contains a mediatype as key and producer_id as value
      */
@@ -444,7 +442,7 @@ class RoomClient {
 
   async consume(producer_id,producer_socket_id) {
     let info = await this.roomInfo()
-    console.log(info)
+    console.log(info.peers)
     this.getConsumeStream(producer_id).then(
 
       function ({ consumer, stream, kind }) {
