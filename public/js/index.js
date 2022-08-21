@@ -91,9 +91,7 @@ function addListeners() {
     hide(devicesButton)
     reveal(login)
   })
-  rc.on('newpeer', function (peer) {
-    console.log("new peer: " + peer.name)
-  })
+  
 }
 
 let isEnumerateDevices = false
