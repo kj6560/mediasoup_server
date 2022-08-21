@@ -444,6 +444,7 @@ class RoomClient {
     let info = await this.roomInfo()
     var peers = info.peers
     let consumer_name = ""
+    console.log(JSON.parse(peers))
     for(let t=0;t<peers.length;t++){
       console.log(peers[t])
       if(producer_socket_id == peers[t][0]){
