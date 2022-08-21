@@ -81,7 +81,6 @@ class ConferenceController extends Controller
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
 		$user = Auth::logger('user');
-		print_r($user);
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		$msg = "";
@@ -90,6 +89,7 @@ class ConferenceController extends Controller
 			$msg .= "Conference is inactive";
 		}
 		$participants = explode(",", $conferences['conference_for']);
+		print_r($participants);
 		if (in_array($user['id'], $participants)) {
 			$msg .= "you are not a part of the conference";
 		}
