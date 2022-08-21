@@ -89,10 +89,12 @@ class AppHelpers
     }
     public static function isValidConference($conference_date, $conference_duration)
     {
+        date_default_timezone_set('Asia/Kolkata');
         $conf_date = new \DateTime($conference_date);
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
         $date_current = new \DateTime(date('Y-m-d H:i:s'));
+        print_r($date_current);
         $cur_H = date('H');
         $cur_m = date('i');
         $cur_s = date('s');
