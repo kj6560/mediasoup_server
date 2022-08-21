@@ -90,11 +90,11 @@ class ConferenceController extends Controller
 		$msg = "";
 		$code = 0;
 		if (!$conferences['is_available']) {
-			$msg .= "Conference is inactive";
+			$msg .= "Conference is inactive. ";
 		}
 		$participants = explode(",", $conferences['conference_for']);
 		if (!in_array($user['id'], $participants)) {
-			$msg .= "you are not a part of the conference";
+			$msg .= "you are not a part of the conference. ";
 		}
 		if (!AppHelpers::isValidConference($conferences['conference_date'], $conferences['conference_duration'])) {
 			$msg .= "The conference  has Expired. Please create a new one or wait for being added";
