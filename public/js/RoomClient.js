@@ -458,6 +458,9 @@ class RoomClient {
 
         let elem
         if (kind === 'video') {
+          let remName = document.createElement('h6')
+          remName.innerText = consumer_name
+          remoteVideoEl.appendChild(remName)
           elem = document.createElement('video')
           elem.srcObject = stream
           elem.id = consumer.id
