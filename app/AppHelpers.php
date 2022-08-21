@@ -94,7 +94,8 @@ class AppHelpers
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
         $date_current = new \DateTime("now",new DateTimeZone("Asia/Kolkata"));
-        print_r($date_current);
+        $date_current = $date_current->format("d M Y H:i:s");
+        print_r($date_current);die;
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
         $conf_dur_sec = $conf_duration_ar[2];
