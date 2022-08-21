@@ -87,6 +87,9 @@
         place-items: center;
         cursor: pointer;
     }
+    h6{
+        color: white;
+    }
 </style>
 <script>
     var host = "<?php
