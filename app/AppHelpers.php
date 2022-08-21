@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTimeZone;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use GuzzleHttp\Client;
 
@@ -92,7 +93,7 @@ class AppHelpers
         $conf_date = new \DateTime($conference_date);
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
-        $date_current = new \DateTime(date('Y-m-d G:i:s'));
+        $date_current = new \DateTime("now",new DateTimeZone("Asia/Kolkata"));
         print_r($date_current);
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
