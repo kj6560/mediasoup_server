@@ -47,7 +47,7 @@ class ConferenceController extends Controller
 			}
 			$total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
 			$left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
-			if ($flag && $total_conf_duration > $left_duration) {
+			if ($flag && $total_conf_duration < $left_duration) {
 				$layout = "conference_layout";
 				$conferences['current_user'] = $user['id'];
 				$conferences['user_name'] = $user['name'];
