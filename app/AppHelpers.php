@@ -90,29 +90,37 @@ class AppHelpers
     public static function isValidConference($conference_date, $conference_duration)
     {
         date_default_timezone_set('Asia/Kolkata');
-        $conf_date = new \DateTime($conference_date);
+
+        $conf_date_date = date("d", $conference_date);
+        $conf_date_month = date("m", $conference_date);
+        $conf_date_year = date("Y", $conference_date);
+        $conf_date_hour = date("H", $conference_date);
+        $conf_date_min = date("i", $conference_date);
+        $conf_date_sec = date("s", $conference_date);
+
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
-        $date_current = new \DateTime(date('Y-m-d H:i:s'));
+
+        
+        $cur_date = date("d", $conference_date);
+        $cur_month = date("m", $conference_date);
+        $cur_year = date("Y", $conference_date);
         $cur_H = date('H');
         $cur_m = date('i');
         $cur_s = date('s');
+
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
         $conf_dur_sec = $conf_duration_ar[2];
-        $interval = $conf_date->diff($date_current);
-        $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
-        $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
-        $cur_duration = $cur_H * 60 * 60 + $cur_m * 60 + $cur_s;
-        if ($interval->invert) {
+
+        if ($conf_date_date != $cur_date && $conf_date_month != $cur_month && $conf_date_year != $cur_year) {
             return false;
         }
-        if ($left_duration + $total_conf_duration > $cur_duration) {
-            return true;
+
+        if ($cur_H > $conf_date_hour && $cur_m > $conf_date_min && $cur_s > $conf_date_sec) {
+            return false;
         }
-        if ($left_duration < $total_conf_duration) {
-            return true;
-        }
-        return false;
+
+        return true;
     }
 }
