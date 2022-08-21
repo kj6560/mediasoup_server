@@ -23,9 +23,9 @@ class Conference extends BaseModel
     public function readAllConferencesForCompanies($organisation, $user_id = null)
     {
         if ($user_id != null) {
-            $query = "select conference.*,u.name from conference inner join users u on conference.conference_by = u.id where conference.organisation=$organisation and $user_id in (conference_for) and conference.is_deleted !=1 ";
+            $query = "select conference.*,u.name from conference inner join users u on  u.id in(conference.conference_for) where conference.organisation=$organisation  and conference.is_deleted !=1 ";
         } else {
-            $query = "select conference.*,u.name from conference inner join users u on conference.conference_by = u.id where conference.organisation=$organisation  and conference.is_deleted !=1 ";
+            $query = "select conference.*,u.name from conference inner join users u on u.id in(conference.conference_for) where conference.organisation=$organisation  and conference.is_deleted !=1 ";
         }
         echo $query;
         $conference  = R::getAssocRow($query);
