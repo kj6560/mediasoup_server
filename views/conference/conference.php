@@ -133,8 +133,8 @@
     <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
-    <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
-    <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
+    <span id="scr" class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
+    <span class="fas fa-desktop-slash hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
     <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
@@ -185,6 +185,27 @@
 
 
     // toggle audio 
+    let audio = document.querySelector('#aud');
+    let ac = 0;
+    audio.addEventListener("click", () => {
+        if (ac == 0) {
+            audio.classList.add('fa-microphone-slash');
+            audio.classList.remove('fa-microphone');
+            audio.style.background = '#ff5d7d';
+            ac++;
+            rc.produce(RoomClient.mediaType.audio, audioSelect.value);
+        } else {
+            audio.classList.remove('fa-microphone-slash');
+            audio.classList.add('fa-microphone');
+            audio.style.background = '#ff5d7d';
+            ac--;
+            rc.closeProducer(RoomClient.mediaType.audio);
+        }
+
+    });
+
+
+    // toggle screen share 
     let audio = document.querySelector('#aud');
     let ac = 0;
     audio.addEventListener("click", () => {
