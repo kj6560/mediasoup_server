@@ -99,6 +99,7 @@ class AppHelpers
         $interval = $date_current->diff($conf_date);
         $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
         $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
+        echo $total_conf_duration,$left_duration;
         if ($total_conf_duration > $left_duration) {
             return true;
         }
