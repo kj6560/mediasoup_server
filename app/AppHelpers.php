@@ -109,6 +109,9 @@ class AppHelpers
         if ($left_duration + $total_conf_duration > $cur_duration) {
             return true;
         }
+        if ($left_duration < $total_conf_duration) {
+            return true;
+        }
         return false;
     }
 }
