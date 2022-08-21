@@ -19,6 +19,10 @@ class ConferenceController extends Controller
 		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
+		$participants = explode(",", $conferences['conference_for']);
+		if (!in_array($user['id'], $participants)) {
+			AppHelpers::redirect('/conference_error/' . $conferences['id']);
+		}
 		if ($conferences['is_available'] && AppHelpers::isValidConference($conferences['conference_date'], $conferences['conference_duration'])) {
 			$layout = "conference_layout";
 			$conferences['current_user'] = $user['id'];
@@ -92,7 +96,7 @@ class ConferenceController extends Controller
 		if (!in_array($user['id'], $participants)) {
 			$msg .= "you are not a part of the conference";
 		}
-		if(!AppHelpers::isValidConference($conferences['conference_date'],$conferences['conference_duration'])){
+		if (!AppHelpers::isValidConference($conferences['conference_date'], $conferences['conference_duration'])) {
 			$msg .= "The conference  has Expired. Please create a new one or wait for being added";
 		}
 		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg' => $msg, 'code' => $code)));
