@@ -133,7 +133,7 @@
     <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
-    <span id="scr" class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
+    <span id="scr" class="fas fa-desktop" title="Screen Share" ></span>
     <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
