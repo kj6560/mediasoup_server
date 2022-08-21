@@ -93,6 +93,7 @@ class AppHelpers
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
         $date_current = new \DateTime(date('Y-m-d G:i:s'));
+        print_r($date_current);
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
         $conf_dur_sec = $conf_duration_ar[2];
