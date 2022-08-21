@@ -21,12 +21,16 @@ class ConferenceController extends Controller
 		$conferences = $conf->readConferences($conf_id);
 		$conf_date = new \DateTime($conferences['conference_date']);
 		$conf_duration = $conferences['conference_duration'];
+		$conf_duration_ar = explode(":",$conf_duration);
 		$date_current = new \DateTime(date('Y-m-d H:i:s'));
-
-		$interval = $date_current->diff($conf_date);
+		$conf_dur_hour = $conf_duration_ar[0];
+		$conf_dur_min = $conf_duration_ar[1];
+		$conf_dur_sec = $conf_duration_ar[2];
+		$interval = $conf_date->diff($date_current);
 		print_r($interval);
 
-		if ($conferences['is_available']) {
+		if ($conferences['is_available'] && $interval->days == 0) {
+
 			$layout = "conference_layout";
 			$conferences['current_user'] = $user['id'];
 			$conferences['user_name'] = $user['name'];
