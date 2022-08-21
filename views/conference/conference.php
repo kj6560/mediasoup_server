@@ -124,7 +124,7 @@
 
 </div>
 <div id="localMedia">
-    <h6><?php echo $data['conference']['user_name'] ?></h6>
+    <h6><?php //echo $data['conference']['user_name'] ?></h6>
 </div>
 
 <div class="feature">
