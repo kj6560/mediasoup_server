@@ -7,7 +7,7 @@ define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
 define('BASE', 'https://drrksuri.com/');
-
+date_default_timezone_set('Asia/Kolkata');
 
 $host = "54.70.129.232";
 $username = "angeltalk";
