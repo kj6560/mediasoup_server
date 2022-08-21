@@ -99,7 +99,10 @@ class AppHelpers
         $interval = $date_current->diff($conf_date);
         $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
         $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
-        if ($left_duration - $total_conf_duration >0 ) {
+        if ($interval->invert) {
+            return false;
+        }
+        if ($left_duration - $total_conf_duration > 0) {
             return true;
         }
         return false;
