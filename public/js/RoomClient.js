@@ -459,8 +459,9 @@ class RoomClient {
         let elem
         if (kind === 'video') {
           let remName = document.createElement('h6')
+          remName.id = consumer.id+"_name"
           remName.innerText = consumer_name
-          this.remoteVideoEl.appendChild(remName)
+          remoteVideoEl.appendChild(remName)
           elem = document.createElement('video')
           elem.srcObject = stream
           elem.id = consumer.id
@@ -589,7 +590,7 @@ class RoomClient {
       track.stop()
     })
     elem.parentNode.removeChild(elem)
-
+    elem.parentNode.removeChild(document.getElementById(consumer_id+"_name"))
     this.consumers.delete(consumer_id)
   }
 
