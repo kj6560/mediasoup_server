@@ -134,7 +134,6 @@
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
     <span id="scr" class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
-    <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
     <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
