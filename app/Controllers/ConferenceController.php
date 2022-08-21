@@ -20,7 +20,7 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		$conf_date = new \DateTime($conferences['conference_date']);
-		$conf_duration = $conferences['conerence_duration'];
+		$conf_duration = $conferences['conference_duration'];
 		$date_current = new \DateTime(date('Y-m-d H:i:s'));
 
 		$interval = $date_current->diff($conf_date);
