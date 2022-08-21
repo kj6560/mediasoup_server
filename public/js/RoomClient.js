@@ -444,7 +444,7 @@ class RoomClient {
 
   async consume(producer_id,producer_socket_id) {
     let info = await this.roomInfo()
-    console.log(producer_socket_id)
+    console.log(info)
     this.getConsumeStream(producer_id).then(
 
       function ({ consumer, stream, kind }) {
