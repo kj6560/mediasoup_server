@@ -191,7 +191,7 @@
         if (ac == 0) {
             audio.classList.add('fa-microphone-slash');
             audio.classList.remove('fa-microphone');
-            video.style.background = '#ff5d7d';
+            audio.style.background = '#ff5d7d';
             ac++;
             rc.produce(RoomClient.mediaType.audio, audioSelect.value);
         } else {
