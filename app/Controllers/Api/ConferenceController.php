@@ -72,7 +72,7 @@ class ConferenceController extends ApiController
 		$org = $this->verifyToken();
 		if ($org) {
 			$confs = new Conference;
-			$confs = $confs->readAllConferencesForCompanies($org['org_id']);
+			$confs = $confs->readAllConferencesForCompanies($org['org_id'],null);
 			$this->response['msg'] = "conference list fetched successfully";
 			$this->response['data'] = !empty($confs) ? $confs : "Empty";
 		} else {
