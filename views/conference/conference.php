@@ -175,7 +175,7 @@
         } else {
             video.classList.remove('fa-video-slash');
             video.classList.add('fa-video');
-            video.style.background = '#ff5d7d';
+            video.style.background = '';
             vc--;
             rc.closeProducer(RoomClient.mediaType.video)
         }
@@ -196,7 +196,7 @@
         } else {
             audio.classList.remove('fa-microphone-slash');
             audio.classList.add('fa-microphone');
-            audio.style.background = '#ff5d7d';
+            audio.style.background = '';
             ac--;
             rc.closeProducer(RoomClient.mediaType.audio);
         }
