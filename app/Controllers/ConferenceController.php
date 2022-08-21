@@ -21,24 +21,43 @@ class ConferenceController extends Controller
 		$conferences = $conf->readConferences($conf_id);
 		$conf_date = new \DateTime($conferences['conference_date']);
 		$conf_duration = $conferences['conference_duration'];
-		$conf_duration_ar = explode(":",$conf_duration);
+		$conf_duration_ar = explode(":", $conf_duration);
 		$date_current = new \DateTime(date('Y-m-d H:i:s'));
 		$conf_dur_hour = $conf_duration_ar[0];
 		$conf_dur_min = $conf_duration_ar[1];
 		$conf_dur_sec = $conf_duration_ar[2];
 		$interval = $date_current->diff($conf_date);
-		print_r($date_current);
-		print_r($interval);
+
+		if ($interval->invert) {
+			AppHelpers::redirect('/conference_error/' . $conferences['id']);
+		}
+
 
 		if ($conferences['is_available'] && $interval->days == 0) {
-
-			$layout = "conference_layout";
-			$conferences['current_user'] = $user['id'];
-			$conferences['user_name'] = $user['name'];
-			if($conferences['conference_type'] == 2){
-				$layout = "conference_layou_mtom";
+			$cur_h = date('H');
+			$cur_m = date('i');
+			$conf_h = date('H', strtotime($conferences['conference_date']));
+			$conf_m = date('i', strtotime($conferences['conference_date']));
+			$flag = true;
+			if (($conf_h - $cur_h) != 0) {
+				$flag = false;
 			}
-			$this->loadView($layout, 'conference/conference', array("conference" => $conferences));
+			if ($flag && ($conf_m - $cur_m) != 0) {
+				$flag = false;
+			}
+			$total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
+			$left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
+			if ($flag && $left_duration - $total_conf_duration > 0) {
+				$layout = "conference_layout";
+				$conferences['current_user'] = $user['id'];
+				$conferences['user_name'] = $user['name'];
+				if ($conferences['conference_type'] == 2) {
+					$layout = "conference_layou_mtom";
+				}
+				$this->loadView($layout, 'conference/conference', array("conference" => $conferences));
+			} else {
+				AppHelpers::redirect('/conference_error/' . $conferences['id']);
+			}
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
@@ -194,7 +213,7 @@ class ConferenceController extends Controller
 			$conf->conference_room_id = $confToEdit['conference_room_id'];
 			$conf->is_available = $confToEdit['is_available'];
 			$conf->is_deleted = $confToEdit['is_deleted'];
-			$conf->conference_keys =$confToEdit['conference_keys'];
+			$conf->conference_keys = $confToEdit['conference_keys'];
 			$conference = $conf->update();
 
 			if ($conference) {
@@ -203,7 +222,7 @@ class ConferenceController extends Controller
 				AppHelpers::redirect('/conferences');
 			}
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("conference"=>$confToEdit,"page_heading" => "Edit conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_conference', array("conference" => $confToEdit, "page_heading" => "Edit conference", "users" => $users, "msg" => array('text' => $msg, 'code' => $code)));
 	}
 
 	//conference detail action
