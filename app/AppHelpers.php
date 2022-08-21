@@ -111,7 +111,6 @@ class AppHelpers
 
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
-        $conf_dur_sec = $conf_duration_ar[2];
 
         if (intval($conf_date_date) != intval($cur_date) && intval($conf_date_month) != intval($cur_month) && intval($conf_date_year) != intval($cur_year)) {
             return false;
@@ -124,7 +123,6 @@ class AppHelpers
             return false;
         }
 
-        echo intval($cur_H), " conf_hour: " . intval($conf_date_hour);
         return true;
     }
 }
