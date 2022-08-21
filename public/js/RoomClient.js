@@ -247,8 +247,8 @@ class RoomClient {
       'newProducers',
       async function (data) {
         console.log('New producers', data)
-        for (let { producer_id,name } of data) {
-          console.log(name)
+        for (let { producer_id,producer_socket_id } of data) {
+          console.log(producer_socket_id)
           await this.consume(producer_id)
         }
       }.bind(this)
