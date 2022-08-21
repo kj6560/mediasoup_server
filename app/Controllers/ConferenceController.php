@@ -24,7 +24,7 @@ class ConferenceController extends Controller
 		$date_current = new \DateTime(date('Y-m-d H:i:s'));
 
 		$interval = $date_current->diff($conf_date);
-		echo $interval;
+		print_r($interval);
 
 		if ($conferences['is_available']) {
 			$layout = "conference_layout";
