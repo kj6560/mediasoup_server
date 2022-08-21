@@ -124,14 +124,14 @@
 
 </div>
 <div id="localMedia">
-    <h6><?php //echo $data['conference']['user_name'] ?></h6>
+    <h6><?php //echo $data['conference']['user_name'] 
+        ?></h6>
 </div>
 
 <div class="feature">
 
     <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
-    <span class="fas fa-video videoOpen" title="Start Camera" onclick="rc.produce(RoomClient.mediaType.video, videoSelect.value)"></span>
-    <span class="fas fa-video-slash videoClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.video)"></span>
+    <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span class="fas fa-microphone audioOpen" title="Start Microphone" onclick="rc.produce(RoomClient.mediaType.audio, audioSelect.value)"></span>
     <span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span>
     <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
@@ -165,17 +165,25 @@
 
 
     // toggle video 
-    let videoOpen = document.querySelector('.videoOpen');
-    let videoClose = document.querySelector('.videoClose');
-    videoOpen.addEventListener("click", () => {
-        videoOpen.classList.add('hide');
-        videoClose.classList.remove('hide');
-        videoClose.style.background = '#ff5d7d';
+    let video = document.querySelector('#vid');
+    let vc = 0;
+    video.addEventListener("click", () => {
+        if (vc == 0) {
+            video.classList.add('fa-video-slash');
+            video.classList.remove('fa-video');
+            video.style.background = '#ff5d7d';
+            vc++;
+            rc.produce(RoomClient.mediaType.video, videoSelect.value);
+        } else {
+            video.classList.remove('fa-video-slash');
+            video.classList.add('fa-video');
+            video.style.background = '#ff5d7d';
+            vc--;
+            rc.closeProducer(RoomClient.mediaType.video)
+        }
+
     });
-    videoClose.addEventListener("click", () => {
-        videoClose.classList.add('hide');
-        videoOpen.classList.remove('hide');
-    });
+    
 
     // toggle audio 
     let audioOpen = document.querySelector('.audioOpen');
