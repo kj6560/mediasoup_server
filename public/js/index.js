@@ -32,21 +32,6 @@ function joinRoom(name, room_id, isMobile) {
   }
 }
 
-function roomOpen() {
-
-  // reveal(startAudioButton)
-  // hide(stopAudioButton)
-  // reveal(startVideoButton)
-  // hide(stopVideoButton)
-  // reveal(startScreenButton)
-  // hide(stopScreenButton)
-  // reveal(exitButton)
-  // reveal(copyButton)
-  // reveal(devicesButton)
-  // control.className = ''
-  // reveal(videoMedia)
-}
-
 function hide(elem) {
   elem.className = 'hidden'
 }

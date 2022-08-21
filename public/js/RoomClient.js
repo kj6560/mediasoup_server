@@ -247,7 +247,8 @@ class RoomClient {
       'newProducers',
       async function (data) {
         console.log('New producers', data)
-        for (let { producer_id } of data) {
+        for (let { producer_id,name } of data) {
+          console.log(name)
           await this.consume(producer_id)
         }
       }.bind(this)
@@ -444,7 +445,6 @@ class RoomClient {
 
   async consume(producer_id) {
     let info = await this.roomInfo()
-    console.log(info);
     this.getConsumeStream(producer_id).then(
 
       function ({ consumer, stream, kind }) {
