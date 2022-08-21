@@ -91,20 +91,20 @@ class AppHelpers
     {
         date_default_timezone_set('Asia/Kolkata');
 
-        $conf_date_date = date("d", $conference_date);
-        $conf_date_month = date("m", $conference_date);
-        $conf_date_year = date("Y", $conference_date);
-        $conf_date_hour = date("H", $conference_date);
-        $conf_date_min = date("i", $conference_date);
-        $conf_date_sec = date("s", $conference_date);
+        $conf_date_date = date("d", strtotime($conference_date));
+        $conf_date_month = date("m", strtotime($conference_date));
+        $conf_date_year = date("Y", strtotime($conference_date));
+        $conf_date_hour = date("H", strtotime($conference_date));
+        $conf_date_min = date("i", strtotime($conference_date));
+        $conf_date_sec = date("s", strtotime($conference_date));
 
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
 
-        
-        $cur_date = date("d", $conference_date);
-        $cur_month = date("m", $conference_date);
-        $cur_year = date("Y", $conference_date);
+
+        $cur_date = date("d");
+        $cur_month = date("m");
+        $cur_year = date("Y");
         $cur_H = date('H');
         $cur_m = date('i');
         $cur_s = date('s');
