@@ -33,18 +33,7 @@ function joinRoom(name, room_id, isMobile) {
 }
 
 function roomOpen() {
-
-  // reveal(startAudioButton)
-  // hide(stopAudioButton)
-  // reveal(startVideoButton)
-  // hide(stopVideoButton)
-  // reveal(startScreenButton)
-  // hide(stopScreenButton)
-  // reveal(exitButton)
-  // reveal(copyButton)
-  // reveal(devicesButton)
-  // control.className = ''
-  // reveal(videoMedia)
+  //this is successcallback
 }
 
 function hide(elem) {
@@ -91,7 +80,7 @@ function addListeners() {
     hide(devicesButton)
     reveal(login)
   })
-  
+
 }
 
 let isEnumerateDevices = false
@@ -138,3 +127,7 @@ function enumerateDevices() {
     })
   )
 }
+
+socket.on("room_data", (data) => {
+  console.log(data)
+})

@@ -14,7 +14,7 @@ const options = {
   cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
 }
 const httpsServer = https.createServer(options, app)
-const io = require('socket.io')(httpsServer,{
+const io = require('socket.io')(httpsServer, {
   cors: {
     origin: "https://drrksuri.com",
     methods: ["GET", "POST"]
@@ -51,9 +51,9 @@ let nextMediasoupWorkerIdx = 0
  */
 let roomList = new Map()
 
-;(async () => {
-  await createWorkers()
-})()
+  ; (async () => {
+    await createWorkers()
+  })()
 
 async function createWorkers() {
   let { numWorkers } = config.mediasoup
@@ -107,7 +107,7 @@ io.on('connection', (socket) => {
 
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-
+    io.in(room_id).emit("room_data", roomList.get(socket.room_id).toJson());
     cb(roomList.get(room_id).toJson())
   })
 
