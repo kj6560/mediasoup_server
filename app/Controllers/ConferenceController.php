@@ -27,7 +27,7 @@ class ConferenceController extends Controller
 		$conf_dur_min = $conf_duration_ar[1];
 		$conf_dur_sec = $conf_duration_ar[2];
 		$interval = $conf_date->diff($date_current);
-		echo $date_current;
+		print_r($date_current);
 		print_r($interval);
 
 		if ($conferences['is_available'] && $interval->days == 0) {
