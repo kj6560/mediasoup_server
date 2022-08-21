@@ -133,6 +133,7 @@
     <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
+    <span class="fas fa-microphone-slash audioClose hide" title="Close Camera" onclick="rc.closeProducer(RoomClient.mediaType.audio)"></span>
     <span class="fas fa-desktop" title="Screen Share" onclick="rc.produce(RoomClient.mediaType.screen)"></span>
     <span class="fas fa-desktop hide" title="Stop Screen Share" onclick="rc.closeProducer(RoomClient.mediaType.screen)"></span>
     <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
@@ -188,7 +189,7 @@
     let audio = document.querySelector('#aud');
     let ac = 0;
     audio.addEventListener("click", () => {
-        if (vc == 0) {
+        if (ac == 0) {
             audio.classList.add('fa-microphone-slash');
             audio.classList.remove('fa-microphone');
             video.style.background = '#ff5d7d';
