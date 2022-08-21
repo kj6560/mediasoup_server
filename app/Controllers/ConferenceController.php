@@ -81,6 +81,7 @@ class ConferenceController extends Controller
 	public function conference_error($conf_id, RouteCollection $routes)
 	{
 		$user = Auth::logger('user');
+		print_r($user);
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		$msg = "";
