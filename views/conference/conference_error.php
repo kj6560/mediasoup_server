@@ -282,7 +282,7 @@
 </style>
 
 <section class="top-heading">
-    <img src="https://www.talktoangel.com/images/logo.png" alt="Confrence Room" width="100">
+    <img src="<?php echo BASE.'img/logo.png'?>" alt="Confrence Error" width="100">
 </section>
 
 
