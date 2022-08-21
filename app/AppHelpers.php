@@ -120,7 +120,7 @@ class AppHelpers
         if ($cur_H > $conf_date_hour && $cur_m > $conf_date_min && $cur_s > $conf_date_sec) {
             return false;
         }
-
+        echo $cur_H , " conf_hour: ".$conf_date_hour;
         return true;
     }
 }
