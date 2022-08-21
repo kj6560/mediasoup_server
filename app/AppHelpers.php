@@ -47,14 +47,14 @@ class AppHelpers
     public static function makeRequest($url, $body, $method)
     {
         $client = new \GuzzleHttp\Client();
-        if ($method == "post"){
+        if ($method == "post") {
             $response = $client->post(
                 $url,
                 array(
                     'form_params' => $body
                 )
             );
-        }else if($method=="get"){
+        } else if ($method == "get") {
             $response = $client->get(
                 $url,
                 array(
@@ -62,7 +62,7 @@ class AppHelpers
                 )
             );
         }
-            
+
         return $response;
     }
     public static function clean_data($data)
@@ -71,19 +71,37 @@ class AppHelpers
         $data = stripslashes($data);
         return $data;
     }
-    public static function processData($data){
+    public static function processData($data)
+    {
         $processedData = array();
-        if(!empty($data)){
-            $headers = !empty($data[0])?$data[0]:array();
-            for($i=1;$i<count($data);$i++){
+        if (!empty($data)) {
+            $headers = !empty($data[0]) ? $data[0] : array();
+            for ($i = 1; $i < count($data); $i++) {
                 $da = $data[$i];
                 $res = array();
-                for($j=0;$j<count($headers);$j++){
+                for ($j = 0; $j < count($headers); $j++) {
                     $res[$headers[$j]] = $da[$j];
                 }
-                array_push($processedData,$res);
+                array_push($processedData, $res);
             }
         }
         return $processedData;
+    }
+    public static function isValidConference($conference_date, $conference_duration)
+    {
+        $conf_date = new \DateTime($conference_date);
+        $conf_duration = $conference_duration;
+        $conf_duration_ar = explode(":", $conf_duration);
+        $date_current = new \DateTime(date('Y-m-d H:i:s'));
+        $conf_dur_hour = $conf_duration_ar[0];
+        $conf_dur_min = $conf_duration_ar[1];
+        $conf_dur_sec = $conf_duration_ar[2];
+        $interval = $date_current->diff($conf_date);
+        $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
+        $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
+        if ($total_conf_duration > $left_duration) {
+            return true;
+        }
+        return false;
     }
 }
