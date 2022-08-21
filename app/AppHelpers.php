@@ -120,7 +120,7 @@ class AppHelpers
         if (intval($cur_H) > intval($conf_date_hour) && intval($cur_m) > intval($conf_date_min) && intval($cur_s) > intval($conf_date_sec)) {
             return false;
         }
-        echo $cur_H , " conf_hour: ".$conf_date_hour;
+        echo intval($cur_H) , " conf_hour: ".intval($conf_date_hour);
         return true;
     }
 }
