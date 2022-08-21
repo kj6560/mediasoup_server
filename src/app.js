@@ -107,7 +107,7 @@ io.on('connection', (socket) => {
 
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-    socket.to(room_id).emit("room_data",roomList.get(socket.room_id).toJson());
+    socket.emit("room_data",roomList.get(socket.room_id).toJson());
     cb(roomList.get(room_id).toJson())
   })
 
