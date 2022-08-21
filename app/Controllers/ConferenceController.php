@@ -89,9 +89,11 @@ class ConferenceController extends Controller
 			$msg .= "Conference is inactive";
 		}
 		$participants = explode(",", $conferences['conference_for']);
-		print_r($participants);
-		if (in_array($user['id'], $participants)) {
+		if (!in_array($user['id'], $participants)) {
 			$msg .= "you are not a part of the conference";
+		}
+		if(AppHelpers::isValidConference($conferences['conference_date'],$conferences['conference_duration'])){
+			$msg .= "The conference  has Expired. Please create a new one or wait for being added";
 		}
 		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg' => $msg, 'code' => $code)));
 	}
