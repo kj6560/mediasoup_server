@@ -94,7 +94,6 @@ class AppHelpers
         $conf_duration = $conference_duration;
         $conf_duration_ar = explode(":", $conf_duration);
         $date_current = new \DateTime(date('Y-m-d H:i:s'));
-        print_r($date_current);
         $cur_H = date('H');
         $cur_m = date('i');
         $cur_s = date('s');
@@ -105,9 +104,6 @@ class AppHelpers
         $total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
         $left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
         $cur_duration = $cur_H * 60 * 60 + $cur_m * 60 + $cur_s;
-        print_r($interval);
-        echo "left: ".$left_duration,"total_conf_duration: ".$total_conf_duration,"cur_duration: ".$cur_duration;
-        die;
         if ($interval->invert) {
             return false;
         }
