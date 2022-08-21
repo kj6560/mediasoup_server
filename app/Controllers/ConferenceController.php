@@ -19,9 +19,9 @@ class ConferenceController extends Controller
 		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
-		$conf_date = new DateTime($conferences['conference_date']);
+		$conf_date = new \DateTime($conferences['conference_date']);
 		$conf_duration = $conferences['conerence_duration'];
-		$date_current = new DateTime(date('Y-m-d H:i:s'));
+		$date_current = new \DateTime(date('Y-m-d H:i:s'));
 
 		$interval = $date_current->diff($conf_date);
 		echo $interval;
