@@ -445,8 +445,8 @@ class RoomClient {
     var peers = info.peers
     let consumer_name = ""
     for(let t=0;t<peers.length;t++){
-      if(producer_socket_id == peers[0]){
-        consumer_name = peers[1].name
+      if(producer_socket_id == peers[t][0]){
+        consumer_name = peers[t][1].name
       }
     }
     console.log(consumer_name)
