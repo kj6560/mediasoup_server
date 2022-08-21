@@ -27,7 +27,6 @@ class ConferenceController extends Controller
 		$conf_dur_min = $conf_duration_ar[1];
 		$conf_dur_sec = $conf_duration_ar[2];
 		$interval = $date_current->diff($conf_date);
-		print_r($interval);die;
 		if ($interval->invert) {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
@@ -47,7 +46,7 @@ class ConferenceController extends Controller
 			}
 			$total_conf_duration = $conf_dur_hour * 60 * 60 + $conf_dur_min * 60 + $conf_dur_sec;
 			$left_duration = $interval->h * 60 * 60 + $interval->i * 60 + $interval->s;
-			echo $total_conf_duration , $left_duration;die;
+			echo "total: ".$total_conf_duration , "left: ".$left_duration;die;
 			if ($flag && $total_conf_duration < $left_duration) {
 				$layout = "conference_layout";
 				$conferences['current_user'] = $user['id'];
