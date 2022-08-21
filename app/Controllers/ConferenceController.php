@@ -27,7 +27,7 @@ class ConferenceController extends Controller
 		$conf_dur_min = $conf_duration_ar[1];
 		$conf_dur_sec = $conf_duration_ar[2];
 		$interval = $date_current->diff($conf_date);
-		print_r($interval->invert);die;
+		print_r($interval);die;
 		if ($interval->invert) {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
