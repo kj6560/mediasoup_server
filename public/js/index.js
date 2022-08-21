@@ -127,7 +127,3 @@ function enumerateDevices() {
     })
   )
 }
-
-socket.on("room_data", (data) => {
-  console.log(data)
-})
