@@ -104,8 +104,125 @@
         display: grid;
         place-items: center;
         color: #fff;
-        background-image: url('https://www.talktoangel.com/images/logo/chat.png');
         background-blend-mode: none;
+    }
+
+    .history-box {
+        border: 1px solid #ff5d7d;
+        width: 96%;
+        height: 65vh;
+        overflow-y: auto;
+    }
+
+    .text-box {
+        width: 96%;
+        height: auto;
+        display: flex;
+    }
+
+    .input {
+        width: 88%;
+        height: 44px;
+        border: 2px solid #ff5d7d;
+        overflow-y: auto;
+        outline: none;
+        border-radius: 25px 0px 0px 25px;
+        font-size: 12px;
+        padding: 0px 5px;
+    }
+
+    .btn.btn-message {
+        background: #ff5d7d;
+        color: #fff;
+        height: 44px;
+        border-radius: 0px 25px 25px 0px;
+        font-size: 14px;
+    }
+
+    li.chat-list {
+        padding: 5px;
+        margin: 0px;
+        list-style: none;
+        font-size: 14px;
+    }
+
+    .chat-list span {
+        font-size: 10px;
+    }
+
+    .left-chat {
+        background: #ff5d7d;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        width: auto;
+        margin: 5px;
+        float: left;
+        clear: both;
+        text-align: left;
+        position: relative;
+
+    }
+
+    .right-chat {
+        background: var(--teal);
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        width: auto;
+        margin: 5px;
+        float: right;
+        clear: both;
+        text-align: right;
+        position: relative;
+
+    }
+
+    .right-chat::before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        bottom: -9px;
+        border-left: 15px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 17px solid #20c997;
+        right: 0px;
+    }
+
+    .left-chat::before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        bottom: -9px;
+        border-left: 15px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 17px solid #ff5d7d;
+        left: 0px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #ff5d7d05;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 </style>
 <script>
