@@ -736,7 +736,9 @@ class RoomClient {
         msg,
         socket_id
       })
-      .catch(errback)
+      .catch(function(err){
+        console.log(err)
+      })
   }
   getMySocketId() {
     return this.socket.id;
