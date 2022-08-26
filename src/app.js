@@ -83,11 +83,6 @@ async function createWorkers() {
 }
 
 io.on('connection', (socket) => {
-  socket.io = io
-  socket.on('chat message', msg => {
-    io.emit('chat message', msg);
-  });
-
   socket.on('createRoom', async ({ room_id }, callback) => {
     if (roomList.has(room_id)) {
       callback('already exists')
@@ -111,16 +106,15 @@ io.on('connection', (socket) => {
         error: 'Room does not exist'
       })
     }
-    console.log("room data-" + room_id, room_data)
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-    //socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
-    io.to(room_id).emit('room_data', JSON.stringify(room_data))
     cb(JSON.stringify(room_data))
   })
+
   socket.on('sendMessage', (message) => {
     io.to(socket.room_id).emit('message', { for: message.id, msg: message.msg })
   })
+  
   socket.on('getProducers', () => {
     if (!roomList.has(socket.room_id)) return
     console.log('Get producers', { name: `${roomList.get(socket.room_id).getPeers().get(socket.id).name}` })
