@@ -733,13 +733,11 @@ class RoomClient {
 
   sendMessage(msg, socket_id) {
     this.socket
-      .request('sendMessage', {
+      .emit('sendMessage',
         msg,
         socket_id
-      })
-      .catch(function(err){
-        console.log(err)
-      })
+      )
+
   }
   getMySocketId() {
     return this.socket.id;
