@@ -723,4 +723,8 @@ class RoomClient {
       }
     })
   }
+
+  sendMessage(msg){
+    console.log(msg)
+  }
 }

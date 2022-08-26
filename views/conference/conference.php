@@ -289,7 +289,7 @@
         </ul>
     </div>
     <div class="text-box">
-        <input type="text" class="input" name="msg"></p><button class="btn btn-message fas fa-send"> Send</button>
+        <input type="text" class="input msg" name="msg"></p><button onclick="sendMsg()" class="btn btn-message fas fa-send send_msg"> Send</button>
     </div>
 
 </div>
@@ -397,4 +397,10 @@
             chattoggle.style.background = 'none';
         }
     });
+
+    //receive msg and send it to sockets
+    let input = document.querySelector('.input');
+    function sendMsg(){
+        rc.sendMessage(input.value);
+    }
 </script>
