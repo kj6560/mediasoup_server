@@ -406,13 +406,13 @@
         var room_data = rc.getRoomData();
         var to = '';
         for (let i=0;i<room_data.length;i++) {
-            console.log(room_data[i].socket_id)
+            
             var data = room_data[i];
             if (data.socket_id != socket_id) {
                 to = data.socket_id;
             }
         }
-        
+        console.log(to)
         rc.sendMessage(input.value, to);
     }
 </script>
