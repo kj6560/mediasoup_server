@@ -263,7 +263,6 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
-      this.updateConference(room_data)
     }.bind(this)
     )
   }
@@ -730,7 +729,7 @@ class RoomClient {
   sendMessage(msg){
     console.log(msg)
   }
-  updateConference(room_data){
-    console.log("update list")
+  getMySocketId(){
+    return this.socket.id;
   }
 }
