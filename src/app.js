@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
 
   socket.on('getRoomData', () => {
     if (!roomList.has(socket.room_id)) return
-    io.local.emit("room_data",roomList)
+    io.local.emit("room_data",JSON.stringify(roomList))
   })
 
   socket.on('getRouterRtpCapabilities', (_, callback) => {
