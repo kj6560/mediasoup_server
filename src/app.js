@@ -15,7 +15,7 @@ const options = {
 }
 var room_data = [];
 const httpsServer = https.createServer(options, app)
-const io = require('socket.io')(httpsServer, {
+let io = require('socket.io')(httpsServer, {
   cors: {
     origin: "https://drrksuri.com",
     methods: ["GET", "POST"]
@@ -115,7 +115,7 @@ io.on('connection', (socket) => {
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
     //socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
-    socket.io.to(room_id).emit('room_data', JSON.stringify(room_data))
+    io.to(room_id).emit('room_data', JSON.stringify(room_data))
     cb(JSON.stringify(room_data))
   })
   socket.on('sendMessage', (message) => {
