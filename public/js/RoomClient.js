@@ -35,6 +35,7 @@ class RoomClient {
 
     this.consumers = new Map()
     this.producers = new Map()
+    this.room_data = []
 
     /**
      * map that contains a mediatype as key and producer_id as value
@@ -261,12 +262,14 @@ class RoomClient {
       }.bind(this)
     )
     this.socket.on("room_data", async function (room_data) {
-      console.log(room_data)
+      this.room_data = room_data
+      updateConference(room_data)
     }.bind(this)
     )
   }
 
   //////// MAIN FUNCTIONS /////////////
+
 
   async produce(type, deviceId = null, host = null) {
     let mediaConstraints = {}
@@ -726,5 +729,8 @@ class RoomClient {
 
   sendMessage(msg){
     console.log(msg)
+  }
+  updateConference(room_data){
+    console.log("update list")
   }
 }
