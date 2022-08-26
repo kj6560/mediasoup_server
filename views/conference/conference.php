@@ -274,7 +274,7 @@
 <div class="chat-box hide">
     <h4 class="text-center client_name">Client Name</h4>
     <div class="history-box">
-        <ul>
+        <ul class="msgs">
             <li class="chat-list">
                 <div class="left-chat">
                     <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
@@ -403,15 +403,26 @@
     let input = document.querySelector('.input');
 
     function sendMsg() {
+        var msgs_ul = document.querySelector('.msgs');
         var room_data = rc.getRoomData();
         var to = '';
-        for (let i=0;i<room_data.length;i++) {
-            
+        for (let i = 0; i < room_data.length; i++) {
+
             var data = room_data[i];
             if (data.socket_id != socket_id) {
                 to = data.socket_id;
             }
         }
+        var li = document.createElement('li');
+        li.setAttribute('class','chat-list');
+        var li_div = document.createElement('div');
+        li_div.setAttribute('class','right-chat');
+        var div_p = document.createElement('p');
+        div_p.innerText = input.value;
+
+        li_div.appendChild(div_p);
+        li.appendChild(li_div);
+        msgs_ul.appendChild(li);
         rc.sendMessage(input.value, to);
     }
 </script>

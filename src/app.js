@@ -113,7 +113,6 @@ io.on('connection', (socket) => {
 
   socket.on('sendMessage', function (message, socket__id) {
     io.to(socket__id).emit('message', message,socket__id)
-    socket.emit('message', message,socket__id)
   })
 
   socket.on('getProducers', () => {
