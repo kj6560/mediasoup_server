@@ -261,7 +261,7 @@ class RoomClient {
       }.bind(this)
     )
     this.socket.on("room_data", async function (room_data) { 
-      console.log(JSON.parse(room_data).toString())
+      console.log(JSON.parse(room_data))
     }.bind(this)
     )
   }
