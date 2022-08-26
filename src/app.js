@@ -112,8 +112,8 @@ io.on('connection', (socket) => {
   })
 
   socket.on('sendMessage', function (message, socket__id) {
-    console.log("send msg to", socket__id)
     io.to(socket__id).emit('message', message)
+    socket.emit('message', message)
   })
 
   socket.on('getProducers', () => {
