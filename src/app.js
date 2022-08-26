@@ -129,6 +129,9 @@ io.on('connection', (socket) => {
     if (!roomList.has(socket.room_id)) return
     io.to(socket.room_id).emit('room_data', room_data)
     //socket.emit('room_data', room_data)
+    if(io){
+      console.log("io hai ")
+    }
   })
 
   socket.on('getRouterRtpCapabilities', (_, callback) => {
