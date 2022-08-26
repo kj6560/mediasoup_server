@@ -259,9 +259,9 @@ class RoomClient {
         this.exit(true)
       }.bind(this)
     )
-    this.socket.on("room_data", (data) => {
-      console.log(data)
-    })
+    this.socket.on("room_data", function(room_data){
+      console.log(room_data)
+    }).bind(this)
   }
 
   //////// MAIN FUNCTIONS /////////////
