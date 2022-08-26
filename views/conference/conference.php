@@ -289,7 +289,7 @@
         </ul>
     </div>
     <div class="text-box">
-        <p class="input" contenteditable="true"></p><span class="btn btn-message fas fa-send"> Send</span>
+        <input type="text" class="input" name="msg"></p><button class="btn btn-message fas fa-send"> Send</button>
     </div>
 
 </div>
