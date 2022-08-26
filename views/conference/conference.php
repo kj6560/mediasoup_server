@@ -285,7 +285,7 @@
                     <p>message by me</p><span class="fas fa-clock"> Just Now</span>
                 </div>
             </li>
-            
+
         </ul>
     </div>
     <div class="text-box">
@@ -299,12 +299,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script>
-    
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
         joinRoom(name, room_id, mobile);
-        
+
     };
     $(function() {
         $('[data-toggle]').click(function() {
@@ -314,8 +313,7 @@
         })
     })
 
-    var socket_id=rc.getMySocketId();
-    console.log(socket_id);
+
 
 
     // toggle video 
@@ -383,8 +381,10 @@
     chattoggle.classList.remove('fa-comment');
     chattoggle.classList.add('fa-comment-slash');
     chatBox.classList.add('hide');
-
+    var socket_id='';
     chattoggle.addEventListener("click", () => {
+        socket_id = rc.getMySocketId();
+        console.log(socket_id);
         if (chatBox.classList.contains('hide')) {
             chattoggle.classList.add('fa-comment');
             chattoggle.classList.remove('fa-comment-slash');
@@ -401,7 +401,8 @@
 
     //receive msg and send it to sockets
     let input = document.querySelector('.input');
-    function sendMsg(){
+
+    function sendMsg() {
         rc.sendMessage(input.value);
     }
 </script>
