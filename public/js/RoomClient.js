@@ -263,7 +263,7 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
-      updateConference(room_data)
+      this.updateConference(room_data)
     }.bind(this)
     )
   }
