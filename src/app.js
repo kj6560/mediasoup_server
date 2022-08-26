@@ -100,6 +100,7 @@ io.on('connection', (socket) => {
 
   socket.on('join', ({ room_id, name }, cb) => {
     room_data.push({ socket_id: socket.id, name: name })
+    io.to(room_id).emit('user_joined_hai', name)
     console.log('User joined', {
       room_id: room_id,
       name: name
@@ -114,6 +115,7 @@ io.on('connection', (socket) => {
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
     socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
+    io.to(room_id).emit('room_data', JSON.stringify(room_data))
     cb(roomList.get(room_id).toJson())
   })
   socket.on('sendMessage', (message) => {

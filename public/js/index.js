@@ -80,7 +80,9 @@ function addListeners() {
     hide(devicesButton)
     reveal(login)
   })
-
+  rc.socket.on("user_joined_hai",function(msg){
+    console.log(msg)
+  })
 }
 
 let isEnumerateDevices = false
