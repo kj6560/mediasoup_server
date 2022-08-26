@@ -302,7 +302,7 @@
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        joinRoom(name, room_id, mobile);
+        var socket_id = joinRoom(name, room_id, mobile);
 
     };
     $(function() {
