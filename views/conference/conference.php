@@ -304,7 +304,7 @@
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
         joinRoom(name, room_id, mobile);
-        socket_id = rc.socket.id;
+        socket_id = rc.socket_id;
         console.log("my socket: ",socket_id);
     };
     $(function() {
