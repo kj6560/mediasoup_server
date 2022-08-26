@@ -381,7 +381,7 @@
     chattoggle.classList.remove('fa-comment');
     chattoggle.classList.add('fa-comment-slash');
     chatBox.classList.add('hide');
-    var socket_id='';
+    var socket_id = '';
     chattoggle.addEventListener("click", () => {
         socket_id = rc.getMySocketId();
         console.log(socket_id);
@@ -403,6 +403,13 @@
     let input = document.querySelector('.input');
 
     function sendMsg() {
-        rc.sendMessage(input.value);
+        var room_data = rc.getRoomData();
+        var to = '';
+        for (let data in room_data) {
+            if (data.socket_id != socket_id) {
+                to = data.socket_id;
+            }
+        }
+        rc.sendMessage(input.value, to);
     }
 </script>

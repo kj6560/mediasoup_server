@@ -111,8 +111,8 @@ io.on('connection', (socket) => {
     cb(JSON.stringify(room_data))
   })
 
-  socket.on('sendMessage', (message) => {
-    io.to(socket.room_id).emit('message', { for: message.id, msg: message.msg })
+  socket.on('sendMessage', (message,socket__id) => {
+    io.to(socket__id).emit('message',  message)
   })
 
   socket.on('getProducers', () => {

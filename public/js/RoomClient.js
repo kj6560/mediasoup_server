@@ -265,6 +265,10 @@ class RoomClient {
       this.room_data = room_data
     }.bind(this)
     )
+    this.socket.on("message", async function (room_data) {
+      console.log(message)
+    }.bind(this)
+    )
   }
 
   //////// MAIN FUNCTIONS /////////////
@@ -726,10 +730,19 @@ class RoomClient {
     })
   }
 
-  sendMessage(msg){
-    console.log(msg)
+  sendMessage(msg, socket_id) {
+    this.socket
+      .request('sendMessage', {
+        msg,
+        socket_id
+      })
+      .then(callback)
+      .catch(errback)
   }
-  getMySocketId(){
+  getMySocketId() {
     return this.socket.id;
+  }
+  getRoomData() {
+    return this.room_data;
   }
 }
