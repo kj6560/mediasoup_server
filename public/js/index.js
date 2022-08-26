@@ -73,12 +73,12 @@ function addListeners() {
     // reveal(startVideoButton)
   })
   rc.on(RoomClient.EVENTS.exitRoom, () => {
-    hide(control)
-    hide(devicesList)
-    hide(videoMedia)
-    hide(copyButton)
-    hide(devicesButton)
-    reveal(login)
+    // hide(control)
+    // hide(devicesList)
+    // hide(videoMedia)
+    // hide(copyButton)
+    // hide(devicesButton)
+    // reveal(login)
   })
   rc.socket.on("user_joined_hai",function(msg){
     console.log(msg)
