@@ -244,9 +244,10 @@ io.on('connection', (socket) => {
     if (roomList.get(socket.room_id).getPeers().size === 0) {
       roomList.delete(socket.room_id)
     }
-    room_data.filter(function (da) {
+    room_data = room_data.filter(function (da) {
       da.socket_id == socket.id ? true : false
     })
+    io.to(socket.room_id).emit('room_data', JSON.stringify(room_data))
     socket.room_id = null
 
     callback('successfully exited room')
