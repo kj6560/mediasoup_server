@@ -110,7 +110,7 @@ io.on('connection', (socket) => {
         error: 'Room does not exist'
       })
     }
-    console.log("room data",room_data)
+    console.log("room data-"+room_id,room_data)
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
     socket.broadcast.to(room_id).emit('room_data', room_data)
