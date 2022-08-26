@@ -100,7 +100,6 @@ io.on('connection', (socket) => {
 
   socket.on('join', ({ room_id, name }, cb) => {
     room_data.push({ socket_id: socket.id, name: name })
-    io.to(room_id).emit('user_joined_hai', name)
     console.log('User joined', {
       room_id: room_id,
       name: name
@@ -111,8 +110,9 @@ io.on('connection', (socket) => {
         error: 'Room does not exist'
       })
     }
-    console.log("room data-"+room_id,room_data)
+    console.log("room data-" + room_id, room_data)
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
+    roomList.set("room_data", room_data)
     socket.room_id = room_id
     socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
     io.to(room_id).emit('room_data', JSON.stringify(room_data))
