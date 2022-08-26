@@ -736,7 +736,6 @@ class RoomClient {
         msg,
         socket_id
       })
-      .then(callback)
       .catch(errback)
   }
   getMySocketId() {
