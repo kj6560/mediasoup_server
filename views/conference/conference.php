@@ -133,7 +133,7 @@
     <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
-    <span id="scr" class="fas fa-desktop" title="Screen Share" ></span>
+    <span id="scr" class="fas fa-desktop" title="Screen Share"></span>
     <span class="fas fa-comment-slash chattoggle" title="Chat"></span>
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
@@ -209,7 +209,7 @@
     let scr = 0;
     screen.addEventListener("click", () => {
         if (scr == 0) {
-            
+
             screen.style.background = '#ff5d7d';
             scr++;
             rc.produce(RoomClient.mediaType.screen)
@@ -220,7 +220,13 @@
         }
 
     });
-    
+    socket.on('roomData', ({
+        room_data
+    }) => {
+        console.log(room_data)
+    })
 
-    
+    socket.on('message', (message) => {
+        console.log(message)
+    })
 </script>

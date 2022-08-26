@@ -13,8 +13,9 @@ const options = {
   key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
   cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
 }
+const room_data = [];
 const httpsServer = https.createServer(options, app)
-const io = require('socket.io')(httpsServer,{
+const io = require('socket.io')(httpsServer, {
   cors: {
     origin: "https://drrksuri.com",
     methods: ["GET", "POST"]
@@ -51,9 +52,9 @@ let nextMediasoupWorkerIdx = 0
  */
 let roomList = new Map()
 
-;(async () => {
-  await createWorkers()
-})()
+  ; (async () => {
+    await createWorkers()
+  })()
 
 async function createWorkers() {
   let { numWorkers } = config.mediasoup
@@ -82,6 +83,10 @@ async function createWorkers() {
 }
 
 io.on('connection', (socket) => {
+  socket.on('chat message', msg => {
+    io.emit('chat message', msg);
+  });
+
   socket.on('createRoom', async ({ room_id }, callback) => {
     if (roomList.has(room_id)) {
       callback('already exists')
@@ -104,13 +109,15 @@ io.on('connection', (socket) => {
         error: 'Room does not exist'
       })
     }
-
+    room_data.push({ socket_id: socket.id, name: name })
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-    socket.emit("room_data",roomList.get(socket.room_id).toJson());
+    io.to(room_id).emit('room_data', room_data)
     cb(roomList.get(room_id).toJson())
   })
-
+  socket.on('sendMessage', (message) => {
+    io.to(socket.room_id).emit('message', { for: message.id, msg: message.msg })
+  })
   socket.on('getProducers', () => {
     if (!roomList.has(socket.room_id)) return
     console.log('Get producers', { name: `${roomList.get(socket.room_id).getPeers().get(socket.id).name}` })
