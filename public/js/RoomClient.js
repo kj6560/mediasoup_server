@@ -260,8 +260,8 @@ class RoomClient {
         this.exit(true)
       }.bind(this)
     )
-    this.socket.on("room_data", async function (room_data) {
-      console.log(JSON.parse(room_data.room_id.peers))
+    this.socket.on("room_data", async function (room_data) { 
+      console.log(JSON.parse(room_data))
     }.bind(this)
     )
   }
