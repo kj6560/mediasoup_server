@@ -303,7 +303,7 @@
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
         var socket_id = joinRoom(name, room_id, mobile);
-        console.log("my socket: ",socket_id);
+        console.log("my socket: ",rc.socket);
     };
     $(function() {
         $('[data-toggle]').click(function() {
