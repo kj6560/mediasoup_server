@@ -24,6 +24,7 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 		if ($conferences['is_available'] && AppHelpers::isValidConference($conferences['conference_date'], $conferences['conference_duration'])) {
+			echo "here";
 			$layout = "conference_layout";
 			$conferences['current_user'] = $user['id'];
 			$conferences['user_name'] = $user['name'];
@@ -32,6 +33,7 @@ class ConferenceController extends Controller
 			}
 			$this->loadView($layout, 'conference/conference', array("conference" => $conferences));
 		} else {
+			echo "there";
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
