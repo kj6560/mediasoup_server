@@ -272,7 +272,7 @@
 </div>
 
 <div class="chat-box hide">
-    <h4 class="text-center">Client Name</h4>
+    <h4 class="text-center client_name">Client Name</h4>
     <div class="history-box">
         <ul>
             <li class="chat-list">
@@ -285,146 +285,7 @@
                     <p>message by me</p><span class="fas fa-clock"> Just Now</span>
                 </div>
             </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
+            
         </ul>
     </div>
     <div class="text-box">
