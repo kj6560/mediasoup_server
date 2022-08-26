@@ -114,7 +114,7 @@ io.on('connection', (socket) => {
   socket.on('sendMessage', (message) => {
     io.to(socket.room_id).emit('message', { for: message.id, msg: message.msg })
   })
-  
+
   socket.on('getProducers', () => {
     if (!roomList.has(socket.room_id)) return
     console.log('Get producers', { name: `${roomList.get(socket.room_id).getPeers().get(socket.id).name}` })
@@ -127,8 +127,8 @@ io.on('connection', (socket) => {
 
   socket.on('getRoomData', () => {
     if (!roomList.has(socket.room_id)) return
-    
-    socket.emit('room_data', room_data)
+    io.to(socket.room_id).emit('room_data', room_data)
+    //socket.emit('room_data', room_data)
   })
 
   socket.on('getRouterRtpCapabilities', (_, callback) => {
