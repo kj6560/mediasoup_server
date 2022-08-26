@@ -112,7 +112,7 @@ class AppHelpers
         $conf_dur_hour = $conf_duration_ar[0];
         $conf_dur_min = $conf_duration_ar[1];
 
-        echo "conf_date_date: ".intval($conf_date_date) , "cur_date: ".intval($cur_date) , "conf_date_month: ".intval($conf_date_month) , "cur_month: ".intval($cur_month) , "conf_date_year: ".intval($conf_date_year) , "cur_year: ".intval($cur_year);die;
+        //echo "conf_date_date: ".intval($conf_date_date) , "cur_date: ".intval($cur_date) , "conf_date_month: ".intval($conf_date_month) , "cur_month: ".intval($cur_month) , "conf_date_year: ".intval($conf_date_year) , "cur_year: ".intval($cur_year);die;
         if (intval($conf_date_date) < intval($cur_date) && intval($conf_date_month) < intval($cur_month) && intval($conf_date_year) < intval($cur_year)) {
             return false;
         }
