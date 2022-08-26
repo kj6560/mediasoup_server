@@ -266,8 +266,8 @@ class RoomClient {
       console.log(this.room_data)
     }.bind(this)
     )
-    this.socket.on("message", async function (room_data) {
-      console.log(room_data)
+    this.socket.on("message", async function (msg,socket__id) {
+      console.log(msg,socket__id)
     }.bind(this)
     )
   }
