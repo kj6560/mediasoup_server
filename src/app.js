@@ -13,7 +13,7 @@ const options = {
   key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
   cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
 }
-const room_data = [];
+var room_data = [];
 const httpsServer = https.createServer(options, app)
 const io = require('socket.io')(httpsServer, {
   cors: {
