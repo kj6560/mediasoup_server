@@ -412,7 +412,7 @@
         var li_div = document.createElement('div');
         li_div.setAttribute('class','right-chat');
         var div_p = document.createElement('p');
-        div_p.innerText = "Me: <br>"+input.value;
+        div_p.innerText = "Me: \n"+input.value;
 
         li_div.appendChild(div_p);
         li.appendChild(li_div);
