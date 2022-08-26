@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
 
   socket.on('getRoomData', () => {
     if (!roomList.has(socket.room_id)) return
-    io.local.emit("room_data",room_data)
+    io.local.emit("room_data", room_data)
   })
 
   socket.on('getRouterRtpCapabilities', (_, callback) => {
@@ -218,14 +218,14 @@ io.on('connection', (socket) => {
     if (!socket.room_id) return
     roomList.get(socket.room_id).removePeer(socket.id)
 
-    room_data = room_data.filter(function(data){
-      if(data.socket_id==socket.id){
+    room_data = room_data.filter(function (data) {
+      if (data.socket_id != socket.id) {
         return true;
-      }else{
+      } else {
         return false;
       }
     })
-    io.local.emit("room_data",room_data)
+    io.local.emit("room_data", room_data)
   })
 
   socket.on('producerClosed', ({ producer_id }) => {
