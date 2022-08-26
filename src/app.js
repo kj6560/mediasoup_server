@@ -131,6 +131,12 @@ io.on('connection', (socket) => {
     socket.emit('newProducers', producerList)
   })
 
+  socket.on('getRoomData', () => {
+    if (!roomList.has(socket.room_id)) return
+    
+    socket.emit('room_data', room_data)
+  })
+
   socket.on('getRouterRtpCapabilities', (_, callback) => {
     console.log('Get RouterRtpCapabilities', {
       name: `${roomList.get(socket.room_id).getPeers().get(socket.id).name}`

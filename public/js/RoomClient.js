@@ -86,6 +86,7 @@ class RoomClient {
           this.device = device
           await this.initTransports(device)
           this.socket.emit('getProducers')
+          this.socket.emit('getRoomData')
         }.bind(this)
       )
       .catch((err) => {
