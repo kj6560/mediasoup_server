@@ -410,6 +410,7 @@
                 to = data.socket_id;
             }
         }
+        console.log(room_data,to)
         rc.sendMessage(input.value, to);
     }
 </script>
