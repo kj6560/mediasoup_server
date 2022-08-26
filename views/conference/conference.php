@@ -412,7 +412,6 @@
                 to = data.socket_id;
             }
         }
-        console.log(to)
         rc.sendMessage(input.value, to);
     }
 </script>
