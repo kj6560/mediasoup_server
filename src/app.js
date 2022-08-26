@@ -246,16 +246,21 @@ io.on('connection', (socket) => {
         error: 'not currently in a room'
       })
       return
+
     }
     // close transports
     await roomList.get(socket.room_id).removePeer(socket.id)
     if (roomList.get(socket.room_id).getPeers().size === 0) {
       roomList.delete(socket.room_id)
     }
-    room_data = room_data.filter(function (da) {
-      da.socket_id == socket.id ? true : false
+    room_data = room_data.filter(function (data) {
+      if (data.socket_id != socket.id) {
+        return true;
+      } else {
+        return false;
+      }
     })
-    io.to(socket.room_id).emit('room_data', JSON.stringify(room_data))
+    io.local.emit("room_data", room_data)
     socket.room_id = null
 
     callback('successfully exited room')
