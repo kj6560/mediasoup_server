@@ -280,12 +280,6 @@
                     <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
                 </div>
             </li>
-            <li class="chat-list">
-                <div class="right-chat">
-                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
-
         </ul>
     </div>
     <div class="text-box">
@@ -418,7 +412,7 @@
         var li_div = document.createElement('div');
         li_div.setAttribute('class','right-chat');
         var div_p = document.createElement('p');
-        div_p.innerText = input.value;
+        div_p.innerText = "Me: <br>"+input.value;
 
         li_div.appendChild(div_p);
         li.appendChild(li_div);
