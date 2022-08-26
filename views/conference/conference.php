@@ -91,6 +91,22 @@
     h6 {
         color: white;
     }
+
+    .chat-box {
+        width: 450px;
+        height: 80vh;
+        position: fixed;
+        border: 1px solid;
+        z-index: 3;
+        bottom: 10px;
+        right: 10px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background-image: url('https://www.talktoangel.com/images/logo/chat.png');
+        background-blend-mode: none;
+    }
 </style>
 <script>
     var host = "<?php
@@ -138,6 +154,167 @@
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
 
+<div class="chat-box hide">
+    <h4 class="text-center">Client Name</h4>
+    <div class="history-box">
+        <ul>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="left-chat">
+                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+            <li class="chat-list">
+                <div class="right-chat">
+                    <p>message by me</p><span class="fas fa-clock"> Just Now</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="text-box">
+        <p class="input" contenteditable="true"></p><span class="btn btn-message fas fa-send"> Send</span>
+    </div>
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -220,13 +397,26 @@
         }
 
     });
-    // socket.on('roomData', ({
-    //     room_data
-    // }) => {
-    //     console.log(room_data)
-    // })
+    //chat toggle
 
-    // socket.on('message', (message) => {
-    //     console.log(message)
-    // })
+    let chattoggle = document.querySelector('.chattoggle');
+    let chatBox = document.querySelector('.chat-box');
+    chattoggle.classList.remove('fa-comment');
+    chattoggle.classList.add('fa-comment-slash');
+    chatBox.classList.add('hide');
+
+    chattoggle.addEventListener("click", () => {
+        if (chatBox.classList.contains('hide')) {
+            chattoggle.classList.add('fa-comment');
+            chattoggle.classList.remove('fa-comment-slash');
+            chatBox.classList.remove('hide');
+            chattoggle.style.background = '#ff5d7d';
+
+        } else {
+            chattoggle.classList.remove('fa-comment');
+            chattoggle.classList.add('fa-comment-slash');
+            chatBox.classList.add('hide');
+            chattoggle.style.background = 'none';
+        }
+    });
 </script>
