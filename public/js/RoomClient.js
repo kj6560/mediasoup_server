@@ -247,8 +247,8 @@ class RoomClient {
       'newProducers',
       async function (data) {
         console.log('New producers', data)
-        for (let { producer_id,producer_socket_id } of data) {
-          await this.consume(producer_id,producer_socket_id)
+        for (let { producer_id, producer_socket_id } of data) {
+          await this.consume(producer_id, producer_socket_id)
         }
       }.bind(this)
     )
@@ -259,9 +259,10 @@ class RoomClient {
         this.exit(true)
       }.bind(this)
     )
-    this.socket.on("room_data", function(room_data){
+    this.socket.on("room_data", function (room_data) {
       console.log(room_data)
-    }).bind(this)
+    }.bind(this)
+    )
   }
 
   //////// MAIN FUNCTIONS /////////////
@@ -300,7 +301,7 @@ class RoomClient {
                           }*/
             }
           }
-        }else{
+        } else {
           mediaConstraints = {
             audio: false,
             video: {
@@ -388,14 +389,14 @@ class RoomClient {
         elem.id = producer.id
         elem.playsinline = false
         elem.autoplay = true
-        if(this.isMobile){
+        if (this.isMobile) {
           elem.height = 200
-          elem.width =  200
+          elem.width = 200
         }
         elem.className = 'localVideo'
 
         this.localMediaEl.appendChild(elem)
-        
+
         this.handleFS(elem.id)
       }
 
@@ -445,16 +446,16 @@ class RoomClient {
     }
   }
 
-  async consume(producer_id,producer_socket_id) {
+  async consume(producer_id, producer_socket_id) {
     let info = await this.roomInfo()
     var peers = JSON.parse(info.peers)
     let consumer_name = ""
-    for(let t=0;t<peers.length;t++){
-      if(peers[t][0] == producer_socket_id){
+    for (let t = 0; t < peers.length; t++) {
+      if (peers[t][0] == producer_socket_id) {
         consumer_name = peers[t][1].name
       }
     }
-    
+
     this.getConsumeStream(producer_id).then(
 
       function ({ consumer, stream, kind }) {
