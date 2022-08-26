@@ -112,6 +112,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('sendMessage', (message,socket__id) => {
+    console.log("send msg to",socket__id) 
     io.to(socket__id).emit('message',  message)
   })
 
