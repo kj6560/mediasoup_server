@@ -113,9 +113,9 @@ io.on('connection', (socket) => {
     console.log("room data-" + room_id, room_data)
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-    socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
-    io.to(room_id).emit('room_data', JSON.stringify(room_data))
-    cb(room_data.toJson())
+    //socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
+    //io.to(room_id).emit('room_data', JSON.stringify(room_data))
+    cb(JSON.stringify(room_data))
   })
   socket.on('sendMessage', (message) => {
     io.to(socket.room_id).emit('message', { for: message.id, msg: message.msg })
