@@ -220,13 +220,13 @@
         }
 
     });
-    socket.on('roomData', ({
-        room_data
-    }) => {
-        console.log(room_data)
-    })
+    // socket.on('roomData', ({
+    //     room_data
+    // }) => {
+    //     console.log(room_data)
+    // })
 
-    socket.on('message', (message) => {
-        console.log(message)
-    })
+    // socket.on('message', (message) => {
+    //     console.log(message)
+    // })
 </script>

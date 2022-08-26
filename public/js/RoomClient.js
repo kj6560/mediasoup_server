@@ -11,7 +11,9 @@ const _EVENTS = {
   startAudio: 'startAudio',
   stopAudio: 'stopAudio',
   startScreen: 'startScreen',
-  stopScreen: 'stopScreen'
+  stopScreen: 'stopScreen',
+  room_data: 'room_data',
+  message: 'message'
 }
 
 class RoomClient {
