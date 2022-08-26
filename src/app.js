@@ -217,6 +217,15 @@ io.on('connection', (socket) => {
 
     if (!socket.room_id) return
     roomList.get(socket.room_id).removePeer(socket.id)
+
+    room_data = room_data.filter(function(data){
+      if(data.socket_id==socket.id){
+        return true;
+      }else{
+        return false;
+      }
+    })
+    io.local.emit("room_data",room_data)
   })
 
   socket.on('producerClosed', ({ producer_id }) => {
