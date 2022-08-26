@@ -299,11 +299,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script>
+    var socket_id='';
     window.onload = function() {
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        var socket_id = joinRoom(name, room_id, mobile);
-        console.log("my socket: ",rc.socket);
+        joinRoom(name, room_id, mobile);
+        socket_id = rc.socket.id;
+        console.log("my socket: ",socket_id);
     };
     $(function() {
         $('[data-toggle]').click(function() {
