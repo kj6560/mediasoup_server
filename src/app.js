@@ -83,6 +83,7 @@ async function createWorkers() {
 }
 
 io.on('connection', (socket) => {
+  socket.io = io
   socket.on('chat message', msg => {
     io.emit('chat message', msg);
   });
@@ -113,8 +114,8 @@ io.on('connection', (socket) => {
     console.log("room data-" + room_id, room_data)
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
-    socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
-    //io.to(room_id).emit('room_data', JSON.stringify(room_data))
+    //socket.broadcast.to(room_id).emit('room_data', JSON.stringify(room_data))
+    socket.io.to(room_id).emit('room_data', JSON.stringify(room_data))
     cb(JSON.stringify(room_data))
   })
   socket.on('sendMessage', (message) => {
