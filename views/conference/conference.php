@@ -403,14 +403,15 @@
     let input = document.querySelector('.input');
 
     function sendMsg() {
-        var room_data = JSON.parse(rc.getRoomData());
+        var room_data = rc.getRoomData();
         var to = '';
         for (let data in room_data) {
+            console.log(data)
             if (data.socket_id != socket_id) {
                 to = data.socket_id;
             }
         }
-        console.log(room_data,to)
+        
         rc.sendMessage(input.value, to);
     }
 </script>
