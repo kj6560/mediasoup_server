@@ -130,7 +130,7 @@ io.on('connection', (socket) => {
     io.to(socket.room_id).emit('room_data', room_data)
     //socket.emit('room_data', room_data)
     if(io){
-      console.log("io hai ")
+      console.log("io hai ",io)
     }
   })
 
