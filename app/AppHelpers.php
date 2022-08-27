@@ -154,4 +154,9 @@ class AppHelpers
     {
         return $role == 1 ? true : false;
     }
+
+    public static function canCreate($role)
+    {
+        return $role == 1 || $role == 2 || $role == 3 ? true : false;
+    }
 }
