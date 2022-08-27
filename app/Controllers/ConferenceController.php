@@ -239,6 +239,7 @@ class ConferenceController extends Controller
 			$out = array("msg" => "failed");
 			$conf = new Conference;
 			$conf->id = $post['id'];
+			$conf->is_available = 0;
 			$conf->session_ended = 1;
 			$conf = $conf->update();
 			if ($conf) {
