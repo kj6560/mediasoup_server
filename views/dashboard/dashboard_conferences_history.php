@@ -49,7 +49,6 @@ use App\ViewHelpers;
                                     if ($conference['is_deleted']) {
                                     ?>
                                         <span class="badge bg-danger"><?php echo $conference['session_ended'] ? "Session ended and Deleted" : "Deleted"; ?></span>
-                                        <span class="badge bg-danger">Deleted</span>
                                     <?php
                                     } else {
                                     ?>
