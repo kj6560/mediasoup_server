@@ -440,7 +440,7 @@
             }
             let post = JSON.stringify(postObj)
 
-            const url = "<?php echo BASE; ?>/endSession"
+            const url = "<?php echo BASE; ?>endSession"
             let xhr = new XMLHttpRequest()
 
             xhr.open('POST', url, true)
