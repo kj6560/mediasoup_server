@@ -444,7 +444,6 @@
         }
 
         if (user_id == host_id) {
-            console.log("here")
             let postObj = {
                 id: conference_id
             }
