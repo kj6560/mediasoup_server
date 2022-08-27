@@ -38,7 +38,7 @@ if ($auth->guard('user')) {
     $routes->add('endSession', new Route(constant('URL_SUBFOLDER') . '/endSession', array('controller' => 'ConferenceController', 'method' => 'endSession'), array(),['POST']));
 
     //priviledged general routes
-    $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method' => 'history'), array()));
+    $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'ConferenceController', 'method' => 'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method' => 'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method' => 'notifications'), array()));
     $routes->add('contact_support', new Route(constant('URL_SUBFOLDER') . '/contact_support', array('controller' => 'PageController', 'method' => 'contact_support'), array()));

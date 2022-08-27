@@ -31,5 +31,9 @@ class Conference extends BaseModel
         }
         return $return;
     }
-	
+	public function readConferenceHistory($organisation){
+        $query = "select conference.*,u.name from conference inner join users u on conference.conference_by = u.id where conference.organisation=$organisation and conference.is_deleted !=1 ";
+        $conference  = R::getAssocRow($query);
+        return !empty($conference)?$conference:false;
+    }
 }

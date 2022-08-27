@@ -248,4 +248,12 @@ class ConferenceController extends Controller
 			print_r(json_encode($out));
 		}
 	}
+	public function history(RouteCollection $routes)
+	{
+		$conf = new Conference;
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$conferences = $conf->readConferenceHistory($organisation);
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences_history', array("conferences" => $conferences, "page_heading" => "Conferences History"));
+	}
 }
