@@ -58,8 +58,7 @@ $current_role = $data['current_user']['user_role'];
                 if (AppHelpers::canDelete($current_role)) { ?>
                   <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
               <?php }
-              } 
-              ?>
+              } ?>
               </td>
             </tr>
         </tbody>
