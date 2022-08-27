@@ -434,6 +434,7 @@
     }
 
     function endSession() {
+        console.log("reached here");
         if (user_id == host_id) {
             let postObj = {
                 id: conference_id
