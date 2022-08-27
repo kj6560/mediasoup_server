@@ -118,7 +118,7 @@ class AppHelpers
                     return false;
                 }
                 echo intval($cur_m) , "-".intval($conf_date_min) + intval($conf_dur_min);
-                if (intval($cur_m) > intval($conf_date_min) + intval($conf_dur_min)) {
+                if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
                     return false;
                 }
                 return true;
