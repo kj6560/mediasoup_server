@@ -122,6 +122,8 @@ class AppHelpers
                         return false;
                     }
                     return true;
+                }else if(intval($cur_H) < intval($conf_date_hour) + intval($conf_dur_hour)){
+                    return true;
                 }
                 if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
                     return false;
