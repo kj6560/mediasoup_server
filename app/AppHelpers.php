@@ -150,4 +150,8 @@ class AppHelpers
     {
         return $role == 1 || $role == 2 || $role == 3 || $role = 4 ? true : false;
     }
+    public static function canUpload($role)
+    {
+        return $role == 1 ? true : false;
+    }
 }

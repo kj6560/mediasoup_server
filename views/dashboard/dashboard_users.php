@@ -13,7 +13,10 @@ $current_role = $data['current_user']['user_role'];
 <section class="section">
   <div class="card">
     <div class="card-header">
-      <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a> <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
+      <?php AppHelpers::canUpload($current_role){ ?>
+      <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a>
+      <?php } ?>
+      <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
