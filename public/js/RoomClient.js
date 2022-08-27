@@ -746,6 +746,8 @@ class RoomClient {
     return this.room_data;
   }
   updateMsgList(msg, socket__id) {
+    let chatBox = document.querySelector('.chat-box');
+    chatBox.classList.remove('hide');
     var name = "";
     for (let i = 0; i < this.room_data.length; i++) {
 
