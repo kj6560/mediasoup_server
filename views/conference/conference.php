@@ -54,7 +54,7 @@
         display: flex;
         z-index: 2;
         position: absolute;
-        left: 40%;
+        left: 30%;
         top: 0;
         background: #15748a;
         width: 270px;
