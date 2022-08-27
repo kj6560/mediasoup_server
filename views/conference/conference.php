@@ -93,7 +93,7 @@
     }
 
     .chat-box {
-        width: 450px;
+        width: 300px;
         height: 80vh;
         position: fixed;
         border: 1px solid;
@@ -109,13 +109,13 @@
 
     .history-box {
         border: 1px solid #ff5d7d;
-        width: 75%;
+        width: 250px;
         height: 65vh;
         overflow-y: auto;
     }
 
     .text-box {
-        width: 75%;
+        width: 250px;
         height: auto;
         display: flex;
     }
