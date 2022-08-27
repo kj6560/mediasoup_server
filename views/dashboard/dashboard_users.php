@@ -13,7 +13,7 @@ $current_role = $data['current_user']['user_role'];
 <section class="section">
   <div class="card">
     <div class="card-header">
-      <?php AppHelpers::canUpload($current_role){ ?>
+      <?php if(AppHelpers::canUpload($current_role)){ ?>
       <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a>
       <?php } ?>
       <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
