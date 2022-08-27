@@ -750,7 +750,7 @@ class RoomClient {
     for (let i = 0; i < this.room_data.length; i++) {
 
       var data = this.room_data[i];
-      if (data.socket_id == socket__id) {
+      if (data.socket_id != socket__id) {
           name = data.name;
       }
   }
