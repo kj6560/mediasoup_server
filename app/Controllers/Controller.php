@@ -10,7 +10,7 @@ class Controller
     {
         $data['view'] = APP_ROOT . "/views/" . $view . ".php";
         if (!empty($_SESSION['login_id'])) {
-            $data['users'] = $user = Auth::logger('user');
+            $data['current_user'] = $user = Auth::logger('user');
         }
         if (count($data)) {
             extract($data);

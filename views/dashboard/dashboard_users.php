@@ -3,7 +3,7 @@
 use App\AppHelpers;
 use App\ViewHelpers;
 
-$current_role = $data['users']['user_role'];
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
