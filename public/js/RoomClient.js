@@ -753,16 +753,17 @@ class RoomClient {
 
       var data = this.room_data[i];
       if (data.socket_id != socket__id) {
-          name = data.name;
+        name = data.name;
       }
-  }
+    }
+    document.querySelector('.client_name').innerHTML = name;
     var msgs_ul = document.querySelector('.msgs');
     var li = document.createElement('li');
     li.setAttribute('class', 'chat-list');
     var li_div = document.createElement('div');
     li_div.setAttribute('class', 'left-chat');
     var div_p = document.createElement('p');
-    div_p.innerText = name+": \n" + msg;
+    div_p.innerText = name + ": \n" + msg;
 
     li_div.appendChild(div_p);
     li.appendChild(li_div);
