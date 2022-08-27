@@ -1,6 +1,9 @@
 <?php
 
+use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['users']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
@@ -43,7 +46,9 @@ use App\ViewHelpers;
               </td>
 
               <td>
+                <?php if (AppHelpers::canEdit($current_role)) ?>
                 <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <?php if (AppHelpers::canDelete($current_role)) ?>
                 <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
               </td>
             </tr>

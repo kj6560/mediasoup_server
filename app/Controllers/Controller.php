@@ -2,18 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Models\Conference;
-use Symfony\Component\Routing\RouteCollection;
+use App\Auth;
 
 class Controller
 {
-    public function loadView($layout,$view, $data = [])
+    public function loadView($layout, $view, $data = [])
     {
-        $data['view'] = APP_ROOT ."/views/". $view . ".php";
+        $data['view'] = APP_ROOT . "/views/" . $view . ".php";
+        if (!empty($_SESSION['login_id'])) {
+            $data['users'] = $user = Auth::logger('user');
+        }
         if (count($data)) {
             extract($data);
         }
-        require APP_ROOT ."/views/layouts/". $layout . ".php";
-        
+        require APP_ROOT . "/views/layouts/" . $layout . ".php";
     }
 }

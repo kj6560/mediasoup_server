@@ -232,6 +232,7 @@ class ConferenceController extends Controller
 			echo "failed to delete";
 		}
 	}
+	//end conference
 	public function endSession(RouteCollection $routes)
 	{
 		$post = $_POST;
@@ -248,6 +249,7 @@ class ConferenceController extends Controller
 			print_r(json_encode($out));
 		}
 	}
+	//conference history
 	public function history(RouteCollection $routes)
 	{
 		$conf = new Conference;
