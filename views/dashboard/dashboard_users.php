@@ -17,6 +17,7 @@ $current_role = $data['current_user']['user_role'];
         <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a>
       <?php }
       if (AppHelpers::canCreate($current_role)) {
+        echo  "can create";
       ?>
         <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
       <?php } ?>
