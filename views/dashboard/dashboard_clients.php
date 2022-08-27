@@ -4,6 +4,7 @@ use App\AppHelpers;
 use App\ViewHelpers;
 
 $current_role = $data['current_user']['user_role'];
+echo $current_role;
 ?>
 <style>
   .dataTable-dropdown {
@@ -14,9 +15,11 @@ $current_role = $data['current_user']['user_role'];
   <div class="card">
     <div class="card-header">
       <?php
-      if (AppHelpers::canCreate($current_role))
+      if (AppHelpers::canCreate($current_role)) {
       ?>
-      <a href="/add_client" class="btn btn-success" style="float: right;">Add Client</a>
+        <a href="/add_client" class="btn btn-success" style="float: right;">Add Client</a>
+
+      <?php } ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -31,8 +34,8 @@ $current_role = $data['current_user']['user_role'];
         </thead>
         <tbody>
           <?php
-        if ($data['clients'])
-          foreach ($data['clients'] as $client) {
+          if ($data['clients'])
+            foreach ($data['clients'] as $client) {
           ?>
             <tr>
               <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['name'] ?></a></td>
@@ -52,7 +55,7 @@ $current_role = $data['current_user']['user_role'];
               </td>
             </tr>
           <?php
-          }
+            }
           ?>
 
 
