@@ -487,13 +487,18 @@
                             id: conference_id
                         },
                         function(data, status) {
-                            alert("Data: " + data + "\nStatus: " + status);
+                            if (status = 200) {
+                                rc.exit();
+                                window.location.href = "/conferences";
+                            }
                         });
                 }
             })
 
+        } else {
+            rc.exit();
+            window.location.href = "/conferences";
         }
-        rc.exit();
-        window.location.href = "/conferences";
+
     }
 </script>
