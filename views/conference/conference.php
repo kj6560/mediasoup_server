@@ -134,7 +134,7 @@
     .btn.btn-message {
         background: #ff5d7d;
         color: #fff;
-        height: 44px;
+        height: 30px;
         border-radius: 0px 25px 25px 0px;
         font-size: 14px;
     }
