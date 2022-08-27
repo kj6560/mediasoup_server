@@ -122,7 +122,7 @@
 
     .input {
         width: 88%;
-        height: 44px;
+        height: 30px;
         border: 2px solid #ff5d7d;
         overflow-y: auto;
         outline: none;
