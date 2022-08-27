@@ -114,9 +114,14 @@ class AppHelpers
         //echo "conf_date_date: ".intval($conf_date_date) , "cur_date: ".intval($cur_date) , "conf_date_month: ".intval($conf_date_month) , "cur_month: ".intval($cur_month) , "conf_date_year: ".intval($conf_date_year) , "cur_year: ".intval($cur_year);die;
         if ((intval($conf_date_month) >= intval($cur_month)) && (intval($conf_date_year) >= intval($cur_year))) {
             if (intval($conf_date_date) >= intval($cur_date)) {
-                echo intval($cur_H) , "-".intval($conf_date_hour) + intval($conf_dur_hour);
+                echo intval($cur_H), "-" . intval($conf_date_hour) + intval($conf_dur_hour);
                 if (intval($cur_H) > intval($conf_date_hour) + intval($conf_dur_hour)) {
                     return false;
+                } else if (intval($cur_H) == intval($conf_date_hour) + intval($conf_dur_hour)) {
+                    if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
+                        return false;
+                    }
+                    return true;
                 }
                 if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
                     return false;
