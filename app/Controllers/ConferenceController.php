@@ -235,7 +235,8 @@ class ConferenceController extends Controller
 	public function endSession(RouteCollection $routes)
 	{
 		$post = $_POST;
-		print_r($post);die;
+		print_r($post['id']);
+		die;
 		if (!empty($_POST)) {
 			$conf = R::load('conference', $post['id']);
 			$conf->session_ended = 1;
