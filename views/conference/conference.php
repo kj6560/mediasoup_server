@@ -442,23 +442,38 @@
         if (!conference_id) {
             var conference_id = "<?php echo $data['conference']['id']; ?>";
         }
-        
-        if (user_id == host_id) {
-            var confirm = confirm("Being the  host if  you end the conference\n it will no more be accessible\n do you want to continue");
-            if (confirm) {
-                let postObj = {
-                    id: conference_id
-                }
-                let post = JSON.stringify(postObj)
 
-                const url = "<?php echo BASE; ?>endSession"
-                $.post(url, {
+        if (user_id == host_id) {
+
+
+
+
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    let postObj = {
                         id: conference_id
-                    },
-                    function(data, status) {
-                        alert("Data: " + data + "\nStatus: " + status);
-                    });
-            }
+                    }
+                    let post = JSON.stringify(postObj)
+
+                    const url = "<?php echo BASE; ?>endSession"
+                    $.post(url, {
+                            id: conference_id
+                        },
+                        function(data, status) {
+                            alert("Data: " + data + "\nStatus: " + status);
+                        });
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+
         }
         rc.exit();
         window.location.href = "/conferences";
