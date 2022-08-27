@@ -437,7 +437,9 @@
         console.log("reached here");
         if(!user_id){
             var user_id = "<?php echo $data['user']['id']; ?>";
-            console.log(user_id);
+        }
+        if(!host_id){
+            var host_id = "<?php echo $data['conference']['conference_by']; ?>";
         }
         if (user_id == host_id) {
             let postObj = {
