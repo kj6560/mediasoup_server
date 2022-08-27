@@ -31,4 +31,8 @@ class ViewHelpers
         }
         return false;
     }
+    public static function getUserRole($role)
+    {
+        return ROLE[$role];
+    }
 }
