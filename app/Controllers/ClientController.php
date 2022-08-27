@@ -27,14 +27,13 @@ class ClientController extends Controller
 		$data = $_POST;
 		$msg = "";
 		$code = 0;
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$user_org = new Organisation;
+		$user_org->id = $organisation;
+		$user_org = $user_org->getByPk();
+		print_r($user_org);die;
 		if (!empty($data)) {
-
-			$user = Auth::logger('user');
-			$organisation = $user['organisation'];
-			$user_org = new Organisation;
-			$user_org->id = $organisation;
-			$user_org = $user_org->getByPk();
-			print_r($user_org);
 			$org = new Organisation;
 			$org->name = $data['name'];
 			$org->address = $data['address'];
