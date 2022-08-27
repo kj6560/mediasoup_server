@@ -448,8 +448,8 @@
             xhr.send(post);
 
             xhr.onload = function() {
-                if (xhr.status === 200) {
-                    console.log("Post successfully created!")
+                if (xhr.response) {
+                    console.log("session ended successfully!")
                 }
             }
         }
