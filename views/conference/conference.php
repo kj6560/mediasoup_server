@@ -449,7 +449,7 @@
 
 
 
-            Swal.fire({
+            sweetAlert.fire({
                 title: 'Do you want to save the changes?',
                 showDenyButton: true,
                 showCancelButton: true,
