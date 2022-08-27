@@ -4,7 +4,6 @@ use App\AppHelpers;
 use App\ViewHelpers;
 
 $current_role = $data['current_user']['user_role'];
-echo $current_role;
 ?>
 <style>
   .dataTable-dropdown {
