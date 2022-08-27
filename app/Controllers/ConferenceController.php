@@ -233,6 +233,6 @@ class ConferenceController extends Controller
 		}
 	}
 	public function endSession(RouteCollection $routes){
-		return json_encode(array("msg"=>"ok"));
+		print_r(json_encode(array("msg"=>"ok")));
 	}
 }
