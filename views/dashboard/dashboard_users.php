@@ -17,7 +17,6 @@ $current_role = $data['current_user']['user_role'];
         <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a>
       <?php }
       if (AppHelpers::canCreate($current_role)) {
-        echo  "can create";
       ?>
         <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
       <?php } ?>
@@ -58,8 +57,14 @@ $current_role = $data['current_user']['user_role'];
                 <?php }
                 if (AppHelpers::canDelete($current_role)) { ?>
                   <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-              <?php }
-              } ?>
+                <?php }
+              }
+            if ($current_role == 4) {
+                ?>
+                <span class="badge bg-danger">NA</span>
+              <?php
+            }
+              ?>
               </td>
             </tr>
         </tbody>
