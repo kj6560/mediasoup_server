@@ -93,7 +93,7 @@
     }
 
     .chat-box {
-        width: 300px;
+        width: 350px;
         height: 80vh;
         position: fixed;
         border: 1px solid;
@@ -104,7 +104,7 @@
         display: grid;
         place-items: center;
         color: #fff;
-        background-blend-mode: none;
+        background-blend-mode: hard-light;
     }
 
     .history-box {
