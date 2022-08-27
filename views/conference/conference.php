@@ -374,15 +374,20 @@
     chattoggle.addEventListener("click", () => {
         socket_id = rc.getMySocketId();
         var room_data = rc.getRoomData();
-        var client_name = '';
-        for (let i = 0; i < room_data.length; i++) {
+        var client_name = 'No Client Connected';
+        if (room_data.length > 1) {
+            
+            for (let i = 0; i < room_data.length; i++) {
 
-            var data = room_data[i];
-            if (data.socket_id != socket_id) {
-                client_name = data.name;
+                var data = room_data[i];
+                if (data.socket_id != socket_id) {
+                    client_name = data.name;
+                }
             }
+           
         }
         document.querySelector('.client_name').innerHTML = client_name;
+
         if (chatBox.classList.contains('hide')) {
             chattoggle.classList.add('fa-comment');
             chattoggle.classList.remove('fa-comment-slash');
@@ -412,11 +417,11 @@
             }
         }
         var li = document.createElement('li');
-        li.setAttribute('class','chat-list');
+        li.setAttribute('class', 'chat-list');
         var li_div = document.createElement('div');
-        li_div.setAttribute('class','right-chat');
+        li_div.setAttribute('class', 'right-chat');
         var div_p = document.createElement('p');
-        div_p.innerText = "Me: \n"+input.value;
+        div_p.innerText = "Me: \n" + input.value;
 
         li_div.appendChild(div_p);
         li.appendChild(li_div);
