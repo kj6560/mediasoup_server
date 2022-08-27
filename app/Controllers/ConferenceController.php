@@ -232,4 +232,7 @@ class ConferenceController extends Controller
 			echo "failed to delete";
 		}
 	}
+	public function endSession(RouteCollection $routes){
+		return json_encode(array("msg"=>"ok"));
+	}
 }
