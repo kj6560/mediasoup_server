@@ -32,7 +32,9 @@ class ClientController extends Controller
 		$user_org = new Organisation;
 		$user_org->id = $organisation;
 		$user_org = $user_org->getByPk();
-		print_r($user_org);die;
+		if($user_org['parent']>1){
+			AppHelpers::redirect("/clients");
+		}
 		if (!empty($data)) {
 			$org = new Organisation;
 			$org->name = $data['name'];
