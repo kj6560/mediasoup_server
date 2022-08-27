@@ -442,7 +442,16 @@
         if (!conference_id) {
             var conference_id = "<?php echo $data['conference']['id']; ?>";
         }
-
+        console.log("user id: " + user_id, "host id: " + host_id)
+        $.jAlert({
+            'type': 'confirm',
+            'onConfirm': function() {
+                console.log('Confirmed');
+            },
+            'onDeny': function() {
+                console.log('Denied');
+            }
+        });
         if (user_id == host_id) {
             var confirm = confirm("Being the  host if  you end the conference\n it will no more be accessible\n do you want to continue");
             if (confirm) {
