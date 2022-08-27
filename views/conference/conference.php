@@ -441,6 +441,10 @@
         if(!host_id){
             var host_id = "<?php echo $data['conference']['conference_by']; ?>";
         }
+        if(!conference_id){
+            var conference_id = "<?php echo $data['conference']['id']; ?>";
+        }
+        
         if (user_id == host_id) {
             let postObj = {
                 id: conference_id
