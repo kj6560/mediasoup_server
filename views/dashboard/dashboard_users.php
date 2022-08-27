@@ -59,6 +59,7 @@ $current_role = $data['current_user']['user_role'];
                   <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
                 <?php }
               }
+              echo $current_role;
             if ($current_role == 4) {
                 ?>
                 <span class="badge bg-danger">NA</span>
