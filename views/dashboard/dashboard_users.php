@@ -16,7 +16,6 @@ $current_role = $data['users']['user_role'];
       <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a> <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
     </div>
     <div class="card-body">
-      <?php echo "current role: " . AppHelpers::canEdit($current_role); ?>
       <table class="table table-striped" id="table1">
         <thead>
           <tr>
@@ -47,10 +46,11 @@ $current_role = $data['users']['user_role'];
               </td>
 
               <td>
-                <?php if (AppHelpers::canEdit($current_role)) ?>
+                <?php if (AppHelpers::canEdit($current_role)){ ?>
                 <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
-                <?php if (AppHelpers::canDelete($current_role)) ?>
+                <?php } if (AppHelpers::canDelete($current_role)) ?>
                 <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+              <?php }?>
               </td>
             </tr>
           <?php
