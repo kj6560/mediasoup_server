@@ -412,6 +412,7 @@
         li_div.appendChild(div_p);
         li.appendChild(li_div);
         msgs_ul.appendChild(li);
+        input.value = "";
         rc.sendMessage(input.value, to);
     }
 </script>
