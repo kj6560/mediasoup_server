@@ -461,6 +461,6 @@
             }
         }
         rc.exit();
-        //window.location.href = "/conferences";
+        window.location.href = "/conferences";
     }
 </script>
