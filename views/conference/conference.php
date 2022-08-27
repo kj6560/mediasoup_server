@@ -122,7 +122,7 @@
 
     .input {
         width: 88%;
-        height: 30px;
+        height: 44px;
         border: 2px solid #ff5d7d;
         overflow-y: auto;
         outline: none;
@@ -134,7 +134,7 @@
     .btn.btn-message {
         background: #ff5d7d;
         color: #fff;
-        height: 30px;
+        height: 44px;
         border-radius: 0px 25px 25px 0px;
         font-size: 14px;
     }
