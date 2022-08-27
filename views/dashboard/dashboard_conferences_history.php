@@ -22,7 +22,6 @@ use App\ViewHelpers;
                         <th>Participants</th>
                         <th>Status</th>
                         <th>Date</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,30 +30,39 @@ use App\ViewHelpers;
                         foreach ($data['conferences'] as $conference) {
                     ?>
                         <tr>
-                            <td><a href="<?php echo "/conference_detail/" . $conference['id']; ?>"><?php echo $conference['title'] ?></a></td>
+                            <td><?php echo $conference['title'] ?></td>
                             <td><?php echo $conference['name'] ?></td>
                             <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
                             <td>
-                                <?php if ($conference['is_available']) {
+                                <?php if ($conference['is_available'] && !$conference['is_deleted']) {
                                     if (AppHelpers::isValidConference($conference['conference_date'], $conference['conference_duration'])) {
                                 ?>
-                                        <a href="<?php echo "/conference_status/" . $conference['id'] . "/" . $conference['is_available']; ?>"><span class="badge bg-success">Active</span></a>
+                                        <span class="badge bg-success"><?php echo $conference['is_available'] ? "Active" : "InActive"; ?></span>
                                     <?php
                                     } else {
                                     ?>
                                         <span class="badge bg-success">Expired</span>
                                     <?php
                                     }
-                                } else { ?>
-                                    <a href="<?php echo "/conference_status/" . $conference['id'] . "/" . $conference['is_available']; ?>"><span class="badge bg-danger">InActive</span></a>
+                                } else {
+
+                                    if ($conference['is_deleted']) {
+                                    ?>
+                                        <span class="badge bg-danger"><?php echo $conference['session_ended'] ? "Session ended and Deleted" : "Deleted"; ?></span>
+                                        <span class="badge bg-danger">Deleted</span>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <span class="badge bg-danger"><?php echo $conference['session_ended'] ? "Session Ended" : "InActive"; ?></span>
+                                    <?php
+                                    }
+
+                                    ?>
+
                                 <?php } ?>
                             </td>
                             <td><?php echo $conference['conference_date'] ?></td>
-                            <td>
 
-                                <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-                                <a href="<?php echo "/conference_main/" . $conference['id']; ?>" target="_blank"><span class="badge bg-primary">Join</span></a>
-                            </td>
                         </tr>
                     <?php
                         }
