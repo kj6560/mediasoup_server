@@ -16,6 +16,7 @@ $current_role = $data['users']['user_role'];
       <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a> <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
     </div>
     <div class="card-body">
+      <?php echo "current role: " . AppHelpers::canEdit($current_role); ?>
       <table class="table table-striped" id="table1">
         <thead>
           <tr>
