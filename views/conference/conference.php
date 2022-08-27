@@ -465,7 +465,8 @@
             // })
 
             sweetAlert.fire({
-                title: 'Do you want to save the changes?',
+                title: 'Exit Conference!!',
+                text: 'If you exit, this conference will no longer be active. Do you want to exit conference',
                 showDenyButton: false,
                 showCancelButton: true,
                 confirmButtonText: 'Yes',
