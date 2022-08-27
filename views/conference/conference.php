@@ -109,13 +109,13 @@
 
     .history-box {
         border: 1px solid #ff5d7d;
-        width: 96%;
+        width: 75%;
         height: 65vh;
         overflow-y: auto;
     }
 
     .text-box {
-        width: 96%;
+        width: 75%;
         height: auto;
         display: flex;
     }
