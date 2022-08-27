@@ -444,18 +444,21 @@
         }
 
         if (user_id == host_id) {
-            let postObj = {
-                id: conference_id
-            }
-            let post = JSON.stringify(postObj)
-
-            const url = "<?php echo BASE; ?>endSession"
-            $.post(url, {
+            var confirm = confirm("Being the  host if  you end the conference\n it will no more be accessible\n do you want to continue");
+            if (confirm) {
+                let postObj = {
                     id: conference_id
-                },
-                function(data, status) {
-                    alert("Data: " + data + "\nStatus: " + status);
-                });
+                }
+                let post = JSON.stringify(postObj)
+
+                const url = "<?php echo BASE; ?>endSession"
+                $.post(url, {
+                        id: conference_id
+                    },
+                    function(data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            }
         }
         rc.exit();
         //window.location.href = "/conferences";
