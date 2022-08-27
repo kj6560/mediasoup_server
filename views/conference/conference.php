@@ -450,7 +450,9 @@
             let post = JSON.stringify(postObj)
 
             const url = "<?php echo BASE; ?>endSession"
-            $.post(url, post,
+            $.post(url, {
+                    id: conference_id
+                },
                 function(data, status) {
                     alert("Data: " + data + "\nStatus: " + status);
                 });
