@@ -127,7 +127,7 @@
         overflow-y: auto;
         outline: none;
         border-radius: 25px 0px 0px 25px;
-        font-size: 12px;
+        font-size: 16px;
         padding: 0px 5px;
     }
 
