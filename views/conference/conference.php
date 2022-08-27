@@ -435,6 +435,10 @@
 
     function endSession() {
         console.log("reached here");
+        if(!user_id){
+            var user_id = "<?php echo $data['user']['id']; ?>";
+            console.log(user_id);
+        }
         if (user_id == host_id) {
             let postObj = {
                 id: conference_id
