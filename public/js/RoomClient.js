@@ -266,8 +266,8 @@ class RoomClient {
       console.log(this.room_data)
     }.bind(this)
     )
-    this.socket.on("message", async function (msg,socket__id) {
-      console.log(msg,socket__id)
+    this.socket.on("message", async function (msg, socket__id) {
+      updateMsgList(msg, socket__id)
     }.bind(this)
     )
   }
@@ -744,5 +744,26 @@ class RoomClient {
   }
   getRoomData() {
     return this.room_data;
+  }
+  updateMsgList(msg, socket__id) {
+    var name = "";
+    for (let i = 0; i < this.room_data.length; i++) {
+
+      var data = this.room_data[i];
+      if (data.socket_id == socket__id) {
+          name = data.name;
+      }
+  }
+    var msgs_ul = document.querySelector('.msgs');
+    var li = document.createElement('li');
+    li.setAttribute('class', 'chat-list');
+    var li_div = document.createElement('div');
+    li_div.setAttribute('class', 'left-chat');
+    var div_p = document.createElement('p');
+    div_p.innerText = name+": \n" + msg;
+
+    li_div.appendChild(div_p);
+    li.appendChild(li_div);
+    msgs_ul.appendChild(li);
   }
 }
