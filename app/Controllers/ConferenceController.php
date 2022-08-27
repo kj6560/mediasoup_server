@@ -30,7 +30,7 @@ class ConferenceController extends Controller
 			if ($conferences['conference_type'] == 2) {
 				$layout = "conference_layou_mtom";
 			}
-			$this->loadView($layout, 'conference/conference', array("conference" => $conferences));
+			$this->loadView($layout, 'conference/conference', array("conference" => $conferences,"user"=>$user));
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}

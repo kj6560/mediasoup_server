@@ -263,7 +263,7 @@
 
 <div class="feature">
 
-    <span class="fas fa-phone sessionEnd" title="End Session" onclick="rc.exit()"></span>
+    <span class="fas fa-phone sessionEnd" title="End Session" onclick="endSession()"></span>
     <span id="vid" class="fas fa-video videoOpen" title="Start Camera"></span>
     <span id="aud" class="fas fa-microphone audioOpen" title="Start Microphone"></span>
     <span id="scr" class="fas fa-desktop" title="Screen Share"></span>
@@ -289,8 +289,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script>
     window.onload = function() {
+        var conference_id = "<?php echo $data['conference']['id']; ?>";
         var name = "<?php echo $data['conference']['user_name']; ?>";
         var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
+        var user_id = "<?php echo $data['user']['id']; ?>";
+        var host_id = "<?php echo $data['conference']['conference_by']; ?>";
         joinRoom(name, room_id, mobile);
 
     };
@@ -376,7 +379,7 @@
         var room_data = rc.getRoomData();
         var client_name = 'No Client Connected';
         if (room_data.length > 1) {
-            
+
             for (let i = 0; i < room_data.length; i++) {
 
                 var data = room_data[i];
@@ -384,7 +387,7 @@
                     client_name = data.name;
                 }
             }
-           
+
         }
         document.querySelector('.client_name').innerHTML = client_name;
 
@@ -428,5 +431,29 @@
         msgs_ul.appendChild(li);
         rc.sendMessage(input.value, to);
         document.querySelector('.input').value = "";
+    }
+
+    function endSession() {
+        if (user_id == host_id) {
+            let postObj = {
+                id: conference_id
+            }
+            let post = JSON.stringify(postObj)
+
+            const url = "https://<?php echo BASE; ?>/endSession"
+            let xhr = new XMLHttpRequest()
+
+            xhr.open('POST', url, true)
+            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+            xhr.send(post);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log("Post successfully created!")
+                }
+            }
+        }
+        rc.exit();
+        window.location.href = "/conferences";
     }
 </script>
