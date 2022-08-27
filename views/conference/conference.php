@@ -449,14 +449,33 @@
 
 
 
+            // sweetAlert.fire({
+            //     title: 'Do you want to save the changes?',
+            //     showDenyButton: true,
+            //     showCancelButton: true,
+            //     confirmButtonText: 'Save',
+            //     denyButtonText: `Don't save`,
+            // }).then((result) => {
+            //     /* Read more about isConfirmed, isDenied below */
+            //     if (result.isConfirmed) {
+
+            //     } else if (result.isDenied) {
+            //         Swal.fire('Changes are not saved', '', 'info')
+            //     }
+            // })
+
             sweetAlert.fire({
                 title: 'Do you want to save the changes?',
-                showDenyButton: true,
+                showDenyButton: false,
                 showCancelButton: true,
-                confirmButtonText: 'Save',
-                denyButtonText: `Don't save`,
+                confirmButtonText: 'Yes',
+                customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                }
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     let postObj = {
                         id: conference_id
@@ -470,8 +489,6 @@
                         function(data, status) {
                             alert("Data: " + data + "\nStatus: " + status);
                         });
-                } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info')
                 }
             })
 
