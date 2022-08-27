@@ -30,7 +30,7 @@ class ConferenceController extends Controller
 			if ($conferences['conference_type'] == 2) {
 				$layout = "conference_layou_mtom";
 			}
-			$this->loadView($layout, 'conference/conference', array("conference" => $conferences,"user"=>$user));
+			$this->loadView($layout, 'conference/conference', array("conference" => $conferences, "user" => $user));
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
@@ -232,7 +232,18 @@ class ConferenceController extends Controller
 			echo "failed to delete";
 		}
 	}
-	public function endSession(RouteCollection $routes){
-		print_r(json_encode(array("msg"=>"ok")));
+	public function endSession(RouteCollection $routes)
+	{
+		$post = $_POST;
+		if (!empty($_POST)) {
+			$conf = R::load('conference', $post['id']);
+			$conf->session_ended = 1;
+			$cnf = R::store($conf);
+			$out = array("msg" => "failed");
+			if ($cnf) {
+				$out = array("msg" => "ok");
+			}
+			print_r(json_encode($out));
+		}
 	}
 }
