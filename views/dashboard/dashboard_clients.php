@@ -1,6 +1,9 @@
 <?php
 
+use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
@@ -10,6 +13,9 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
+      <?php
+      if (AppHelpers::canCreate($current_role))
+      ?>
       <a href="/add_client" class="btn btn-success" style="float: right;">Add Client</a>
     </div>
     <div class="card-body">
@@ -25,8 +31,8 @@ use App\ViewHelpers;
         </thead>
         <tbody>
           <?php
-          if ($data['clients'])
-            foreach ($data['clients'] as $client) {
+        if ($data['clients'])
+          foreach ($data['clients'] as $client) {
           ?>
             <tr>
               <td><a href="<?php echo "/client_detail/" . $client['id']; ?>"><?php echo $client['name'] ?></a></td>
@@ -46,7 +52,7 @@ use App\ViewHelpers;
               </td>
             </tr>
           <?php
-            }
+          }
           ?>
 
 
