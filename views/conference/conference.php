@@ -275,11 +275,6 @@
     <h4 class="text-center client_name">Client Name</h4>
     <div class="history-box">
         <ul class="msgs">
-            <li class="chat-list">
-                <div class="left-chat">
-                    <p>message by client sla;df adsjfladjfajd adjfad adf adj dfhgdfg dgfhdfgh dfghdfgf</p><span class="fas fa-clock"> Just Now</span>
-                </div>
-            </li>
         </ul>
     </div>
     <div class="text-box">

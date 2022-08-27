@@ -267,7 +267,7 @@ class RoomClient {
     }.bind(this)
     )
     this.socket.on("message", async function (msg, socket__id) {
-      updateMsgList(msg, socket__id)
+      this.updateMsgList(msg, socket__id)
     }.bind(this)
     )
   }
