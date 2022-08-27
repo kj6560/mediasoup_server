@@ -31,6 +31,10 @@ class ClientController extends Controller
 
 			$user = Auth::logger('user');
 			$organisation = $user['organisation'];
+			$user_org = new Organisation;
+			$user_org->id = $organisation;
+			$user_org = $user_org->getByPk();
+			print_r($user_org);
 			$org = new Organisation;
 			$org->name = $data['name'];
 			$org->address = $data['address'];
@@ -85,7 +89,7 @@ class ClientController extends Controller
 			$org->name = $data['name'];
 			$org->address = $data['address'];
 			$org->mobile = $data['mobile'];
-			if(!empty($data['passphrase'])){
+			if (!empty($data['passphrase'])) {
 				$org->passphrase = md5($data['passphrase']);
 			}
 			$org->admin = 1;
@@ -101,7 +105,7 @@ class ClientController extends Controller
 			}
 			AppHelpers::redirect('/clients');
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client"=>$clientToEdit,"page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client" => $clientToEdit, "page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
