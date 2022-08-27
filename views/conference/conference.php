@@ -433,13 +433,13 @@
     }
 
     function endSession() {
-        if(!user_id){
+        if (!user_id) {
             var user_id = "<?php echo $data['user']['id']; ?>";
         }
-        if(!host_id){
+        if (!host_id) {
             var host_id = "<?php echo $data['conference']['conference_by']; ?>";
         }
-        if(!conference_id){
+        if (!conference_id) {
             var conference_id = "<?php echo $data['conference']['id']; ?>";
         }
 
@@ -450,17 +450,10 @@
             let post = JSON.stringify(postObj)
 
             const url = "<?php echo BASE; ?>endSession"
-            let xhr = new XMLHttpRequest()
-
-            xhr.open('POST', url, true)
-            xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
-            xhr.send(post);
-
-            xhr.onload = function() {
-                if (xhr.response) {
-                    console.log("session ended successfully!")
-                }
-            }
+            $.post(url, post,
+                function(data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
         }
         rc.exit();
         //window.location.href = "/conferences";
