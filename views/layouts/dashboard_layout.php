@@ -73,12 +73,12 @@
                                 <span>History</span>
                             </a>
                         </li>
-                        <li class="sidebar-item active ">
+                        <!-- <li class="sidebar-item active ">
                             <a href="reports" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Reports</span>
                             </a>
-                        </li>
+                        </li> -->
                         <?php if (AppHelpers::isAdmin($current_role)) { ?>
                             <li class="sidebar-item active ">
                                 <a href="/activity_log" class='sidebar-link'>
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                         <?php } ?>
-                        <li class="sidebar-item active ">
+                        <!-- <li class="sidebar-item active ">
                             <a href="/contact_support" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Contact Support</span>
@@ -105,7 +105,7 @@
                             <a href="/notifications" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Notifications</span>
-                            </a>
+                            </a> -->
                         </li>
                         <li class="sidebar-item active ">
                             <a href="/logout" class='sidebar-link'>
