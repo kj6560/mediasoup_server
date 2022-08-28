@@ -50,7 +50,14 @@ class ClientController extends Controller
 			$org->is_available = 1;
 			$org->parent = $organisation;
 			$client = $org->create();
-			if ($client) {
+
+			$activity_type = 9;
+			$ref_id =  $client['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " created client " . $data['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+			if ($client && $log) {
 				$msg = "Client created successfully";
 				$code = 1;
 			} else {
