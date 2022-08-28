@@ -49,20 +49,15 @@ $current_role = $data['current_user']['user_role'];
               </td>
 
               <td>
-              <?php if (AppHelpers::canEdit($current_role)) { ?>
-                <a href="<?php echo "/client_edit/" . $client['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <?php if (AppHelpers::canEdit($current_role)) { ?>
+                  <a href="<?php echo "/client_edit/" . $client['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
                 <?php }
                 if (AppHelpers::canDelete($current_role)) { ?>
-                <a href="<?php echo "/client_delete/" . $client['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-                <?php }
+                  <a href="<?php echo "/client_delete/" . $client['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+              <?php }
               } ?>
               </td>
             </tr>
-          <?php
-            }
-          ?>
-
-
         </tbody>
       </table>
     </div>
