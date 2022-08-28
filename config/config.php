@@ -14,10 +14,9 @@ $activities_list = array(
     "3" => "delete user",
     "4" => "edit user",
     "5" => "create conference",
-    "6" => "upload conference",
-    "7" => "delete conference",
-    "8" => "edit conference",
-
+    "6" => "delete conference",
+    "7" => "edit conference",
+    "8" => "join conference"
 );
 define("ACTIVITIES", $activities_list);
 date_default_timezone_set('Asia/Kolkata');

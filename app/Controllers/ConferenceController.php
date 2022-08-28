@@ -30,6 +30,13 @@ class ConferenceController extends Controller
 			if ($conferences['conference_type'] == 2) {
 				$layout = "conference_layou_mtom";
 			}
+
+			$activity_type = 8;
+			$ref_id =  $conferences['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " joined conference " . $conferences['title'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
 			$this->loadView($layout, 'conference/conference', array("conference" => $conferences, "user" => $user));
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
@@ -239,7 +246,7 @@ class ConferenceController extends Controller
 		$toDelete = $conf->getByPk();
 		$deleted = $conf->delete();
 
-		$activity_type = 5;
+		$activity_type = 6;
 		$ref_id =  $toDelete['id'];
 		$activity_by = $user['id'];
 		$remarks = $user['name'] . " deleted conference " . $toDelete['title'];
