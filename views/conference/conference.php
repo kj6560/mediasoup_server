@@ -551,6 +551,7 @@ if ($con_day < $today)
                     }).then((result) => {
                         if (result.isConfirmed) {
                             countDownDate = countDownDate + 5 * 60 * 1000
+                            extend = true
                         } else {
                             clearInterval(x);
                             endSession();
