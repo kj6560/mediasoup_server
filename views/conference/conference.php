@@ -527,8 +527,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
 
         // Output the result in an element with id="demo"
         document.getElementById("timer").innerHTML = hours + "h - " +
-            minutes + "m - " + seconds + "s ";
-        // If the count down is over, write some text 
+            minutes + "m - " + seconds + "s "; 
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("demo").innerHTML = "EXPIRED";
