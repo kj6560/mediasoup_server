@@ -7,6 +7,13 @@ use RedBeanPHP\R;
 class BaseModel
 {
 
+    public function getAll()
+    {
+        $query = "select * from " . $this->table;
+        $data = R::getAssocRow($query);
+
+        return !empty($data) ? $data : false;
+    }
     public function getByPk()
     {
         $query = "select * from $this->table where id =$this->id LIMIT 1";
