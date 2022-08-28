@@ -513,9 +513,9 @@ if ($con_day < $today)
     var conf_date = new Date(my_date);
     var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
     var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
-    var extend = false;
+    var extend = 1;
     var x = setInterval(function() {
-        if (!extend) {
+
             var now = new Date().getTime();
             var distance = countDownDate - now;
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -536,36 +536,39 @@ if ($con_day < $today)
 
 
                 if (user_id == host_id) {
-                    sweetAlert.fire({
-                        title: 'Exit Conference!!',
-                        text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
-                        showDenyButton: false,
-                        showCancelButton: true,
-                        confirmButtonText: 'Yes',
-                        customClass: {
-                            actions: 'my-actions',
-                            cancelButton: 'order-1 right-gap',
-                            confirmButton: 'order-2',
-                            denyButton: 'order-3',
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            countDownDate = countDownDate + 5 * 60 * 1000
-                            extend = true
-                        } else {
-                            clearInterval(x);
-                            endSession();
-                        }
-                    })
+                    if (extend) {
+                        sweetAlert.fire({
+                            title: 'Exit Conference!!',
+                            text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                            showDenyButton: false,
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes',
+                            customClass: {
+                                actions: 'my-actions',
+                                cancelButton: 'order-1 right-gap',
+                                confirmButton: 'order-2',
+                                denyButton: 'order-3',
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                countDownDate = countDownDate + 5 * 60 * 1000
+                                extend = true
+                            } else {
+                                clearInterval(x);
+                                endSession();
+                            }
+                        })
+                    } else {
+                        clearInterval(x);
+                        endSession();
+                    }
 
                 }
             }
             document.getElementById("timer").innerHTML = hours + "h - " +
                 minutes + "m - " + seconds + "s ";
-        } else {
-            clearInterval(x);
-            endSession();
-        }
 
-    }, 1000);
+
+        },
+        1000);
 </script>
