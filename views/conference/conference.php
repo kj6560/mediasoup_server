@@ -304,8 +304,7 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-$time_end = "'"."$conference_date"." + "."$conference_duration minute"."'";
-$conf_end_time = date('Y-m-d H:i:s', strtotime("'".$time_end."'"));
+$conf_end_time = date('Y-m-d H:i:s', strtotime(date("Y-m-d H:i:s") . " + $conference_duration minute"));
 echo $conf_end_time;
 ?>
 <script>
