@@ -304,8 +304,6 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-
-die;
 ?>
 <script>
     window.onload = function() {
