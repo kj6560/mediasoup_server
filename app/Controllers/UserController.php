@@ -237,6 +237,8 @@ class UserController extends Controller
 		try {
 			if (isset($_FILES['csv'])) {
 				$user = Auth::logger('user');
+				$auth_user_id = $user['id'];
+				$auth_user_name = $user['name'];
 				$organisation = $user['organisation'];
 				$file_name = rand(1, 10000) . strtolower($_FILES['csv']['name']);
 				$file_tmp = $_FILES['csv']['tmp_name'];
@@ -322,9 +324,9 @@ class UserController extends Controller
 					}
 
 					$activity_type = 2;
-					$activity_by = $user['id'];
-					$remarks = $user['name'] . " uploaded users ";
-					$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+					$activity_by = $auth_user_id['id'];
+					$remarks = $auth_user_name['name'] . " uploaded users file " . $file_name;
+					$log = AppHelpers::logActivity($activity_type, null, $activity_by, $remarks);
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
