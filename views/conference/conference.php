@@ -520,7 +520,7 @@ if ($con_day < $today)
         var now = new Date().getTime();
         console.log(countDownDate, now)
         // Find the distance between now and the count down date
-        var distance = now - countDownDate;
+        var distance = countDownDate - now;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
