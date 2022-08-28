@@ -282,7 +282,7 @@
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
 
-<div class="feature_timer">
+<div class="feature_timer text-center">
     <h5 id="timer" style="color: white;"></h5>
 </div>
 <div class="chat-box hide">
