@@ -304,10 +304,9 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-$time = new DateTime($conference_date);
-$time->setTimezone(new DateTimeZone('Asia/Kolkata'));
-$time->add(new DateInterval('PT' . $conference_duration . 'M'));
-echo "ends at" . $conf_end_time;
+$dateTime = new DateTime($conference_date);
+$conf_end_time = $dateTime->modify("+$conference_duration minutes");
+echo "ends at".$conf_end_time;
 die;
 ?>
 <script>
