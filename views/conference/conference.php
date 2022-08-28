@@ -514,23 +514,13 @@ if ($con_day < $today)
         var my_date = "<?php echo $data['conference']['conference_date']; ?>";
         var conf_date = new Date(my_date);
         var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
-        console.log(conference_duration);
-        // Set the date we're counting down to
         var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
-        // Get today's date and time
         var now = new Date().getTime();
-        console.log(countDownDate, now)
-        // Find the distance between now and the count down date
         var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-
         if (distance < 0) {
             //clearInterval(x);
             //conf duration expired now
@@ -572,11 +562,7 @@ if ($con_day < $today)
 
             }
         }
-
         document.getElementById("timer").innerHTML = hours + "h - " +
             minutes + "m - " + seconds + "s ";
     }, 1000);
-
-
-    // Update the count down every 1 second
 </script>
