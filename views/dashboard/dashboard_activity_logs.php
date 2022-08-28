@@ -18,7 +18,7 @@ use App\ViewHelpers;
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Activitty Type</th>
+                        <th>Activity Type</th>
                         <th>Activity By</th>
                         <th>Activity Date</th>
                         <th>Remarks</th>

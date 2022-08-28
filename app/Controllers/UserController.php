@@ -135,11 +135,17 @@ class UserController extends Controller
 			$pass_text = explode("@", $data['email'])[0];
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
 			$user_created = $newuser->update();
-			if ($user_created) {
-				$msg = "User updated successfully";
+
+			$activity_type = 4;
+			$ref_id =  $user_created['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " edited user " . $user_created['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+			if ($log) {
+				$msg = "User created successfully";
 				$code = 1;
 			} else {
-				$msg = "User updation failed";
+				$msg = "User creation failed";
 			}
 			AppHelpers::redirect('/users');
 		}
