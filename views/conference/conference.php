@@ -565,7 +565,7 @@ if ($con_day < $today)
                             title: 'Session Ended',
                             text: 'Your session has ended',
                             showDenyButton: false,
-                            confirmButtonText: 'Yes',
+                            confirmButtonText: 'OK',
                             customClass: {
                                 actions: 'my-actions',
                                 cancelButton: 'order-1 right-gap',
@@ -598,7 +598,7 @@ if ($con_day < $today)
                         title: 'Session Ended',
                         text: 'Your session has ended',
                         showDenyButton: false,
-                        confirmButtonText: 'Yes',
+                        confirmButtonText: 'OK',
                         customClass: {
                             actions: 'my-actions',
                             cancelButton: 'order-1 right-gap',
