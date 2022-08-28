@@ -111,7 +111,7 @@ class ClientController extends Controller
 			$org->parent = $organisation;
 			$client = $org->update();
 
-			$activity_type = 9;
+			$activity_type = 11;
 			$ref_id =  $client['id'];
 			$activity_by = $user['id'];
 			$remarks = $user['name'] . " edited client " . $clientToEdit['name'];
@@ -130,9 +130,18 @@ class ClientController extends Controller
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
 	{
+		$user = Auth::logger('user');
 		$client = new Organisation;
 		$client->id = $id;
+		$toDelete = $client->getByPk();
 		$deleted = $client->delete();
+
+		$activity_type = 10;
+		$ref_id =  $id;
+		$activity_by = $user['id'];
+		$remarks = $user['name'] . " edited client " . $toDelete['name'];
+		$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
 		if ($deleted) {
 			AppHelpers::redirect('/clients');
 		} else {
