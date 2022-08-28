@@ -512,7 +512,7 @@ $conference_duration = $data['conference']['duration'];
     <?php
     $today = date("Y-m-d H:i:s");
     $con_day = $data['conference']['conference_date'];
-    if ($con_day > $today) {
+    if ($con_day < $today) {
     ?>
         var x = setInterval(function() {
 
