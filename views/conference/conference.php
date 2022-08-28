@@ -488,14 +488,11 @@
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
 
-$addingFiveMinutes = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
-
-echo $addingFiveMinutes;
-die;
+$conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
 
 ?>
 <script>
-    var conference_date = "<?php echo $data['conference']['conference_date']; ?>";
+    var conference_date = "<?php echo $conf_end_time; ?>";
     // Set the date we're counting down to
     var countDownDate = new Date(conference_date).getTime();
 
@@ -515,9 +512,10 @@ die;
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-            minutes + "m " + seconds + "s ";
-
+        // document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
+        //     minutes + "m " + seconds + "s ";
+        console.log(days + "d " + hours + "h " +
+            minutes + "m " + seconds + "s ");
         // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
