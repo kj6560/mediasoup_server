@@ -510,6 +510,7 @@ $conference_duration = $data['conference']['duration'];
     var oldDateObj = new Date();
     var countDownDate = new Date();
     countDownDate.setTime(oldDateObj.getTime() + (conference_duration * 60 * 1000));
+    console.log(countDownDate)
     // Update the count down every 1 second
     var x = setInterval(function() {
 
