@@ -519,7 +519,7 @@ $conference_duration = $data['conference']['duration'];
 
         // Find the distance between now and the count down date
         var distance = now +conference_duration * 60 * 1000;
-
+        console.log(distance)
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
