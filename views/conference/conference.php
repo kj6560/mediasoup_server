@@ -514,6 +514,7 @@ if ($con_day < $today)
     var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
     var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
     var extend = 1;
+    
     var x = setInterval(function() {
 
             var now = new Date().getTime();
@@ -560,7 +561,21 @@ if ($con_day < $today)
                         })
                     } else {
                         clearInterval(x);
-                        endSession();
+                        let postObj = {
+                            id: conference_id
+                        }
+                        let post = JSON.stringify(postObj)
+
+                        const url = "<?php echo BASE; ?>endSession"
+                        $.post(url, {
+                                id: conference_id
+                            },
+                            function(data, status) {
+                                if (status = 200) {
+                                    rc.exit();
+                                    window.location.href = "/conferences";
+                                }
+                            });
                     }
 
                 }
