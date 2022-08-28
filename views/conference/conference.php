@@ -70,6 +70,7 @@
         background: #15748a;
         width: 150px;
         cursor: pointer;
+        align-items: center;
     }
 
     .feature span {
