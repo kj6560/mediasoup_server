@@ -110,7 +110,14 @@ class ClientController extends Controller
 			$org->is_deleted = $clientToEdit['is_deleted'];
 			$org->parent = $organisation;
 			$client = $org->update();
-			if ($client) {
+
+			$activity_type = 9;
+			$ref_id =  $client['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " edited client " . $clientToEdit['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+			if ($client && $log) {
 				$msg = "Client updated successfully";
 				$code = 1;
 			} else {
