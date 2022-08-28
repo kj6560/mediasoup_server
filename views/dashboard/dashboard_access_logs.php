@@ -17,23 +17,20 @@ use App\ViewHelpers;
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Host</th>
-                        <th>Participants</th>
-                        <th>Status</th>
-                        <th>Date</th>
+                        <th>Id</th>
+                        <th>ip address</th>
+                        <th>date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    if ($data['conferences'])
-                        foreach ($data['conferences'] as $conference) {
+                    if ($data['logs'])
+                        foreach ($data['logs'] as $log) {
                     ?>
                         <tr>
-                            <td><?php echo $conference['title'] ?></td>
-                            <td><?php echo $conference['name'] ?></td>
-                            <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
-                            <td><?php echo $conference['conference_date'] ?></td>
+                            <td><?php echo $log['id'] ?></td>
+                            <td><?php echo $log['ip_address'] ?></td>
+                            <td><?php echo $log['updated_at'] ?></td>
 
                         </tr>
                     <?php
