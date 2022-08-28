@@ -507,10 +507,7 @@ $conference_duration = $data['conference']['duration'];
     var conference_date = "<?php echo $conf_end_time; ?>";
     var conference_duration = "<?php echo $data['conference']['duration']; ?>";
     // Set the date we're counting down to
-    var oldDateObj = new Date();
-    var countDownDate = new Date();
-    countDownDate.setTime(oldDateObj.getTime() + (conference_duration * 60 * 1000));
-    console.log(countDownDate)
+    var oldDateObj = new Date().getTime() + conference_duration * 60 * 1000;
     // Update the count down every 1 second
     var x = setInterval(function() {
 
@@ -518,7 +515,7 @@ $conference_duration = $data['conference']['duration'];
         var now = new Date().getTime();
 
         // Find the distance between now and the count down date
-        var distance = now +conference_duration * 60 * 1000;
+        var distance = now - oldDateObj;
         console.log(distance)
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
