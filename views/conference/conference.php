@@ -510,14 +510,13 @@ if ($con_day < $today)
     }
 
 
-    var isTime = "<?php echo $isTime; ?>";
-    var conference_duration = "<?php echo $data['conference']['duration']; ?>";
-    // Set the date we're counting down to
-    var countDownDate = new Date().getTime();
-    countDownDate = countDownDate + conference_duration * 60 * 1000
-
-
     var x = setInterval(function() {
+        var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+        var conf_date = new Date(my_date);
+        var conference_duration = "<?php echo $data['conference']['duration']; ?>";
+        // Set the date we're counting down to
+        var countDownDate = conf_date.getTime();
+        countDownDate = countDownDate + conference_duration * 60 * 1000
 
         // Get today's date and time
         var now = new Date().getTime();
@@ -533,7 +532,7 @@ if ($con_day < $today)
 
         // Output the result in an element with id="demo"
 
-        if (distance < 0 && isTime) {
+        if (distance < 0) {
             //clearInterval(x);
             //conf duration expired now
             //ask host whether he wants to proceed 
