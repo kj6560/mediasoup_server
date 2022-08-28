@@ -38,7 +38,7 @@ if ($auth->guard('user')) {
     $routes->add('endSession', new Route(constant('URL_SUBFOLDER') . '/endSession', array('controller' => 'ConferenceController', 'method' => 'endSession'), array(),['POST']));
 
     //Log routes
-    $routes->add('access_logs', new Route(constant('URL_SUBFOLDER') . '/access_logs', array('controller' => 'ConferenceController', 'method' => 'accessLogs'), array()));
+    $routes->add('access_logs', new Route(constant('URL_SUBFOLDER') . '/access_logs', array('controller' => 'LogController', 'method' => 'accessLogs'), array()));
 
 
     //priviledged general routes
