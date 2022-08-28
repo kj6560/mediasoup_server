@@ -159,4 +159,8 @@ class AppHelpers
     {
         return $role == 1 || $role == 2 || $role == 3 ? true : false;
     }
+    public static function isAdmin($role)
+    {
+        return $role == 1 ? true : false;
+    }
 }

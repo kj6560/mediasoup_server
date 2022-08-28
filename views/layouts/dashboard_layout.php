@@ -50,12 +50,15 @@
                                 </a>
                             </li>
                         <?php } ?>
-                        <li class="sidebar-item active ">
-                            <a href="/clients" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Clients</span>
-                            </a>
-                        </li>
+                        <?php if (AppHelpers::canEdit($current_role)) { ?>
+                            <li class="sidebar-item active ">
+                                <a href="/clients" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Clients</span>
+                                </a>
+                            </li>
+
+                        <?php } ?>
 
                         <li class="sidebar-item active ">
                             <a href="/conferences" class='sidebar-link'>
