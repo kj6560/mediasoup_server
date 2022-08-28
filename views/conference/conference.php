@@ -304,8 +304,11 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-$conf_end_time = date('Y-m-d H:i:s', strtotime(date("Y-m-d H:i:s") . " + $conference_duration minute"));
-echo $conf_end_time;
+$now = time();
+$ten_minutes = $now + (intval($conference_duration) * 60);
+$startDate = date('m-d-Y H:i:s', $now);
+$conf_end_time = date('m-d-Y H:i:s', $ten_minutes);
+echo $conf_end_time;die;
 ?>
 <script>
     window.onload = function() {
