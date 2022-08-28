@@ -282,7 +282,7 @@
 </div>
 
 <div class="feature_timer">
-    <h3 id="timer"></h3>
+    <h5 id="timer" style="color: white;"></h5>
 </div>
 <div class="chat-box hide">
     <h4 class="text-center client_name">Client Name</h4>
