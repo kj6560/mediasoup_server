@@ -508,6 +508,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date  + ".$conferenc
 
 
     var conference_date = "<?php echo $conf_end_time; ?>";
+    console.log(conference_date);
     // Set the date we're counting down to
     var countDownDate = new Date(conference_date).getTime();
 
