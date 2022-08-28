@@ -514,6 +514,7 @@ if ($con_day < $today)
         var my_date = "<?php echo $data['conference']['conference_date']; ?>";
         var conf_date = new Date(my_date);
         var conference_duration = "<?php echo $data['conference']['duration']; ?>";
+        console.log(conference_duration);
         // Set the date we're counting down to
         var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
         // Get today's date and time
