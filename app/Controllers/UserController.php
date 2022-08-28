@@ -19,7 +19,12 @@ class UserController extends Controller
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$users = new User;
-		$all_users = $users->getAllUsersInOrganisation($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$all_users = $users->getAllUsersForMaster();
+		} else {
+			$all_users = $users->getAllUsersInOrganisation($organisation);
+		}
+
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users" => $all_users));
 	}
 
@@ -217,7 +222,7 @@ class UserController extends Controller
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
 					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
-					if(empty($data)){
+					if (empty($data)) {
 						AppHelpers::redirect("/add_user_upload");
 					}
 					unlink("../upload/" . $file_name);
