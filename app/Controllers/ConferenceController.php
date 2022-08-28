@@ -108,7 +108,7 @@ class ConferenceController extends Controller
 		$organisation = $user['organisation'];
 		if (AppHelpers::isMaster($user['user_role'])) {
 			$conferences = $conf->readAllConferencesForMaster($organisation);
-		}else{
+		} else {
 			$conferences = $conf->readAllConferencesForCompanies($organisation);
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences, "page_heading" => "Conferences"));
@@ -259,7 +259,11 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
-		$conferences = $conf->readConferenceHistory($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$conferences = $conf->readConferenceHistoryForMaster();
+		} else {
+			$conferences = $conf->readConferenceHistory($organisation);
+		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences_history', array("conferences" => $conferences, "page_heading" => "Conferences History"));
 	}
 }

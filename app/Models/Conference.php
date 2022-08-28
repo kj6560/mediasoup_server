@@ -50,4 +50,10 @@ class Conference extends BaseModel
         $conference  = R::getAssocRow($query);
         return !empty($conference) ? $conference : false;
     }
+    public function readConferenceHistoryForMaster()
+    {
+        $query = "select conference.*,u.name from conference inner join users u on conference.conference_by = u.id order by conference.id  desc ";
+        $conference  = R::getAssocRow($query);
+        return !empty($conference) ? $conference : false;
+    }
 }
