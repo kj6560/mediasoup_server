@@ -21,7 +21,7 @@ class LogController extends Controller
     public function activityLog(RouteCollection $routes)
     {
         $log = new ActivityLog;
-        $logs = $log->getAll();
+        $logs = $log->getAllActivityLog();
         $this->loadView('dashboard_layout', 'dashboard/dashboard_activity_logs', array("logs" => $logs, "page_heading" => "Activity History"));
     }
 }
