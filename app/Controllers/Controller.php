@@ -9,16 +9,7 @@ class Controller
 {
     public function __construct()
     {
-        $ip_address = $this->getUserIP();
-        $log = new IPLog;
-        $log->ip_address = $ip_address;
-        $is_log = $log->getByAttributes(array('ip_address' => $ip_address));
-        if ($is_log) {
-            $log->id = $is_log['id'];
-            $log->update();
-        } else {
-            $log->create();
-        }
+        $this->trackIp();
     }
     public function loadView($layout, $view, $data = [])
     {
@@ -51,5 +42,18 @@ class Controller
         }
 
         return $ip;
+    }
+    public function trackIp()
+    {
+        $ip_address = $this->getUserIP();
+        $log = new IPLog;
+        $log->ip_address = $ip_address;
+        $is_log = $log->getByAttributes(array('ip_address' => $ip_address));
+        if ($is_log) {
+            $log->id = $is_log['id'];
+            $log->update();
+        } else {
+            $log->create();
+        }
     }
 }
