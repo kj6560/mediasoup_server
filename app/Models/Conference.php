@@ -26,6 +26,12 @@ class Conference extends BaseModel
         $conference  = R::getAssocRow($query);
         return !empty($conference) ? $conference : false;
     }
+    public function readAllConferencesForMaster()
+    {
+        $query = "select conference.*,u.name from conference inner join users u on conference.conference_by = u.id where conference.is_deleted !=1 ";
+        $conference  = R::getAssocRow($query);
+        return !empty($conference) ? $conference : false;
+    }
     public function isAllowed($conf_id, $user_id, $user_passkey)
     {
         $conference = $this->readConferences($conf_id);

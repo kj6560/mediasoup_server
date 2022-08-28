@@ -106,7 +106,11 @@ class ConferenceController extends Controller
 		$conf = new Conference;
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
-		$conferences = $conf->readAllConferencesForCompanies($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$conferences = $conf->readAllConferencesForMaster($organisation);
+		}else{
+			$conferences = $conf->readAllConferencesForCompanies($organisation);
+		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences', array("conferences" => $conferences, "page_heading" => "Conferences"));
 	}
 	//add conference action
