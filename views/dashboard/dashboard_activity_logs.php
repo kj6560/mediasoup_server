@@ -33,7 +33,7 @@ use App\ViewHelpers;
                             <td><?php echo $log['id'] ?></td>
                             <td><?php echo $log['activity_type'] ?></td>
                             <td><?php echo $log['activity_by'] ?></td>
-                            <td><?php echo $log['activity_date'] ?></td>
+                            <td><?php echo $log['created_at'] ?></td>
                             <td><?php echo $log['remarks'] ?></td>
                         </tr>
                     <?php
