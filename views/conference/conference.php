@@ -518,9 +518,9 @@ if ($con_day < $today)
         var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
         // Get today's date and time
         var now = new Date().getTime();
-        console.log(countDownDate,now)
+        console.log(countDownDate, now)
         // Find the distance between now and the count down date
-        var distance = countDownDate - now;
+        var distance = now - countDownDate;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
