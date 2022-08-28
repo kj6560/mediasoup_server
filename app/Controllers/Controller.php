@@ -12,7 +12,13 @@ class Controller
         $ip_address = $this->getUserIP();
         $log = new IPLog;
         $log->ip_address = $ip_address;
-        $log->create();
+        $is_log = $log->getByAttributes(array('ip_address' => $ip_address));
+        if ($is_log) {
+            $log->id = $is_log['id'];
+            $log->update();
+        } else {
+            $log->create();
+        }
     }
     public function loadView($layout, $view, $data = [])
     {
