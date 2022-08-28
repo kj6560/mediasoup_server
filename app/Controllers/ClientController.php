@@ -17,7 +17,12 @@ class ClientController extends Controller
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$users = new User;
-		$all_clients = $users->getAllUserClients($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$all_clients = $users->getAllUserClientsForMaster();
+		} else {
+			$all_clients = $users->getAllUserClients($organisation);
+		}
+
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_clients', array("clients" => $all_clients));
 	}
 
@@ -32,7 +37,7 @@ class ClientController extends Controller
 		$user_org = new Organisation;
 		$user_org->id = $organisation;
 		$user_org = $user_org->getByPk();
-		if($user_org['parent']>1){
+		if ($user_org['parent'] > 1) {
 			AppHelpers::redirect("/clients");
 		}
 		if (!empty($data)) {

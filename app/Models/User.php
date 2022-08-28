@@ -48,4 +48,10 @@ class User extends BaseModel
         $users  = R::getAssocRow($query);
         return !empty($users) ? $users : false;
     }
+    public function getAllUserClientsForMaster()
+    {
+        $query = "select * from organisation where organisation.is_deleted !=1 ";
+        $users  = R::getAssocRow($query);
+        return !empty($users) ? $users : false;
+    }
 }
