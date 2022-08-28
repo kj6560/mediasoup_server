@@ -56,7 +56,7 @@ $current_user_id = $data['current_user']['id'];
                     <?php
                     }
                   } else { ?>
-                    <a href="<?php echo "/conference_status/" . $conference['id'] . "/" . $conference['is_available']; ?>"><span class="badge bg-danger">InActive</span></a>
+                    <a href="<?php echo AppHelpers::canEdit($current_role) ? "/conference_status/" . $conference['id'] . "/" . $conference['is_available'] : "#"; ?>"><span class="badge bg-danger">InActive</span></a>
                   <?php } ?>
                 </td>
                 <td><?php echo $conference['conference_date'] ?></td>
