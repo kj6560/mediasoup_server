@@ -301,6 +301,13 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php
+$conference_date = $data['conference']['conference_date'];
+$conference_duration = $data['conference']['duration'];
+
+$conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
+
+?>
 <script>
     window.onload = function() {
         var conference_id = "<?php echo $data['conference']['id']; ?>";
@@ -448,6 +455,7 @@
     }
 
     function endSession() {
+        console.log("ending session");
         if (!user_id) {
             var user_id = "<?php echo $data['user']['id']; ?>";
         }
@@ -497,15 +505,8 @@
         }
 
     }
-</script>
-<?php
-$conference_date = $data['conference']['conference_date'];
-$conference_duration = $data['conference']['duration'];
 
-$conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
 
-?>
-<script>
     var conference_date = "<?php echo $conf_end_time; ?>";
     // Set the date we're counting down to
     var countDownDate = new Date(conference_date).getTime();
@@ -561,7 +562,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
                     if (result.isConfirmed) {
                         countDownDate = new Date(countDownDate + (5 * 60 * 1000))
                         console.log(countDownDate)
-                    }else{
+                    } else {
                         clearInterval(x);
                         endSession();
                     }
