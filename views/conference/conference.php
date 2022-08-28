@@ -561,6 +561,9 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
                     if (result.isConfirmed) {
                         countDownDate = new Date(countDownDate + (5 * 60 * 1000))
                         console.log(countDownDate)
+                    }else{
+                        clearInterval(x);
+                        endSession();
                     }
                 })
 
