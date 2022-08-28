@@ -507,7 +507,7 @@ $conference_duration = $data['conference']['duration'];
     var conference_date = "<?php echo $conf_end_time; ?>";
     var conference_duration = "<?php echo $data['conference']['duration']; ?>";
     // Set the date we're counting down to
-    var countDownDate = new Date(conference_date).getTime();
+    var countDownDate = new Date(conference_date);
     countDownDate.setMinutes(countDownDate.getTime()  + 60*1000*conference_duration)
     console.log(conference_date);
     // Update the count down every 1 second
