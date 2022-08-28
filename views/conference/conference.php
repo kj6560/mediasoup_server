@@ -527,10 +527,44 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
 
         // Output the result in an element with id="demo"
         document.getElementById("timer").innerHTML = hours + "h - " +
-            minutes + "m - " + seconds + "s "; 
+            minutes + "m - " + seconds + "s ";
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
+            //conf duration expired now
+            //ask host whether he wants to proceed 
+
+            if (!user_id) {
+                var user_id = "<?php echo $data['user']['id']; ?>";
+            }
+            if (!host_id) {
+                var host_id = "<?php echo $data['conference']['conference_by']; ?>";
+            }
+            if (!conference_id) {
+                var conference_id = "<?php echo $data['conference']['id']; ?>";
+            }
+
+
+            if (user_id == host_id) {
+                sweetAlert.fire({
+                    title: 'Exit Conference!!',
+                    text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    customClass: {
+                        actions: 'my-actions',
+                        cancelButton: 'order-1 right-gap',
+                        confirmButton: 'order-2',
+                        denyButton: 'order-3',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        countDownDate = new Date(countDownDate + (5 * 60 * 1000))
+                        console.log(countDownDate)
+                    }
+                })
+
+            }
         }
     }, 1000);
 </script>
