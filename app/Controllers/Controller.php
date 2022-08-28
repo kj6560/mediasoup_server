@@ -10,10 +10,8 @@ class Controller
     public function __construct()
     {
         $ip_address = $this->getUserIP();
-        $date = date('Y-m-d H:i:s');
         $log = new IPLog;
         $log->ip_address = $ip_address;
-        $log->visit_date = $date;
         $log->create();
     }
     public function loadView($layout, $view, $data = [])
