@@ -94,7 +94,7 @@
                         <li class="sidebar-item active ">
                             <a href="/logout" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Logout</span>
+                                <span>Logout(<?php echo $data['current_user']['name'] ?>)</span>
                             </a>
                         </li>
                     </ul>
