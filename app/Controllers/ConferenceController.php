@@ -156,7 +156,7 @@ class ConferenceController extends Controller
 			$activity_type = 5;
 			$ref_id =  $conference['id'];
 			$activity_by = $user['id'];
-			$remarks = $user['name'] . " created conference " . $conference['title'] . " for " . $conference['duration'];
+			$remarks = $user['name'] . " created conference " . $conference['title'];
 			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
 
 			if ($conference && $log) {
