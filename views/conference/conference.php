@@ -501,8 +501,8 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-$today = date("Y-m-d H:i:s");
-$conf_end_time = date('Y-m-d H:i:s', strtotime("$today + ".$conference_duration." minute"));
+
+$conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
 
 ?>
 <script>
@@ -527,7 +527,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$today + ".$conference_duration.
 
         // Output the result in an element with id="demo"
         document.getElementById("timer").innerHTML = hours + "h - " +
-            minutes + "m - " + seconds + "s ";
+            minutes + "m - " + seconds + "s "; 
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("demo").innerHTML = "EXPIRED";
