@@ -233,10 +233,19 @@ class ConferenceController extends Controller
 	//conference delete action
 	public function conference_delete($id, RouteCollection $routes)
 	{
+		$user = Auth::logger('user');
 		$conf = new Conference;
 		$conf->id = $id;
+		$toDelete = $conf->getByPk();
 		$deleted = $conf->delete();
-		if ($deleted) {
+
+		$activity_type = 5;
+		$ref_id =  $toDelete['id'];
+		$activity_by = $user['id'];
+		$remarks = $user['name'] . " deleted conference " . $toDelete['title'];
+		$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+		if ($deleted && $log) {
 			AppHelpers::redirect('/conferences');
 		} else {
 			echo "failed to delete";
