@@ -2,6 +2,8 @@
 
 use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
     .dataTable-dropdown {
@@ -28,15 +30,17 @@ use App\ViewHelpers;
                     <?php
                     if ($data['logs'])
                         foreach ($data['logs'] as $log) {
+                            if (($data['current_user']['id'] == $log['created_at'])  || AppHelpers::canEdit($current_role)) {
                     ?>
-                        <tr>
-                            <td><?php echo $log['id'] ?></td>
-                            <td><?php echo ACTIVITIES[$log['activity_type']] ?></td>
-                            <td><?php echo $log['activity_by_name'] ?></td>
-                            <td><?php echo $log['created_at'] ?></td>
-                            <td><?php echo $log['remarks'] ?></td>
-                        </tr>
+                            <tr>
+                                <td><?php echo $log['id'] ?></td>
+                                <td><?php echo ACTIVITIES[$log['activity_type']] ?></td>
+                                <td><?php echo $log['activity_by_name'] ?></td>
+                                <td><?php echo $log['created_at'] ?></td>
+                                <td><?php echo $log['remarks'] ?></td>
+                            </tr>
                     <?php
+                            }
                         }
                     ?>
 
