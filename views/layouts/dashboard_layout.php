@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITE_NAME; ?></title>
+    <title><?php
+
+use App\AppHelpers;
+
+ echo SITE_NAME; ?></title>
 
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app.css' ?>">
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app-dark.css' ?>">
@@ -29,7 +33,7 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        
+
 
                         <li class="sidebar-item active ">
                             <a href="/dashboard" class='sidebar-link'>
@@ -37,14 +41,14 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="/users" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Users</span>
-                            </a>
-                        </li>
-
+                        <?php if (AppHelpers::canEdit($current_role)) { ?>
+                            <li class="sidebar-item active ">
+                                <a href="/users" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Users</span>
+                                </a>
+                            </li>
+                        <?php } ?>
                         <li class="sidebar-item active ">
                             <a href="/clients" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
@@ -101,8 +105,8 @@
                             <h3><?php echo !empty($data['page_heading']) ? $data['page_heading'] : '' ?></h3>
                             <p class="text-subtitle text-muted"><?php echo !empty($data['page_description']) ? $data['page_description'] : ''; ?></p>
                         </div>
-                        
-                        <div class="alert alert-<?php echo !empty($data['msg']['code'])?'show':'hide'?> alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
+
+                        <div class="alert alert-<?php echo !empty($data['msg']['code']) ? 'show' : 'hide' ?> alert-dismissible fade <?php echo !empty($data['msg']) ? 'show' : 'hide' ?>" role="alert">
                             <?php
                             if ($data['msg']) {
                                 echo $data['msg']['text'];
