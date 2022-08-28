@@ -138,7 +138,7 @@ class AppHelpers
 
         return false;
     }
-    public static function logActivity($activity_type, $ref_id, $activity_by, $remarks)
+    public static function logActivity($activity_type, $ref_id = null, $activity_by, $remarks = null)
     {
         $activity_log = new ActivityLog;
         $activity_log->activity_type = $activity_type;

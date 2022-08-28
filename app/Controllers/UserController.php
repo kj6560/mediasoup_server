@@ -321,6 +321,11 @@ class UserController extends Controller
 						R::storeAll($beans);
 					}
 
+					$activity_type = 2;
+					$activity_by = $user['id'];
+					$remarks = $user['name'] . " uploaded users ";
+					$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}
 			} else {
