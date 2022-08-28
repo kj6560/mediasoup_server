@@ -79,7 +79,7 @@
                                 <span>Reports</span>
                             </a>
                         </li>
-                        <?php if (AppHelpers::isAdmin($current_role)) { ?>
+                        <?php if (AppHelpers::isMaster($current_role)) { ?>
                             <li class="sidebar-item active ">
                                 <a href="/activity_log" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
