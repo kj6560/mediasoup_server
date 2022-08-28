@@ -508,13 +508,14 @@ if ($con_day < $today)
         }
 
     }
-
+    
+    var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+    var conf_date = new Date(my_date);
+    var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
+    var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
 
     var x = setInterval(function() {
-        var my_date = "<?php echo $data['conference']['conference_date']; ?>";
-        var conf_date = new Date(my_date);
-        var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
-        var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
+
         var now = new Date().getTime();
         var distance = countDownDate - now;
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -523,9 +524,6 @@ if ($con_day < $today)
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if (distance < 0) {
             //clearInterval(x);
-            //conf duration expired now
-            //ask host whether he wants to proceed 
-
             if (!user_id) {
                 var user_id = "<?php echo $data['user']['id']; ?>";
             }
