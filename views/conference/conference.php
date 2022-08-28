@@ -304,9 +304,7 @@
 <?php
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
-$dateTime = new DateTime($conference_date);
-$conf_end_time = $dateTime->modify("+$conference_duration minutes");
-echo "ends at".$conf_end_time;
+
 die;
 ?>
 <script>
@@ -509,10 +507,11 @@ die;
 
 
     var conference_date = "<?php echo $conf_end_time; ?>";
-    console.log(conference_date);
+    var conference_duration = "<?php echo $data['conference']['duration']; ?>";
     // Set the date we're counting down to
     var countDownDate = new Date(conference_date).getTime();
-
+    countDownDate.setMinutes(countDownDate.getMinutes() + conference_duration)
+    console.log(conference_date);
     // Update the count down every 1 second
     var x = setInterval(function() {
 
