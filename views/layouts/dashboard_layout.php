@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php
 
-use App\AppHelpers;
+            use App\AppHelpers;
 
- echo SITE_NAME; ?></title>
+            $current_role = $data['current_user']['user_role'];
+            echo SITE_NAME; ?></title>
 
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app.css' ?>">
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app-dark.css' ?>">
