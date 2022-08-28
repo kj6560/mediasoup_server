@@ -488,7 +488,7 @@
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
 
-$addingFiveMinutes = new DateTime(strtotime("$conference_date + 5 minute"));
+$addingFiveMinutes = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
 
 echo $addingFiveMinutes;
 die;
