@@ -31,7 +31,7 @@ use App\ViewHelpers;
                     ?>
                         <tr>
                             <td><?php echo $log['id'] ?></td>
-                            <td><?php echo $log['activity_type'] ?></td>
+                            <td><?php echo ACTIVITIES[$log['activity_type']] ?></td>
                             <td><?php echo $log['activity_by_name'] ?></td>
                             <td><?php echo $log['created_at'] ?></td>
                             <td><?php echo $log['remarks'] ?></td>
