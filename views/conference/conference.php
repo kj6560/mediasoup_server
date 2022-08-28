@@ -65,8 +65,8 @@
         display: flex;
         z-index: 2;
         position: absolute;
-        left: 100px;
-        top: 40px;
+        left: 160px;
+        top: 50px;
         background: #15748a;
         width: 150px;
         cursor: pointer;
@@ -525,7 +525,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = hours + "h - " +
+        document.getElementById("timer").innerHTML = hours + "h - " +
             minutes + "m - " + seconds + "s ";
         // If the count down is over, write some text 
         if (distance < 0) {
