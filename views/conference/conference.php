@@ -61,6 +61,16 @@
         cursor: pointer;
     }
 
+    .feature_timer {
+        display: flex;
+        z-index: 2;
+        position: absolute;
+        left: 100px;
+        top: 40px;
+        background: #15748a;
+        width: 150px;
+        cursor: pointer;
+    }
 
     .feature span {
         margin: 5px;
@@ -271,6 +281,9 @@
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
 
+<div class="feature_timer">
+    <h3 id="timer"></h3>
+</div>
 <div class="chat-box hide">
     <h4 class="text-center client_name">Client Name</h4>
     <div class="history-box">
@@ -512,10 +525,8 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="demo"
-        // document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
-        //     minutes + "m " + seconds + "s ";
-        console.log(days + "d " + hours + "h " +
-            minutes + "m " + seconds + "s ");
+        document.getElementById("demo").innerHTML = hours + "h - " +
+            minutes + "m - " + seconds + "s ";
         // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
