@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\ActivityLog;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use GuzzleHttp\Client;
 
@@ -136,6 +137,16 @@ class AppHelpers
 
 
         return false;
+    }
+    public static function logActivity($activity_type, $ref_id, $activity_by, $remarks)
+    {
+        $activity_log = new ActivityLog;
+        $activity_log->activity_type = $activity_type;
+        $activity_log->ref_id = $ref_id;
+        $activity_log->activity_by = $activity_by;
+        $activity_log->remarks = $remarks;
+        $log = $activity_log->create();
+        return $log;
     }
 
     public static function canDelete($role)

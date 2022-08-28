@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\AppHelpers;
 use App\Auth;
+use App\Models\ActivityLog;
 use App\Models\Organisation;
 use App\Models\User;
 use Exception;
@@ -94,7 +95,12 @@ class UserController extends Controller
 			$pass_text = explode("@", $data['email'])[0];
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
 			$user_created = $newuser->create();
-			if ($user_created) {
+			$activity_type = 1;
+			$ref_id =  $user_created['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " created user " . $user_created['name'] . " at " . $user_created['created_date'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+			if ($log) {
 				$msg = "User created successfully";
 				$code = 1;
 			} else {
