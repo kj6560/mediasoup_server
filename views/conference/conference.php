@@ -529,7 +529,7 @@ $conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
         document.getElementById("timer").innerHTML = hours + "h - " +
             minutes + "m - " + seconds + "s ";
         if (distance < 0) {
-            clearInterval(x);
+            //clearInterval(x);
             //conf duration expired now
             //ask host whether he wants to proceed 
 
