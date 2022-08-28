@@ -2,6 +2,8 @@
 
 use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
@@ -11,7 +13,11 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
-      <a href="/add_conferences" class="btn btn-success" style="float: right;">Add</a>
+      <?php
+      if (AppHelpers::canCreate($current_role)) {
+      ?>
+        <a href="/add_conferences" class="btn btn-success" style="float: right;">Add</a>
+      <?php } ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -51,16 +57,15 @@ use App\ViewHelpers;
               </td>
               <td><?php echo $conference['conference_date'] ?></td>
               <td>
-
-                <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-                <a href="<?php echo "/conference_main/" . $conference['id']; ?>" target="_blank"><span class="badge bg-primary">Join</span></a>
+                <?php if (AppHelpers::canEdit($current_role)) { ?>
+                  <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+                <?php }
+                if (AppHelpers::canDelete($current_role)) { ?>
+                  <a href="<?php echo "/conference_main/" . $conference['id']; ?>" target="_blank"><span class="badge bg-primary">Join</span></a>
+              <?php }
+              } ?>
               </td>
             </tr>
-          <?php
-            }
-          ?>
-
-
         </tbody>
       </table>
     </div>
