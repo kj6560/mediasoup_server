@@ -153,7 +153,13 @@ class ConferenceController extends Controller
 			$conf->is_available = 1;
 			$conference = $conf->create();
 
-			if ($conference) {
+			$activity_type = 5;
+			$ref_id =  $conference['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " created conference " . $conference['title'] . " for " . $conference['duration'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+			if ($conference && $log) {
 				foreach ($data['conference_for'] as $conf_user) {
 					$user = new User;
 					$user->id = $conf_user;

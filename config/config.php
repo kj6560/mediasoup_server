@@ -8,7 +8,18 @@ define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
 define('BASE', 'https://drrksuri.com/');
 define("ROLE", array("0" => "Super User", "1" => "Admin", "2" => "Manager", "3" => "Supervisor", "4" => "User"));
-define("ACTIVITIES", array("1" => "create user", "2" => "upload user", "3" => "delete user", "4" => "edit user"));
+$activities_list = array(
+    "1" => "create user",
+    "2" => "upload user",
+    "3" => "delete user",
+    "4" => "edit user",
+    "5" => "create conference",
+    "6" => "upload conference",
+    "7" => "delete conference",
+    "8" => "edit conference",
+
+);
+define("ACTIVITIES", $activities_list);
 date_default_timezone_set('Asia/Kolkata');
 
 $host = "54.70.129.232";
