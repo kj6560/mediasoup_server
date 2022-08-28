@@ -513,53 +513,58 @@ if ($con_day < $today)
     var conf_date = new Date(my_date);
     var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
     var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
-
+    var extend = false;
     var x = setInterval(function() {
+        if (!extend) {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) {
+                //clearInterval(x);
+                if (!user_id) {
+                    var user_id = "<?php echo $data['user']['id']; ?>";
+                }
+                if (!host_id) {
+                    var host_id = "<?php echo $data['conference']['conference_by']; ?>";
+                }
+                if (!conference_id) {
+                    var conference_id = "<?php echo $data['conference']['id']; ?>";
+                }
 
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        if (distance < 0) {
-            //clearInterval(x);
-            if (!user_id) {
-                var user_id = "<?php echo $data['user']['id']; ?>";
-            }
-            if (!host_id) {
-                var host_id = "<?php echo $data['conference']['conference_by']; ?>";
-            }
-            if (!conference_id) {
-                var conference_id = "<?php echo $data['conference']['id']; ?>";
-            }
 
+                if (user_id == host_id) {
+                    sweetAlert.fire({
+                        title: 'Exit Conference!!',
+                        text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                        showDenyButton: false,
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                        customClass: {
+                            actions: 'my-actions',
+                            cancelButton: 'order-1 right-gap',
+                            confirmButton: 'order-2',
+                            denyButton: 'order-3',
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            countDownDate = countDownDate + 5 * 60 * 1000
+                        } else {
+                            clearInterval(x);
+                            endSession();
+                        }
+                    })
 
-            if (user_id == host_id) {
-                sweetAlert.fire({
-                    title: 'Exit Conference!!',
-                    text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
-                    showDenyButton: false,
-                    showCancelButton: true,
-                    confirmButtonText: 'Yes',
-                    customClass: {
-                        actions: 'my-actions',
-                        cancelButton: 'order-1 right-gap',
-                        confirmButton: 'order-2',
-                        denyButton: 'order-3',
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        countDownDate = countDownDate + 5 * 60 * 1000
-                    } else {
-                        clearInterval(x);
-                        endSession();
-                    }
-                })
-
+                }
             }
+            document.getElementById("timer").innerHTML = hours + "h - " +
+                minutes + "m - " + seconds + "s ";
+        } else {
+            clearInterval(x);
+            endSession();
         }
-        document.getElementById("timer").innerHTML = hours + "h - " +
-            minutes + "m - " + seconds + "s ";
+
     }, 1000);
 </script>
