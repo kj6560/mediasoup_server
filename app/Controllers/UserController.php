@@ -324,8 +324,8 @@ class UserController extends Controller
 					}
 
 					$activity_type = 2;
-					$activity_by = $auth_user_id['id'];
-					$remarks = $auth_user_name['name'] . " uploaded users file " . $file_name;
+					$activity_by = $auth_user_id;
+					$remarks = $auth_user_name . " uploaded users file " . $file_name;
 					$log = AppHelpers::logActivity($activity_type, null, $activity_by, $remarks);
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
