@@ -139,7 +139,7 @@ class UserController extends Controller
 			$activity_type = 4;
 			$ref_id =  $user_created['id'];
 			$activity_by = $user['id'];
-			$remarks = $user['name'] . " edited user " . $data['name'];
+			$remarks = $user['name'] . " edited user " . $userToEdit['name'];
 			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
 			if ($log) {
 				$msg = "User created successfully";
