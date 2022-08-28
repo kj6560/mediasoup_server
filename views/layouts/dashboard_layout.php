@@ -79,14 +79,14 @@
                                 <span>Reports</span>
                             </a>
                         </li> -->
-                        <?php if (AppHelpers::isAdmin($current_role)) { ?>
-                            <li class="sidebar-item active ">
-                                <a href="/activity_log" class='sidebar-link'>
-                                    <i class="bi bi-grid-fill"></i>
-                                    <span>Activity Logs</span>
-                                </a>
-                            </li>
-                        <?php } ?>
+
+                        <li class="sidebar-item active ">
+                            <a href="/activity_log" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Activity Logs</span>
+                            </a>
+                        </li>
+
                         <?php if (AppHelpers::isAdmin($current_role)) { ?>
                             <li class="sidebar-item active ">
                                 <a href="/access_logs" class='sidebar-link'>
