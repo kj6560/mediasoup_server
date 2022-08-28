@@ -37,6 +37,10 @@ if ($auth->guard('user')) {
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
     $routes->add('endSession', new Route(constant('URL_SUBFOLDER') . '/endSession', array('controller' => 'ConferenceController', 'method' => 'endSession'), array(),['POST']));
 
+    //Log routes
+    $routes->add('access_logs', new Route(constant('URL_SUBFOLDER') . '/access_logs', array('controller' => 'ConferenceController', 'method' => 'accessLogs'), array()));
+
+
     //priviledged general routes
     $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'ConferenceController', 'method' => 'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method' => 'reports'), array()));

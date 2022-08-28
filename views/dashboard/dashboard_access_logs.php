@@ -1,0 +1,53 @@
+<?php
+
+use App\AppHelpers;
+use App\ViewHelpers;
+?>
+<style>
+    .dataTable-dropdown {
+        display: none;
+    }
+</style>
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <table class="table table-striped" id="table1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Host</th>
+                        <th>Participants</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($data['conferences'])
+                        foreach ($data['conferences'] as $conference) {
+                    ?>
+                        <tr>
+                            <td><?php echo $conference['title'] ?></td>
+                            <td><?php echo $conference['name'] ?></td>
+                            <td><?php echo ViewHelpers::getParticipants($conference['conference_for']); ?></td>
+                            <td><?php echo $conference['conference_date'] ?></td>
+
+                        </tr>
+                    <?php
+                        }
+                    ?>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<script src="assets/js/app.js"></script>
+
+<script src="assets/js/extensions/simple-datatables.js"></script>
