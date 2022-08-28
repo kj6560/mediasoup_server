@@ -154,10 +154,19 @@ class UserController extends Controller
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)
 	{
+		$auth_user = Auth::logger('user');
 		$user = new User;
 		$user->id = $id;
+		$toDelete = $user->getByPk();
 		$deleted = $user->delete();
-		if ($deleted) {
+
+		$activity_type = 4;
+		$ref_id =  $id;
+		$activity_by = $auth_user['id'];
+		$remarks = $auth_user['name'] . " deleted user " . $toDelete['name'];
+		$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+		if ($deleted && $log) {
 			AppHelpers::redirect('/users');
 		} else {
 			echo "failed to delete";
