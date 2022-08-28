@@ -502,7 +502,7 @@
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
 
-$conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
+$conf_end_time = date('Y-m-d H:i:s', strtotime($conference_date));
 
 ?>
 <script>
