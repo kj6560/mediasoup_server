@@ -50,7 +50,7 @@
                                 </a>
                             </li>
                         <?php } ?>
-                        <?php if (AppHelpers::canEdit($current_role)) { ?>
+                        <?php if (AppHelpers::isAdmin($current_role)) { ?>
                             <li class="sidebar-item active ">
                                 <a href="/clients" class='sidebar-link'>
                                     <i class="bi bi-grid-fill"></i>
