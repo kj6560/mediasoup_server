@@ -160,7 +160,7 @@ class UserController extends Controller
 		$toDelete = $user->getByPk();
 		$deleted = $user->delete();
 
-		$activity_type = 4;
+		$activity_type = 3;
 		$ref_id =  $id;
 		$activity_by = $auth_user['id'];
 		$remarks = $auth_user['name'] . " deleted user " . $toDelete['name'];
