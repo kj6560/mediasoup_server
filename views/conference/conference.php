@@ -488,10 +488,9 @@
 $conference_date = $data['conference']['conference_date'];
 $conference_duration = $data['conference']['duration'];
 
-$time = new DateTime('2011-11-17 05:05');
-$time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+$addingFiveMinutes = $conference_date . " +" . $conference_duration . " minute";
 
-echo $time;
+echo $addingFiveMinutes;
 die;
 
 ?>
