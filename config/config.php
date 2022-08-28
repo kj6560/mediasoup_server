@@ -7,7 +7,7 @@ define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
 define('BASE', 'https://drrksuri.com/');
-define("ROLE", array("1" => "Admin", "2" => "Manager", "3" => "Supervisor", "4" => "User"));
+define("ROLE", array("0" => "Super User", "1" => "Admin", "2" => "Manager", "3" => "Supervisor", "4" => "User"));
 date_default_timezone_set('Asia/Kolkata');
 
 $host = "54.70.129.232";
