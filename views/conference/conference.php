@@ -593,6 +593,26 @@ if ($con_day < $today)
                         })
                     }
 
+                } else {
+                    sweetAlert.fire({
+                        title: 'Session Ended',
+                        text: 'Your session has ended',
+                        showDenyButton: false,
+                        confirmButtonText: 'Yes',
+                        customClass: {
+                            actions: 'my-actions',
+                            cancelButton: 'order-1 right-gap',
+                            confirmButton: 'order-2',
+                            denyButton: 'order-3',
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            rc.exit();
+                            window.location.href = "/conferences";
+
+                        }
+                    })
                 }
             }
             document.getElementById("timer").innerHTML = hours + "h - " +
