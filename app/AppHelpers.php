@@ -140,27 +140,31 @@ class AppHelpers
 
     public static function canDelete($role)
     {
-        return $role == 1 || $role == 2 ? true : false;
+        return $role == 0 || $role == 1 || $role == 2 ? true : false;
     }
     public static function canEdit($role)
     {
-        return $role == 1 || $role == 2 || $role == 3 ? true : false;
+        return $role == 0 || $role == 1 || $role == 2 || $role == 3 ? true : false;
     }
     public static function canView($role)
     {
-        return $role == 1 || $role == 2 || $role == 3 || $role = 4 ? true : false;
+        return $role == 0 || $role == 1 || $role == 2 || $role == 3 || $role = 4 ? true : false;
     }
     public static function canUpload($role)
     {
-        return $role == 1 ? true : false;
+        return $role == 0 || $role == 1 ? true : false;
     }
 
     public static function canCreate($role)
     {
-        return $role == 1 || $role == 2 || $role == 3 ? true : false;
+        return $role == 0 || $role == 1 || $role == 2 || $role == 3 ? true : false;
     }
     public static function isAdmin($role)
     {
-        return $role == 1 ? true : false;
+        return $role == 0 || $role == 1 ? true : false;
+    }
+    public static function isMaster($role)
+    {
+        return $role == 0 ? true : false;
     }
 }
