@@ -508,7 +508,7 @@ if ($con_day < $today)
         }
 
     }
-    
+
     var my_date = "<?php echo $data['conference']['conference_date']; ?>";
     var conf_date = new Date(my_date);
     var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
@@ -550,8 +550,7 @@ if ($con_day < $today)
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        countDownDate = new Date(countDownDate + (5 * 60 * 1000))
-                        console.log(countDownDate)
+                        countDownDate = countDownDate + 5 * 60 * 1000
                     } else {
                         clearInterval(x);
                         endSession();
