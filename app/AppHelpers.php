@@ -119,6 +119,9 @@ class AppHelpers
                 if (intval($cur_H) > intval($conf_date_hour) + intval($conf_dur_hour)) {
                     return false;
                 } else if (intval($cur_H) == intval($conf_date_hour) + intval($conf_dur_hour)) {
+                    if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
+                        return true;
+                    }
                     if (intval($cur_m) > intval($conf_dur_min)) {
                         return false;
                     }
@@ -126,9 +129,7 @@ class AppHelpers
                 } else if (intval($cur_H) < intval($conf_date_hour) + intval($conf_dur_hour)) {
                     return true;
                 }
-                if (intval($cur_m) < intval($conf_date_min) + intval($conf_dur_min)) {
-                    return false;
-                }
+                
                 return true;
             }
         }

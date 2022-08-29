@@ -140,11 +140,7 @@ class ConferenceController extends Controller
 			$conf->conference_for = implode(",", $data['conference_for']);
 			$conf->conference_date = $data['conference_date'];
 			$conf->conference_type = $data['conference_type'];
-			$confdur = $data['duration'];
-			$conf_dur_hour = intval($confdur / 60);
-			$conf_dur_min = $confdur % 60;
-			$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
-			$conf->conference_duration = $conf_dur;
+			$conf->conference_duration = $data['duration'];
 			$conf->organisation = $organisation;
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();

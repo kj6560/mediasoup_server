@@ -282,7 +282,7 @@
     <span class="fas fa-exclamation reporttoggle" title="Report a Problem"></span>
 </div>
 
-<div class="feature_timer">
+<div class="feature_timer text-center">
     <h5 id="timer" style="color: white;"></h5>
 </div>
 <div class="chat-box hide">
@@ -301,6 +301,16 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php
+$conference_date = $data['conference']['conference_date'];
+$conference_duration = $data['conference']['duration'];
+
+$today = date("Y-m-d H:i:s");
+$con_day = $data['conference']['conference_date'];
+if ($con_day < $today)
+    $isTime = false;
+
+?>
 <script>
     window.onload = function() {
         var conference_id = "<?php echo $data['conference']['id']; ?>";
@@ -448,6 +458,7 @@
     }
 
     function endSession() {
+        console.log("ending session");
         if (!user_id) {
             var user_id = "<?php echo $data['user']['id']; ?>";
         }
@@ -497,41 +508,117 @@
         }
 
     }
-</script>
-<?php
-$conference_date = $data['conference']['conference_date'];
-$conference_duration = $data['conference']['duration'];
 
-$conf_end_time = date('Y-m-d H:i:s', strtotime("$conference_date + 5 minute"));
+    var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+    var conf_date = new Date(my_date);
+    var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
+    var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
+    var extend = 1;
 
-?>
-<script>
-    var conference_date = "<?php echo $conf_end_time; ?>";
-    // Set the date we're counting down to
-    var countDownDate = new Date(conference_date).getTime();
-
-    // Update the count down every 1 second
     var x = setInterval(function() {
 
-        // Get today's date and time
-        var now = new Date().getTime();
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) {
+                //clearInterval(x);
+                if (!user_id) {
+                    var user_id = "<?php echo $data['user']['id']; ?>";
+                }
+                if (!host_id) {
+                    var host_id = "<?php echo $data['conference']['conference_by']; ?>";
+                }
+                if (!conference_id) {
+                    var conference_id = "<?php echo $data['conference']['id']; ?>";
+                }
 
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                if (user_id == host_id) {
+                    if (extend) {
+                        sweetAlert.fire({
+                            title: 'Exit Conference!!',
+                            text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                            showDenyButton: false,
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes',
+                            customClass: {
+                                actions: 'my-actions',
+                                cancelButton: 'order-1 right-gap',
+                                confirmButton: 'order-2',
+                                denyButton: 'order-3',
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                countDownDate = countDownDate + 5 * 60 * 1000
+                                extend = 0
+                            } else {
+                                clearInterval(x);
+                                endSession();
+                            }
+                        })
+                    } else {
+                        clearInterval(x);
+                        sweetAlert.fire({
+                            title: 'Session Ended',
+                            text: 'Your session has ended',
+                            showDenyButton: false,
+                            confirmButtonText: 'OK',
+                            customClass: {
+                                actions: 'my-actions',
+                                cancelButton: 'order-1 right-gap',
+                                confirmButton: 'order-2',
+                                denyButton: 'order-3',
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let postObj = {
+                                    id: conference_id
+                                }
+                                let post = JSON.stringify(postObj)
 
-        // Output the result in an element with id="demo"
-        document.getElementById("timer").innerHTML = hours + "h - " +
-            minutes + "m - " + seconds + "s ";
-        // If the count down is over, write some text 
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
+                                const url = "<?php echo BASE; ?>endSession"
+                                $.post(url, {
+                                        id: conference_id
+                                    },
+                                    function(data, status) {
+                                        if (status = 200) {
+                                            rc.exit();
+                                            window.location.href = "/conferences";
+                                        }
+                                    });
+                            }
+                        })
+                    }
+
+                } else {
+                    sweetAlert.fire({
+                        title: 'Session Ended',
+                        text: 'Your session has ended',
+                        showDenyButton: false,
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            actions: 'my-actions',
+                            cancelButton: 'order-1 right-gap',
+                            confirmButton: 'order-2',
+                            denyButton: 'order-3',
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            rc.exit();
+                            window.location.href = "/conferences";
+
+                        }
+                    })
+                }
+            }
+            document.getElementById("timer").innerHTML = hours + "h - " +
+                minutes + "m - " + seconds + "s ";
+
+
+        },
+        1000);
 </script>
