@@ -63,10 +63,10 @@ $current_user_id = $data['current_user']['id'];
                 <td>
                   <?php if (AppHelpers::canEdit($current_role)) { ?>
                     <a href="<?php echo "/conference_delete/" . $conference['id']; ?>"><span class="badge bg-danger">Delete</span></a>
-                  <?php }
-                  if (AppHelpers::canDelete($current_role)) { ?>
+                  <?php } ?>
+                 
                     <a href="<?php echo "/conference_main/" . $conference['id']; ?>" target="_blank"><span class="badge bg-primary">Join</span></a>
-              <?php }
+              <?php 
                 }
               } ?>
                 </td>
