@@ -30,7 +30,7 @@ $current_role = $data['current_user']['user_role'];
                     <?php
                     if ($data['logs'])
                         foreach ($data['logs'] as $log) {
-                            if (($data['current_user']['id'] == $log['created_at'])  || AppHelpers::canEdit($current_role)) {
+                            if (($data['current_user']['id'] == $log['activity_by'])  || AppHelpers::isMaster($current_role) || AppHelpers::isAdmin($current_role)) {
                     ?>
                             <tr>
                                 <td><?php echo $log['id'] ?></td>
