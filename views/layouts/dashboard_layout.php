@@ -23,13 +23,15 @@
 <body>
     <div id="app">
         <div id="sidebar" class="active">
+             <div class="navtoggle " onclick="toggleSidebar()">
+            </div>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> --><?php echo SITE_NAME ?></a>
                         </div>
-
+                       
                     </div>
                 </div>
                 <div class="sidebar-menu">
@@ -181,6 +183,31 @@
             el.className = el.className.replace(reg, ' ');
         }
     }
+
+
+// side bar toggle
+ let media = window.matchMedia("(min-width:50px) and (max-width: 767px)")
+            .matches;
+ let pageWrapper = document.querySelector(".sidebar-wrapper").classList;
+let navtoggle = document.querySelector(".navtoggle");
+if (media == true) {
+            navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
+            pageWrapper.add("toggled");
+            
+        } else {
+           pageWrapper.remove("toggled");
+            navtoggle.innerHTML = '<i class="fa fa-times"></i>';
+        }
+    function toggleSidebar() {
+            if (pageWrapper.contains("toggled")) {
+                navtoggle.innerHTML = '<i class="fa fa-times"></i>';
+                pageWrapper.add("toggled");
+            } else {
+                
+                navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
+                pageWrapper.remove("toggled");
+            }
+        };
 </script>
 
 </html>
