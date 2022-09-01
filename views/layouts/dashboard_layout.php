@@ -17,6 +17,24 @@
     <link rel="shortcut icon" href="<?php echo BASE . 'assets/images/logo/favicon.png' ?>" type="image/png">
 
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/shared/iconly.css' ?>">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<style>
+  .navtoggle .fa{
+    cursor: pointer;
+  position: absolute;
+  color: #0c0c0c;
+  top: 0;
+  font-size: 2rem;
+  z-index: 99;
+  left: 10px;
+}
+.toggled {
+  width: 0 !important;
+}
+.margin{
+  margin-left: 0!important;
+}
+</style>
 
 </head>
 
@@ -186,11 +204,14 @@
 
 
 // side bar toggle
+
+// side bar toggle
  let media = window.matchMedia("(min-width:50px) and (max-width: 767px)")
             .matches;
  let pageWrapper = document.querySelector(".sidebar-wrapper").classList;
+ let main =document.getElementById('main').classList
 let navtoggle = document.querySelector(".navtoggle");
-if (media == true) {
+      if (media == true) {
             navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
             pageWrapper.add("toggled");
             
@@ -201,11 +222,14 @@ if (media == true) {
     function toggleSidebar() {
             if (pageWrapper.contains("toggled")) {
                 navtoggle.innerHTML = '<i class="fa fa-times"></i>';
-                pageWrapper.add("toggled");
+                pageWrapper.remove("toggled");
+                main.remove('margin');
+               
             } else {
                 
                 navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
-                pageWrapper.remove("toggled");
+                 pageWrapper.add("toggled");
+                 main.add('margin');
             }
         };
 </script>
