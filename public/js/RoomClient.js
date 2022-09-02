@@ -272,7 +272,7 @@ class RoomClient {
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
       if (this.room_data.length == 2) {
-        var countDownDate = this.conference_date.getTime() + this.conf_duration * 60 * 1000;
+        var countDownDate = new Date().getTime() + this.conf_duration * 60 * 1000;
         var extend = 1;
         var x = setInterval(function () {
           var now = new Date().getTime();
