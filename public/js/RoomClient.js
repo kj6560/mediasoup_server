@@ -390,6 +390,7 @@ class RoomClient {
     }.bind(this)
     )
     this.socket.on("extend_karo", async function () {
+      console.log("extended")
       var sock = this.socket;
       var countDownDate = new Date().getTime() + 5 * 60 * 1000;
       var x = setInterval(function () {
