@@ -106,6 +106,9 @@ class ConferenceController extends Controller
 		if (!AppHelpers::isValidConference($conferences['conference_date'], $conferences['conference_duration'])) {
 			$msg .= "The conference  has Expired. Please create a new one or wait for being added";
 		}
+		if (!(time() - strtotime($conferences['conference_date']) > 0)) {
+			$msg .= "The conference  has Not yet started. Please wait for conference";
+		}
 		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg' => $msg, 'code' => $code)));
 	}
 	public function conferences(RouteCollection $routes)
