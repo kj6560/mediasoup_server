@@ -510,7 +510,7 @@ if ($con_day < $today)
     }
 
     
-    while(rc.getRoomData() && rc.getRoomData().length < 1)
+    while(rc && rc.getRoomData().length < 1)
     {
         console.log("waiting for client");
         continue;
