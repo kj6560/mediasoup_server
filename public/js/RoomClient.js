@@ -263,6 +263,7 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
+      console.log(this.room_data)
     }.bind(this)
     )
     this.socket.on("message", async function (msg, socket__id) {
