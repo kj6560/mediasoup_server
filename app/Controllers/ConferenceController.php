@@ -292,6 +292,6 @@ class ConferenceController extends Controller
 	public function conference_ended(RouteCollection $routes)
 	{
 		
-		$this->loadView('dashboard_layout', 'conference/conference_ended', array("page_heading" => "Conferences History"));
+		$this->loadView('conference_layout', 'conference/conference_ended', array("page_heading" => "Conferences History"));
 	}
 }
