@@ -408,7 +408,7 @@ class RoomClient {
       window.location.href = window.location.origin + "/conferences";
     }.bind(this)
     )
-  }
+  } 
 
   //////// MAIN FUNCTIONS /////////////
 
