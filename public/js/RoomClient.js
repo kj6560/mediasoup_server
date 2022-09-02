@@ -271,10 +271,10 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
+      var sock = this.socket;
       if (this.room_data.length == 2) {
         console.log("2 clients")
         var countDownDate = new Date().getTime() + this.conf_duration * 60 * 1000;
-        var extend = 1;
         var x = setInterval(function () {
           var now = new Date().getTime();
           var distance = countDownDate - now;
@@ -284,6 +284,7 @@ class RoomClient {
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
           if (distance < 0) {
             if (this.user_id == this.host_id) {
+              
               sweetAlert.fire({
                 title: 'Exit Conference!!',
                 text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
@@ -299,7 +300,7 @@ class RoomClient {
               }).then((result) => {
                 if (result.isConfirmed) {
                   clearInterval(x);
-                  this.socket
+                  sock
                     .emit('force_extend')
                 } else {
                   clearInterval(x);
@@ -309,7 +310,7 @@ class RoomClient {
                   },
                     function (data, status) {
                       if (status = 200) {
-                        this.socket
+                        sock
                           .emit('force_exit')
                       }
                     });
@@ -389,6 +390,7 @@ class RoomClient {
     }.bind(this)
     )
     this.socket.on("extend_karo", async function () {
+      var sock = this.socket;
       var countDownDate = new Date().getTime() + 5 * 60 * 1000;
       var x = setInterval(function () {
         var now = new Date().getTime();
@@ -412,7 +414,7 @@ class RoomClient {
             }
           }).then((result) => {
             if (result.isConfirmed) {
-              this.socket
+              sock
                 .emit('force_exit')
             }
           })
