@@ -507,18 +507,18 @@ if ($con_day < $today)
     }
 
 
+    while (rc != null && rc.getRoomData().length <= 1) {
+        console.log("waiting for client");
+        continue;
+    }
     var my_date = "<?php echo $data['conference']['conference_date']; ?>";
     var conf_date = new Date(my_date);
     var now_time = new Date().getTime();
-    var conf_id = "<?php echo $data['conference']['id']; ?>";
     if (conf_date.getTime <= now_time) {
         var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
         var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
         var extend = 1;
-        while (rc != null && rc.getRoomData().length <= 1) {
-            console.log("waiting for client");
-            continue;
-        }
+
         var x = setInterval(function() {
 
                 var now = new Date().getTime();
@@ -626,7 +626,5 @@ if ($con_day < $today)
             },
             1000);
 
-    } else {
-        window.location.href = "/conference_error/"+conf_id;
     }
 </script>
