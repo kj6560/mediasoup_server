@@ -267,14 +267,12 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
-      if (this.room_data.length == 2) {
-        var now_time = new Date().getTime();
-        if ((this.conference_date.getTime <= now_time)) {
+      var now_time = new Date().getTime();
+      if ((this.conference_date.getTime <= now_time)) {
+        if (this.room_data.length == 2) {
           var countDownDate = this.conference_date.getTime() + this.conf_duration * 60 * 1000;
           var extend = 1;
-
           var x = setInterval(function () {
-
             var now = new Date().getTime();
             var distance = countDownDate - now;
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -282,10 +280,6 @@ class RoomClient {
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             if (distance < 0) {
-              //clearInterval(x);
-
-
-
               if (this.user_id == this.host_id) {
                 if (extend) {
                   sweetAlert.fire({
@@ -367,17 +361,13 @@ class RoomClient {
             }
             document.getElementById("timer").innerHTML = hours + "h - " +
               minutes + "m - " + seconds + "s ";
-
-
           },
             1000);
-
-        }else{
-          console.log(window.location.origin+"/conference_error"+this.conference_id);
-          //window.location.href = window.location.origin+"/conference_error"+this.conference_id;
+        } else {
+          console.log("waiting for client");
         }
-      }else{
-        console.log("waiting for client");
+      } else {
+        window.location.href = window.location.origin + "/conference_error" + this.conference_id;
       }
     }.bind(this)
     )
