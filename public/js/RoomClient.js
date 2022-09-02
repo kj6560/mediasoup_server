@@ -284,69 +284,67 @@ class RoomClient {
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
           if (distance < 0) {
             if (this.user_id == this.host_id) {
-              if (extend) {
-                sweetAlert.fire({
-                  title: 'Exit Conference!!',
-                  text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
-                  showDenyButton: false,
-                  showCancelButton: true,
-                  confirmButtonText: 'Yes',
-                  customClass: {
-                    actions: 'my-actions',
-                    cancelButton: 'order-1 right-gap',
-                    confirmButton: 'order-2',
-                    denyButton: 'order-3',
-                  }
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    countDownDate = new Date().getTime() + 5 * 60 * 1000
-                    extend = 0
-                  } else {
-                    clearInterval(x);
-                    const url = "/endSession"
-                    $.post(url, {
-                      id: this.conference_id
-                    },
-                      function (data, status) {
-                        if (status = 200) {
-                          // rc.exit();
-                          // window.location.href = window.location.origin + "/conferences";
-                          this.socket
-                            .emit('force_exit')
-                        }
-                      });
-                  }
-                })
-              } else {
-                clearInterval(x);
-                sweetAlert.fire({
-                  title: 'Session Ended',
-                  text: 'Your session has ended',
-                  showDenyButton: false,
-                  confirmButtonText: 'OK',
-                  customClass: {
-                    actions: 'my-actions',
-                    cancelButton: 'order-1 right-gap',
-                    confirmButton: 'order-2',
-                    denyButton: 'order-3',
-                  }
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    const url = "/endSession"
-                    $.post(url, {
-                      id: this.conference_id
-                    },
-                      function (data, status) {
-                        if (status = 200) {
-                          this.socket
-                            .emit('force_exit')
-                        }
-                      });
-                  }
-                })
-              }
-
+              sweetAlert.fire({
+                title: 'Exit Conference!!',
+                text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                customClass: {
+                  actions: 'my-actions',
+                  cancelButton: 'order-1 right-gap',
+                  confirmButton: 'order-2',
+                  denyButton: 'order-3',
+                }
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  clearInterval(x);
+                  this.socket
+                    .emit('force_extend')
+                } else {
+                  clearInterval(x);
+                  const url = "/endSession"
+                  $.post(url, {
+                    id: this.conference_id
+                  },
+                    function (data, status) {
+                      if (status = 200) {
+                        this.socket
+                          .emit('force_exit')
+                      }
+                    });
+                }
+              })
+            } else {
+              clearInterval(x);
+              sweetAlert.fire({
+                title: 'Session Ended',
+                text: 'Your session has ended',
+                showDenyButton: false,
+                confirmButtonText: 'OK',
+                customClass: {
+                  actions: 'my-actions',
+                  cancelButton: 'order-1 right-gap',
+                  confirmButton: 'order-2',
+                  denyButton: 'order-3',
+                }
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  const url = "/endSession"
+                  $.post(url, {
+                    id: this.conference_id
+                  },
+                    function (data, status) {
+                      if (status = 200) {
+                        this.socket
+                          .emit('force_exit')
+                      }
+                    });
+                }
+              })
             }
+
+
           }
           document.getElementById("timer").innerHTML = hours + "h - " +
             minutes + "m - " + seconds + "s ";
@@ -406,6 +404,45 @@ class RoomClient {
     this.socket.on("exit_karo", async function () {
       rc.exit();
       window.location.href = window.location.origin + "/conferences";
+    }.bind(this)
+    )
+    this.socket.on("extend_karo", async function () {
+      var countDownDate = new Date().getTime() + 5 * 60 * 1000;
+      var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (distance < 0) {
+          sweetAlert.fire({
+            title: 'Exit Conference!!',
+            text: 'Your Session has ended. Thank you',
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            customClass: {
+              actions: 'my-actions',
+              cancelButton: 'order-1 right-gap',
+              confirmButton: 'order-2',
+              denyButton: 'order-3',
+            }
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // countDownDate = new Date().getTime() + 5 * 60 * 1000
+              // extend = 0
+              this.socket
+                .emit('force_exit')
+            }
+          })
+
+
+        }
+        document.getElementById("timer").innerHTML = hours + "h - " +
+          minutes + "m - " + seconds + "s ";
+      },
+        1000);
     }.bind(this)
     )
   }
