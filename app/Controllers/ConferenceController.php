@@ -107,7 +107,7 @@ class ConferenceController extends Controller
 			$msg .= "The conference  has Expired. Please create a new one or wait for being added";
 		}
 		if (!(time() - strtotime($conferences['conference_date']) > 0)) {
-			$msg .= "The conference  has Not yet started. Please wait for conference";
+			$msg .= "The conference  has Not yet started. Please wait for conference to start!!";
 		}
 		$this->loadView('conference_layout', 'conference/conference_error', array("errors" => array('msg' => $msg, 'code' => $code)));
 	}
