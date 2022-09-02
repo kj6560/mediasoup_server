@@ -373,7 +373,7 @@ class RoomClient {
             1000);
 
         }else{
-          window.location.href = "/conference_error"+this.conference_id;
+          window.location.href = window.location.origin+"/conference_error"+this.conference_id;
         }
       }else{
         console.log("waiting for client");
