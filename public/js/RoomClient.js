@@ -65,7 +65,7 @@ class RoomClient {
         }.bind(this)
       )
     } else {
-      window.location.href = window.location.origin + "/conference_error" + this.conference_id;
+      window.location.href = window.location.origin + "/conference_error/" + this.conference_id;
     }
   }
 
