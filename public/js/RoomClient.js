@@ -373,7 +373,7 @@ class RoomClient {
             1000);
 
         }else{
-          console.log("not started");
+          window.location.href = "/conference_error"+this.conference_id;
         }
       }else{
         console.log("waiting for client");
