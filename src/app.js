@@ -115,6 +115,10 @@ io.on('connection', (socket) => {
     io.to(socket__id).emit('message', message,socket__id)
   })
 
+  socket.on('force_exit', function () {
+    io.local.emit('exit_karo')
+  })
+
   socket.on('getProducers', () => {
     if (!roomList.has(socket.room_id)) return
     console.log('Get producers', { name: `${roomList.get(socket.room_id).getPeers().get(socket.id).name}` })

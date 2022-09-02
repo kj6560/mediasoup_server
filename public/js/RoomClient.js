@@ -272,6 +272,7 @@ class RoomClient {
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
       if (this.room_data.length == 2) {
+        console.log("2 clients")
         var countDownDate = new Date().getTime() + this.conf_duration * 60 * 1000;
         var extend = 1;
         var x = setInterval(function () {
@@ -308,8 +309,10 @@ class RoomClient {
                     },
                       function (data, status) {
                         if (status = 200) {
-                          rc.exit();
-                          window.location.href = window.location.origin + "/conferences";
+                          // rc.exit();
+                          // window.location.href = window.location.origin + "/conferences";
+                          this.socket
+                            .emit('force_exit')
                         }
                       });
                   }
@@ -335,34 +338,14 @@ class RoomClient {
                     },
                       function (data, status) {
                         if (status = 200) {
-                          rc.exit();
-                          window.location.href = window.location.origin + "/conferences";
+                          this.socket
+                            .emit('force_exit')
                         }
                       });
                   }
                 })
               }
 
-            } else {
-              sweetAlert.fire({
-                title: 'Session Ended',
-                text: 'Your session has ended',
-                showDenyButton: false,
-                confirmButtonText: 'OK',
-                customClass: {
-                  actions: 'my-actions',
-                  cancelButton: 'order-1 right-gap',
-                  confirmButton: 'order-2',
-                  denyButton: 'order-3',
-                }
-              }).then((result) => {
-                if (result.isConfirmed) {
-
-                  rc.exit();
-                  window.location.href = "/conferences";
-
-                }
-              })
             }
           }
           document.getElementById("timer").innerHTML = hours + "h - " +
@@ -418,6 +401,11 @@ class RoomClient {
     }
     this.socket.on("message", async function (msg, socket__id) {
       this.updateMsgList(msg, socket__id)
+    }.bind(this)
+    )
+    this.socket.on("exit_karo", async function () {
+      rc.exit();
+      window.location.href = window.location.origin + "/conferences";
     }.bind(this)
     )
   }
