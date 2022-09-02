@@ -507,7 +507,7 @@ if ($con_day < $today)
         }
 
     }
-
+ 
 
    
     // var my_date = "<?php echo $data['conference']['conference_date']; ?>";

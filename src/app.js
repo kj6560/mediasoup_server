@@ -12,7 +12,7 @@ const Peer = require('./Peer')
 const options = {
   key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
   cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
-}
+}  
 var room_data = [];
 const httpsServer = https.createServer(options, app)
 let io = require('socket.io')(httpsServer, {

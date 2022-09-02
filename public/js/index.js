@@ -16,7 +16,7 @@ socket.request = function request(type, data = {}) {
       }
     })
   })
-}
+} 
 
 let rc = null
 
