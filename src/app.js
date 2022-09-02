@@ -119,7 +119,8 @@ io.on('connection', (socket) => {
     io.local.emit('exit_karo')
   })
 
-  socket.on('force_exit', function () {
+  socket.on('force_extend', function () {
+    console.log("extending")
     io.local.emit('extend_karo')
   })
 
