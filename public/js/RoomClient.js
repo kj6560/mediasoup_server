@@ -269,8 +269,8 @@ class RoomClient {
       this.room_data = room_data
       if (this.room_data.length == 2) {
         var now_time = new Date().getTime();
-        if ((conference_date.getTime <= now_time)) {
-          var countDownDate = conference_date.getTime() + this.conf_duration * 60 * 1000;
+        if ((this.conference_date.getTime <= now_time)) {
+          var countDownDate = this.conference_date.getTime() + this.conf_duration * 60 * 1000;
           var extend = 1;
 
           var x = setInterval(function () {
