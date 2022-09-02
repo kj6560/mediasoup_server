@@ -372,7 +372,11 @@ class RoomClient {
           },
             1000);
 
+        }else{
+          console.log("not started");
         }
+      }else{
+        console.log("waiting for client");
       }
     }.bind(this)
     )
