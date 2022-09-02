@@ -302,7 +302,16 @@ class RoomClient {
                     extend = 0
                   } else {
                     clearInterval(x);
-                    this.endSession();
+                    const url = "/endSession"
+                    $.post(url, {
+                      id: this.conference_id
+                    },
+                      function (data, status) {
+                        if (status = 200) {
+                          rc.exit();
+                          window.location.href = window.location.origin + "/conferences";
+                        }
+                      });
                   }
                 })
               } else {
@@ -320,11 +329,6 @@ class RoomClient {
                   }
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    let postObj = {
-                      id: this.conference_id
-                    }
-                    let post = JSON.stringify(postObj)
-
                     const url = "/endSession"
                     $.post(url, {
                       id: this.conference_id
@@ -332,7 +336,7 @@ class RoomClient {
                       function (data, status) {
                         if (status = 200) {
                           rc.exit();
-                          window.location.href = "/conferences";
+                          window.location.href = window.location.origin + "/conferences";
                         }
                       });
                   }
