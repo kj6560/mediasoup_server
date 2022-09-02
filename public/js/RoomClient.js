@@ -17,7 +17,7 @@ const _EVENTS = {
 }
 
 class RoomClient {
-  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile,conference_id,conference_date,user_id,host_id) {
+  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile, conference_id, conference_date, user_id, host_id, conf_duration) {
     this.name = name
     this.localMediaEl = localMediaEl
     this.remoteVideoEl = remoteVideoEl
@@ -30,9 +30,10 @@ class RoomClient {
     this.device = null
     this.room_id = room_id
     this.conference_id = conference_id
-    this.conference_date=conference_date
+    this.conference_date = conference_date
     this.user_id = user_id
     this.host_id = host_id
+    this.conf_duration = conf_duration
     this.isVideoOnFullScreen = false
     this.isDevicesVisible = false
 
@@ -266,11 +267,156 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
-      if(this.room_data.length >1 ){
-        console.log(conference_id)
+      if (this.room_data.length == 2) {
+        var now_time = new Date().getTime();
+        if ((conference_date.getTime <= now_time)) {
+          var countDownDate = conference_date.getTime() + this.conf_duration * 60 * 1000;
+          var extend = 1;
+
+          var x = setInterval(function () {
+
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) {
+              //clearInterval(x);
+
+
+
+              if (this.user_id == this.host_id) {
+                if (extend) {
+                  sweetAlert.fire({
+                    title: 'Exit Conference!!',
+                    text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    customClass: {
+                      actions: 'my-actions',
+                      cancelButton: 'order-1 right-gap',
+                      confirmButton: 'order-2',
+                      denyButton: 'order-3',
+                    }
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      countDownDate = countDownDate + 5 * 60 * 1000
+                      extend = 0
+                    } else {
+                      clearInterval(x);
+                      this.endSession();
+                    }
+                  })
+                } else {
+                  clearInterval(x);
+                  sweetAlert.fire({
+                    title: 'Session Ended',
+                    text: 'Your session has ended',
+                    showDenyButton: false,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                      actions: 'my-actions',
+                      cancelButton: 'order-1 right-gap',
+                      confirmButton: 'order-2',
+                      denyButton: 'order-3',
+                    }
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      let postObj = {
+                        id: this.conference_id
+                      }
+                      let post = JSON.stringify(postObj)
+
+                      const url = "/endSession"
+                      $.post(url, {
+                        id: this.conference_id
+                      },
+                        function (data, status) {
+                          if (status = 200) {
+                            rc.exit();
+                            window.location.href = "/conferences";
+                          }
+                        });
+                    }
+                  })
+                }
+
+              } else {
+                sweetAlert.fire({
+                  title: 'Session Ended',
+                  text: 'Your session has ended',
+                  showDenyButton: false,
+                  confirmButtonText: 'OK',
+                  customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                  }
+                }).then((result) => {
+                  if (result.isConfirmed) {
+
+                    rc.exit();
+                    window.location.href = "/conferences";
+
+                  }
+                })
+              }
+            }
+            document.getElementById("timer").innerHTML = hours + "h - " +
+              minutes + "m - " + seconds + "s ";
+
+
+          },
+            1000);
+
+        }
       }
     }.bind(this)
     )
+    function endSession() {
+
+      if (this.user_id == this.host_id) {
+        sweetAlert.fire({
+          title: 'Exit Conference!!',
+          text: 'If you exit, this conference will no longer be active. Do you want to exit conference ?',
+          showDenyButton: false,
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+          }
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let postObj = {
+              id: conference_id
+            }
+            let post = JSON.stringify(postObj)
+
+            const url = "/endSession"
+            $.post(url, {
+              id: this.conference_id
+            },
+              function (data, status) {
+                if (status = 200) {
+                  rc.exit();
+                  window.location.href = "/conferences";
+                }
+              });
+          }
+        })
+
+      } else {
+        rc.exit();
+        window.location.href = "/conferences";
+      }
+
+    }
     this.socket.on("message", async function (msg, socket__id) {
       this.updateMsgList(msg, socket__id)
     }.bind(this)

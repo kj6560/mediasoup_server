@@ -318,8 +318,9 @@ if ($con_day < $today)
     var user_id = "<?php echo $data['user']['id']; ?>";
     var host_id = "<?php echo $data['conference']['conference_by']; ?>";
     var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+    var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
     var conf_date = new Date(my_date);
-    joinRoom(name, room_id, mobile,conference_id,conf_date,user_id,host_id);
+    joinRoom(name, room_id, mobile,conference_id,conf_date,user_id,host_id,conference_duration);
     $(function() {
         $('[data-toggle]').click(function() {
             const $this = $(this)
@@ -457,7 +458,6 @@ if ($con_day < $today)
     }
 
     function endSession() {
-        console.log("ending session");
         if (!user_id) {
             var user_id = "<?php echo $data['user']['id']; ?>";
         }
