@@ -17,7 +17,7 @@ const _EVENTS = {
 }
 
 class RoomClient {
-  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile) {
+  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile,conference_id,conference_date,user_id,host_id) {
     this.name = name
     this.localMediaEl = localMediaEl
     this.remoteVideoEl = remoteVideoEl
@@ -29,7 +29,10 @@ class RoomClient {
     this.consumerTransport = null
     this.device = null
     this.room_id = room_id
-
+    this.conference_id = conference_id
+    this.conference_date=conference_date
+    this.user_id = user_id
+    this.host_id = host_id
     this.isVideoOnFullScreen = false
     this.isDevicesVisible = false
 
@@ -263,7 +266,9 @@ class RoomClient {
     )
     this.socket.on("room_data", async function (room_data) {
       this.room_data = room_data
-      console.log(this.room_data)
+      if(this.room_data.length >1 ){
+        console.log(conference_id)
+      }
     }.bind(this)
     )
     this.socket.on("message", async function (msg, socket__id) {

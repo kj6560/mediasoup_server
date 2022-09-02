@@ -317,7 +317,9 @@ if ($con_day < $today)
     var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
     var user_id = "<?php echo $data['user']['id']; ?>";
     var host_id = "<?php echo $data['conference']['conference_by']; ?>";
-    joinRoom(name, room_id, mobile);
+    var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+    var conf_date = new Date(my_date);
+    joinRoom(name, room_id, mobile,conference_id,conf_date,user_id,host_id);
     $(function() {
         $('[data-toggle]').click(function() {
             const $this = $(this)
@@ -507,124 +509,121 @@ if ($con_day < $today)
     }
 
 
-    while (rc != null && rc.getRoomData().length <= 1) {
-        console.log("waiting for client");
-        continue;
-    }
-    var my_date = "<?php echo $data['conference']['conference_date']; ?>";
-    var conf_date = new Date(my_date);
-    var now_time = new Date().getTime();
-    if (conf_date.getTime <= now_time) {
-        var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
-        var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
-        var extend = 1;
+   
+    // var my_date = "<?php echo $data['conference']['conference_date']; ?>";
+    // var conf_date = new Date(my_date);
+    // var now_time = new Date().getTime();
+    // if ((conf_date.getTime <= now_time) && (rc != null && rc.getRoomData().length <= 1)) {
+    //     var conference_duration = "<?php echo $data['conference']['conference_duration']; ?>";
+    //     var countDownDate = conf_date.getTime() + conference_duration * 60 * 1000;
+    //     var extend = 1;
 
-        var x = setInterval(function() {
+    //     var x = setInterval(function() {
 
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                if (distance < 0) {
-                    //clearInterval(x);
-                    if (!user_id) {
-                        var user_id = "<?php echo $data['user']['id']; ?>";
-                    }
-                    if (!host_id) {
-                        var host_id = "<?php echo $data['conference']['conference_by']; ?>";
-                    }
-                    if (!conference_id) {
-                        var conference_id = "<?php echo $data['conference']['id']; ?>";
-                    }
+    //             var now = new Date().getTime();
+    //             var distance = countDownDate - now;
+    //             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    //             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    //             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    //             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    //             if (distance < 0) {
+    //                 //clearInterval(x);
+    //                 if (!user_id) {
+    //                     var user_id = "<?php echo $data['user']['id']; ?>";
+    //                 }
+    //                 if (!host_id) {
+    //                     var host_id = "<?php echo $data['conference']['conference_by']; ?>";
+    //                 }
+    //                 if (!conference_id) {
+    //                     var conference_id = "<?php echo $data['conference']['id']; ?>";
+    //                 }
 
 
-                    if (user_id == host_id) {
-                        if (extend) {
-                            sweetAlert.fire({
-                                title: 'Exit Conference!!',
-                                text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
-                                showDenyButton: false,
-                                showCancelButton: true,
-                                confirmButtonText: 'Yes',
-                                customClass: {
-                                    actions: 'my-actions',
-                                    cancelButton: 'order-1 right-gap',
-                                    confirmButton: 'order-2',
-                                    denyButton: 'order-3',
-                                }
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    countDownDate = countDownDate + 5 * 60 * 1000
-                                    extend = 0
-                                } else {
-                                    clearInterval(x);
-                                    endSession();
-                                }
-                            })
-                        } else {
-                            clearInterval(x);
-                            sweetAlert.fire({
-                                title: 'Session Ended',
-                                text: 'Your session has ended',
-                                showDenyButton: false,
-                                confirmButtonText: 'OK',
-                                customClass: {
-                                    actions: 'my-actions',
-                                    cancelButton: 'order-1 right-gap',
-                                    confirmButton: 'order-2',
-                                    denyButton: 'order-3',
-                                }
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    let postObj = {
-                                        id: conference_id
-                                    }
-                                    let post = JSON.stringify(postObj)
+    //                 if (user_id == host_id) {
+    //                     if (extend) {
+    //                         sweetAlert.fire({
+    //                             title: 'Exit Conference!!',
+    //                             text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+    //                             showDenyButton: false,
+    //                             showCancelButton: true,
+    //                             confirmButtonText: 'Yes',
+    //                             customClass: {
+    //                                 actions: 'my-actions',
+    //                                 cancelButton: 'order-1 right-gap',
+    //                                 confirmButton: 'order-2',
+    //                                 denyButton: 'order-3',
+    //                             }
+    //                         }).then((result) => {
+    //                             if (result.isConfirmed) {
+    //                                 countDownDate = countDownDate + 5 * 60 * 1000
+    //                                 extend = 0
+    //                             } else {
+    //                                 clearInterval(x);
+    //                                 endSession();
+    //                             }
+    //                         })
+    //                     } else {
+    //                         clearInterval(x);
+    //                         sweetAlert.fire({
+    //                             title: 'Session Ended',
+    //                             text: 'Your session has ended',
+    //                             showDenyButton: false,
+    //                             confirmButtonText: 'OK',
+    //                             customClass: {
+    //                                 actions: 'my-actions',
+    //                                 cancelButton: 'order-1 right-gap',
+    //                                 confirmButton: 'order-2',
+    //                                 denyButton: 'order-3',
+    //                             }
+    //                         }).then((result) => {
+    //                             if (result.isConfirmed) {
+    //                                 let postObj = {
+    //                                     id: conference_id
+    //                                 }
+    //                                 let post = JSON.stringify(postObj)
 
-                                    const url = "<?php echo BASE; ?>endSession"
-                                    $.post(url, {
-                                            id: conference_id
-                                        },
-                                        function(data, status) {
-                                            if (status = 200) {
-                                                rc.exit();
-                                                window.location.href = "/conferences";
-                                            }
-                                        });
-                                }
-                            })
-                        }
+    //                                 const url = "<?php echo BASE; ?>endSession"
+    //                                 $.post(url, {
+    //                                         id: conference_id
+    //                                     },
+    //                                     function(data, status) {
+    //                                         if (status = 200) {
+    //                                             rc.exit();
+    //                                             window.location.href = "/conferences";
+    //                                         }
+    //                                     });
+    //                             }
+    //                         })
+    //                     }
 
-                    } else {
-                        sweetAlert.fire({
-                            title: 'Session Ended',
-                            text: 'Your session has ended',
-                            showDenyButton: false,
-                            confirmButtonText: 'OK',
-                            customClass: {
-                                actions: 'my-actions',
-                                cancelButton: 'order-1 right-gap',
-                                confirmButton: 'order-2',
-                                denyButton: 'order-3',
-                            }
-                        }).then((result) => {
-                            if (result.isConfirmed) {
+    //                 } else {
+    //                     sweetAlert.fire({
+    //                         title: 'Session Ended',
+    //                         text: 'Your session has ended',
+    //                         showDenyButton: false,
+    //                         confirmButtonText: 'OK',
+    //                         customClass: {
+    //                             actions: 'my-actions',
+    //                             cancelButton: 'order-1 right-gap',
+    //                             confirmButton: 'order-2',
+    //                             denyButton: 'order-3',
+    //                         }
+    //                     }).then((result) => {
+    //                         if (result.isConfirmed) {
 
-                                rc.exit();
-                                window.location.href = "/conferences";
+    //                             rc.exit();
+    //                             window.location.href = "/conferences";
 
-                            }
-                        })
-                    }
-                }
-                document.getElementById("timer").innerHTML = hours + "h - " +
-                    minutes + "m - " + seconds + "s ";
+    //                         }
+    //                     })
+    //                 }
+    //             }
+    //             document.getElementById("timer").innerHTML = hours + "h - " +
+    //                 minutes + "m - " + seconds + "s ";
 
 
-            },
-            1000);
+    //         },
+    //         1000);
 
-    }
+    // }
 </script>
