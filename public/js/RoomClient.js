@@ -393,7 +393,7 @@ class RoomClient {
       console.log("extended")
       var sock = this.socket;
       var countDownDate = new Date().getTime() + 5 * 60 * 1000;
-      var x = setInterval(function () {
+      var x1 = setInterval(function () {
         var now = new Date().getTime();
         var distance = countDownDate - now;
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -401,7 +401,7 @@ class RoomClient {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if (distance < 0) {
-          clearInterval(x);
+          clearInterval(x1);
           sock
             .emit('force_exit')
         }

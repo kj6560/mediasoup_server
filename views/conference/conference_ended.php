@@ -287,7 +287,7 @@
 
 
 <div class="container text-center" id="mydiv">
-    <h4 style="margin-top: 100px;">Your Conference has ended. <a> Click Here</a> for dashboard</h4>
+    <h4 style="margin-top: 100px;">Your Conference has ended. <a href="/conferences"> Click Here</a> for dashboard</h4>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
