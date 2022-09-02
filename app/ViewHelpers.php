@@ -23,4 +23,16 @@ class ViewHelpers
 
         return !empty($org) ? $org[0] : false;
     }
+    public static function is_mobile()
+    {
+        $browser = get_browser(null, true);
+        if (!empty($browser['ismobiledevice'])) {
+            return $browser['ismobiledevice'];
+        }
+        return false;
+    }
+    public static function getUserRole($role)
+    {
+        return ROLE[$role];
+    }
 }

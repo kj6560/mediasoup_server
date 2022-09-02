@@ -1,6 +1,9 @@
 <?php
 
+use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
@@ -10,7 +13,12 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
-      <a href="/add_client" class="btn btn-success" style="float: right;">Add Client</a>
+      <?php
+      if (AppHelpers::canCreate($current_role)) {
+      ?>
+        <a href="/add_client" class="btn btn-success" style="float: right;">Add Client</a>
+
+      <?php } ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -41,15 +49,15 @@ use App\ViewHelpers;
               </td>
 
               <td>
-                <a href="<?php echo "/client_edit/" . $client['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
-                <a href="<?php echo "/client_delete/" . $client['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+                <?php if (AppHelpers::canEdit($current_role)) { ?>
+                  <a href="<?php echo "/client_edit/" . $client['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <?php }
+                if (AppHelpers::canDelete($current_role)) { ?>
+                  <a href="<?php echo "/client_delete/" . $client['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+              <?php }
+              } ?>
               </td>
             </tr>
-          <?php
-            }
-          ?>
-
-
         </tbody>
       </table>
     </div>

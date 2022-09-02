@@ -11,30 +11,35 @@ const _EVENTS = {
   startAudio: 'startAudio',
   stopAudio: 'stopAudio',
   startScreen: 'startScreen',
-  stopScreen: 'stopScreen'
+  stopScreen: 'stopScreen',
+  room_data: 'room_data',
+  message: 'message'
 }
 
 class RoomClient {
-  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback) {
+  constructor(localMediaEl, remoteVideoEl, remoteAudioEl, mediasoupClient, socket, room_id, name, successCallback, isMobile, conference_id, conference_date, user_id, host_id, conf_duration) {
     this.name = name
     this.localMediaEl = localMediaEl
     this.remoteVideoEl = remoteVideoEl
     this.remoteAudioEl = remoteAudioEl
     this.mediasoupClient = mediasoupClient
-
+    this.isMobile = isMobile
     this.socket = socket
     this.producerTransport = null
     this.consumerTransport = null
     this.device = null
     this.room_id = room_id
-
+    this.conference_id = conference_id
+    this.conference_date = conference_date
+    this.user_id = user_id
+    this.host_id = host_id
+    this.conf_duration = conf_duration
     this.isVideoOnFullScreen = false
     this.isDevicesVisible = false
 
     this.consumers = new Map()
     this.producers = new Map()
-
-    console.log('Mediasoup client', mediasoupClient)
+    this.room_data = []
 
     /**
      * map that contains a mediatype as key and producer_id as value
@@ -43,21 +48,25 @@ class RoomClient {
 
     this._isOpen = false
     this.eventListeners = new Map()
+    var now_time = new Date().getTime();
+    if ((this.conference_date.getTime() <= now_time)) {
+      Object.keys(_EVENTS).forEach(
+        function (evt) {
+          this.eventListeners.set(evt, [])
+        }.bind(this)
+      )
 
-    Object.keys(_EVENTS).forEach(
-      function (evt) {
-        this.eventListeners.set(evt, [])
-      }.bind(this)
-    )
-
-    this.createRoom(room_id).then(
-      async function () {
-        await this.join(name, room_id)
-        this.initSockets()
-        this._isOpen = true
-        successCallback()
-      }.bind(this)
-    )
+      this.createRoom(room_id).then(
+        async function () {
+          await this.join(name, room_id)
+          this.initSockets()
+          this._isOpen = true
+          successCallback()
+        }.bind(this)
+      )
+    } else {
+      window.location.href = window.location.origin + "/conference_error/" + this.conference_id;
+    }
   }
 
   ////////// INIT /////////
@@ -86,6 +95,7 @@ class RoomClient {
           this.device = device
           await this.initTransports(device)
           this.socket.emit('getProducers')
+          this.socket.emit('getRoomData')
         }.bind(this)
       )
       .catch((err) => {
@@ -247,8 +257,8 @@ class RoomClient {
       'newProducers',
       async function (data) {
         console.log('New producers', data)
-        for (let { producer_id } of data) {
-          await this.consume(producer_id)
+        for (let { producer_id, producer_socket_id } of data) {
+          await this.consume(producer_id, producer_socket_id)
         }
       }.bind(this)
     )
@@ -259,11 +269,151 @@ class RoomClient {
         this.exit(true)
       }.bind(this)
     )
+    this.socket.on("room_data", async function (room_data) {
+      this.room_data = room_data
+      if (this.room_data.length == 2) {
+        console.log("2 clients")
+        var countDownDate = new Date().getTime() + this.conf_duration * 60 * 1000;
+        var extend = 1;
+        var x = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          if (distance < 0) {
+            if (this.user_id == this.host_id) {
+              if (extend) {
+                sweetAlert.fire({
+                  title: 'Exit Conference!!',
+                  text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
+                  showDenyButton: false,
+                  showCancelButton: true,
+                  confirmButtonText: 'Yes',
+                  customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                  }
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    countDownDate = new Date().getTime() + 5 * 60 * 1000
+                    extend = 0
+                  } else {
+                    clearInterval(x);
+                    const url = "/endSession"
+                    $.post(url, {
+                      id: this.conference_id
+                    },
+                      function (data, status) {
+                        if (status = 200) {
+                          // rc.exit();
+                          // window.location.href = window.location.origin + "/conferences";
+                          this.socket
+                            .emit('force_exit')
+                        }
+                      });
+                  }
+                })
+              } else {
+                clearInterval(x);
+                sweetAlert.fire({
+                  title: 'Session Ended',
+                  text: 'Your session has ended',
+                  showDenyButton: false,
+                  confirmButtonText: 'OK',
+                  customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                  }
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    const url = "/endSession"
+                    $.post(url, {
+                      id: this.conference_id
+                    },
+                      function (data, status) {
+                        if (status = 200) {
+                          this.socket
+                            .emit('force_exit')
+                        }
+                      });
+                  }
+                })
+              }
+
+            }
+          }
+          document.getElementById("timer").innerHTML = hours + "h - " +
+            minutes + "m - " + seconds + "s ";
+        },
+          1000);
+      } else {
+        console.log("waiting for client");
+      }
+
+    }.bind(this)
+    )
+    function endSession() {
+
+      if (this.user_id == this.host_id) {
+        sweetAlert.fire({
+          title: 'Exit Conference!!',
+          text: 'If you exit, this conference will no longer be active. Do you want to exit conference ?',
+          showDenyButton: false,
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+          }
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let postObj = {
+              id: conference_id
+            }
+            let post = JSON.stringify(postObj)
+
+            const url = "/endSession"
+            $.post(url, {
+              id: this.conference_id
+            },
+              function (data, status) {
+                if (status = 200) {
+                  rc.exit();
+                  window.location.href = "/conferences";
+                }
+              });
+          }
+        })
+
+      } else {
+        rc.exit();
+        window.location.href = "/conferences";
+      }
+
+    }
+    this.socket.on("message", async function (msg, socket__id) {
+      this.updateMsgList(msg, socket__id)
+    }.bind(this)
+    )
+    this.socket.on("exit_karo", async function () {
+      rc.exit();
+      window.location.href = window.location.origin + "/conferences";
+    }.bind(this)
+    )
   }
 
   //////// MAIN FUNCTIONS /////////////
- 
-  async produce(type, deviceId = null,host=null) {
+
+
+  async produce(type, deviceId = null, host = null) {
     let mediaConstraints = {}
     let audio = false
     let screen = false
@@ -278,25 +428,46 @@ class RoomClient {
         audio = true
         break
       case mediaType.video:
-        
-          
-        mediaConstraints = {
-          audio: false,
-          video: {
-            width: {
-              min: 640,
-              ideal: 1920
-            },
-            height: {
-              min: 400,
-              ideal: 1080
-            },
-            deviceId: deviceId
-            /*aspectRatio: {
-                            ideal: 1.7777777778
-                        }*/
+
+        if (this.isMobile) {
+          mediaConstraints = {
+            audio: false,
+            video: {
+              width: {
+                min: 640,
+                ideal: 1920
+              },
+              height: {
+                min: 400,
+                ideal: 1080
+              },
+              deviceId: deviceId
+              /*aspectRatio: {
+                              ideal: 1.7777777778
+                          }*/
+            }
+          }
+        } else {
+          mediaConstraints = {
+            audio: false,
+            video: {
+              width: {
+                min: 640,
+                ideal: 1920
+              },
+              height: {
+                min: 400,
+                ideal: 1080
+              },
+              deviceId: deviceId
+              /*aspectRatio: {
+                              ideal: 1.7777777778
+                          }*/
+            }
           }
         }
+
+
         break
       case mediaType.screen:
         mediaConstraints = false
@@ -356,13 +527,22 @@ class RoomClient {
 
       let elem
       if (!audio) {
+        let locName = document.createElement('h6');
+        locName.id = 'localVideoName'
+        this.localMediaEl.appendChild(document.createElement('br'))
         elem = document.createElement('video')
         elem.srcObject = stream
         elem.id = producer.id
         elem.playsinline = false
         elem.autoplay = true
-        elem.className = 'local-side'
+        if (this.isMobile) {
+          elem.height = 200
+          elem.width = 200
+        }
+        elem.className = 'localVideo'
+
         this.localMediaEl.appendChild(elem)
+
         this.handleFS(elem.id)
       }
 
@@ -412,18 +592,27 @@ class RoomClient {
     }
   }
 
-  async consume(producer_id) {
+  async consume(producer_id, producer_socket_id) {
     let info = await this.roomInfo()
-    console.log(producer_id);
-    console.log(info);
+    var peers = JSON.parse(info.peers)
+    let consumer_name = ""
+    for (let t = 0; t < peers.length; t++) {
+      if (peers[t][0] == producer_socket_id) {
+        consumer_name = peers[t][1].name
+      }
+    }
+
     this.getConsumeStream(producer_id).then(
-      
+
       function ({ consumer, stream, kind }) {
-        
+        console.log(consumer_name)
         this.consumers.set(consumer.id, consumer)
 
         let elem
         if (kind === 'video') {
+          let remName = document.createElement('h6')
+          remName.innerText = consumer_name
+          //remoteVideoEl.appendChild(remName)
           elem = document.createElement('video')
           elem.srcObject = stream
           elem.id = consumer.id
@@ -678,5 +867,44 @@ class RoomClient {
         videoPlayer.style.pointerEvents = 'auto'
       }
     })
+  }
+
+  sendMessage(msg, socket_id) {
+    this.socket
+      .emit('sendMessage',
+        msg,
+        socket_id
+      )
+
+  }
+  getMySocketId() {
+    return this.socket.id;
+  }
+  getRoomData() {
+    return this.room_data;
+  }
+  updateMsgList(msg, socket__id) {
+    let chatBox = document.querySelector('.chat-box');
+    chatBox.classList.remove('hide');
+    var name = "";
+    for (let i = 0; i < this.room_data.length; i++) {
+
+      var data = this.room_data[i];
+      if (data.socket_id != socket__id) {
+        name = data.name;
+      }
+    }
+    document.querySelector('.client_name').innerHTML = name;
+    var msgs_ul = document.querySelector('.msgs');
+    var li = document.createElement('li');
+    li.setAttribute('class', 'chat-list');
+    var li_div = document.createElement('div');
+    li_div.setAttribute('class', 'left-chat');
+    var div_p = document.createElement('p');
+    div_p.innerText = name + ": \n" + msg;
+
+    li_div.appendChild(div_p);
+    li.appendChild(li_div);
+    msgs_ul.appendChild(li);
   }
 }

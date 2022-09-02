@@ -17,7 +17,12 @@ class ClientController extends Controller
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$users = new User;
-		$all_clients = $users->getAllUserClients($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$all_clients = $users->getAllUserClientsForMaster();
+		} else {
+			$all_clients = $users->getAllUserClients($organisation);
+		}
+
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_clients', array("clients" => $all_clients));
 	}
 
@@ -27,10 +32,15 @@ class ClientController extends Controller
 		$data = $_POST;
 		$msg = "";
 		$code = 0;
+		$user = Auth::logger('user');
+		$organisation = $user['organisation'];
+		$user_org = new Organisation;
+		$user_org->id = $organisation;
+		$user_org = $user_org->getByPk();
+		if ($user_org['parent'] > 1) {
+			AppHelpers::redirect("/clients");
+		}
 		if (!empty($data)) {
-
-			$user = Auth::logger('user');
-			$organisation = $user['organisation'];
 			$org = new Organisation;
 			$org->name = $data['name'];
 			$org->address = $data['address'];
@@ -40,7 +50,14 @@ class ClientController extends Controller
 			$org->is_available = 1;
 			$org->parent = $organisation;
 			$client = $org->create();
-			if ($client) {
+
+			$activity_type = 9;
+			$ref_id =  $client['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " created client " . $data['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+			if ($client && $log) {
 				$msg = "Client created successfully";
 				$code = 1;
 			} else {
@@ -85,7 +102,7 @@ class ClientController extends Controller
 			$org->name = $data['name'];
 			$org->address = $data['address'];
 			$org->mobile = $data['mobile'];
-			if(!empty($data['passphrase'])){
+			if (!empty($data['passphrase'])) {
 				$org->passphrase = md5($data['passphrase']);
 			}
 			$org->admin = 1;
@@ -93,7 +110,14 @@ class ClientController extends Controller
 			$org->is_deleted = $clientToEdit['is_deleted'];
 			$org->parent = $organisation;
 			$client = $org->update();
-			if ($client) {
+
+			$activity_type = 11;
+			$ref_id =  $client['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " edited client " . $clientToEdit['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+			if ($client && $log) {
 				$msg = "Client updated successfully";
 				$code = 1;
 			} else {
@@ -101,14 +125,23 @@ class ClientController extends Controller
 			}
 			AppHelpers::redirect('/clients');
 		}
-		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client"=>$clientToEdit,"page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
+		$this->loadView('dashboard_layout', 'dashboard/dashboard_add_client', array("client" => $clientToEdit, "page_heading" => "Edit Client", "msg" => array('text' => $msg, 'code' => $code)));
 	}
 	//conference delete action
 	public function client_delete($id, RouteCollection $routes)
 	{
+		$user = Auth::logger('user');
 		$client = new Organisation;
 		$client->id = $id;
+		$toDelete = $client->getByPk();
 		$deleted = $client->delete();
+
+		$activity_type = 10;
+		$ref_id =  $id;
+		$activity_by = $user['id'];
+		$remarks = $user['name'] . " edited client " . $toDelete['name'];
+		$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
 		if ($deleted) {
 			AppHelpers::redirect('/clients');
 		} else {

@@ -2,6 +2,7 @@
 import { EnhancedEventEmitter } from './EnhancedEventEmitter';
 import { Channel } from './Channel';
 import { PayloadChannel } from './PayloadChannel';
+import { TransportInternal } from './Transport';
 import { SctpStreamParameters } from './SctpParameters';
 export declare type DataConsumerOptions = {
     /**
@@ -53,25 +54,30 @@ export declare type DataConsumerEvents = {
     message: [Buffer, number];
     sctpsendbufferfull: [];
     bufferedamountlow: [number];
+    '@close': [];
+    '@dataproducerclose': [];
 };
 export declare type DataConsumerObserverEvents = {
     close: [];
+};
+declare type DataConsumerInternal = TransportInternal & {
+    dataConsumerId: string;
+};
+declare type DataConsumerData = {
+    dataProducerId: string;
+    type: DataConsumerType;
+    sctpStreamParameters?: SctpStreamParameters;
+    label: string;
+    protocol: string;
 };
 export declare class DataConsumer extends EnhancedEventEmitter<DataConsumerEvents> {
     #private;
     /**
      * @private
-     * @emits transportclose
-     * @emits dataproducerclose
-     * @emits message - (message: Buffer, ppid: number)
-     * @emits sctpsendbufferfull
-     * @emits bufferedamountlow - (bufferedAmount: number)
-     * @emits @close
-     * @emits @dataproducerclose
      */
     constructor({ internal, data, channel, payloadChannel, appData }: {
-        internal: any;
-        data: any;
+        internal: DataConsumerInternal;
+        data: DataConsumerData;
         channel: Channel;
         payloadChannel: PayloadChannel;
         appData?: Record<string, unknown>;
@@ -114,8 +120,6 @@ export declare class DataConsumer extends EnhancedEventEmitter<DataConsumerEvent
     set appData(appData: Record<string, unknown>);
     /**
      * Observer.
-     *
-     * @emits close
      */
     get observer(): EnhancedEventEmitter<DataConsumerObserverEvents>;
     /**
@@ -150,4 +154,5 @@ export declare class DataConsumer extends EnhancedEventEmitter<DataConsumerEvent
     getBufferedAmount(): Promise<number>;
     private handleWorkerNotifications;
 }
+export {};
 //# sourceMappingURL=DataConsumer.d.ts.map

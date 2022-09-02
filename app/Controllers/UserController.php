@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\AppHelpers;
 use App\Auth;
+use App\Models\ActivityLog;
 use App\Models\Organisation;
 use App\Models\User;
 use Exception;
@@ -19,7 +20,12 @@ class UserController extends Controller
 		$user = Auth::logger('user');
 		$organisation = $user['organisation'];
 		$users = new User;
-		$all_users = $users->getAllUsersInOrganisation($organisation);
+		if (AppHelpers::isMaster($user['user_role'])) {
+			$all_users = $users->getAllUsersForMaster();
+		} else {
+			$all_users = $users->getAllUsersInOrganisation($organisation);
+		}
+
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_users', array("users" => $all_users));
 	}
 
@@ -89,7 +95,12 @@ class UserController extends Controller
 			$pass_text = explode("@", $data['email'])[0];
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
 			$user_created = $newuser->create();
-			if ($user_created) {
+			$activity_type = 1;
+			$ref_id =  $user_created['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " created user " . $user_created['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+			if ($log) {
 				$msg = "User created successfully";
 				$code = 1;
 			} else {
@@ -124,11 +135,17 @@ class UserController extends Controller
 			$pass_text = explode("@", $data['email'])[0];
 			$newuser->password = password_hash($pass_text, PASSWORD_DEFAULT);
 			$user_created = $newuser->update();
-			if ($user_created) {
-				$msg = "User updated successfully";
+
+			$activity_type = 4;
+			$ref_id =  $user_created['id'];
+			$activity_by = $user['id'];
+			$remarks = $user['name'] . " edited user " . $userToEdit['name'];
+			$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+			if ($log) {
+				$msg = "User created successfully";
 				$code = 1;
 			} else {
-				$msg = "User updation failed";
+				$msg = "User creation failed";
 			}
 			AppHelpers::redirect('/users');
 		}
@@ -137,10 +154,19 @@ class UserController extends Controller
 	//user delete action
 	public function user_delete($id, RouteCollection $routes)
 	{
+		$auth_user = Auth::logger('user');
 		$user = new User;
 		$user->id = $id;
+		$toDelete = $user->getByPk();
 		$deleted = $user->delete();
-		if ($deleted) {
+
+		$activity_type = 3;
+		$ref_id =  $id;
+		$activity_by = $auth_user['id'];
+		$remarks = $auth_user['name'] . " deleted user " . $toDelete['name'];
+		$log = AppHelpers::logActivity($activity_type, $ref_id, $activity_by, $remarks);
+
+		if ($deleted && $log) {
 			AppHelpers::redirect('/users');
 		} else {
 			echo "failed to delete";
@@ -211,13 +237,15 @@ class UserController extends Controller
 		try {
 			if (isset($_FILES['csv'])) {
 				$user = Auth::logger('user');
+				$auth_user_id = $user['id'];
+				$auth_user_name = $user['name'];
 				$organisation = $user['organisation'];
 				$file_name = rand(1, 10000) . strtolower($_FILES['csv']['name']);
 				$file_tmp = $_FILES['csv']['tmp_name'];
 				if (move_uploaded_file($file_tmp, "../upload/" . $file_name)) {
 					$spreadsheet = IOFactory::load("../upload/" . $file_name);
 					$data = $spreadsheet->getActiveSheet()->toArray();
-					if(empty($data)){
+					if (empty($data)) {
 						AppHelpers::redirect("/add_user_upload");
 					}
 					unlink("../upload/" . $file_name);
@@ -294,6 +322,11 @@ class UserController extends Controller
 						}
 						R::storeAll($beans);
 					}
+
+					$activity_type = 2;
+					$activity_by = $auth_user_id;
+					$remarks = $auth_user_name . " uploaded users file " . $file_name;
+					$log = AppHelpers::logActivity($activity_type, null, $activity_by, $remarks);
 
 					return $this->loadView('dashboard_layout', 'dashboard/dashboard_add_user_upload', array("page_heading" => "Upload User", "msg" => array('text' => $msg, 'code' => $code)));
 				}

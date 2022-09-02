@@ -13,8 +13,9 @@ const options = {
   key: fs.readFileSync(path.join(__dirname, config.sslKey), 'utf-8'),
   cert: fs.readFileSync(path.join(__dirname, config.sslCrt), 'utf-8')
 }
+var room_data = [];
 const httpsServer = https.createServer(options, app)
-const io = require('socket.io')(httpsServer,{
+let io = require('socket.io')(httpsServer, {
   cors: {
     origin: "https://drrksuri.com",
     methods: ["GET", "POST"]
@@ -51,9 +52,9 @@ let nextMediasoupWorkerIdx = 0
  */
 let roomList = new Map()
 
-;(async () => {
-  await createWorkers()
-})()
+  ; (async () => {
+    await createWorkers()
+  })()
 
 async function createWorkers() {
   let { numWorkers } = config.mediasoup
@@ -94,6 +95,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('join', ({ room_id, name }, cb) => {
+    room_data.push({ socket_id: socket.id, name: name })
     console.log('User joined', {
       room_id: room_id,
       name: name
@@ -104,11 +106,17 @@ io.on('connection', (socket) => {
         error: 'Room does not exist'
       })
     }
-
     roomList.get(room_id).addPeer(new Peer(socket.id, name))
     socket.room_id = room_id
+    cb(JSON.stringify(room_data))
+  })
 
-    cb(roomList.get(room_id).toJson())
+  socket.on('sendMessage', function (message, socket__id) {
+    io.to(socket__id).emit('message', message,socket__id)
+  })
+
+  socket.on('force_exit', function () {
+    io.local.emit('exit_karo')
   })
 
   socket.on('getProducers', () => {
@@ -119,6 +127,11 @@ io.on('connection', (socket) => {
     let producerList = roomList.get(socket.room_id).getProducerListForPeer()
 
     socket.emit('newProducers', producerList)
+  })
+
+  socket.on('getRoomData', () => {
+    if (!roomList.has(socket.room_id)) return
+    io.local.emit("room_data", room_data)
   })
 
   socket.on('getRouterRtpCapabilities', (_, callback) => {
@@ -208,6 +221,15 @@ io.on('connection', (socket) => {
 
     if (!socket.room_id) return
     roomList.get(socket.room_id).removePeer(socket.id)
+
+    room_data = room_data.filter(function (data) {
+      if (data.socket_id != socket.id) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    io.local.emit("room_data", room_data)
   })
 
   socket.on('producerClosed', ({ producer_id }) => {
@@ -228,13 +250,21 @@ io.on('connection', (socket) => {
         error: 'not currently in a room'
       })
       return
+
     }
     // close transports
     await roomList.get(socket.room_id).removePeer(socket.id)
     if (roomList.get(socket.room_id).getPeers().size === 0) {
       roomList.delete(socket.room_id)
     }
-
+    room_data = room_data.filter(function (data) {
+      if (data.socket_id != socket.id) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    io.local.emit("room_data", room_data)
     socket.room_id = null
 
     callback('successfully exited room')

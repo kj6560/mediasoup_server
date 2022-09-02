@@ -7,13 +7,28 @@ define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
 define('URL_SUBFOLDER', '');
 define('BASE', 'https://drrksuri.com/');
-
+define("ROLE", array("0" => "Super User", "1" => "Admin", "2" => "Manager", "3" => "Supervisor", "4" => "User"));
+$activities_list = array(
+    "1" => "create user",
+    "2" => "upload user",
+    "3" => "delete user",
+    "4" => "edit user",
+    "5" => "create conference",
+    "6" => "delete conference",
+    "7" => "edit conference",
+    "8" => "join conference",
+    "9" => "create client",
+    "10" => "delete client",
+    "11" => "edit client",
+);
+define("ACTIVITIES", $activities_list);
+date_default_timezone_set('Asia/Kolkata');
 
 $host = "54.70.129.232";
 $username = "angeltalk";
 $password = "webrtc1@";
 $database = "angeltalk";
- 
+
 $host1 = "talktoangel.com";
 $username1 = "radeshsuri";
 $password1 = "vUN%.VUu%GRE";

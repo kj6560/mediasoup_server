@@ -14,7 +14,7 @@ if ($auth->guard('user')) {
     $routes->add('users', new Route(constant('URL_SUBFOLDER') . '/users', array('controller' => 'UserController', 'method' => 'users'), array()));
     $routes->add('add_users', new Route(constant('URL_SUBFOLDER') . '/add_users', array('controller' => 'UserController', 'method' => 'add_users'), array()));
     $routes->add('add_users_upload', new Route(constant('URL_SUBFOLDER') . '/add_users_upload', array('controller' => 'UserController', 'method' => 'add_users_upload'), array()));
-    $routes->add('add_users_upload_file', new Route(constant('URL_SUBFOLDER') . '/add_users_upload_file', array('controller' => 'UserController', 'method' => 'add_users_upload_file'), array(),['POST']));
+    $routes->add('add_users_upload_file', new Route(constant('URL_SUBFOLDER') . '/add_users_upload_file', array('controller' => 'UserController', 'method' => 'add_users_upload_file'), array(), ['POST']));
     $routes->add('user_edit', new Route(constant('URL_SUBFOLDER') . '/user_edit/{id}', array('controller' => 'UserController', 'method' => 'user_edit'), array()));
     $routes->add('user_delete', new Route(constant('URL_SUBFOLDER') . '/user_delete/{id}', array('controller' => 'UserController', 'method' => 'user_delete'), array('id' => '[0-9]+')));
     $routes->add('user_status', new Route(constant('URL_SUBFOLDER') . '/user_status/{id}/{status}', array('controller' => 'UserController', 'method' => 'user_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
@@ -35,9 +35,15 @@ if ($auth->guard('user')) {
     $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method' => 'add_conferences'), array()));
     $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
+    $routes->add('endSession', new Route(constant('URL_SUBFOLDER') . '/endSession', array('controller' => 'ConferenceController', 'method' => 'endSession'), array(), ['POST']));
+
+    //Log routes
+    $routes->add('access_logs', new Route(constant('URL_SUBFOLDER') . '/access_logs', array('controller' => 'LogController', 'method' => 'accessLogs'), array()));
+    $routes->add('activity_log', new Route(constant('URL_SUBFOLDER') . '/activity_log', array('controller' => 'LogController', 'method' => 'activityLog'), array()));
+
 
     //priviledged general routes
-    $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'PageController', 'method' => 'history'), array()));
+    $routes->add('history', new Route(constant('URL_SUBFOLDER') . '/history', array('controller' => 'ConferenceController', 'method' => 'history'), array()));
     $routes->add('reports', new Route(constant('URL_SUBFOLDER') . '/reports', array('controller' => 'PageController', 'method' => 'reports'), array()));
     $routes->add('notifications', new Route(constant('URL_SUBFOLDER') . '/notifications', array('controller' => 'PageController', 'method' => 'notifications'), array()));
     $routes->add('contact_support', new Route(constant('URL_SUBFOLDER') . '/contact_support', array('controller' => 'PageController', 'method' => 'contact_support'), array()));

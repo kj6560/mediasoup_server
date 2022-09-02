@@ -20,31 +20,20 @@ socket.request = function request(type, data = {}) {
 
 let rc = null
 
-function joinRoom(name, room_id) {
+function joinRoom(name, room_id, isMobile,conference_id,conference_date,user_id,host_id,conf_duration) {
   if (rc && rc.isOpen()) {
     console.log('Already connected to a room')
   } else {
     initEnumerateDevices()
 
-    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen)
+    rc = new RoomClient(localMedia, remoteVideos, remoteAudios, window.mediasoupClient, socket, room_id, name, roomOpen, isMobile,conference_id,conference_date,user_id,host_id,conf_duration)
 
     addListeners()
   }
 }
 
 function roomOpen() {
-  
-  // reveal(startAudioButton)
-  // hide(stopAudioButton)
-  // reveal(startVideoButton)
-  // hide(stopVideoButton)
-  // reveal(startScreenButton)
-  // hide(stopScreenButton)
-  // reveal(exitButton)
-  // reveal(copyButton)
-  // reveal(devicesButton)
-  // control.className = ''
-  // reveal(videoMedia)
+  //this is successcallback
 }
 
 function hide(elem) {
@@ -84,12 +73,15 @@ function addListeners() {
     // reveal(startVideoButton)
   })
   rc.on(RoomClient.EVENTS.exitRoom, () => {
-    hide(control)
-    hide(devicesList)
-    hide(videoMedia)
-    hide(copyButton)
-    hide(devicesButton)
-    reveal(login)
+    // hide(control)
+    // hide(devicesList)
+    // hide(videoMedia)
+    // hide(copyButton)
+    // hide(devicesButton)
+    // reveal(login)
+  })
+  rc.socket.on("user_joined_hai",function(msg){
+    console.log(msg)
   })
 }
 

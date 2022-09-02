@@ -1,6 +1,9 @@
 <?php
 
+use App\AppHelpers;
 use App\ViewHelpers;
+
+$current_role = $data['current_user']['user_role'];
 ?>
 <style>
   .dataTable-dropdown {
@@ -10,7 +13,13 @@ use App\ViewHelpers;
 <section class="section">
   <div class="card">
     <div class="card-header">
-    <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a> <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
+      <?php if (AppHelpers::canUpload($current_role)) { ?>
+        <a href="/add_users_upload" class="btn btn-success" style="float: left;">Upload Users</a>
+      <?php }
+      if (AppHelpers::canCreate($current_role)) {
+      ?>
+        <a href="/add_users" class="btn btn-success" style="float: right;">Add Users</a>
+      <?php } ?>
     </div>
     <div class="card-body">
       <table class="table table-striped" id="table1">
@@ -33,7 +42,7 @@ use App\ViewHelpers;
               <td><a href="<?php echo "/user_detail/" . $user['id']; ?>"><?php echo $user['user_name'] ?></a></td>
               <td><?php echo $user['org_name'] ?></td>
               <td><?php echo $user['org_parent'] != 0 ? "Client" : "Parent" ?></td>
-              <td><?php echo $user['role']; ?></td>
+              <td><?php echo ViewHelpers::getUserRole($user['role']); ?></td>
               <td>
                 <?php if ($user['user_status']) { ?>
                   <a href="<?php echo "/user_status/" . $user['id'] . "/" . $user['user_status']; ?>"><span class="badge bg-success">Active</span></a>
@@ -43,15 +52,15 @@ use App\ViewHelpers;
               </td>
 
               <td>
-                <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
-                <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+                <?php if (AppHelpers::canEdit($current_role)) { ?>
+                  <a href="<?php echo "/user_edit/" . $user['id']; ?>"><span class="badge bg-secondary">Edit</span></a>
+                <?php }
+                if (AppHelpers::canDelete($current_role)) { ?>
+                  <a href="<?php echo "/user_delete/" . $user['id']; ?>"><span class="badge bg-danger">Delete</span></a>
+              <?php }
+              } ?>
               </td>
             </tr>
-          <?php
-            }
-          ?>
-
-
         </tbody>
       </table>
     </div>

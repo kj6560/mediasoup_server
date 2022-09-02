@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo SITE_NAME; ?></title>
+    <title><?php
+
+            use App\AppHelpers;
+
+            $current_role = $data['current_user']['user_role'];
+            echo SITE_NAME; ?></title>
 
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app.css' ?>">
     <link rel="stylesheet" href="<?php echo BASE . 'assets/css/main/app-dark.css' ?>">
@@ -18,18 +23,20 @@
 <body>
     <div id="app">
         <div id="sidebar" class="active">
+             <div class="navtoggle " onclick="toggleSidebar()">
+            </div>
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- <a href="/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""> --><?php echo SITE_NAME ?></a>
                         </div>
-
+                       
                     </div>
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        
+
 
                         <li class="sidebar-item active ">
                             <a href="/dashboard" class='sidebar-link'>
@@ -37,20 +44,23 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+                        <?php if (AppHelpers::canEdit($current_role)) { ?>
+                            <li class="sidebar-item active ">
+                                <a href="/users" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Users</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if (AppHelpers::isAdmin($current_role)) { ?>
+                            <li class="sidebar-item active ">
+                                <a href="/clients" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Clients</span>
+                                </a>
+                            </li>
 
-                        <li class="sidebar-item active ">
-                            <a href="/users" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Users</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item active ">
-                            <a href="/clients" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Clients</span>
-                            </a>
-                        </li>
+                        <?php } ?>
 
                         <li class="sidebar-item active ">
                             <a href="/conferences" class='sidebar-link'>
@@ -65,13 +75,29 @@
                                 <span>History</span>
                             </a>
                         </li>
-                        <li class="sidebar-item active ">
+                        <!-- <li class="sidebar-item active ">
                             <a href="reports" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Reports</span>
                             </a>
-                        </li>
+                        </li> -->
+
                         <li class="sidebar-item active ">
+                            <a href="/activity_log" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Activity Logs</span>
+                            </a>
+                        </li>
+
+                        <?php if (AppHelpers::isAdmin($current_role)) { ?>
+                            <li class="sidebar-item active ">
+                                <a href="/access_logs" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i>
+                                    <span>Access Logs</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <!-- <li class="sidebar-item active ">
                             <a href="/contact_support" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Contact Support</span>
@@ -81,12 +107,12 @@
                             <a href="/notifications" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Notifications</span>
-                            </a>
+                            </a> -->
                         </li>
                         <li class="sidebar-item active ">
                             <a href="/logout" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Logout</span>
+                                <span>Logout(<?php echo $data['current_user']['name'] ?>)</span>
                             </a>
                         </li>
                     </ul>
@@ -101,8 +127,8 @@
                             <h3><?php echo !empty($data['page_heading']) ? $data['page_heading'] : '' ?></h3>
                             <p class="text-subtitle text-muted"><?php echo !empty($data['page_description']) ? $data['page_description'] : ''; ?></p>
                         </div>
-                        
-                        <div class="alert alert-<?php echo !empty($data['msg']['code'])?'show':'hide'?> alert-dismissible fade <?php echo !empty($data['msg'])?'show':'hide'?>" role="alert">
+
+                        <div class="alert alert-<?php echo !empty($data['msg']['code']) ? 'show' : 'hide' ?> alert-dismissible fade <?php echo !empty($data['msg']) ? 'show' : 'hide' ?>" role="alert">
                             <?php
                             if ($data['msg']) {
                                 echo $data['msg']['text'];
@@ -157,6 +183,31 @@
             el.className = el.className.replace(reg, ' ');
         }
     }
+
+
+// side bar toggle
+ let media = window.matchMedia("(min-width:50px) and (max-width: 767px)")
+            .matches;
+ let pageWrapper = document.querySelector(".sidebar-wrapper").classList;
+let navtoggle = document.querySelector(".navtoggle");
+if (media == true) {
+            navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
+            pageWrapper.add("toggled");
+            
+        } else {
+           pageWrapper.remove("toggled");
+            navtoggle.innerHTML = '<i class="fa fa-times"></i>';
+        }
+    function toggleSidebar() {
+            if (pageWrapper.contains("toggled")) {
+                navtoggle.innerHTML = '<i class="fa fa-times"></i>';
+                pageWrapper.add("toggled");
+            } else {
+                
+                navtoggle.innerHTML = '<i class="fa fa-bars"></i>';
+                pageWrapper.remove("toggled");
+            }
+        };
 </script>
 
 </html>

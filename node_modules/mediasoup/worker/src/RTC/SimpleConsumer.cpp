@@ -2,6 +2,7 @@
 // #define MS_LOG_DEV_LEVEL 3
 
 #include "RTC/SimpleConsumer.hpp"
+#include "ChannelMessageHandlers.hpp"
 #include "DepLibUV.hpp"
 #include "Logger.hpp"
 #include "MediaSoupErrors.hpp"
@@ -29,11 +30,41 @@ namespace RTC
 
 		// Create RtpStreamSend instance for sending a single stream to the remote.
 		CreateRtpStream();
+
+		// Create the encoding context for Opus.
+		if (
+		  mediaCodec->mimeType.type == RTC::RtpCodecMimeType::Type::AUDIO &&
+		  (mediaCodec->mimeType.subtype == RTC::RtpCodecMimeType::Subtype::OPUS ||
+		   mediaCodec->mimeType.subtype == RTC::RtpCodecMimeType::Subtype::MULTIOPUS))
+		{
+			RTC::Codecs::EncodingContext::Params params;
+
+			this->encodingContext.reset(
+			  RTC::Codecs::Tools::GetEncodingContext(mediaCodec->mimeType, params));
+
+			auto jsonIgnoreDtx = data.find("ignoreDtx");
+
+			if (jsonIgnoreDtx != data.end() && jsonIgnoreDtx->is_boolean())
+			{
+				auto ignoreDtx = jsonIgnoreDtx->get<bool>();
+
+				this->encodingContext->SetIgnoreDtx(ignoreDtx);
+			}
+		}
+
+		// NOTE: This may throw.
+		ChannelMessageHandlers::RegisterHandler(
+		  this->id,
+		  /*channelRequestHandler*/ this,
+		  /*payloadChannelRequestHandler*/ nullptr,
+		  /*payloadChannelNotificationHandler*/ nullptr);
 	}
 
 	SimpleConsumer::~SimpleConsumer()
 	{
 		MS_TRACE();
+
+		ChannelMessageHandlers::UnregisterHandler(this->id);
 
 		delete this->rtpStream;
 	}
@@ -228,7 +259,7 @@ namespace RTC
 		return desiredBitrate;
 	}
 
-	void SimpleConsumer::SendRtpPacket(RTC::RtpPacket* packet)
+	void SimpleConsumer::SendRtpPacket(RTC::RtpPacket* packet, std::shared_ptr<RTC::RtpPacket>& sharedPacket)
 	{
 		MS_TRACE();
 
@@ -242,6 +273,22 @@ namespace RTC
 		if (this->supportedCodecPayloadTypes.find(payloadType) == this->supportedCodecPayloadTypes.end())
 		{
 			MS_DEBUG_DEV("payload type not supported [payloadType:%" PRIu8 "]", payloadType);
+
+			return;
+		}
+
+		bool marker;
+
+		// Process the payload if needed. Drop packet if necessary.
+		if (this->encodingContext && !packet->ProcessPayload(this->encodingContext.get(), marker))
+		{
+			MS_DEBUG_DEV(
+			  "discarding packet [ssrc:%" PRIu32 ", seq:%" PRIu16 ", ts:%" PRIu32 "]",
+			  packet->GetSsrc(),
+			  packet->GetSequenceNumber(),
+			  packet->GetTimestamp());
+
+			this->rtpSeqManager.Drop(packet->GetSequenceNumber());
 
 			return;
 		}
@@ -291,7 +338,7 @@ namespace RTC
 		}
 
 		// Process the packet.
-		if (this->rtpStream->ReceivePacket(packet))
+		if (this->rtpStream->ReceivePacket(packet, sharedPacket))
 		{
 			// Send the packet.
 			this->listener->OnConsumerSendRtpPacket(this, packet);
@@ -542,10 +589,7 @@ namespace RTC
 			}
 		}
 
-		// Create a RtpStreamSend for sending a single media stream.
-		size_t bufferSize = params.useNack ? 600u : 0u;
-
-		this->rtpStream = new RTC::RtpStreamSend(this, params, bufferSize);
+		this->rtpStream = new RTC::RtpStreamSend(this, params, this->rtpParameters.mid);
 		this->rtpStreams.push_back(this->rtpStream);
 
 		// If the Consumer is paused, tell the RtpStreamSend.
