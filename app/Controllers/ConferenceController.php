@@ -167,7 +167,7 @@ class ConferenceController extends Controller
 					$user = new User;
 					$user->id = $conf_user;
 					$user = $user->getByPk();
-					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
+					//EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
 				}
 				$msg = "conference created successfully";
 				$code = 1;
