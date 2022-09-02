@@ -298,7 +298,7 @@ class RoomClient {
                   }
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    countDownDate = countDownDate + 5 * 60 * 1000
+                    countDownDate = new Date().getTime() + 5 * 60 * 1000
                     extend = 0
                   } else {
                     clearInterval(x);
