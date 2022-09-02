@@ -284,7 +284,7 @@ class RoomClient {
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
           if (distance < 0) {
             if (this.user_id == this.host_id) {
-              
+
               sweetAlert.fire({
                 title: 'Exit Conference!!',
                 text: 'Your time has expired. You may be granted extra time do you wish to continue ? ',
@@ -383,7 +383,7 @@ class RoomClient {
         function (data, status) {
           if (status = 200) {
             rc.exit();
-            window.location.href = window.location.origin + "/conferences";
+            window.location.href = window.location.origin + "/conference_ended";
           }
         });
 
@@ -401,26 +401,9 @@ class RoomClient {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if (distance < 0) {
-          sweetAlert.fire({
-            title: 'Exit Conference!!',
-            text: 'Your Session has ended. Thank you',
-            showDenyButton: false,
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            customClass: {
-              actions: 'my-actions',
-              cancelButton: 'order-1 right-gap',
-              confirmButton: 'order-2',
-              denyButton: 'order-3',
-            }
-          }).then((result) => {
-            if (result.isConfirmed) {
-              sock
-                .emit('force_exit')
-            }
-          })
-
-
+          clearInterval(x);
+          sock
+            .emit('force_exit')
         }
         document.getElementById("timer").innerHTML = hours + "h - " +
           minutes + "m - " + seconds + "s ";

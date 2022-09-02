@@ -30,12 +30,14 @@ if ($auth->guard('user')) {
     $routes->add('conferences', new Route(constant('URL_SUBFOLDER') . '/conferences', array('controller' => 'ConferenceController', 'method' => 'conferences'), array()));
     $routes->add('conference_main', new Route(constant('URL_SUBFOLDER') . '/conference_main/{conf_id}', array('controller' => 'ConferenceController', 'method' => 'conference_main'), array('conf_id' => '[0-9]+', 'type' => '[0-9]+')));
     $routes->add('conference_error', new Route(constant('URL_SUBFOLDER') . '/conference_error/{conf_id}', array('controller' => 'ConferenceController', 'method' => 'conference_error'), array('conf_id' => '[0-9]+', 'type' => '[0-9]+')));
+    $routes->add('conference_ended', new Route(constant('URL_SUBFOLDER') . '/conference_ended', array('controller' => 'ConferenceController', 'method' => 'conference_ended'), array()));
     $routes->add('conference_detail', new Route(constant('URL_SUBFOLDER') . '/conference_detail/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_detail'), array('id' => '[0-9]+')));
     $routes->add('conference_status', new Route(constant('URL_SUBFOLDER') . '/conference_status/{id}/{status}', array('controller' => 'ConferenceController', 'method' => 'conference_status'), array('id' => '[0-9]+', 'status' => '[0-9]+')));
     $routes->add('add_conferences', new Route(constant('URL_SUBFOLDER') . '/add_conferences', array('controller' => 'ConferenceController', 'method' => 'add_conferences'), array()));
     $routes->add('conference_edit', new Route(constant('URL_SUBFOLDER') . '/conference_edit/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_edit'), array()));
     $routes->add('conference_delete', new Route(constant('URL_SUBFOLDER') . '/conference_delete/{id}', array('controller' => 'ConferenceController', 'method' => 'conference_delete'), array('id' => '[0-9]+')));
     $routes->add('endSession', new Route(constant('URL_SUBFOLDER') . '/endSession', array('controller' => 'ConferenceController', 'method' => 'endSession'), array(), ['POST']));
+
 
     //Log routes
     $routes->add('access_logs', new Route(constant('URL_SUBFOLDER') . '/access_logs', array('controller' => 'LogController', 'method' => 'accessLogs'), array()));

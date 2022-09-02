@@ -287,4 +287,11 @@ class ConferenceController extends Controller
 		}
 		$this->loadView('dashboard_layout', 'dashboard/dashboard_conferences_history', array("conferences" => $conferences, "page_heading" => "Conferences History"));
 	}
+
+	//conference history
+	public function conference_ended(RouteCollection $routes)
+	{
+		
+		$this->loadView('dashboard_layout', 'conference/conference_ended', array("page_heading" => "Conferences History"));
+	}
 }
