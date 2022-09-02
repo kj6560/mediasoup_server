@@ -315,33 +315,6 @@ class RoomClient {
                     });
                 }
               })
-            } else {
-              clearInterval(x);
-              sweetAlert.fire({
-                title: 'Session Ended',
-                text: 'Your session has ended',
-                showDenyButton: false,
-                confirmButtonText: 'OK',
-                customClass: {
-                  actions: 'my-actions',
-                  cancelButton: 'order-1 right-gap',
-                  confirmButton: 'order-2',
-                  denyButton: 'order-3',
-                }
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  const url = "/endSession"
-                  $.post(url, {
-                    id: this.conference_id
-                  },
-                    function (data, status) {
-                      if (status = 200) {
-                        this.socket
-                          .emit('force_exit')
-                      }
-                    });
-                }
-              })
             }
 
 
@@ -402,8 +375,17 @@ class RoomClient {
     }.bind(this)
     )
     this.socket.on("exit_karo", async function () {
-      rc.exit();
-      window.location.href = window.location.origin + "/conferences";
+      const url = window.location.origin + "/endSession"
+      $.post(url, {
+        id: this.conference_id
+      },
+        function (data, status) {
+          if (status = 200) {
+            rc.exit();
+            window.location.href = window.location.origin + "/conferences";
+          }
+        });
+
     }.bind(this)
     )
     this.socket.on("extend_karo", async function () {
@@ -430,8 +412,6 @@ class RoomClient {
             }
           }).then((result) => {
             if (result.isConfirmed) {
-              // countDownDate = new Date().getTime() + 5 * 60 * 1000
-              // extend = 0
               this.socket
                 .emit('force_exit')
             }
