@@ -312,15 +312,12 @@ if ($con_day < $today)
 
 ?>
 <script>
-    window.onload = function() {
-        var conference_id = "<?php echo $data['conference']['id']; ?>";
-        var name = "<?php echo $data['conference']['user_name']; ?>";
-        var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
-        var user_id = "<?php echo $data['user']['id']; ?>";
-        var host_id = "<?php echo $data['conference']['conference_by']; ?>";
-        joinRoom(name, room_id, mobile);
-
-    };
+    var conference_id = "<?php echo $data['conference']['id']; ?>";
+    var name = "<?php echo $data['conference']['user_name']; ?>";
+    var room_id = "<?php echo $data['conference']['conference_room_id']; ?>";
+    var user_id = "<?php echo $data['user']['id']; ?>";
+    var host_id = "<?php echo $data['conference']['conference_by']; ?>";
+    joinRoom(name, room_id, mobile);
     $(function() {
         $('[data-toggle]').click(function() {
             const $this = $(this)
@@ -509,9 +506,8 @@ if ($con_day < $today)
 
     }
 
-    
-    while(rc !=null && rc.getRoomData().length <= 1)
-    {
+
+    while (rc == null && rc.getRoomData().length <= 1) {
         console.log("waiting for client");
         continue;
     }
