@@ -511,6 +511,7 @@ if ($con_day < $today)
         console.log("waiting for client");
         continue;
     }
+    console.log("waiting ...");
     var my_date = "<?php echo $data['conference']['conference_date']; ?>";
     var conf_date = new Date(my_date);
     var now_time = new Date().getTime();
