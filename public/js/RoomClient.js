@@ -49,7 +49,7 @@ class RoomClient {
     this._isOpen = false
     this.eventListeners = new Map()
     var now_time = new Date().getTime();
-    if ((this.conference_date.getTime <= now_time)) {
+    if ((this.conference_date.getTime() <= now_time)) {
       Object.keys(_EVENTS).forEach(
         function (evt) {
           this.eventListeners.set(evt, [])
