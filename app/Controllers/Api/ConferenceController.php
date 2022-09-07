@@ -58,6 +58,7 @@ class ConferenceController extends ApiController
 
 		$confs = new Conference;
 		if(!empty($_POST['id'])){
+			echo "here";
 			$confs->id=$_POST['id'];
 			$confs=$confs->getByPk();
 		}else{
