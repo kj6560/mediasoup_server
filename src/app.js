@@ -17,7 +17,7 @@ var room_data = [];
 const httpsServer = https.createServer(options, app)
 let io = require('socket.io')(httpsServer, {
   cors: {
-    origin: ["https://drrksuri.com","https://shiwkesh.online"],
+    origin: ["https://drrksuri.com","https://shiwkesh.online","https://test.talktoangel.com"],
     methods: ["GET", "POST"]
   }
 })
