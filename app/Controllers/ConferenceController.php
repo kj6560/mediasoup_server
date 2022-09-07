@@ -42,30 +42,22 @@ class ConferenceController extends Controller
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_room($conf_id, $user_id, $session_id, RouteCollection $routes)
+	public function conference_room($conf_id,RouteCollection $routes)
 	{
-		$user = new User;
-		$user->id = $user_id;
-		$user = $user->getByPk();
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
 		if ($conferences['is_available']) {
-			$conferences['current_user'] = $user['id'];
-			$conferences['user_name'] = $user['name'];
-			$this->loadView('conference_layout', 'conference/conference', array("conference" => $conferences));
+			$layout = "conference_layout";
+			$this->loadView($layout, 'conference/conference_sec', array("conference" => $conferences, "user" => $user));
 		} else {
 			AppHelpers::redirect('/conference_error/' . $conferences['id']);
 		}
 	}
-	public function conference_secondary($conf_id, $user_id, RouteCollection $routes)
+	public function conference_secondary($conf_id, RouteCollection $routes)
 	{
-		$user = new User;
-		$user->id = $user_id;
-		$user = $user->getByPk();
 		$conf = new Conference;
 		$conferences = $conf->readConferences($conf_id);
-		if ($_POST) {
-			$user_passkey = $_POST['passkey'];
+		
 			$url = '/conference_error/' . $conferences['id'];
 			if ($conf->isAllowed($conferences['id'], $user_id, $user_passkey)) {
 				$conf_session = ConferenceSession::isInSession($conf_id, $user_id);
@@ -84,7 +76,6 @@ class ConferenceController extends Controller
 				}
 
 				$url = "/conference_room/" . $conf_id . "/" . $user_id . "/" . $conf_session_id;
-			}
 			AppHelpers::redirect($url);
 		}
 		$this->loadView('conference_layout', 'dashboard/dashboard_secondary', array("user_id" => $user_id, "conf_id" => $conf_id));
