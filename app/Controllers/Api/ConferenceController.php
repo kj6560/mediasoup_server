@@ -55,16 +55,12 @@ class ConferenceController extends ApiController
 
 	public function conf_list(RouteCollection $routes)
 	{
-		$org = $this->verifyToken();
-		if ($org) {
+		
+		
 			$confs = new Conference;
-			$confs = $confs->readAllConferencesForCompanies($org['org_id']);
+			$confs = $confs->readAllConferencesForCompanies(1);
 			$this->response['msg'] = "conference list fetched successfully";
 			$this->response['data'] = !empty($confs) ? $confs : "Empty";
-		} else {
-			$this->response['msg'] = "conference list fetch failed. invalide token";
-			$this->response['data'] = null;
-		}
 		$this->sendResponse();
 	}
 	public function conf_delete(RouteCollection $routes)
