@@ -64,18 +64,16 @@ class ConferenceController extends ApiController
 	}
 	public function conf_delete(RouteCollection $routes)
 	{
-		$org = $this->verifyToken();
-		if ($org) {
-			$data = $_POST;
-			$this->response['msg'] = "conference deletion failed";
-			$this->response['data'] = null;
-			$conf = new Conference;
-			$conf->id = $data['id'];
-			$deleted = $conf->delete();
-			if ($deleted) {
-				$this->response['msg'] = "conference deleted successfully";
-				$this->response['data'] = array('id' => $data['id']);
-			}
+
+		$data = $_POST;
+		$this->response['msg'] = "conference deletion failed";
+		$this->response['data'] = null;
+		$conf = new Conference;
+		$conf->id = $data['id'];
+		$deleted = $conf->delete();
+		if ($deleted) {
+			$this->response['msg'] = "conference deleted successfully";
+			$this->response['data'] = array('id' => $data['id']);
 		}
 		$this->sendResponse();
 	}
