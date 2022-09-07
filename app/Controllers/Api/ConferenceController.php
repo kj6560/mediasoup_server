@@ -19,7 +19,7 @@ class ConferenceController extends ApiController
 		// $org = $this->verifyToken();
 		// if ($org) {
 			$data = $_POST;
-			$conf_for = array($data['conference_for']);
+			$conf_for = explode(",",$data['conference_for']);
 			$conf = new Conference;
 			$conf->title = $data['title'];
 			$conf->conference_by = $data['user_id'];
@@ -34,26 +34,19 @@ class ConferenceController extends ApiController
 			$conf->organisation = 1;
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
-			$email_map = array();
 
 			foreach ($conf_for as $conf_user) {
 				$key_map[$conf_user] = password_hash($conf_user . $conf->conference_room_id, PASSWORD_DEFAULT);
 				$conf_em_user = new User;
 				$conf_em_user->id = $conf_user;
 				$conf_em_user = $conf_em_user->getByPk();
-				$email_map[$conf_user] = array("name" => $conf_em_user['name'], "email" => $conf_em_user['email'], "passkey" => $conf_user . $conf->conference_room_id);
+				
 			}
-			$conf->conference_keys = json_encode($key_map);
+			$conf->conference_keys = "NA";
 			$conf->is_available = 1;
 			$conference = $conf->create();
 
 			if ($conference) {
-				foreach ($conf_for as $conf_user) {
-					$user = new User;
-					$user->id = $conf_user;
-					$user = $user->getByPk();
-					
-				}
 				$this->response['msg'] = "conference created successfully";
 				$this->response['data'] = $conference;
 			} else {
