@@ -16,8 +16,8 @@ class ConferenceController extends ApiController
 	//add conference action
 	public function create_conf(RouteCollection $routes)
 	{
-		$org = $this->verifyToken();
-		if ($org) {
+		// $org = $this->verifyToken();
+		// if ($org) {
 			$data = $_POST;
 			$conf_for = array($data['conference_for']);
 			$conf = new Conference;
@@ -31,7 +31,7 @@ class ConferenceController extends ApiController
 			$conf_dur_min = $confdur % 60;
 			$conf_dur = $conf_dur_hour . ":" . $conf_dur_min . ":00";
 			$conf->conference_duration = $conf_dur;
-			$conf->organisation = $org['id'];
+			$conf->organisation = 1;
 			$conf->conference_room_id = rand(1000, 1000000);
 			$key_map = array();
 			$email_map = array();
@@ -52,7 +52,7 @@ class ConferenceController extends ApiController
 					$user = new User;
 					$user->id = $conf_user;
 					$user = $user->getByPk();
-					EmailController::send(1, 'info2018@talktoangel.com', array($user['email']), "Conference Created", "Hi " . $email_map[$conf_user]['name'] . " You have been invited for a conference" . $data['title'] . " your passkey is " . $email_map[$conf_user]['passkey'] . ".", null, null, null, true);
+					
 				}
 				$this->response['msg'] = "conference created successfully";
 				$this->response['data'] = $conference;
@@ -60,10 +60,7 @@ class ConferenceController extends ApiController
 				$this->response['msg'] = "conference creation failed";
 				$this->response['data'] = null;
 			}
-		} else {
-			$this->response['msg'] = "conference creation failed. Invalid token";
-			$this->response['data'] = null;
-		}
+		
 		$this->sendResponse();
 	}
 
