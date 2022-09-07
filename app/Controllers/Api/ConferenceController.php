@@ -58,14 +58,15 @@ class ConferenceController extends ApiController
 
 		$confs = new Conference;
 		if(!empty($_POST['id'])){
-			echo "here";
 			$confs->id=$_POST['id'];
 			$confs=$confs->getByPk();
+			$this->response['msg'] = "conference fetched successfully";
 		}else{
 			$confs = $confs->readAllConferencesForCompanies(1);
+			$this->response['msg'] = "conference list fetched successfully";
 		}
 		
-		$this->response['msg'] = "conference list fetched successfully";
+		
 		$this->response['data'] = !empty($confs) ? $confs : "Empty";
 		$this->sendResponse();
 	}
